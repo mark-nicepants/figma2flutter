@@ -29,6 +29,42 @@ final input = '''
   }
 }''';
 
+final childReferences = '''
+{
+	"fontSizes": {
+		"small": {
+			"value": "12px",
+			"type": "fontSize"
+		}
+	},
+	"fontWeights": {
+		"heading": {
+			"bold": {
+				"value": "100",
+				"type": "fontWeight"
+			}
+		}
+	},
+	"fontFamilies": {
+		"heading": {
+			"value": "Roboto",
+			"type": "fontFamily"
+		}
+	},
+	"bold": {
+		"value": {
+			"fontFamily": "{fontFamilies.heading}",
+			"fontWeight": "{fontWeights.heading.bold}",
+			"fontSize": "{fontSizes.small}"
+		},
+		"type": "typography"
+	},
+	"boldReference": {
+		"value": "{bold}"
+	}
+}
+''';
+
 /// https://tr.designtokens.org/format/#alias-reference
 /// https://docs.tokens.studio/tokens/aliases
 ///
@@ -51,5 +87,21 @@ void main() {
     expect(parser.resolve('token2')?.type, equals('color'));
     expect(parser.resolve('token3')?.type, equals('dimension'));
     expect(parser.resolve('token4')?.type, equals('dimension'));
+  });
+
+  test('child references are properly resolved', () {
+    final parsed = json.decode(childReferences) as Map<String, dynamic>;
+    final parser = TokenParser();
+    parser.parse(parsed);
+
+    expect(parser.tokenMap.length, equals(5));
+
+    expect(parser.resolve('bold')!.value['fontFamily'], equals('Roboto'));
+    expect(parser.resolve('bold')!.value['fontWeight'], equals('100'));
+    expect(parser.resolve('bold')!.value['fontSize'], equals('12px'));
+
+    expect(parser.resolve('boldReference')!.value['fontFamily'], equals('Roboto'));
+    expect(parser.resolve('boldReference')!.value['fontWeight'], equals('100'));
+    expect(parser.resolve('boldReference')!.value['fontSize'], equals('12px'));
   });
 }

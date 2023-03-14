@@ -1,4 +1,5 @@
 import 'package:figma2flutter/models/token.dart';
+import 'package:meta/meta.dart';
 
 abstract class Transformer {
   final lines = <String>[];
@@ -7,8 +8,10 @@ abstract class Transformer {
   String get type;
   String get className => '${name[0].toUpperCase()}${name.substring(1)}Tokens';
 
+  @protected
   bool matcher(String type);
 
+  @protected
   String transform(dynamic value);
 
   void process(Token token) {

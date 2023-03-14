@@ -89,7 +89,7 @@ class TokenParser {
       token = _getReference(token);
     }
 
-    // TODO(mark): handle nested references in value
+    token = token?.resolveValueReferences(tokenMap);
 
     return token;
   }

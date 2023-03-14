@@ -7,7 +7,7 @@ class Generator {
 
   final List<Transformer> transformers;
 
-  void save(String outputDirectory) {
+  String get output {
     final properties = <String>[];
     final classes = <String>[];
 
@@ -16,7 +16,7 @@ class Generator {
       classes.add(transformer.classDeclaration());
     }
 
-    String output = '''
+    return '''
 /// GENERATED CODE - DO NOT MODIFY BY HAND
 /// *****************************************************
 /// Figma2Flutter
@@ -28,9 +28,10 @@ class Tokens {
   ${properties.join('\n  ')}
 }
 
-${classes.join('\n')}
-  ''';
+${classes.join('\n')}''';
+  }
 
+  void save(String outputDirectory) {
     final dir = Directory(outputDirectory)..createSync(recursive: true);
     final file = File('${dir.path}/tokens.g.dart');
     if (file.existsSync()) {
