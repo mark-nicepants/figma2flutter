@@ -1,2 +1,21 @@
 
 include: package:lints/recommended.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true 
+  errors:
+    todo: ignore
+    unused_element: ignore
+
+linter:
+  rules:
+    always_use_package_imports: true
+    depend_on_referenced_packages: false
+    flutter_style_todos: true
+    prefer_const_constructors: true
+    prefer_single_quotes: true
+    require_trailing_commas: true
+

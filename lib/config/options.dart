@@ -39,7 +39,7 @@ class Option<T> {
 }
 
 class Options {
-  List<Option> options = [
+  List<Option<String>> options = [
     Option<String>(
       kInput,
       './design/tokens.json',
@@ -62,7 +62,7 @@ class Options {
 
   void setOption<T>(String name, T? value) {
     if (value != null) {
-      getOption(name).value = value;
+      getOption<T>(name).value = value;
     }
   }
 
@@ -77,7 +77,7 @@ Options:
   Options operator +(Options other) {
     final result = Options();
 
-    void mergeOption(Option option) {
+    void mergeOption(Option<dynamic> option) {
       result.setOption(option.name, (option + other.getOption(option.name)).value);
     }
 

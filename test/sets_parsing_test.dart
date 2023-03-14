@@ -292,7 +292,7 @@ final input = '''
 
 void main() {
   test('sets parsing and value overrides', () {
-    final parsed = json.decode(input);
+    final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser(['source', 'semantic']);
     parser.parse(parsed);
 
@@ -301,7 +301,7 @@ void main() {
   });
 
   test('no overrides when no sets are specified', () {
-    final parsed = json.decode(input);
+    final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser();
     parser.parse(parsed);
 

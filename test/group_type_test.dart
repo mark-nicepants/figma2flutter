@@ -36,7 +36,7 @@ final input = '''
 
 void main() {
   test('that groups can have a type and that missing token types refer to the group type', () {
-    final parsed = json.decode(input);
+    final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser();
     parser.parse(parsed);
 

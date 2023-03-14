@@ -1,7 +1,10 @@
 import 'package:figma2flutter/models/token.dart';
+import 'package:meta/meta.dart';
 
 class TokenParser {
   final List<String> sets;
+
+  @visibleForTesting
   final Map<String, Token> tokenMap = {};
 
   TokenParser([this.sets = const []]);
@@ -44,7 +47,7 @@ class TokenParser {
       final path = end > 0 ? cleaned.substring(1, end) : '';
       final token = Token(
         value: input['value'],
-        type: input['type'] as String? ?? groupType as String,
+        type: input['type'] as String? ?? groupType,
         path: path,
         name: name,
       );
@@ -54,16 +57,40 @@ class TokenParser {
       };
     }
 
-    input.forEach((key, value) {
+    for (var entry in input.entries) {
+      final key = entry.key;
+      final value = entry.value;
+
       if (value is Map<String, dynamic>) {
         tokens.addAll(findTokens('$parent$key.', value, input['type'] as String?));
       }
-    });
+    }
 
     return tokens;
   }
 
-  Token? getReference(Token token) {
-    return tokenMap[token.value.substring(1)];
+  List<Token> get resolvedTokens =>
+      tokenMap.keys.map(resolve).where((element) => element != null).cast<Token>().toList();
+
+  Token? _getReference(Token token) {
+    final reference = tokenMap[token.valueByRef];
+
+    // Keep original variable name when resolving reference
+    return reference?.copyWith(variableName: token.variableName);
+  }
+
+  // Fetch a token by key and resolve all references
+  @visibleForTesting
+  Token? resolve(String key) {
+    Token? token = tokenMap[key];
+    if (token == null) return null;
+
+    if (token.isReference == true) {
+      token = _getReference(token);
+    }
+
+    // TODO(mark): handle nested references in value
+
+    return token;
   }
 }

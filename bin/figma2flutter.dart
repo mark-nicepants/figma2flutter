@@ -16,27 +16,20 @@ final transformers = [
 Future<void> main(List<String> arguments) async {
   final options = await ArgumentParser(arguments).parse();
 
-  final input = json.decode(File(options.getOption(kInput).value as String).readAsStringSync());
+  final input = json.decode(File(options.getOption<String>(kInput).value).readAsStringSync()) as Map<String, dynamic>;
   final setOrder = (input['\$metadata']?['tokenSetOrder'] as List? ?? []).map((e) => e.toString()).toList();
 
   final parser = TokenParser(setOrder);
   parser.parse(input);
 
-  for (final t in parser.tokenMap.values) {
-    final token = t.isReference ? parser.getReference(t) : t;
-
-    if (token == null) {
-      print('Reference not found: ${t.value}');
-      continue;
-    }
-
+  for (final token in parser.resolvedTokens) {
     for (final transformer in transformers) {
-      transformer.process(t.variableName, token);
+      transformer.process(token);
     }
   }
 
   final generator = Generator(transformers);
-  generator.save(options.getOption(kOutput).value as String);
+  generator.save(options.getOption<String>(kOutput).value);
 
   exit(0);
 }

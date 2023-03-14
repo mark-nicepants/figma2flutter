@@ -8,7 +8,7 @@ class ArgumentParser extends Parser {
   final argParser = ArgParser();
 
   ArgumentParser(this.arguments) {
-    void addOption(Option element) {
+    void addOption(Option<dynamic> element) {
       argParser.addOption(
         element.name,
         abbr: element.abbr,

@@ -26,21 +26,23 @@ final input = '''
 
 void main() {
   test('Test all color transformer output variants', () {
-    final parsed = json.decode(input);
+    final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.tokenMap.length, equals(4));
+    expect(parser.resolvedTokens.length, equals(4));
     expect(parser.tokenMap['hex']?.type, equals('color'));
     expect(parser.tokenMap['rgb']?.type, equals('color'));
     expect(parser.tokenMap['rgba']?.type, equals('color'));
     expect(parser.tokenMap['hsla']?.type, equals('color'));
 
     final transformer = ColorTransformer();
-    expect(transformer.transform(parser.tokenMap['hex']!.value), equals('Color(0xFF111111)'));
-    expect(transformer.transform(parser.tokenMap['rgb']!.value), equals('Color.fromRGBO(0, 0, 0, 1.0)'));
-    expect(transformer.transform(parser.tokenMap['rgba']!.value), equals('Color.fromRGBO(255, 0, 0, 0.5)'));
-    expect(transformer.transform(parser.tokenMap['hsla']!.value),
-        equals('HSLColor.fromAHSL(0.5, 120, 50%, 50%).toColor()'));
+    expect(transformer.transform(parser.tokenMap['hex']!.value), equals('const Color(0xFF111111)'));
+    expect(transformer.transform(parser.tokenMap['rgb']!.value), equals('const Color.fromRGBO(0, 0, 0, 1.0)'));
+    expect(transformer.transform(parser.tokenMap['rgba']!.value), equals('const Color.fromRGBO(255, 0, 0, 0.5)'));
+    expect(
+      transformer.transform(parser.tokenMap['hsla']!.value),
+      equals('HSLColor.fromAHSL(0.5, 120, 50%, 50%).toColor()'),
+    );
   });
 }

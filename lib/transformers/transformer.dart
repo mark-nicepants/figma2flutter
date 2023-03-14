@@ -11,9 +11,9 @@ abstract class Transformer {
 
   String transform(dynamic value);
 
-  void process(String variableName, Token token) {
-    if (matcher(token.type)) {
-      lines.add("static $type get $variableName => ${transform(token.value)};");
+  void process(Token token) {
+    if (matcher(token.type!)) {
+      lines.add('static $type get ${token.variableName} => ${transform(token.value)};');
     }
   }
 

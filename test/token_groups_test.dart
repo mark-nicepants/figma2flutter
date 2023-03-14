@@ -29,18 +29,19 @@ final input = '''
 
 void main() {
   test('if groups are correctly read', () {
-    final parsed = json.decode(input);
+    final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
     expect(parser.tokenMap.length, equals(4));
 
     expect(
-        parser.tokenMap.keys,
-        equals([
-          'token uno',
-          'token group.token dos',
-          'token group.nested token group.token tres',
-          'token group.nested token group.Token cuatro'
-        ]));
+      parser.tokenMap.keys,
+      equals([
+        'token uno',
+        'token group.token dos',
+        'token group.nested token group.token tres',
+        'token group.nested token group.Token cuatro'
+      ]),
+    );
   });
 }
