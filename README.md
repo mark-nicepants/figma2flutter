@@ -6,7 +6,9 @@ Convert [Tokens Studio for Figma]() json exports to Flutter code.
 ## Token support
 
 - [ ] sizing
-- [ ] spacing
+- [x] spacing
+  - [x] 1, 2, 3 or 4 values
+  - [x] accept int/double values, px of rem suffix
 - [ ] color
   - [x] Solid
     - [x] hex
