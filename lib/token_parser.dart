@@ -22,7 +22,10 @@ class TokenParser {
       final set = '$element.';
       final setLength = set.length - 1;
 
-      tokenMap.entries.where((element) => element.key.startsWith(set)).toList().forEach((entry) {
+      tokenMap.entries
+          .where((element) => element.key.startsWith(set))
+          .toList()
+          .forEach((entry) {
         final key = entry.key;
         final value = entry.value;
 
@@ -36,11 +39,16 @@ class TokenParser {
     }
   }
 
-  Map<String, Token> findTokens(String parent, Map<String, dynamic> input, [String? groupType]) {
+  Map<String, Token> findTokens(
+    String parent,
+    Map<String, dynamic> input, [
+    String? groupType,
+  ]) {
     final tokens = <String, Token>{};
 
     if (input.containsKey('value')) {
-      final cleaned = parent.substring(0, parent.length - 1); // remove the trailing dot
+      final cleaned =
+          parent.substring(0, parent.length - 1); // remove the trailing dot
       final name = cleaned.split('.').last;
 
       final end = cleaned.length - name.length - 1;
@@ -62,15 +70,20 @@ class TokenParser {
       final value = entry.value;
 
       if (value is Map<String, dynamic>) {
-        tokens.addAll(findTokens('$parent$key.', value, input['type'] as String?));
+        tokens.addAll(
+          findTokens('$parent$key.', value, input['type'] as String?),
+        );
       }
     }
 
     return tokens;
   }
 
-  List<Token> get resolvedTokens =>
-      tokenMap.keys.map(resolve).where((element) => element != null).cast<Token>().toList();
+  List<Token> get resolvedTokens => tokenMap.keys
+      .map(resolve)
+      .where((element) => element != null)
+      .cast<Token>()
+      .toList();
 
   Token? _getReference(Token token) {
     final reference = tokenMap[token.valueByRef];

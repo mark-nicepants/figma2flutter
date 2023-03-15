@@ -49,7 +49,7 @@ Default config values are:
     - ✅ rgba
     - ✅ hsla
   - Gradients
-- [borderRadius](https://docs.tokens.studio/available-tokens/border-radius-tokens)
+- ✅ [borderRadius](https://docs.tokens.studio/available-tokens/border-radius-tokens)
 - [borderWidth](https://docs.tokens.studio/available-tokens/border-width-tokens)
 - [boxShadow](https://docs.tokens.studio/available-tokens/shadow-tokens)
 - [opacity](https://docs.tokens.studio/available-tokens/opacity-tokens)

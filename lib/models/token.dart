@@ -49,7 +49,10 @@ class Token {
     return this;
   }
 
-  Map<String, dynamic> _resolvedValue(Map<String, dynamic> value, Map<String, Token> tokenMap) {
+  Map<String, dynamic> _resolvedValue(
+    Map<String, dynamic> value,
+    Map<String, Token> tokenMap,
+  ) {
     final resolved = <String, dynamic>{};
 
     for (var entry in value.entries) {

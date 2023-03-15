@@ -38,6 +38,7 @@ class ColorTransformer extends Transformer {
     throw Exception('Unknown color format: $value');
   }
 
+  /// Transforms a hex color to a Flutter color
   String _transformHex(String value) {
     final hex = value.substring(1).toUpperCase();
     final alpha = hex.length == 8 ? hex.substring(0, 2) : 'FF';
@@ -45,16 +46,26 @@ class ColorTransformer extends Transformer {
     return 'const Color(0x$alpha$color)';
   }
 
+  /// Transforms a rgb or rgba color to a Flutter color
   String _transformRgb(String value) {
     final start = value.startsWith('rgba') ? 5 : 4;
-    final rgb = value.substring(start, value.length - 1).split(',').map((e) => e.trim()).toList();
+    final rgb = value
+        .substring(start, value.length - 1)
+        .split(',')
+        .map((e) => e.trim())
+        .toList();
     final alpha = rgb.length == 4 ? rgb[3] : '1.0';
     final color = rgb.sublist(0, 3).join(', ');
     return 'const Color.fromRGBO($color, $alpha)';
   }
 
+  /// Transforms a hsla color to a Flutter color
   String _transformHsla(String value) {
-    final hsl = value.substring(5, value.length - 1).split(',').map((e) => e.trim()).toList();
+    final hsl = value
+        .substring(5, value.length - 1)
+        .split(',')
+        .map((e) => e.trim())
+        .toList();
     final alpha = hsl.length == 4 ? hsl[3] : '1.0';
     final color = hsl.sublist(0, 3).join(', ');
     return 'HSLColor.fromAHSL($alpha, $color).toColor()';

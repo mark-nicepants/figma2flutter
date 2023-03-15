@@ -1,11 +1,11 @@
 import 'package:figma2flutter/models/dimension_value.dart';
 
-class SpacingValue {
+class MultiDimensionValue {
   List<DimensionValue> values;
 
-  SpacingValue._(this.values);
+  MultiDimensionValue._(this.values);
 
-  factory SpacingValue.parse(dynamic value) {
+  factory MultiDimensionValue.parse(dynamic value) {
     // Split on spaces and parse each value to a size
     final values = (value as String)
         .split(' ')
@@ -14,6 +14,6 @@ class SpacingValue {
         .cast<DimensionValue>()
         .toList();
 
-    return SpacingValue._(values);
+    return MultiDimensionValue._(values);
   }
 }

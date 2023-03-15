@@ -2,14 +2,21 @@ import 'package:args/args.dart' hide Option;
 import 'package:figma2flutter/config/options.dart';
 import 'package:figma2flutter/config/parser.dart';
 
+/// Parses the input arguments and returns the options
 class ArgumentParser extends Parser {
-  final result = Options();
-  final List<String> arguments;
-  final argParser = ArgParser();
+  // All arguments passed to the program
+  final List<String> _arguments;
 
-  ArgumentParser(this.arguments) {
+  // The result of the parsing
+  final _result = Options();
+
+  // The argument parser
+  final _argParser = ArgParser();
+
+  // Constructor for the argument parser
+  ArgumentParser(this._arguments) {
     void addOption(Option<dynamic> element) {
-      argParser.addOption(
+      _argParser.addOption(
         element.name,
         abbr: element.abbr,
         defaultsTo: element.defaultValue.toString(),
@@ -26,12 +33,12 @@ class ArgumentParser extends Parser {
       );
     }
 
-    result.options.forEach(addOption);
+    _result.options.forEach(addOption);
   }
 
   @override
   Future<Options> parse() async {
-    argParser.parse(arguments);
-    return result;
+    _argParser.parse(_arguments);
+    return _result;
   }
 }

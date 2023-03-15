@@ -1,3 +1,10 @@
+## 0.0.2-alpha
+
+- Added support for border radius
+- Added more documentation
+- Added tests for extension methods
+- Added output when running the command
+
 ## 0.0.1-alpha
 
 - Basic json parsing for tokens.
