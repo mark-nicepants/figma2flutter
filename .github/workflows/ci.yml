@@ -1,0 +1,16 @@
+name: 'Dart tests'
+on:
+  pull_request:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: subosito/flutter-action@v1
+    - run: flutter test --coverage
+    - name: Upload lcov.info to code coverage
+      uses: codecov/codecov-action@v1.2.2
+      with:
+        token: ${{secrets.CODECOV_TOKEN}}
+        file: coverage/lcov.info
