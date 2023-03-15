@@ -7,10 +7,12 @@ import 'package:figma2flutter/generator.dart';
 import 'package:figma2flutter/token_parser.dart';
 import 'package:figma2flutter/transformers/color_transformer.dart';
 import 'package:figma2flutter/transformers/spacing_transformer.dart';
+import 'package:figma2flutter/transformers/typography_transformer.dart';
 
 final transformers = [
   ColorTransformer(),
   SpacingTransformer(),
+  TypographyTransformer(),
 ];
 
 Future<void> main(List<String> arguments) async {

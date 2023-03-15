@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:figma2flutter/generator.dart';
 import 'package:figma2flutter/token_parser.dart';
@@ -55,5 +56,10 @@ void main() {
 
     final generator = Generator([transformer]);
     expect(generator.output, equals(output));
+
+    generator.save('test/output');
+    expect(File('test/output/tokens.g.dart').readAsStringSync(), equals(output));
+
+    Directory('test/output').deleteSync(recursive: true);
   });
 }

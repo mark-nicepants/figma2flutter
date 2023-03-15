@@ -26,6 +26,10 @@ class Token {
   String get valueByRef => (value as String).valueByRef;
 
   Token copyWith({String? path, String? variableName, dynamic value}) {
+    if (path != null && variableName == null) {
+      variableName = _getVariableName(path, name);
+    }
+
     return Token(
       name: name,
       type: type,

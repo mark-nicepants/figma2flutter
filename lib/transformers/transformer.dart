@@ -9,13 +9,13 @@ abstract class Transformer {
   String get className => '${name[0].toUpperCase()}${name.substring(1)}Tokens';
 
   @protected
-  bool matcher(String type);
+  bool matcher(Token token);
 
   @protected
   String transform(dynamic value);
 
   void process(Token token) {
-    if (matcher(token.type!)) {
+    if (matcher(token)) {
       lines.add('static $type get ${token.variableName} => ${transform(token.value)};');
     }
   }

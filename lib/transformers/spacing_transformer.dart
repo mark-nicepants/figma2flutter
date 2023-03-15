@@ -1,11 +1,10 @@
-import 'package:figma2flutter/models/sizes.dart';
+import 'package:figma2flutter/models/spacing_value.dart';
+import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
 
 class SpacingTransformer extends Transformer {
   @override
-  bool matcher(String type) {
-    return type == 'spacing';
-  }
+  bool matcher(Token token) => token.type == 'spacing';
 
   @override
   String get name => 'spacing';
@@ -15,7 +14,7 @@ class SpacingTransformer extends Transformer {
 
   @override
   String transform(dynamic value) {
-    final sizes = Sizes.from(value);
+    final sizes = SpacingValue.parse(value);
 
     if (sizes.values.length == 1) {
       return 'const EdgeInsets.all(${sizes.values[0]})';

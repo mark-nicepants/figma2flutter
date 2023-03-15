@@ -1,3 +1,4 @@
+import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
 
 // Color Tokens
@@ -19,7 +20,11 @@ class ColorTransformer extends Transformer {
   String get type => 'Color';
 
   @override
-  bool matcher(String type) => type == 'color';
+  bool matcher(Token token) =>
+      token.type == 'color' &&
+      (token.valueAsString?.startsWith('#') == true ||
+          token.valueAsString?.startsWith('rgb') == true ||
+          token.valueAsString?.startsWith('hsla') == true);
 
   @override
   String transform(dynamic value) {
@@ -29,9 +34,8 @@ class ColorTransformer extends Transformer {
       return _transformRgb(value);
     } else if (value is String && value.startsWith('hsla')) {
       return _transformHsla(value);
-    } else {
-      throw Exception('Unknown color format: $value');
     }
+    throw Exception('Unknown color format: $value');
   }
 
   String _transformHex(String value) {
