@@ -18,3 +18,7 @@ dev_dependencies:
 
 executables:
   figma2flutter: figma2flutter
+
+screenshots:
+  - description: figma2flutter icon
+    path: docs/icon.png
