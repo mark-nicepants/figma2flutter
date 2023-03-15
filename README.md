@@ -1,6 +1,9 @@
 
 # figma2flutter (pre-release)
 
+[![codecov](https://codecov.io/gh/mark-nicepants/figma2flutter/branch/main/graph/badge.svg?token=CEO88366WO)](https://codecov.io/gh/mark-nicepants/figma2flutter)
+[![pub package](https://img.shields.io/pub/v/figma2flutter.svg)](https://pub.dev/packages/figma2flutter)
+
 This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) json exports into Flutter code.
 
 **[Notice] You may use this package but breaking changes may occur when relying on releases lower than v1.0.0**
