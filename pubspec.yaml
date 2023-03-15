@@ -1,7 +1,7 @@
 name: figma2flutter
 description: Convert figma design tokens to Flutter code
-version: 0.0.1
-repository: https://github.com/my_org/my_repo
+version: 0.0.1-alpha
+repository: https://github.com/mark-nicepants/figma2flutter
 
 environment:
   sdk: '>=2.17.0 <3.0.0'
