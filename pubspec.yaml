@@ -1,6 +1,6 @@
 name: figma2flutter
 description: This package converts Tokens Studio for Figma json exports into Flutter code.
-version: 0.0.1-alpha
+version: 0.0.1-alpha.2
 repository: https://github.com/mark-nicepants/figma2flutter
 
 environment:
