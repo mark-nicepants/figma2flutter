@@ -1,4 +1,4 @@
-![Package art](https://raw.githubusercontent.com/mark-nicepants/figma2flutter/main/doc/header.png)
+![Package art](https://github.com/mark-nicepants/figma2flutter/raw/main/doc/header.png)
 
 [![codecov](https://codecov.io/gh/mark-nicepants/figma2flutter/branch/main/graph/badge.svg?token=CEO88366WO)](https://codecov.io/gh/mark-nicepants/figma2flutter)
 [![pub package](https://img.shields.io/pub/v/figma2flutter.svg)](https://pub.dev/packages/figma2flutter)
