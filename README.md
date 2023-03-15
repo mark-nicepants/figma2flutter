@@ -37,34 +37,36 @@ Default config values are:
 
 ## Token support (checked = supported)
 
-- sizing
-- ✅ spacing (output = EdgeInsets)
+[Overview of all tokens available here](https://docs.tokens.studio/available-tokens/available-tokens)
+
+- [sizing](https://docs.tokens.studio/available-tokens/sizing-tokens)
+- ✅ [spacing](https://docs.tokens.studio/available-tokens/spacing-tokens) (output = EdgeInsets)
   - ✅ 1, 2, 3 or 4 values
   - ✅ accept int/double values, px of rem suffix
-- color
+- [color](https://docs.tokens.studio/available-tokens/color-tokens)
   - ✅ Solid (output = Color)
     - ✅ hex
     - ✅ rgb 
     - ✅ rgba
     - ✅ hsla
   - Gradients
-- borderRadius
-- borderWidth
-- boxShadow
-- opacity
-- fontFamilies
-- fontWeights
-- fontSizes
-- lineHeight
-- letterSpacing
-- paragraphSpacing
-- textCase
-- textDecoration
-- ✅ typography (output = TextStyle)
-- asset
-- composition (pro)
-- dimension
-- border
+- [borderRadius](https://docs.tokens.studio/available-tokens/border-radius-tokens)
+- [borderWidth](https://docs.tokens.studio/available-tokens/border-width-tokens)
+- [boxShadow](https://docs.tokens.studio/available-tokens/shadow-tokens)
+- [opacity](https://docs.tokens.studio/available-tokens/opacity-tokens)
+- ✅ [typography](https://docs.tokens.studio/available-tokens/typography-tokens) (output = TextStyle)
+  - ✅ fontFamilies
+  - ✅ fontWeights
+  - ✅ fontSizes
+  - ✅ lineHeight
+  - letterSpacing
+  - paragraphSpacing
+  - textCase
+  - textDecoration
+- [asset](https://docs.tokens.studio/available-tokens/asset-tokens)
+- [composition (pro)](https://docs.tokens.studio/available-tokens/composition-tokens)
+- [dimension](https://docs.tokens.studio/available-tokens/dimension-tokens)
+- [border](https://docs.tokens.studio/available-tokens/border-tokens)
 
 ## Ideas for contributing
 
