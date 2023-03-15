@@ -62,7 +62,6 @@ Future<void> main(List<String> arguments) async {
   exit(0);
 }
 
-const _red = '\x1b[033;0;41m';
 const _green = '\x1b[033;0;32m';
 const _nc = '\x1b[033;0m'; //No Color, reset
 
