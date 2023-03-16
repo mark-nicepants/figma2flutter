@@ -1,3 +1,7 @@
+## 0.0.3-alpha
+
+- Add support for MaterialColors when multiple colors are defined with int keys (100, 200, 300, 400)
+
 ## 0.0.2-alpha
 
 - Added support for border radius
