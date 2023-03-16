@@ -2,11 +2,11 @@ import 'package:figma2flutter/models/dimension_value.dart';
 import 'package:figma2flutter/models/letter_spacing_value.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/models/font_family_value.dart';
-import 'package:figma2flutter/transformers/transformer.dart';
 
 import 'package:figma2flutter/models/font_weight_value.dart';
+import 'package:figma2flutter/transformers/transformer.dart';
 
-class TypographyTransformer extends Transformer {
+class TypographyTransformer extends SingleTokenTransformer {
   @override
   String get name => 'textStyles';
 

@@ -7,7 +7,7 @@ import 'package:figma2flutter/transformers/transformer.dart';
 /// Radius tokens give you the possibility to define values for your border
 /// radius. You can either create a single value token or define multiple
 /// border radii in a token.
-class BorderRadiusTransformer extends Transformer {
+class BorderRadiusTransformer extends SingleTokenTransformer {
   @override
   bool matcher(Token token) {
     return token.type == 'borderRadius';

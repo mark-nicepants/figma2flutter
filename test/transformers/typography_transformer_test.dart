@@ -42,7 +42,8 @@ final input = '''
 		"value": {
 			"fontFamily": "{fontFamilies.heading}",
 			"fontWeight": "{fontWeights.heading.bold}",
-			"fontSize": "{fontSizes.small}"
+			"fontSize": "{fontSizes.small}",
+      "letterSpacing": "4px"
 		},
 		"type": "typography"
 	},
@@ -74,7 +75,7 @@ void main() {
     expect(
       transformer.lines[0],
       equals(
-        "static TextStyle get bold => const TextStyle(fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w800);",
+        "static TextStyle get bold => const TextStyle(fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w800, letterSpacing: 4.0);",
       ),
     );
     expect(

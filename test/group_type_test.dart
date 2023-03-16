@@ -35,7 +35,9 @@ final input = '''
 // at the token level
 
 void main() {
-  test('that groups can have a type and that missing token types refer to the group type', () {
+  test(
+      'that groups can have a type and that missing token types refer to the group type',
+      () {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser();
     parser.parse(parsed);
@@ -43,7 +45,13 @@ void main() {
     expect(parser.tokenMap.length, equals(4));
     expect(parser.tokenMap['token uno']?.type, equals('color'));
     expect(parser.tokenMap['token group.token dos']?.type, equals('dimension'));
-    expect(parser.tokenMap['token group.nested token group.token tres']?.type, equals('number'));
-    expect(parser.tokenMap['token group.nested token group.Token cuatro']?.type, equals('fontWeight'));
+    expect(
+      parser.tokenMap['token group.nested token group.token tres']?.type,
+      equals('number'),
+    );
+    expect(
+      parser.tokenMap['token group.nested token group.Token cuatro']?.type,
+      equals('fontWeight'),
+    );
   });
 }

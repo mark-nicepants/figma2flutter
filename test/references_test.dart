@@ -100,7 +100,10 @@ void main() {
     expect(parser.resolve('bold')!.value['fontWeight'], equals('100'));
     expect(parser.resolve('bold')!.value['fontSize'], equals('12px'));
 
-    expect(parser.resolve('boldReference')!.value['fontFamily'], equals('Roboto'));
+    expect(
+      parser.resolve('boldReference')!.value['fontFamily'],
+      equals('Roboto'),
+    );
     expect(parser.resolve('boldReference')!.value['fontWeight'], equals('100'));
     expect(parser.resolve('boldReference')!.value['fontSize'], equals('12px'));
   });

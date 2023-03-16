@@ -2,7 +2,7 @@ import 'package:figma2flutter/models/multi_dimension_value.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
 
-class SpacingTransformer extends Transformer {
+class SpacingTransformer extends SingleTokenTransformer {
   @override
   bool matcher(Token token) => token.type == 'spacing';
 

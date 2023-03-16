@@ -73,7 +73,7 @@ Default config values are:
 
 ## Ideas for contributing
 
+- ✅ Generate MaterialColors when we have multiple color values and int base keys (100, 200, 300, 400)
 - Add an example that illustrates how to use the package
 - Generate a view similar to the Figma plugin (sort of a tokens Gallery)
-- Generate MaterialColors when we have multiple color values and int base keys (100, 200, 300, 400)
 - Generate extensions for Gap to easily allow spacing tokens to be used as Gap (spacing.small=4 => Gap.small => const Gap(4))

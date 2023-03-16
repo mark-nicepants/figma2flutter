@@ -45,12 +45,29 @@ void main() {
     parser.resolvedTokens.forEach(transformer.process);
 
     expect(transformer.lines.length, equals(6));
-    expect(transformer.lines[0], equals('static EdgeInsets get pixelValue => const EdgeInsets.all(10.0);'));
-    expect(transformer.lines[1], equals('static EdgeInsets get intValue => const EdgeInsets.all(100.0);'));
-    expect(transformer.lines[2], equals('static EdgeInsets get remValue => const EdgeInsets.all(48.0);'));
+    expect(
+      transformer.lines[0],
+      equals(
+        'static EdgeInsets get pixelValue => const EdgeInsets.all(10.0);',
+      ),
+    );
+    expect(
+      transformer.lines[1],
+      equals(
+        'static EdgeInsets get intValue => const EdgeInsets.all(100.0);',
+      ),
+    );
+    expect(
+      transformer.lines[2],
+      equals(
+        'static EdgeInsets get remValue => const EdgeInsets.all(48.0);',
+      ),
+    );
     expect(
       transformer.lines[3],
-      equals('static EdgeInsets get twoValues => const EdgeInsets.symmetric(horizontal: 15.0, vertical: 100.0);'),
+      equals(
+        'static EdgeInsets get twoValues => const EdgeInsets.symmetric(horizontal: 15.0, vertical: 100.0);',
+      ),
     );
     expect(
       transformer.lines[4],

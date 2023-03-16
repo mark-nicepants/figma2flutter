@@ -39,7 +39,9 @@ class ColorsTokens {
 // at the token level
 
 void main() {
-  test('that groups can have a type and that missing token types refer to the group type', () {
+  test(
+      'that groups can have a type and that missing token types refer to the group type',
+      () {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser();
     parser.parse(parsed);
@@ -52,13 +54,26 @@ void main() {
     transformer.process(parser.tokenMap['token']!);
 
     expect(transformer.lines.length, equals(1));
-    expect(transformer.lines[0], equals('static Color get token => const Color(0xFF111111);'));
+    expect(
+      transformer.lines[0],
+      equals('static Color get token => const Color(0xFF111111);'),
+    );
 
     final generator = Generator([transformer]);
     expect(generator.output, equals(output));
 
     generator.save('test/output');
-    expect(File('test/output/tokens.g.dart').readAsStringSync(), equals(output));
+    expect(
+      File('test/output/tokens.g.dart').readAsStringSync(),
+      equals(output),
+    );
+
+    // Check if a save to the same path will overwrite the file.
+    generator.save('test/output');
+    expect(
+      File('test/output/tokens.g.dart').readAsStringSync(),
+      equals(output),
+    );
 
     Directory('test/output').deleteSync(recursive: true);
   });

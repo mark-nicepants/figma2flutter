@@ -10,9 +10,6 @@ abstract class Transformer {
   // The name of the property that will be generated in the Tokens class
   String get name;
 
-  // The type of the properties that will be generated
-  String get type;
-
   // The name of the class that will be generated
   String get className => '${name[0].toUpperCase()}${name.substring(1)}Tokens';
 
@@ -20,23 +17,12 @@ abstract class Transformer {
   @protected
   bool matcher(Token token);
 
-  // Returns the code that will be generated for the token
-  @protected
-  String transform(dynamic value);
-
-  // Processes the token and adds the generated code to the lines list
-  void process(Token token) {
-    if (matcher(token)) {
-      lines.add(
-        'static $type get ${token.variableName} => ${transform(token.value)};',
-      );
-    }
-  }
-
   // Returns the code that will be generated for the property declaration
   String propertyDeclaration() {
     return 'static $className get $name => $className();';
   }
+
+  void process(Token token);
 
   // Returns the class that is generated for this transformer including all processed tokens
   String classDeclaration() {
@@ -46,4 +32,31 @@ class $className {
 }
 ''';
   }
+}
+
+abstract class SingleTokenTransformer extends Transformer {
+  // Returns the code that will be generated for the token
+  @protected
+  String transform(dynamic value);
+
+  // The type of the properties that will be generated
+  String get type;
+
+  // Processes the token and adds the generated code to the lines list
+  @override
+  void process(Token token) {
+    if (matcher(token)) {
+      lines.add(
+        'static $type get ${token.variableName} => ${transform(token.value)};',
+      );
+    }
+  }
+}
+
+abstract class MultiTokenTransformer extends Transformer {
+  final List<Token> token;
+
+  MultiTokenTransformer(this.token);
+
+  void postProcess();
 }
