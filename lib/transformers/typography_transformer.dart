@@ -1,4 +1,5 @@
 import 'package:figma2flutter/models/dimension_value.dart';
+import 'package:figma2flutter/models/letter_spacing_value.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/models/font_family_value.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
@@ -21,10 +22,7 @@ class TypographyTransformer extends Transformer {
     final fontWeight = FontWeightValue.maybeParse(value['fontWeight']);
     final lineHeight = DimensionValue.maybeParse(value['lineHeight']);
     final fontSize = DimensionValue.maybeParse(value['fontSize']);
-
-    // final letterSpacing = value['letterSpacing'];
-    // final paragraphSpacing = value['paragraphSpacing'];
-    // final paragraphIndent = value['paragraphIndent'];
+    final letterSpacing = LetterSpacingValue.maybeParse(value['letterSpacing']);
 
     final parts = <String>[];
 
@@ -32,6 +30,7 @@ class TypographyTransformer extends Transformer {
     if (fontSize != null) parts.add('fontSize: $fontSize');
     if (fontWeight != null) parts.add('fontWeight: $fontWeight');
     if (lineHeight != null) parts.add('height: $lineHeight');
+    if (letterSpacing != null) parts.add('letterSpacing: $letterSpacing');
 
     return 'const TextStyle(${parts.join(', ')})';
   }

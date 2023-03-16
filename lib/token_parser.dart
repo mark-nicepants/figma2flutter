@@ -1,14 +1,24 @@
 import 'package:figma2flutter/models/token.dart';
 import 'package:meta/meta.dart';
 
+/// A parser that will parse a map of Design tokens and can resolve references
+/// to other tokens (e.g. {color.primary})
 class TokenParser {
+  // Figma supports multiple sets. Sets are used to override tokens in a specific
+  // set. This list is used to make sure that the overrides are applied in the
+  // correct order.
   final List<String> sets;
 
+  // The raw map of tokens. The key is the path to the token and the value is the
+  // token itself. Any references to other tokens are not resolved yet. The key
+  // is used to resolve the references. See [TokenParser.resolvedTokens].
   @visibleForTesting
   final Map<String, Token> tokenMap = {};
 
+  /// Creates a new [TokenParser] instance.
   TokenParser([this.sets = const []]);
 
+  /// Parses the given json map recursively and saves the tokens in the [tokenMap].
   void parse(Map<String, dynamic> input) {
     tokenMap.addAll(findTokens('.', input));
 
@@ -39,6 +49,7 @@ class TokenParser {
     }
   }
 
+  // Recursively find all tokens in the given map
   Map<String, Token> findTokens(
     String parent,
     Map<String, dynamic> input, [
@@ -79,12 +90,14 @@ class TokenParser {
     return tokens;
   }
 
+  /// Returns a list of all tokens that have been parsed and all references resolved.
   List<Token> get resolvedTokens => tokenMap.keys
       .map(resolve)
       .where((element) => element != null)
       .cast<Token>()
       .toList();
 
+  /// Fetch a reference while keeping the original variable name
   Token? _getReference(Token token) {
     final reference = tokenMap[token.valueByRef];
 

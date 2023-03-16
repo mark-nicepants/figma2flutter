@@ -27,12 +27,14 @@ class FontWeightValue {
 
   FontWeightValue(this.value);
 
+  /// Returns a [FontWeightValue] if the [value] is a valid font weight.
+  /// Otherwise returns null.
   static FontWeightValue? maybeParse(dynamic value) {
     final intValue = int.tryParse(value.toString());
     if (intValue != null) {
       return FontWeightValue(intValue);
     } else if (value is String) {
-      final fontWeight = fontWeightMap.entries.firstWhereOrNull(
+      final fontWeight = _fontWeightMap.entries.firstWhereOrNull(
         (entry) => entry.value.contains(value),
       );
       if (fontWeight != null) {
@@ -46,7 +48,7 @@ class FontWeightValue {
   String toString() => 'FontWeight.w$value';
 }
 
-final fontWeightMap = {
+final _fontWeightMap = {
   100: ['thin', 'hairline'],
   200: ['extra-light', 'ultra-light'],
   300: ['light'],

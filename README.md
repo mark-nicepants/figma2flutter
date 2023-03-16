@@ -49,23 +49,27 @@ Default config values are:
     - ✅ rgba
     - ✅ hsla
   - Gradients
-- ✅ [borderRadius](https://docs.tokens.studio/available-tokens/border-radius-tokens)
-- [borderWidth](https://docs.tokens.studio/available-tokens/border-width-tokens)
+- ✅ [borderRadius](https://docs.tokens.studio/available-tokens/border-radius-tokens) (output = BorderRadius)
+  - ✅ 1 value all corners
+  - ✅ 2 values = topLeft + bottomRight | topRight + bottomLeft
+  - ✅ 3 values = This will apply topLeft | topRight + bottomLeft | bottomRight
+  - ✅ 4 values = This will apply topLeft | topRight | bottomRight | bottomLeft
 - [boxShadow](https://docs.tokens.studio/available-tokens/shadow-tokens)
-- [opacity](https://docs.tokens.studio/available-tokens/opacity-tokens)
 - ✅ [typography](https://docs.tokens.studio/available-tokens/typography-tokens) (output = TextStyle)
-  - ✅ fontFamilies
+  - ✅ fontFamily
   - ✅ fontWeights
-  - ✅ fontSizes
+  - ✅ fontSize
   - ✅ lineHeight
-  - letterSpacing
-  - paragraphSpacing
-  - textCase
-  - textDecoration
+  - ✅ letterSpacing
+  - paragraphSpacing (ignored, not a TextStyle property)
+  - textCase (ignored, not a TextStyle property)
+  - textDecoration (ignored, not a TextStyle property)
 - [asset](https://docs.tokens.studio/available-tokens/asset-tokens)
 - [composition (pro)](https://docs.tokens.studio/available-tokens/composition-tokens)
-- [dimension](https://docs.tokens.studio/available-tokens/dimension-tokens)
+- ✅ [dimension](https://docs.tokens.studio/available-tokens/dimension-tokens) (output = has no output, but is correctly used in references)
+  - ✅ [opacity](https://docs.tokens.studio/available-tokens/opacity-tokens)
 - [border](https://docs.tokens.studio/available-tokens/border-tokens)
+  - [borderWidth](https://docs.tokens.studio/available-tokens/border-width-tokens)
 
 ## Ideas for contributing
 

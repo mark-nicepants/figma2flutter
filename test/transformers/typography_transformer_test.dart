@@ -51,7 +51,8 @@ final input = '''
 			"fontFamily": "{fontFamilies.fallback}",
 			"fontWeight": "{fontWeights.heading.regular}",
 			"fontSize": "{fontSizes.normal}",
-      "lineHeight": "140%"
+      "lineHeight": "140%",
+      "letterSpacing": "4%"
 		},
 		"type": "typography"
 	}
@@ -79,7 +80,7 @@ void main() {
     expect(
       transformer.lines[1],
       equals(
-        "static TextStyle get regular => const TextStyle(fontFamily: 'Roboto', fontSize: 16.0, fontWeight: FontWeight.w400, height: 1.4);",
+        "static TextStyle get regular => const TextStyle(fontFamily: 'Roboto', fontSize: 16.0, fontWeight: FontWeight.w400, height: 1.4, letterSpacing: 0.64);",
       ),
     );
   });

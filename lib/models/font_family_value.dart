@@ -19,10 +19,14 @@
 //   }
 // }
 class FontFamilyValue {
+  /// The font family name.
   final String value;
 
+  /// Creates a [FontFamilyValue] with the given [value].
   FontFamilyValue(this.value);
 
+  /// Returns a [FontFamilyValue] if the [value] is a valid font family.
+  /// Otherwise returns null.
   static FontFamilyValue? maybeParse(dynamic value) {
     if (value is List) {
       return FontFamilyValue(value.first as String);
