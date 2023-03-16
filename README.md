@@ -11,7 +11,7 @@ This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) jso
 
 ### 1. Install
 
-```
+```bash
 dart pub global activate figma2flutter
 ```
 
@@ -23,13 +23,13 @@ You can do this manually or use the [Tokens Studio for Figma](https://docs.token
 
 ### 3. Generate
 Run the command in the root of your project
-```
+```bash
 figma2flutter --input <path_to_json_file> --output <path_to_output_folder>
 ```
 
 Default config values are:
   
-```
+```bash
 --input: ./design/tokens.json
 --output: ./lib/assets/tokens/
 ```
