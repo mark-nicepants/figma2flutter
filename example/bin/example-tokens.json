@@ -368,9 +368,11 @@
     },
     "test-card": {
       "value": {
+        "width": "300",
+        "height": "200",
         "verticalPadding": "{dimensionDefault}",
         "horizontalPadding": "{dimensionDefault}",
-        "fill": "{purple}",
+        "fill": "{brand.300}",
         "itemSpacing": "{spacingDefault}",
         "borderRadius": "{radiusDefault}",
         "border": "{borderDefault}"
