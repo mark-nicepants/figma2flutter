@@ -47,7 +47,7 @@ abstract class SingleTokenTransformer extends Transformer {
   void process(Token token) {
     if (matcher(token)) {
       lines.add(
-        'static $type get ${token.variableName} => ${transform(token.value)};',
+        '$type get ${token.variableName} => ${transform(token.value)};',
       );
     }
   }

@@ -11,11 +11,11 @@ class CompositionTransformer extends SingleTokenTransformer {
   bool matcher(Token token) => token.type == 'composition';
 
   @override
-  String get name => 'composition';
+  String get name => 'compositions';
 
   @override
   String classDeclaration() {
-    return '${super.classDeclaration()}\n\n$_compositionTokenClassDeclaration';
+    return '${super.classDeclaration()}\n\n$_extraClassesDeclaration';
   }
 
   @override
@@ -109,16 +109,73 @@ $params,
   }
 }
 
-final _compositionTokenClassDeclaration = '''
+final _extraClassesDeclaration = '''
 class CompositionToken {
   final EdgeInsets? padding;
+  final Size? size;
   final Color? fill;
   final double? itemSpacing;
 
   const CompositionToken({
     this.padding,
+    this.size,
     this.fill,
     this.itemSpacing,
   });
+}
+
+class Composition extends StatelessWidget {
+  const Composition({
+    required this.token,
+    required this.axis,
+    required this.children,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.mainAxisSize = MainAxisSize.min,
+    super.key,
+  });
+
+  final CompositionToken token;
+  final Axis axis;
+  final MainAxisAlignment mainAxisAlignment;
+  final CrossAxisAlignment crossAxisAlignment;
+  final MainAxisSize mainAxisSize;
+  final List<Widget> children;
+
+  Widget get spacing {
+    if (axis == Axis.horizontal) {
+      return SizedBox(width: token.itemSpacing);
+    } else {
+      return SizedBox(height: token.itemSpacing);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: token.fill,
+      padding: token.padding,
+      width: token.size?.width,
+      height: token.size?.height,
+      child: Flex(
+        direction: axis,
+        mainAxisAlignment: mainAxisAlignment,
+        crossAxisAlignment: crossAxisAlignment,
+        mainAxisSize: mainAxisSize,
+        children:
+            token.itemSpacing != null ? children.separated(spacing) : children,
+      ),
+    );
+  }
+}
+
+extension WidgetListEx on List<Widget> {
+  List<Widget> separated(Widget separator) {
+    List<Widget> list = map((element) => <Widget>[element, separator])
+        .expand((e) => e)
+        .toList();
+    if (list.isNotEmpty) list = list..removeLast();
+    return list;
+  }
 }
 ''';
