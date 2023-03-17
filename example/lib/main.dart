@@ -47,8 +47,10 @@ class _Card extends StatelessWidget {
       axis: Axis.vertical,
       children: [
         const Text('Hello World', style: TextStyle(fontSize: 20)),
-        Text('This is a composable widget based of a token',
-            style: Tokens.textStyles.defaultBodyMedium),
+        Text(
+          'This is a composable widget based of a token',
+          style: Tokens.textStyles.defaultBodyMedium,
+        ),
       ],
     );
   }

@@ -14,6 +14,9 @@ import 'package:figma2flutter/transformers/spacing_transformer.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
 import 'package:figma2flutter/transformers/typography_transformer.dart';
 
+/// Code for making terminal output foreground red
+const _red = '\x1b[033;0;31m';
+
 /// Code for making terminal output foreground green
 const _green = '\x1b[033;0;32m';
 
@@ -80,14 +83,24 @@ void _saveOutput(List<Transformer> allTransformers, String outputDir) {
 List<Transformer> _processTokens(List<Token> resolved) {
   for (final token in resolved) {
     for (final transformer in singleTokenTransformers) {
-      transformer.process(token);
+      try {
+        transformer.process(token);
+      } catch (e) {
+        _print('Error while processing ${token.path}.${token.name}', _red);
+        rethrow;
+      }
     }
   }
 
   final postProcessTransformers = _getPostProcessTransformers(resolved);
   for (var transformer in postProcessTransformers) {
     for (final token in resolved) {
-      transformer.process(token);
+      try {
+        transformer.process(token);
+      } catch (e) {
+        _print('Error while processing ${token.path}.${token.name}', _red);
+        rethrow;
+      }
     }
   }
 

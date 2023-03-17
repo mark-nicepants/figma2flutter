@@ -65,6 +65,31 @@ final childReferences = '''
 }
 ''';
 
+final recursiveTest = '''
+{
+  "brand": {
+    "500": {
+      "type": "color",
+      "value": "#123456"
+    }
+  },
+  "borderSmall": {
+    "value": {
+      "color": "{brand.500}",
+      "width": "2px",
+      "style": "solid"
+    },
+    "type": "border"
+  },
+	"test-card": {
+		"value": {
+      "borderRight": "{borderSmall}"
+		},
+		"type": "composition"
+	}
+}
+''';
+
 /// https://tr.designtokens.org/format/#alias-reference
 /// https://docs.tokens.studio/tokens/aliases
 ///
@@ -106,5 +131,14 @@ void main() {
     );
     expect(parser.resolve('boldReference')!.value['fontWeight'], equals('100'));
     expect(parser.resolve('boldReference')!.value['fontSize'], equals('12px'));
+  });
+
+  test('Test recursive deep references', () {
+    final parsed = json.decode(recursiveTest) as Map<String, dynamic>;
+    final parser = TokenParser()..parse(parsed);
+
+    final color = parser.resolve('test-card')?.value['borderRight']['color'];
+    expect(color, isNotNull);
+    expect(color, equals('#123456'));
   });
 }

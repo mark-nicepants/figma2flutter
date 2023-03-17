@@ -1,3 +1,4 @@
+import 'package:figma2flutter/models/border_value.dart';
 import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/models/dimension_value.dart';
 import 'package:figma2flutter/models/token.dart';
@@ -31,6 +32,7 @@ class CompositionTransformer extends SingleTokenTransformer {
     final fill = _getFill(values);
     final spacing = _getSpacing(values);
     final borderRadius = _getBorderRadius(values);
+    final borders = _getBorders(values, borderRadius != null);
 
     final params = [
       size,
@@ -38,6 +40,7 @@ class CompositionTransformer extends SingleTokenTransformer {
       fill,
       spacing,
       borderRadius,
+      borders,
     ].where((e) => e != null).join(',\n  ');
 
     return '''
@@ -135,12 +138,67 @@ $params,
     }
 
     return '''
-borderRadius: BorderRadius.only(
-  topLeft: Radius.circular($borderRadiusTopLeft),
-  topRight: Radius.circular($borderRadiusTopRight),
-  bottomRight: Radius.circular($borderRadiusBottomRight),
-  bottomLeft: Radius.circular($borderRadiusBottomLeft),
-)''';
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular($borderRadiusTopLeft),
+    topRight: Radius.circular($borderRadiusTopRight),
+    bottomRight: Radius.circular($borderRadiusBottomRight),
+    bottomLeft: Radius.circular($borderRadiusBottomLeft),
+  )''';
+  }
+
+  String? _getBorders(Map<String, dynamic> values, bool hasBorderRadius) {
+    final border = BorderValue.maybeParse(values['border']);
+    final borderLeft = BorderValue.maybeParse(values['borderLeft']);
+    final borderTop = BorderValue.maybeParse(values['borderTop']);
+    final borderRight = BorderValue.maybeParse(values['borderRight']);
+    final borderBottom = BorderValue.maybeParse(values['borderBottom']);
+
+    // If all null return null
+    if (border == null &&
+        borderLeft == null &&
+        borderTop == null &&
+        borderRight == null &&
+        borderBottom == null) {
+      return null;
+    }
+
+    if (border != null) {
+      return 'border: $border';
+    }
+
+    // Check if all widths are the same
+    final widthsUniform = {
+          borderLeft?.width.value,
+          borderTop?.width.value,
+          borderRight?.width.value,
+          borderBottom?.width.value,
+        }.length ==
+        1;
+
+    if (!widthsUniform && hasBorderRadius) {
+      throw Exception(
+        'Border widths must be uniform for all sides when making a Composition border with a border radius',
+      );
+    }
+
+    final sides = <String>[];
+    if (borderTop != null) {
+      sides.add('top: ${borderTop.toStringForSide(BorderSide.top)}');
+    }
+    if (borderRight != null) {
+      sides.add('right: ${borderRight.toStringForSide(BorderSide.right)}');
+    }
+    if (borderBottom != null) {
+      sides.add('bottom: ${borderBottom.toStringForSide(BorderSide.bottom)}');
+    }
+    if (borderLeft != null) {
+      sides.add('left: ${borderLeft.toStringForSide(BorderSide.left)}');
+    }
+
+    return '''
+border: const Border(
+    ${sides.join(',\n    ')},
+  )''';
   }
 }
 
@@ -151,6 +209,7 @@ class CompositionToken {
   final Color? fill;
   final double? itemSpacing;
   final BorderRadius? borderRadius;
+  final Border? border;
 
   const CompositionToken({
     this.padding,
@@ -158,6 +217,7 @@ class CompositionToken {
     this.fill,
     this.itemSpacing,
     this.borderRadius,
+    this.border,
   });
 }
 
@@ -193,6 +253,7 @@ class Composition extends StatelessWidget {
       decoration: BoxDecoration(
         color: token.fill,
         borderRadius: token.borderRadius,
+        border: token.border,
       ),
       padding: token.padding,
       width: token.size?.width,

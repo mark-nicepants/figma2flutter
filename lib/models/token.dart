@@ -104,7 +104,8 @@ class Token {
         resolved[key] = _resolvedValue(value, tokenMap);
       } else if (value is String && value.isReference) {
         final refKey = value.valueByRef;
-        resolved[key] = tokenMap[refKey]?.value;
+        resolved[key] =
+            tokenMap[refKey]?.resolveValueReferences(tokenMap)?.value;
       } else {
         resolved[key] = value;
       }

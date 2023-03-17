@@ -42,7 +42,7 @@ Default config values are:
 - ✅ [spacing](https://docs.tokens.studio/available-tokens/spacing-tokens) (output = EdgeInsets)
   - ✅ 1, 2, 3 or 4 values
   - ✅ accept int/double values, px of rem suffix
-- ⌛[color](https://docs.tokens.studio/available-tokens/color-tokens)
+- ✅ [color](https://docs.tokens.studio/available-tokens/color-tokens)
   - ✅ Solid (output = Color)
     - ✅ hex
     - ✅ rgb 
@@ -68,8 +68,12 @@ Default config values are:
 - ⏳ [composition](https://docs.tokens.studio/available-tokens/composition-tokens) (see below)
 - ✅ [dimension](https://docs.tokens.studio/available-tokens/dimension-tokens) (output = has no output, but is correctly used in references)
   - ✅ [opacity](https://docs.tokens.studio/available-tokens/opacity-tokens)
-- 🚫 [border](https://docs.tokens.studio/available-tokens/border-tokens)
-  - 🚫 [borderWidth](https://docs.tokens.studio/available-tokens/border-width-tokens)
+- ✅ [border](https://docs.tokens.studio/available-tokens/border-tokens)
+  - ✅ [borderWidth](https://docs.tokens.studio/available-tokens/border-width-tokens)
+  - ✅ color
+  - ✅ style 
+    - ✅ solid
+    - ~~dashed~~ (not natively supported by Flutter)
 
 ## Composition support
 
@@ -119,17 +123,17 @@ Composition support:
 - ✅ fill
 - ✅ itemSpacing
 - 🚫 backgroundBlur
-- 🚫 border (All)
-  - 🚫 borderTop
-  - 🚫 borderRight
-  - 🚫 borderBottom
-  - 🚫 borderLeft
-  - 🚫 borderColor
-  - 🚫 borderWidth (All)
-    - 🚫 borderWidthTop
-    - 🚫 borderWidthRight
-    - 🚫 borderWidthBottom
-    - 🚫 borderWidthLeft
+- ✅ border (All)
+  - ✅ borderTop
+  - ✅ borderRight
+  - ✅ borderBottom
+  - ✅ borderLeft
+  - ✅ borderColor
+  - ✅ borderWidth (All)
+    - ✅ borderWidthTop
+    - ✅ borderWidthRight
+    - ✅ borderWidthBottom
+    - ✅ borderWidthLeft
 - ✅ borderRadius
   - ✅ borderRadiusTopLeft
   - ✅ borderRadiusTopRight

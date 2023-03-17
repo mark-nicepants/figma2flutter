@@ -92,41 +92,87 @@ class ColorsTokens {
 class SpacingTokens {
   EdgeInsets get small => const EdgeInsets.all(4.0);
   EdgeInsets get medium => const EdgeInsets.all(8.0);
-  EdgeInsets get large => const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0, bottom: 48.0);
+  EdgeInsets get large =>
+      const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0, bottom: 48.0);
   EdgeInsets get spacingDefault => const EdgeInsets.all(8.0);
 }
 
 class TextStylesTokens {
-  TextStyle get defaultFootnoteRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 13.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultFootnoteMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 13.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultFootnoteBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 13.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultSubheadlineRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 15.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultSubheadlineMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 15.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultSubheadlineBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 15.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultBodyRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 17.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultBodyMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 17.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultBodyBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 17.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultTitleRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 20.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultTitleMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 20.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultTitleBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 20.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultLargetitleRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 34.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultLargetitleMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 34.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultLargetitleBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 34.0, height: 1.4, letterSpacing: 0.0);
+  TextStyle get defaultFootnoteRegular => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 13.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultFootnoteMedium => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 13.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultFootnoteBold => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 13.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultSubheadlineRegular => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 15.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultSubheadlineMedium => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 15.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultSubheadlineBold => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 15.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultBodyRegular => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 17.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultBodyMedium => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 17.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultBodyBold => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 17.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultTitleRegular => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 20.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultTitleMedium => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 20.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultTitleBold => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 20.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultLargetitleRegular => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 34.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultLargetitleMedium => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 34.0,
+      height: 1.4,
+      letterSpacing: 0.0);
+  TextStyle get defaultLargetitleBold => const TextStyle(
+      fontFamily: 'General Sans',
+      fontSize: 34.0,
+      height: 1.4,
+      letterSpacing: 0.0);
 }
 
 class RadiiTokens {
@@ -144,6 +190,10 @@ class CompositionsTokens {
         fill: const Color(0xFFFFB000),
         itemSpacing: 8.0,
         borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(
+            color: const Color(0xFF000000),
+            width: 5.0,
+            style: BorderStyle.solid),
       );
 }
 
@@ -153,6 +203,7 @@ class CompositionToken {
   final Color? fill;
   final double? itemSpacing;
   final BorderRadius? borderRadius;
+  final Border? border;
 
   const CompositionToken({
     this.padding,
@@ -160,6 +211,7 @@ class CompositionToken {
     this.fill,
     this.itemSpacing,
     this.borderRadius,
+    this.border,
   });
 }
 
@@ -195,6 +247,7 @@ class Composition extends StatelessWidget {
       decoration: BoxDecoration(
         color: token.fill,
         borderRadius: token.borderRadius,
+        border: token.border,
       ),
       padding: token.padding,
       width: token.size?.width,
@@ -204,7 +257,8 @@ class Composition extends StatelessWidget {
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
-        children: token.itemSpacing != null ? children.separated(spacing) : children,
+        children:
+            token.itemSpacing != null ? children.separated(spacing) : children,
       ),
     );
   }
@@ -212,7 +266,9 @@ class Composition extends StatelessWidget {
 
 extension WidgetListEx on List<Widget> {
   List<Widget> separated(Widget separator) {
-    List<Widget> list = map((element) => <Widget>[element, separator]).expand((e) => e).toList();
+    List<Widget> list = map((element) => <Widget>[element, separator])
+        .expand((e) => e)
+        .toList();
     if (list.isNotEmpty) list = list..removeLast();
     return list;
   }

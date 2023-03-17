@@ -12,6 +12,8 @@ class DimensionValue {
 
   DimensionValue(this.value);
 
+  static DimensionValue get zero => DimensionValue(0);
+
   static DimensionValue? maybeParse(dynamic value) {
     if (value == null) return null;
 

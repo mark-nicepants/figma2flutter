@@ -1,6 +1,8 @@
 class ColorValue {
   final String value;
 
+  static ColorValue get black => ColorValue._('0xFF000000');
+
   ColorValue._(this.value);
 
   String declaration({bool isConst = true}) {

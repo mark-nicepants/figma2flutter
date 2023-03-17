@@ -6,6 +6,12 @@ import 'package:test/test.dart';
 
 final input = '''
 {
+  "brand": {
+    "500": {
+      "type": "color",
+      "value": "#123456"
+    }
+  },
 	"dimensionDefault": {
 		"value": "16px",
 		"type": "dimension"
@@ -18,12 +24,34 @@ final input = '''
 		"value": "#ffb000",
 		"type": "color"
 	},
+  "symmetric": {
+    "value": "5px",
+    "type": "borderWidth"
+  },
+  "borderDefault": {
+    "value": {
+      "color": "{brand.500}",
+      "width": "{symmetric}",
+      "style": "solid"
+    },
+    "type": "border"
+  },
+  "borderSmall": {
+    "value": {
+      "color": "{brand.500}",
+      "width": "2px",
+      "style": "solid"
+    },
+    "type": "border"
+  },
 	"test-card": {
 		"value": {
 			"verticalPadding": "{dimensionDefault}",
 			"horizontalPadding": "{dimensionDefault}",
 			"fill": "{purple}",
-			"itemSpacing": "{spacingDefault}"
+			"itemSpacing": "{spacingDefault}",
+      "borderTop": "{borderSmall}",
+      "borderBottom": "{borderSmall}"
 		},
 		"type": "composition"
 	}
@@ -35,7 +63,7 @@ void main() {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(4));
+    expect(parser.resolvedTokens.length, equals(8));
     expect(parser.tokenMap['dimensionDefault']?.type, equals('dimension'));
     expect(parser.tokenMap['spacingDefault']?.type, equals('spacing'));
     expect(parser.tokenMap['purple']?.type, equals('color'));
@@ -54,6 +82,10 @@ CompositionToken get testCard => CompositionToken(
   ),
   fill: const Color(0xFFFFB000),
   itemSpacing: 8.0,
+  border: const Border(
+    top: BorderSide(color: const Color(0xFF123456), width: 2.0, style: BorderStyle.solid),
+    bottom: BorderSide(color: const Color(0xFF123456), width: 2.0, style: BorderStyle.solid),
+  ),
 );''';
 
     expect(transformer.lines.first, equals(expected));

@@ -1,3 +1,8 @@
+## 0.0.4-alpha
+
+- Working on Composition tokens and added a Composition widget to use them in your app.
+- Added a json + dart example to the example folder that shows how to use the Composition widget.
+
 ## 0.0.3-alpha
 
 - Add support for MaterialColors when multiple colors are defined with int keys (100, 200, 300, 400)

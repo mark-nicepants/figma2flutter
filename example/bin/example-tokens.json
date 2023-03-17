@@ -358,13 +358,22 @@
       "value": "5px",
       "type": "borderWidth"
     },
+    "borderSmall": {
+      "value": {
+        "color": "{brand.500}",
+        "width": "2px",
+        "style": "solid"
+      },
+      "type": "border"
+    },
     "test-card": {
       "value": {
         "verticalPadding": "{dimensionDefault}",
         "horizontalPadding": "{dimensionDefault}",
         "fill": "{purple}",
         "itemSpacing": "{spacingDefault}",
-        "borderRadius": "{radiusDefault}"
+        "borderRadius": "{radiusDefault}",
+        "border": "{borderDefault}"
       },
       "type": "composition"
     }
