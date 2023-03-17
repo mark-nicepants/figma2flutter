@@ -18,7 +18,7 @@ void main() {
 
     expect(transformer.colorTokensByName['primary']![0].digit, equals(50));
     expect(
-      transformer.colorTokensByName['primary']![0].color,
+      transformer.colorTokensByName['primary']![0].color.toString(),
       equals('const Color(0xFFF0FAFF)'),
     );
 

@@ -2,7 +2,9 @@ extension StringExtension on String {
   /// Converts a string to camelCase.
   /// Examples: `hello world` -> `helloWorld`, `hello.world` -> `helloWorld`
   String get camelCased {
-    final capitalized = replaceAll('.', ' ')
+    // Match all non alphanumeric characters and replace them with a space
+    final pattern = RegExp(r'[^a-zA-Z0-9]');
+    final capitalized = replaceAll(pattern, ' ')
         .split(' ')
         .map((e) => e[0].toUpperCase() + e.substring(1))
         .join();

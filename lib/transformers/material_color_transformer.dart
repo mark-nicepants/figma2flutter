@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
+import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/models/token.dart';
-import 'package:figma2flutter/transformers/color_transformer.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
 import 'package:meta/meta.dart';
 
@@ -8,8 +8,6 @@ import 'package:meta/meta.dart';
 class MaterialColorTransformer extends MultiTokenTransformer {
   @visibleForTesting
   final colorTokensByName = <String, List<_MaterialColorEntry>>{};
-
-  final _colorTransformer = ColorTransformer();
 
   MaterialColorTransformer(super.allTokens);
 
@@ -55,7 +53,7 @@ class MaterialColorTransformer extends MultiTokenTransformer {
     colorTokensByName.putIfAbsent(name, () => []).add(
           _MaterialColorEntry(
             digit,
-            _colorTransformer.transform(token.value),
+            ColorValue.maybeParse(token.value)!,
           ),
         );
   }
@@ -76,7 +74,7 @@ class MaterialColorTransformer extends MultiTokenTransformer {
       lines.add(
         '''
 static MaterialColor get $name => const MaterialColor($primary, {
-  ${colors.map((e) => '${e.digit}: ${e.color.replaceAll('const ', '')}').join(',\n  ')},
+  ${colors.map((e) => '${e.digit}: ${e.color.declaration(isConst: false)}').join(',\n  ')},
 });
 ''',
       );
@@ -87,17 +85,13 @@ static MaterialColor get $name => const MaterialColor($primary, {
     final bestEntry =
         colors.firstWhereOrNull((e) => e.digit == 500) ?? colors.first;
 
-    final colorValue = bestEntry.color;
-
-    // Is already a normal Flutter color, strip the Color() part
-    final prefix = 'const Color(';
-    return colorValue.substring(prefix.length, colorValue.length - 1);
+    return bestEntry.color.value;
   }
 }
 
 class _MaterialColorEntry {
   final int digit;
-  final String color;
+  final ColorValue color;
 
   _MaterialColorEntry(this.digit, this.color);
 }
