@@ -15,15 +15,16 @@ class MyApp extends StatelessWidget {
       title: 'Figma2Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Tokens.materialColors.brand,
+          primarySwatch: Tokens.materialColors.red,
           backgroundColor: Tokens.colors.white,
           accentColor: Tokens.colors.purple,
         ).copyWith(
           secondary: Tokens.materialColors.yellow,
         ),
       ),
-      home: const Scaffold(
-        body: Center(child: _Card()),
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Figma2Flutter')),
+        body: const Center(child: _Card()),
       ),
     );
   }
