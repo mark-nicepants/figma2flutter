@@ -30,16 +30,18 @@ class CompositionTransformer extends SingleTokenTransformer {
     final padding = _getPadding(values);
     final fill = _getFill(values);
     final spacing = _getSpacing(values);
+    final borderRadius = _getBorderRadius(values);
 
     final params = [
       size,
       padding,
       fill,
       spacing,
+      borderRadius,
     ].where((e) => e != null).join(',\n  ');
 
     return '''
-const CompositionToken(
+CompositionToken(
 $params,
 )''';
   }
@@ -82,7 +84,7 @@ $params,
         zero;
 
     return '''
-  padding: EdgeInsets.only(
+  padding: const EdgeInsets.only(
     top: $topPadding,
     right: $rightPadding,
     bottom: $bottomPadding,
@@ -96,7 +98,7 @@ $params,
       return null;
     }
 
-    return 'fill: ${fill.declaration(isConst: false)}';
+    return 'fill: $fill';
   }
 
   String? _getSpacing(Map<String, dynamic> values) {
@@ -107,6 +109,39 @@ $params,
 
     return 'itemSpacing: $spacing';
   }
+
+  String? _getBorderRadius(Map<String, dynamic> values) {
+    final radius = DimensionValue.maybeParse(values['borderRadius']);
+    final borderRadiusTopLeft =
+        DimensionValue.maybeParse(values['borderRadiusTopLeft']);
+    final borderRadiusTopRight =
+        DimensionValue.maybeParse(values['borderRadiusTopRight']);
+    final borderRadiusBottomRight =
+        DimensionValue.maybeParse(values['borderRadiusBottomRight']);
+    final borderRadiusBottomLeft =
+        DimensionValue.maybeParse(values['borderRadiusBottomLeft']);
+
+    // If all null return null
+    if (radius == null &&
+        borderRadiusTopLeft == null &&
+        borderRadiusTopRight == null &&
+        borderRadiusBottomRight == null &&
+        borderRadiusBottomLeft == null) {
+      return null;
+    }
+
+    if (radius != null) {
+      return 'borderRadius: BorderRadius.circular($radius)';
+    }
+
+    return '''
+borderRadius: BorderRadius.only(
+  topLeft: Radius.circular($borderRadiusTopLeft),
+  topRight: Radius.circular($borderRadiusTopRight),
+  bottomRight: Radius.circular($borderRadiusBottomRight),
+  bottomLeft: Radius.circular($borderRadiusBottomLeft),
+)''';
+  }
 }
 
 final _extraClassesDeclaration = '''
@@ -115,12 +150,14 @@ class CompositionToken {
   final Size? size;
   final Color? fill;
   final double? itemSpacing;
+  final BorderRadius? borderRadius;
 
   const CompositionToken({
     this.padding,
     this.size,
     this.fill,
     this.itemSpacing,
+    this.borderRadius,
   });
 }
 
@@ -153,7 +190,10 @@ class Composition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: token.fill,
+      decoration: BoxDecoration(
+        color: token.fill,
+        borderRadius: token.borderRadius,
+      ),
       padding: token.padding,
       width: token.size?.width,
       height: token.size?.height,

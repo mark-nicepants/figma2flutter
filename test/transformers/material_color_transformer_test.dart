@@ -28,7 +28,7 @@ void main() {
     expect(
       transformer.lines[0],
       equals('''
-static MaterialColor get primary => const MaterialColor(0xFF0EA5E9, {
+MaterialColor get primary => const MaterialColor(0xFF0EA5E9, {
   50: Color(0xFFF0FAFF),
   100: Color(0xFFE0F5FE),
   200: Color(0xFFBAE8FD),

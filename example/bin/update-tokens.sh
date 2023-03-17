@@ -12,4 +12,4 @@
 
 dart ../bin/figma2flutter.dart -i ./bin/example-tokens.json -o ./lib/generated
 
-dart format -l 120 ./lib/generated
+dart format -l 120 --fix ./lib/generated

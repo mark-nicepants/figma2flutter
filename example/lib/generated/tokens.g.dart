@@ -134,15 +134,16 @@ class RadiiTokens {
 }
 
 class CompositionsTokens {
-  CompositionToken get testCard => const CompositionToken(
-        padding: EdgeInsets.only(
+  CompositionToken get testCard => CompositionToken(
+        padding: const EdgeInsets.only(
           top: 16.0,
           right: 16.0,
           bottom: 16.0,
           left: 16.0,
         ),
-        fill: Color(0xFFFFB000),
+        fill: const Color(0xFFFFB000),
         itemSpacing: 8.0,
+        borderRadius: BorderRadius.circular(12.0),
       );
 }
 
@@ -151,12 +152,14 @@ class CompositionToken {
   final Size? size;
   final Color? fill;
   final double? itemSpacing;
+  final BorderRadius? borderRadius;
 
   const CompositionToken({
     this.padding,
     this.size,
     this.fill,
     this.itemSpacing,
+    this.borderRadius,
   });
 }
 
@@ -189,7 +192,10 @@ class Composition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: token.fill,
+      decoration: BoxDecoration(
+        color: token.fill,
+        borderRadius: token.borderRadius,
+      ),
       padding: token.padding,
       width: token.size?.width,
       height: token.size?.height,

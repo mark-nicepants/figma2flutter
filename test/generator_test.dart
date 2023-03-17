@@ -27,7 +27,7 @@ class Tokens {
 }
 
 class ColorsTokens {
-  static Color get token => const Color(0xFF111111);
+  Color get token => const Color(0xFF111111);
 }
 ''';
 
@@ -56,7 +56,7 @@ void main() {
     expect(transformer.lines.length, equals(1));
     expect(
       transformer.lines[0],
-      equals('static Color get token => const Color(0xFF111111);'),
+      equals('Color get token => const Color(0xFF111111);'),
     );
 
     final generator = Generator([transformer]);

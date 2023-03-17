@@ -8,7 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,12 +23,20 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: const Text('Figma2Flutter')),
-        body: const Center(child: _Card()),
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              _Card(),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
+// Example of using a CompositionToken in a Composition widget
 class _Card extends StatelessWidget {
   const _Card();
 
@@ -38,9 +45,10 @@ class _Card extends StatelessWidget {
     return Composition(
       token: Tokens.compositions.testCard,
       axis: Axis.vertical,
-      children: const [
-        Text('Hello World', style: TextStyle(fontSize: 20)),
-        Text('This is a composable widget based of a token'),
+      children: [
+        const Text('Hello World', style: TextStyle(fontSize: 20)),
+        Text('This is a composable widget based of a token',
+            style: Tokens.textStyles.defaultBodyMedium),
       ],
     );
   }

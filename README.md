@@ -130,11 +130,11 @@ Composition support:
     - 🚫 borderWidthRight
     - 🚫 borderWidthBottom
     - 🚫 borderWidthLeft
-- 🚫 borderRadius
-  - 🚫 borderRadiusTopLeft
-  - 🚫 borderRadiusTopRight
-  - 🚫 borderRadiusBottomRight
-  - 🚫 borderRadiusBottomLeft
+- ✅ borderRadius
+  - ✅ borderRadiusTopLeft
+  - ✅ borderRadiusTopRight
+  - ✅ borderRadiusBottomRight
+  - ✅ borderRadiusBottomLeft
 - 🚫 boxShadow
 - 🚫 opacity
 - 🚫 typography

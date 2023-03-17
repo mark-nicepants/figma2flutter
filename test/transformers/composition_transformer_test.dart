@@ -45,14 +45,14 @@ void main() {
     parser.resolvedTokens.forEach(transformer.process);
 
     final expected = '''
-static CompositionToken get testCard => const CompositionToken(
-  padding: EdgeInsets.only(
+CompositionToken get testCard => CompositionToken(
+  padding: const EdgeInsets.only(
     top: 16.0,
     right: 16.0,
     bottom: 16.0,
     left: 16.0,
   ),
-  fill: Color(0xFFFFB000),
+  fill: const Color(0xFFFFB000),
   itemSpacing: 8.0,
 );''';
 

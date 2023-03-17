@@ -363,7 +363,8 @@
         "verticalPadding": "{dimensionDefault}",
         "horizontalPadding": "{dimensionDefault}",
         "fill": "{purple}",
-        "itemSpacing": "{spacingDefault}"
+        "itemSpacing": "{spacingDefault}",
+        "borderRadius": "{radiusDefault}"
       },
       "type": "composition"
     }
