@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/token_parser.dart';
 import 'package:figma2flutter/transformers/composition_transformer.dart';
 import 'package:test/test.dart';
@@ -76,6 +77,8 @@ final input = '''
 			"itemSpacing": "{spacingDefault}",
       "borderTop": "{borderSmall}",
       "borderBottom": "{borderSmall}",
+      "borderLeft": "{borderDefault}",
+      "borderRight": "{borderDefault}",
       "boxShadow": "{defaultShadow}",
       "typography": "{regular}",
       "opacity": "{opacity50}"
@@ -112,7 +115,9 @@ CompositionToken get testCard => CompositionToken(
   itemSpacing: 8.0,
   border: const Border(
     top: BorderSide(color: const Color(0xFF123456), width: 2.0, style: BorderStyle.solid),
+    right: BorderSide(color: const Color(0xFF123456), width: 5.0, style: BorderStyle.solid),
     bottom: BorderSide(color: const Color(0xFF123456), width: 2.0, style: BorderStyle.solid),
+    left: BorderSide(color: const Color(0xFF123456), width: 5.0, style: BorderStyle.solid),
   ),
   boxShadow: const [
   BoxShadow(
@@ -131,5 +136,72 @@ CompositionToken get testCard => CompositionToken(
 );''';
 
     expect(transformer.lines.first, equals(expected));
+  });
+
+  test('Test composition gradient, border all, radius all', () {
+    final input = '''
+{
+   "gradient": {
+    "value": "linear-gradient(45deg, #ffffff 0%, #000000 100%)",
+    "type": "color"
+  },
+  "borderDefault": {
+    "value": {
+      "color": "#ff0000",
+      "width": "2px",
+      "style": "solid"
+    },
+    "type": "border"
+  },
+  "test-card": {
+		"value": {
+      "fill": "{gradient}",
+      "border": "{borderDefault}",
+      "borderRadius": "5px"
+		},
+		"type": "composition"
+	}
+}''';
+
+    final parsed = json.decode(input) as Map<String, dynamic>;
+    final parser = TokenParser()..parse(parsed);
+
+    expect(parser.resolvedTokens.length, equals(3));
+
+    final transformer = CompositionTransformer();
+    parser.resolvedTokens.forEach(transformer.process);
+
+    final output = '''
+CompositionToken get testCard => CompositionToken(
+  padding: const EdgeInsets.only(
+    top: 0.0,
+    right: 0.0,
+    bottom: 0.0,
+    left: 0.0,
+  ),
+  gradient: const LinearGradient(
+  colors: [Color(0xFFFFFFFF), Color(0xFF000000),],
+  stops: [0.0, 1.0],
+  begin: Alignment.bottomCenter,
+  end: Alignment.topCenter,
+  transform: GradientRotation(0.785),
+),
+  borderRadius: BorderRadius.circular(5.0),
+  border: Border.all(color: const Color(0xFFFF0000), width: 2.0, style: BorderStyle.solid),
+);''';
+    expect(transformer.lines.first, equals(output));
+  });
+
+  test('invalid usage of CompositionTransformer', () {
+    final transformer = CompositionTransformer();
+
+    final invalid = Token(
+      name: 'invalid',
+      type: 'composition',
+      value: 'invalid',
+      path: 'invalid',
+    );
+
+    expect(() => transformer.transform(invalid), throwsException);
   });
 }

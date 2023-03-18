@@ -201,12 +201,12 @@ class Token {
     final right = DimensionValue.maybeParse(rightValue);
 
     if (left == null || right == null) {
-      throw Exception(
+      throw FormatException(
         'Could not parse math expression for Token $name (path: $path) `$valueAsString`',
       );
     }
 
-    final double solved;
+    double? solved = 0.0;
     if (isMultiply) {
       solved = left.value * right.value;
     } else if (isDivide) {
@@ -215,10 +215,6 @@ class Token {
       solved = left.value + right.value;
     } else if (isSubtract) {
       solved = left.value - right.value;
-    } else {
-      throw Exception(
-        'Could not parse math expression for Token $name (path: $path) `$valueAsString`',
-      );
     }
 
     return copyWith(value: solved);

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/token_parser.dart';
 import 'package:figma2flutter/transformers/color_transformer.dart';
+import 'package:figma2flutter/transformers/composition_transformer.dart';
 import 'package:test/test.dart';
 
 final input = '''
@@ -73,5 +74,24 @@ void main() {
       type: 'color',
     );
     expect(() => transformer.transform(invalid), throwsException);
+
+    final nomatch = Token(
+      value: 'wierdColor(3, 4,5)',
+      type: 'color',
+      path: 'path',
+      name: 'name',
+    );
+    expect(transformer.matcher(nomatch), isFalse);
   });
+
+  test(
+    'Composition transformer inserts Composition widget and CompositionToken class',
+    () {
+      final transformer = CompositionTransformer();
+      final classes = transformer.classDeclaration();
+
+      expect(classes, contains('class Composition extends StatelessWidget'));
+      expect(classes, contains('class CompositionToken'));
+    },
+  );
 }

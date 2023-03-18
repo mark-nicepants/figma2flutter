@@ -51,4 +51,13 @@ void main() {
       equals([8.0, 12.0, 16.0, 18.0, 24.0, 2.0, 1.0]),
     );
   });
+
+  test('DimensionValue zero value is correct', () {
+    expect(DimensionValue.zero.value, equals(0.0));
+  });
+
+  test('DivisionValue operator / divides value correctly', () {
+    final value = DimensionValue(12.0) / 2;
+    expect(value.value, equals(6.0));
+  });
 }

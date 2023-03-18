@@ -8,16 +8,6 @@ class LinearGradientValue {
   final List<DimensionValue> stops;
   final double angle;
 
-  String get _beginFromAngle {
-    // TODO(mark): Convert angle to Alignment
-    return 'Alignment.topLeft';
-  }
-
-  String get _endFromAngle {
-    // TODO(mark): Convert angle to Alignment
-    return 'Alignment.bottomRight';
-  }
-
   LinearGradientValue._(this.colors, this.stops, this.angle);
 
   static LinearGradientValue? maybeParse(dynamic value) {
