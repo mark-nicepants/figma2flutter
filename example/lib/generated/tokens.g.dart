@@ -93,8 +93,7 @@ class ColorTokens {
 class SpacingTokens {
   EdgeInsets get small => const EdgeInsets.all(4.0);
   EdgeInsets get medium => const EdgeInsets.all(8.0);
-  EdgeInsets get large =>
-      const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0, bottom: 48.0);
+  EdgeInsets get large => const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0, bottom: 48.0);
   EdgeInsets get spacingDefault => const EdgeInsets.all(8.0);
 }
 
@@ -207,10 +206,7 @@ class CompositionTokens {
         fill: const Color(0xFF7DD5FC),
         itemSpacing: 8.0,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(
-            color: const Color(0xFF000000),
-            width: 5.0,
-            style: BorderStyle.solid),
+        border: Border.all(color: const Color(0xFF000000), width: 5.0, style: BorderStyle.solid),
         boxShadow: const [
           BoxShadow(
             offset: Offset(2.0, 8.0),
@@ -237,6 +233,7 @@ class CompositionToken {
   final Border? border;
   final List<BoxShadow>? boxShadow;
   final TextStyle? textStyle;
+  final double? opacity;
 
   const CompositionToken({
     this.padding,
@@ -247,6 +244,7 @@ class CompositionToken {
     this.border,
     this.boxShadow,
     this.textStyle,
+    this.opacity,
   });
 }
 
@@ -283,8 +281,7 @@ class Composition extends StatelessWidget {
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
       mainAxisSize: mainAxisSize,
-      children:
-          token.itemSpacing != null ? children.separated(spacing) : children,
+      children: token.itemSpacing != null ? children.separated(spacing) : children,
     );
 
     if (token.textStyle != null) {
@@ -294,7 +291,7 @@ class Composition extends StatelessWidget {
       );
     }
 
-    return Container(
+    final container = Container(
       decoration: BoxDecoration(
         color: token.fill,
         borderRadius: token.borderRadius,
@@ -306,14 +303,21 @@ class Composition extends StatelessWidget {
       height: token.size?.height,
       child: child,
     );
+
+    if (token.opacity != null) {
+      return Opacity(
+        opacity: token.opacity!,
+        child: container,
+      );
+    }
+
+    return container;
   }
 }
 
 extension WidgetListEx on List<Widget> {
   List<Widget> separated(Widget separator) {
-    List<Widget> list = map((element) => <Widget>[element, separator])
-        .expand((e) => e)
-        .toList();
+    List<Widget> list = map((element) => <Widget>[element, separator]).expand((e) => e).toList();
     if (list.isNotEmpty) list = list..removeLast();
     return list;
   }

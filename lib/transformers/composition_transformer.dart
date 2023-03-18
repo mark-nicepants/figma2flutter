@@ -40,6 +40,7 @@ class CompositionTransformer extends SingleTokenTransformer {
     final borders = _getBorders(values, borderRadius != null);
     final shadows = _getShadows(values);
     final textStyle = _getTextStyle(values);
+    final opacity = _getOpacity(values);
 
     final params = [
       size,
@@ -49,7 +50,8 @@ class CompositionTransformer extends SingleTokenTransformer {
       borderRadius,
       borders,
       shadows,
-      textStyle
+      textStyle,
+      opacity,
     ].where((e) => e != null).join(',\n  ');
 
     return '''
@@ -207,6 +209,11 @@ border: const Border(
     final textStyle = TextStyleValue.maybeParse(values['typography']);
     return textStyle == null ? null : 'textStyle: $textStyle';
   }
+
+  String? _getOpacity(Map<String, dynamic> values) {
+    final opacity = DimensionValue.maybeParse(values['opacity']);
+    return opacity == null ? null : 'opacity: $opacity';
+  }
 }
 
 final _extraClassesDeclaration = '''
@@ -219,6 +226,7 @@ class CompositionToken {
   final Border? border;
   final List<BoxShadow>? boxShadow;
   final TextStyle? textStyle;
+  final double? opacity;
 
   const CompositionToken({
     this.padding,
@@ -229,6 +237,7 @@ class CompositionToken {
     this.border,
     this.boxShadow,
     this.textStyle,
+    this.opacity,
   });
 }
 
@@ -276,7 +285,7 @@ class Composition extends StatelessWidget {
       );
     }
 
-    return Container(
+    final container = Container(
       decoration: BoxDecoration(
         color: token.fill,
         borderRadius: token.borderRadius,
@@ -288,6 +297,15 @@ class Composition extends StatelessWidget {
       height: token.size?.height,
       child: child,
     );
+
+    if (token.opacity != null) {
+      return Opacity(
+        opacity: token.opacity!,
+        child: container,
+      );
+    }
+
+    return container;
   }
 }
 

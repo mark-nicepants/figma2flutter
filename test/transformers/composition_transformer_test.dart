@@ -44,6 +44,10 @@ final input = '''
     },
     "type": "border"
   },
+  "opacity50": {
+    "type": "opacity",
+    "value": "50%"
+  },
   "borderSmall": {
     "value": {
       "color": "{brand.500}",
@@ -73,7 +77,8 @@ final input = '''
       "borderTop": "{borderSmall}",
       "borderBottom": "{borderSmall}",
       "boxShadow": "{defaultShadow}",
-      "typography": "{regular}"
+      "typography": "{regular}",
+      "opacity": "{opacity50}"
 		},
 		"type": "composition"
 	}
@@ -85,7 +90,7 @@ void main() {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(10));
+    expect(parser.resolvedTokens.length, equals(11));
     expect(parser.tokenMap['dimensionDefault']?.type, equals('dimension'));
     expect(parser.tokenMap['spacingDefault']?.type, equals('spacing'));
     expect(parser.tokenMap['purple']?.type, equals('color'));
@@ -122,6 +127,7 @@ CompositionToken get testCard => CompositionToken(
   fontSize: 14.0,
   fontWeight: FontWeight.w700,
 ),
+  opacity: 0.5,
 );''';
 
     expect(transformer.lines.first, equals(expected));

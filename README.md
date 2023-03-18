@@ -56,7 +56,7 @@ Default config values are:
   - ✅ 4 values = This will apply topLeft | topRight | bottomRight | bottomLeft
 - ✅  [boxShadow](https://docs.tokens.studio/available-tokens/shadow-tokens)
   - ✅ dropShadow
-  - 🚫 innerShadow
+  - ~~innerShadow~~ (not supported but PRs's are welcome)
   - ✅ single shadow
   - ✅ list of shadows
 - ✅ [typography](https://docs.tokens.studio/available-tokens/typography-tokens) (output = TextStyle)
@@ -69,7 +69,7 @@ Default config values are:
   - ~~textCase~~ (ignored, not a TextStyle property)
   - ~~textDecoration~~ (ignored, not a TextStyle property)
 - ~~[asset](https://docs.tokens.studio/available-tokens/asset-tokens)~~ no support
-- ⏳ [composition](https://docs.tokens.studio/available-tokens/composition-tokens) (see below)
+- ✅ [composition](https://docs.tokens.studio/available-tokens/composition-tokens) (see below)
 - ✅ [dimension](https://docs.tokens.studio/available-tokens/dimension-tokens) (output = has no output, but is correctly used in references)
   - ✅ [opacity](https://docs.tokens.studio/available-tokens/opacity-tokens)
 - ✅ [border](https://docs.tokens.studio/available-tokens/border-tokens)
@@ -77,7 +77,7 @@ Default config values are:
   - ✅ color
   - ✅ style 
     - ✅ solid
-    - ~~dashed~~ (not natively supported by Flutter, perhaps we can use a custom painter to draw the dashed line)
+    - ~~dashed~~ (not supported but PRs's are welcome)
 
 ### Math support
 
@@ -146,7 +146,7 @@ Composition support:
   - ✅ paddingLeft
 - ✅ fill
 - ✅ itemSpacing
-- 🚫 backgroundBlur
+- ~~backgroundBlur~~ (not supported but PRs's are welcome)
 - ✅ border (All)
   - ✅ borderTop
   - ✅ borderRight
@@ -164,7 +164,7 @@ Composition support:
   - ✅ borderRadiusBottomRight
   - ✅ borderRadiusBottomLeft
 - ✅ boxShadow
-- 🚫 opacity
+- ✅ opacity
 - ✅ typography
   - ✅ fontFamilies
   - ✅ fontWeights
@@ -175,11 +175,11 @@ Composition support:
 ## Realised feature ideas
 
 - ✅ Generate MaterialColors when we have multiple color values and int base keys (100, 200, 300, 400)
+- ✅ Add an example that illustrates how to use the package (see `/example` folder and `/example/bin/update-tokens.sh`)
 
 ## Ideas for contributing
 
 - Generate a Theme.TextTheme with all tokens that match the [material3 spec](https://m3.material.io/styles/typography/type-scale-tokens#d74b73c2-ac5d-43c5-93b3-088a2f67723d). This would allow us to use the tokens as a theme for the whole app.
-- Add an example that illustrates how to use the package
 - Add example json to the repo that makes it easy to start with the package and Figmas Tokens Studio plugin
 - Generate a view similar to the Figma plugin (sort of a tokens Gallery/Storybook)
 - Generate extensions for Gap to easily allow spacing tokens to be used as Gap (spacing.small=4 => Gap.small => const Gap(4))
