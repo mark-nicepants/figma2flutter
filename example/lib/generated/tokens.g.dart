@@ -96,7 +96,8 @@ class ColorTokens {
 class SpacingTokens {
   EdgeInsets get small => const EdgeInsets.all(4.0);
   EdgeInsets get medium => const EdgeInsets.all(8.0);
-  EdgeInsets get large => const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0, bottom: 48.0);
+  EdgeInsets get large =>
+      const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0, bottom: 48.0);
   EdgeInsets get spacingDefault => const EdgeInsets.all(8.0);
 }
 
@@ -218,7 +219,10 @@ class CompositionTokens {
         ),
         itemSpacing: 8.0,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFF000000), width: 5.0, style: BorderStyle.solid),
+        border: Border.all(
+            color: const Color(0xFF000000),
+            width: 5.0,
+            style: BorderStyle.solid),
         boxShadow: const [
           BoxShadow(
             offset: Offset(2.0, 8.0),
@@ -295,7 +299,8 @@ class Composition extends StatelessWidget {
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
       mainAxisSize: mainAxisSize,
-      children: token.itemSpacing != null ? children.separated(spacing) : children,
+      children:
+          token.itemSpacing != null ? children.separated(spacing) : children,
     );
 
     if (token.textStyle != null) {
@@ -332,7 +337,9 @@ class Composition extends StatelessWidget {
 
 extension WidgetListEx on List<Widget> {
   List<Widget> separated(Widget separator) {
-    List<Widget> list = map((element) => <Widget>[element, separator]).expand((e) => e).toList();
+    List<Widget> list = map((element) => <Widget>[element, separator])
+        .expand((e) => e)
+        .toList();
     if (list.isNotEmpty) list = list..removeLast();
     return list;
   }
@@ -350,12 +357,14 @@ class ShadowTokens {
 }
 
 class BorderTokens {
-  Border get borderDefault => Border.all(color: const Color(0xFF000000), width: 5.0, style: BorderStyle.solid);
-  Border get borderSmall => Border.all(color: const Color(0xFF000000), width: 2.0, style: BorderStyle.solid);
+  Border get borderDefault => Border.all(
+      color: const Color(0xFF000000), width: 5.0, style: BorderStyle.solid);
+  Border get borderSmall => Border.all(
+      color: const Color(0xFF000000), width: 2.0, style: BorderStyle.solid);
 }
 
 class SizeTokens {
-  Size get sizingDefault => Size(16.0, 16.0);
+  Size get sizingDefault => const Size(16.0, 16.0);
 }
 
 class GradientTokens {

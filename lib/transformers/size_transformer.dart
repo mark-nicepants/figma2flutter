@@ -19,6 +19,6 @@ class SizeTransformer extends SingleTokenTransformer {
   @override
   String transform(Token token) {
     final value = token.value;
-    return SizingValue.maybeParse(value)!.toString();
+    return 'const ${SizingValue.maybeParse(value)!}';
   }
 }
