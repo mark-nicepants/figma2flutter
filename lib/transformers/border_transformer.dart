@@ -10,8 +10,8 @@ class BorderTransformer extends SingleTokenTransformer {
   String get name => 'border';
 
   @override
-  String transform(value) {
-    final border = BorderValue.maybeParse(value)!;
+  String transform(Token token) {
+    final border = BorderValue.maybeParse(token.value)!;
     return border.toString();
   }
 

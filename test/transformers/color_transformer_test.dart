@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/token_parser.dart';
 import 'package:figma2flutter/transformers/color_transformer.dart';
 import 'package:test/test.dart';
@@ -42,29 +43,35 @@ void main() {
 
     final transformer = ColorTransformer();
     expect(
-      transformer.transform(parser.tokenMap['hex']!.value),
+      transformer.transform(parser.tokenMap['hex']!),
       equals('const Color(0xFF111111)'),
     );
     expect(
-      transformer.transform(parser.tokenMap['rgb']!.value),
+      transformer.transform(parser.tokenMap['rgb']!),
       equals('const Color(0xFF000000)'),
     );
     expect(
-      transformer.transform(parser.tokenMap['rgba']!.value),
+      transformer.transform(parser.tokenMap['rgba']!),
       equals('const Color(0x80FF0000)'),
     );
     expect(
-      transformer.transform(parser.tokenMap['hsla']!.value),
+      transformer.transform(parser.tokenMap['hsla']!),
       equals('const Color(0x8040BF40)'),
     );
     expect(
-      transformer.transform(parser.tokenMap['hslaCustom']!.value),
+      transformer.transform(parser.tokenMap['hslaCustom']!),
       equals('const Color(0x8040BF40)'),
     );
   });
 
   test('Invalid input on ColorTransformer.transform', () {
     final transformer = ColorTransformer();
-    expect(() => transformer.transform('invalid'), throwsException);
+    final invalid = Token(
+      value: 'invalid',
+      path: 'invalid',
+      name: 'invalid',
+      type: 'color',
+    );
+    expect(() => transformer.transform(invalid), throwsException);
   });
 }

@@ -13,7 +13,9 @@ class SpacingTransformer extends SingleTokenTransformer {
   String get type => 'EdgeInsets';
 
   @override
-  String transform(dynamic value) {
+  String transform(Token token) {
+    final value = token.value;
+
     final sizes = MultiDimensionValue.parse(value);
 
     if (sizes.values.length == 1) {

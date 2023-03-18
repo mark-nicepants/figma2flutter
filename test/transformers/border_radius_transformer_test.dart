@@ -12,11 +12,11 @@ void main() {
 
     final transformer = BorderRadiusTransformer();
     expect(
-      transformer.transform(token1.value),
+      transformer.transform(token1),
       equals('const BorderRadius.zero'),
     );
     expect(
-      transformer.transform(token2.value),
+      transformer.transform(token2),
       equals('BorderRadius.circular(16.0)'),
     );
 
@@ -33,7 +33,7 @@ void main() {
         'const BorderRadius.only(topLeft: Radius.circular(16.0),topRight: Radius.circular(32.0),bottomRight: Radius.circular(16.0),bottomLeft: Radius.circular(32.0))';
 
     final transformer = BorderRadiusTransformer();
-    expect(transformer.transform(token1.value), equals(output));
+    expect(transformer.transform(token1), equals(output));
   });
 
   test('border radius token - 3 values', () {
@@ -47,7 +47,7 @@ void main() {
         'const BorderRadius.only(topLeft: Radius.circular(0.0),topRight: Radius.circular(8.0),bottomRight: Radius.circular(16.0),bottomLeft: Radius.circular(8.0))';
 
     final transformer = BorderRadiusTransformer();
-    expect(transformer.transform(token1.value), equals(output));
+    expect(transformer.transform(token1), equals(output));
   });
 
   test('border radius token - 4 values', () {
@@ -57,6 +57,6 @@ void main() {
         'const BorderRadius.only(topLeft: Radius.circular(1.0),topRight: Radius.circular(2.0),bottomRight: Radius.circular(3.0),bottomLeft: Radius.circular(4.0))';
 
     final transformer = BorderRadiusTransformer();
-    expect(transformer.transform(token1.value), equals(output));
+    expect(transformer.transform(token1), equals(output));
   });
 }

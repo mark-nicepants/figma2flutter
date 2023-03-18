@@ -37,7 +37,7 @@ class $className {
 abstract class SingleTokenTransformer extends Transformer {
   // Returns the code that will be generated for the token
   @protected
-  String transform(dynamic value);
+  String transform(Token token);
 
   // The type of the properties that will be generated
   String get type;
@@ -47,7 +47,7 @@ abstract class SingleTokenTransformer extends Transformer {
   void process(Token token) {
     if (matcher(token)) {
       lines.add(
-        '$type get ${token.variableName} => ${transform(token.value)};',
+        '$type get ${token.variableName} => ${transform(token)};',
       );
     }
   }

@@ -17,8 +17,8 @@ class BorderRadiusTransformer extends SingleTokenTransformer {
   String get name => 'radii';
 
   @override
-  String transform(dynamic value) {
-    final dimensions = MultiDimensionValue.parse(value);
+  String transform(Token token) {
+    final dimensions = MultiDimensionValue.parse(token.value);
 
     if (dimensions.values.length == 1) {
       if (dimensions.values[0].value == 0) {

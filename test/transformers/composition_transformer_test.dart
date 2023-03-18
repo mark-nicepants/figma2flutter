@@ -65,6 +65,7 @@ final input = '''
   },
 	"test-card": {
 		"value": {
+      "sizing": "100",
 			"verticalPadding": "{dimensionDefault}",
 			"horizontalPadding": "{dimensionDefault}",
 			"fill": "{purple}",
@@ -95,6 +96,7 @@ void main() {
 
     final expected = '''
 CompositionToken get testCard => CompositionToken(
+  size: const Size(100.0, 100.0),
   padding: const EdgeInsets.only(
     top: 16.0,
     right: 16.0,

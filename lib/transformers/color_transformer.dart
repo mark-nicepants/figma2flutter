@@ -30,7 +30,9 @@ class ColorTransformer extends SingleTokenTransformer {
           token.valueAsString?.startsWith('hsla') == true);
 
   @override
-  String transform(dynamic value) {
+  String transform(Token token) {
+    final value = token.value;
+
     final colorValue = ColorValue.maybeParse(value);
     if (colorValue == null) {
       throw Exception('Invalid color value: $value');

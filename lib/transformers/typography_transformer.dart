@@ -14,7 +14,9 @@ class TypographyTransformer extends SingleTokenTransformer {
   bool matcher(Token token) => token.type == 'typography';
 
   @override
-  String transform(value) {
+  String transform(Token token) {
+    final value = token.value;
+
     final textStyle = TextStyleValue.maybeParse(value);
     return textStyle!.toString();
   }

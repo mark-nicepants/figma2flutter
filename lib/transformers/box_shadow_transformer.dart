@@ -15,8 +15,8 @@ class BoxShadowTransformer extends SingleTokenTransformer {
   String get type => 'List<BoxShadow>';
 
   @override
-  String transform(value) {
-    final shadows = BoxShadowValueList.maybeParse(value);
-    return shadows.toString();
+  String transform(Token token) {
+    final shadows = BoxShadowValueList.maybeParse(token.value);
+    return shadows!.toString();
   }
 }

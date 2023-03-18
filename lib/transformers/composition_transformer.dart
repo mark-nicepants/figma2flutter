@@ -2,6 +2,7 @@ import 'package:figma2flutter/models/border_value.dart';
 import 'package:figma2flutter/models/box_shadow_value.dart';
 import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/models/dimension_value.dart';
+import 'package:figma2flutter/models/sizing_value.dart';
 import 'package:figma2flutter/models/text_style_value.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
@@ -22,7 +23,9 @@ class CompositionTransformer extends SingleTokenTransformer {
   }
 
   @override
-  String transform(dynamic value) {
+  String transform(Token token) {
+    final value = token.value;
+
     if (value is! Map<String, dynamic>) {
       throw Exception('Composition value should be a map');
     }
@@ -51,25 +54,13 @@ class CompositionTransformer extends SingleTokenTransformer {
 
     return '''
 CompositionToken(
-$params,
+  $params,
 )''';
   }
 
   String? _getSize(Map<String, dynamic> value) {
-    final width = DimensionValue.maybeParse(value['width']);
-    final height = DimensionValue.maybeParse(value['height']);
-
-    if (width != null && height != null) {
-      return 'size: const Size($width, $height)';
-    }
-    if (width != null) {
-      return 'size: const Size.fromWidth($width)';
-    }
-    if (height != null) {
-      return 'size: const Size.fromHeight($height)';
-    }
-
-    return null;
+    final size = SizingValue.maybeParse(value);
+    return size != null ? 'size: const $size' : null;
   }
 
   String? _getPadding(Map<String, dynamic> values) {
@@ -93,7 +84,7 @@ $params,
         zero;
 
     return '''
-  padding: const EdgeInsets.only(
+padding: const EdgeInsets.only(
     top: $topPadding,
     right: $rightPadding,
     bottom: $bottomPadding,

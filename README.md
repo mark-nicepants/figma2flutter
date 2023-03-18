@@ -38,7 +38,7 @@ Default config values are:
 
 [Overview of all tokens available here](https://docs.tokens.studio/available-tokens/available-tokens)
 
-- 🚫 [sizing](https://docs.tokens.studio/available-tokens/sizing-tokens)
+- ✅ [sizing](https://docs.tokens.studio/available-tokens/sizing-tokens)
 - ✅ [spacing](https://docs.tokens.studio/available-tokens/spacing-tokens) (output = EdgeInsets)
   - ✅ 1, 2, 3 or 4 values
   - ✅ accept int/double values, px of rem suffix
