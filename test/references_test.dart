@@ -1,9 +1,20 @@
 import 'dart:convert';
 
+import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/token_parser.dart';
 import 'package:test/test.dart';
 
-final input = '''
+/// https://tr.designtokens.org/format/#alias-reference
+/// https://docs.tokens.studio/tokens/aliases
+///
+/// 3.8 Alias (reference)
+///
+/// To use an alias in your tokens, we write them in the following notation: {spacing.sm},
+/// you can also write them in the older $ notation, like this: $spacing.sm
+
+void main() {
+  test('references with both annotations and within groups ', () {
+    final input = '''
 {
   "token": {
     "value": "#111111",
@@ -29,7 +40,22 @@ final input = '''
   }
 }''';
 
-final childReferences = '''
+    final parsed = json.decode(input) as Map<String, dynamic>;
+    final parser = TokenParser();
+    parser.parse(parsed);
+
+    expect(parser.tokenMap.length, equals(6));
+    expect(parser.tokenMap['token']?.type, equals('color'));
+    expect(parser.tokenMap['group.token']?.type, equals('dimension'));
+
+    expect(parser.resolve('token1')?.type, equals('color'));
+    expect(parser.resolve('token2')?.type, equals('color'));
+    expect(parser.resolve('token3')?.type, equals('dimension'));
+    expect(parser.resolve('token4')?.type, equals('dimension'));
+  });
+
+  test('child references are properly resolved', () {
+    final childReferences = '''
 {
 	"fontSizes": {
 		"small": {
@@ -65,7 +91,26 @@ final childReferences = '''
 }
 ''';
 
-final recursiveTest = '''
+    final parsed = json.decode(childReferences) as Map<String, dynamic>;
+    final parser = TokenParser();
+    parser.parse(parsed);
+
+    expect(parser.tokenMap.length, equals(5));
+
+    expect(parser.resolve('bold')!.value['fontFamily'], equals('Roboto'));
+    expect(parser.resolve('bold')!.value['fontWeight'], equals('100'));
+    expect(parser.resolve('bold')!.value['fontSize'], equals('12px'));
+
+    expect(
+      parser.resolve('boldReference')!.value['fontFamily'],
+      equals('Roboto'),
+    );
+    expect(parser.resolve('boldReference')!.value['fontWeight'], equals('100'));
+    expect(parser.resolve('boldReference')!.value['fontSize'], equals('12px'));
+  });
+
+  test('Test recursive deep references', () {
+    final recursiveTest = '''
 {
   "brand": {
     "500": {
@@ -90,55 +135,36 @@ final recursiveTest = '''
 }
 ''';
 
-/// https://tr.designtokens.org/format/#alias-reference
-/// https://docs.tokens.studio/tokens/aliases
-///
-/// 3.8 Alias (reference)
-///
-/// To use an alias in your tokens, we write them in the following notation: {spacing.sm},
-/// you can also write them in the older $ notation, like this: $spacing.sm
-
-void main() {
-  test('references with both annotations and within groups ', () {
-    final parsed = json.decode(input) as Map<String, dynamic>;
-    final parser = TokenParser();
-    parser.parse(parsed);
-
-    expect(parser.tokenMap.length, equals(6));
-    expect(parser.tokenMap['token']?.type, equals('color'));
-    expect(parser.tokenMap['group.token']?.type, equals('dimension'));
-
-    expect(parser.resolve('token1')?.type, equals('color'));
-    expect(parser.resolve('token2')?.type, equals('color'));
-    expect(parser.resolve('token3')?.type, equals('dimension'));
-    expect(parser.resolve('token4')?.type, equals('dimension'));
-  });
-
-  test('child references are properly resolved', () {
-    final parsed = json.decode(childReferences) as Map<String, dynamic>;
-    final parser = TokenParser();
-    parser.parse(parsed);
-
-    expect(parser.tokenMap.length, equals(5));
-
-    expect(parser.resolve('bold')!.value['fontFamily'], equals('Roboto'));
-    expect(parser.resolve('bold')!.value['fontWeight'], equals('100'));
-    expect(parser.resolve('bold')!.value['fontSize'], equals('12px'));
-
-    expect(
-      parser.resolve('boldReference')!.value['fontFamily'],
-      equals('Roboto'),
-    );
-    expect(parser.resolve('boldReference')!.value['fontWeight'], equals('100'));
-    expect(parser.resolve('boldReference')!.value['fontSize'], equals('12px'));
-  });
-
-  test('Test recursive deep references', () {
     final parsed = json.decode(recursiveTest) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
     final color = parser.resolve('test-card')?.value['borderRight']['color'];
     expect(color, isNotNull);
     expect(color, equals('#123456'));
+  });
+
+  test('Test color ref in other color with alpha', () {
+    final colorRefTest = '''
+{
+  "brand": {
+    "500": {
+      "type": "color",
+      "value": "#123456"
+    }
+  },
+  "semiTransparent": {
+    "value": "rgba({brand.500}, 0.5)",
+    "type": "color"
+  }
+}
+''';
+
+    final parsed = json.decode(colorRefTest) as Map<String, dynamic>;
+    final parser = TokenParser()..parse(parsed);
+
+    final color = parser.resolve('semiTransparent')?.value;
+    expect(color, isNotNull);
+    expect(color, equals('rgba(18, 52, 86, 0.5)'));
+    expect(ColorValue.maybeParse(color)?.value, equals('0x80123456'));
   });
 }

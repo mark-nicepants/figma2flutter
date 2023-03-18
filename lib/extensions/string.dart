@@ -13,15 +13,26 @@ extension StringExtension on String {
 
   /// Returns true if the string is a reference to another token path
   bool get isReference =>
-      startsWith('\$') || (startsWith('{') && endsWith('}'));
+      startsWith('\$') || RegExp(r'{(.*?)}').firstMatch(this) != null;
+
+  bool get isColorReference {
+    if (!isReference) {
+      return false;
+    }
+    return !startsWith('\$') &&
+        !startsWith('{') &&
+        RegExp(r'{(.*?)}').firstMatch(this) != null;
+  }
 
   /// Returns the path of a reference, so we can search for the token
   String get valueByRef {
     if (startsWith('\$') == true) {
       return substring(1);
     }
-    if (startsWith('{') == true) {
-      return substring(1, length - 1);
+
+    final match = RegExp(r'{(.*?)}').firstMatch(this)?.group(1);
+    if (match != null) {
+      return match;
     }
 
     throw Exception(

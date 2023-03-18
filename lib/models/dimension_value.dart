@@ -17,7 +17,7 @@ class DimensionValue {
   static DimensionValue? maybeParse(dynamic value) {
     if (value == null) return null;
 
-    return DimensionValue(_parseNum(value as String));
+    return DimensionValue(_parseNum(value.toString()));
   }
 
   @override

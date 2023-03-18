@@ -17,7 +17,7 @@ class MaterialColorTransformer extends MultiTokenTransformer {
   }
 
   @override
-  String get name => 'materialColors';
+  String get name => 'materialColor';
 
   final _supportedDigits = [
     100,

@@ -226,8 +226,8 @@
       "value": "rgba(255,255,255,0)",
       "type": "color"
     },
-    "GeneralSans": {
-      "value": "General Sans",
+    "Mali": {
+      "value": "Mali",
       "type": "fontFamilies"
     },
     "Default": {
@@ -320,11 +320,11 @@
     },
     "defaultShadow": {
       "value": {
-        "x": "0",
+        "x": "2",
         "y": "8",
-        "blur": "16",
-        "spread": "0",
-        "color": "{gray.200}",
+        "blur": "5",
+        "spread": "5",
+        "color": "{brand.200}",
         "type": "dropShadow"
       },
       "type": "boxShadow"
@@ -375,7 +375,9 @@
         "fill": "{brand.300}",
         "itemSpacing": "{spacingDefault}",
         "borderRadius": "{radiusDefault}",
-        "border": "{borderDefault}"
+        "border": "{borderDefault}",
+        "boxShadow": "{defaultShadow}",
+        "typography": "{default.body.regular}"
       },
       "type": "composition"
     }
@@ -479,7 +481,7 @@
       "footnote": {
         "regular": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Regular",
             "lineHeight": "$Default",
             "fontSize": "$Footnote",
@@ -489,7 +491,7 @@
         },
         "medium": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Medium",
             "lineHeight": "$Default",
             "fontSize": "$Footnote",
@@ -499,7 +501,7 @@
         },
         "bold": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Bold",
             "lineHeight": "$Default",
             "fontSize": "$Footnote",
@@ -511,7 +513,7 @@
       "subheadline": {
         "regular": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Regular",
             "lineHeight": "$Default",
             "fontSize": "$Subheadline",
@@ -521,7 +523,7 @@
         },
         "medium": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Medium",
             "lineHeight": "$Default",
             "fontSize": "$Subheadline",
@@ -531,7 +533,7 @@
         },
         "bold": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Bold",
             "lineHeight": "$Default",
             "fontSize": "$Subheadline",
@@ -543,7 +545,7 @@
       "body": {
         "regular": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Regular",
             "lineHeight": "$Default",
             "fontSize": "$Body",
@@ -553,7 +555,7 @@
         },
         "medium": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Medium",
             "lineHeight": "$Default",
             "fontSize": "$Body",
@@ -563,7 +565,7 @@
         },
         "bold": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Bold",
             "lineHeight": "$Default",
             "fontSize": "$Body",
@@ -575,7 +577,7 @@
       "title": {
         "regular": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Regular",
             "lineHeight": "$Default",
             "fontSize": "$Title",
@@ -585,7 +587,7 @@
         },
         "medium": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Medium",
             "lineHeight": "$Default",
             "fontSize": "$Title",
@@ -595,7 +597,7 @@
         },
         "bold": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Bold",
             "lineHeight": "$Default",
             "fontSize": "$Title",
@@ -607,7 +609,7 @@
       "largetitle": {
         "regular": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Regular",
             "lineHeight": "$Default",
             "fontSize": "$LargeTitle",
@@ -617,7 +619,7 @@
         },
         "medium": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Medium",
             "lineHeight": "$Default",
             "fontSize": "$LargeTitle",
@@ -627,7 +629,7 @@
         },
         "bold": {
           "value": {
-            "fontFamily": "$GeneralSans",
+            "fontFamily": "$Mali",
             "fontWeight": "$Bold",
             "lineHeight": "$Default",
             "fontSize": "$LargeTitle",

@@ -6,15 +6,16 @@
 import 'package:flutter/material.dart';
 
 class Tokens {
-  static ColorsTokens get colors => ColorsTokens();
+  static ColorTokens get color => ColorTokens();
   static SpacingTokens get spacing => SpacingTokens();
-  static TextStylesTokens get textStyles => TextStylesTokens();
+  static TextStyleTokens get textStyle => TextStyleTokens();
   static RadiiTokens get radii => RadiiTokens();
-  static CompositionsTokens get compositions => CompositionsTokens();
-  static MaterialColorsTokens get materialColors => MaterialColorsTokens();
+  static CompositionTokens get composition => CompositionTokens();
+  static ShadowTokens get shadow => ShadowTokens();
+  static MaterialColorTokens get materialColor => MaterialColorTokens();
 }
 
-class ColorsTokens {
+class ColorTokens {
   Color get brand50 => const Color(0xFFF0FAFF);
   Color get brand100 => const Color(0xFFE0F5FE);
   Color get brand200 => const Color(0xFFBAE8FD);
@@ -92,48 +93,109 @@ class ColorsTokens {
 class SpacingTokens {
   EdgeInsets get small => const EdgeInsets.all(4.0);
   EdgeInsets get medium => const EdgeInsets.all(8.0);
-  EdgeInsets get large => const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0, bottom: 48.0);
+  EdgeInsets get large =>
+      const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0, bottom: 48.0);
   EdgeInsets get spacingDefault => const EdgeInsets.all(8.0);
 }
 
-class TextStylesTokens {
-  TextStyle get defaultFootnoteRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 13.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultFootnoteMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 13.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultFootnoteBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 13.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultSubheadlineRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 15.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultSubheadlineMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 15.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultSubheadlineBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 15.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultBodyRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 17.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultBodyMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 17.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultBodyBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 17.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultTitleRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 20.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultTitleMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 20.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultTitleBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 20.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultLargetitleRegular =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 34.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultLargetitleMedium =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 34.0, height: 1.4, letterSpacing: 0.0);
-  TextStyle get defaultLargetitleBold =>
-      const TextStyle(fontFamily: 'General Sans', fontSize: 34.0, height: 1.4, letterSpacing: 0.0);
+class TextStyleTokens {
+  TextStyle get defaultFootnoteRegular => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 13.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultFootnoteMedium => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 13.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultFootnoteBold => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 13.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultSubheadlineRegular => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 15.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultSubheadlineMedium => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 15.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultSubheadlineBold => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 15.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultBodyRegular => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 17.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultBodyMedium => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 17.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultBodyBold => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 17.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultTitleRegular => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 20.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultTitleMedium => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 20.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultTitleBold => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 20.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultLargetitleRegular => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 34.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultLargetitleMedium => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 34.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
+  TextStyle get defaultLargetitleBold => const TextStyle(
+        fontFamily: 'Mali',
+        fontSize: 34.0,
+        height: 1.4,
+        letterSpacing: 0.0,
+      );
 }
 
 class RadiiTokens {
   BorderRadius get radiusDefault => BorderRadius.circular(12.0);
 }
 
-class CompositionsTokens {
+class CompositionTokens {
   CompositionToken get testCard => CompositionToken(
         size: const Size(300.0, 200.0),
         padding: const EdgeInsets.only(
@@ -145,7 +207,24 @@ class CompositionsTokens {
         fill: const Color(0xFF7DD5FC),
         itemSpacing: 8.0,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFF000000), width: 5.0, style: BorderStyle.solid),
+        border: Border.all(
+            color: const Color(0xFF000000),
+            width: 5.0,
+            style: BorderStyle.solid),
+        boxShadow: const [
+          BoxShadow(
+            offset: Offset(2.0, 8.0),
+            blurRadius: 5.0,
+            spreadRadius: 5.0,
+            color: Color(0xFFBAE8FD),
+          ),
+        ],
+        textStyle: const TextStyle(
+          fontFamily: 'Mali',
+          fontSize: 17.0,
+          height: 1.4,
+          letterSpacing: 0.0,
+        ),
       );
 }
 
@@ -156,6 +235,8 @@ class CompositionToken {
   final double? itemSpacing;
   final BorderRadius? borderRadius;
   final Border? border;
+  final List<BoxShadow>? boxShadow;
+  final TextStyle? textStyle;
 
   const CompositionToken({
     this.padding,
@@ -164,6 +245,8 @@ class CompositionToken {
     this.itemSpacing,
     this.borderRadius,
     this.border,
+    this.boxShadow,
+    this.textStyle,
   });
 }
 
@@ -195,35 +278,59 @@ class Composition extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget child = Flex(
+      direction: axis,
+      mainAxisAlignment: mainAxisAlignment,
+      crossAxisAlignment: crossAxisAlignment,
+      mainAxisSize: mainAxisSize,
+      children:
+          token.itemSpacing != null ? children.separated(spacing) : children,
+    );
+
+    if (token.textStyle != null) {
+      child = DefaultTextStyle(
+        style: token.textStyle!,
+        child: child,
+      );
+    }
+
     return Container(
       decoration: BoxDecoration(
         color: token.fill,
         borderRadius: token.borderRadius,
         border: token.border,
+        boxShadow: token.boxShadow,
       ),
       padding: token.padding,
       width: token.size?.width,
       height: token.size?.height,
-      child: Flex(
-        direction: axis,
-        mainAxisAlignment: mainAxisAlignment,
-        crossAxisAlignment: crossAxisAlignment,
-        mainAxisSize: mainAxisSize,
-        children: token.itemSpacing != null ? children.separated(spacing) : children,
-      ),
+      child: child,
     );
   }
 }
 
 extension WidgetListEx on List<Widget> {
   List<Widget> separated(Widget separator) {
-    List<Widget> list = map((element) => <Widget>[element, separator]).expand((e) => e).toList();
+    List<Widget> list = map((element) => <Widget>[element, separator])
+        .expand((e) => e)
+        .toList();
     if (list.isNotEmpty) list = list..removeLast();
     return list;
   }
 }
 
-class MaterialColorsTokens {
+class ShadowTokens {
+  List<BoxShadow> get defaultShadow => const [
+        BoxShadow(
+          offset: Offset(2.0, 8.0),
+          blurRadius: 5.0,
+          spreadRadius: 5.0,
+          color: Color(0xFFBAE8FD),
+        ),
+      ];
+}
+
+class MaterialColorTokens {
   MaterialColor get brand => const MaterialColor(0xFF000000, {
         50: Color(0xFFF0FAFF),
         100: Color(0xFFE0F5FE),

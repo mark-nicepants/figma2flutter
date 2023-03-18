@@ -20,6 +20,14 @@ final input = '''
 		"value": "8",
 		"type": "spacing"
 	},
+  "regular": {
+    "value": {
+      "fontFamily": "Mali",
+      "fontWeight": "700",
+      "fontSize": "14"
+    },
+    "type": "typography"
+  },
 	"purple": {
 		"value": "#ffb000",
 		"type": "color"
@@ -44,6 +52,17 @@ final input = '''
     },
     "type": "border"
   },
+  "defaultShadow": {
+    "value": {
+      "x": "0",
+      "y": "8",
+      "blur": "16",
+      "spread": "0",
+      "color": "rgba(0,0,0,0.55)",
+      "type": "dropShadow"
+    },
+    "type": "boxShadow"
+  },
 	"test-card": {
 		"value": {
 			"verticalPadding": "{dimensionDefault}",
@@ -51,7 +70,9 @@ final input = '''
 			"fill": "{purple}",
 			"itemSpacing": "{spacingDefault}",
       "borderTop": "{borderSmall}",
-      "borderBottom": "{borderSmall}"
+      "borderBottom": "{borderSmall}",
+      "boxShadow": "{defaultShadow}",
+      "typography": "{regular}"
 		},
 		"type": "composition"
 	}
@@ -63,7 +84,7 @@ void main() {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(8));
+    expect(parser.resolvedTokens.length, equals(10));
     expect(parser.tokenMap['dimensionDefault']?.type, equals('dimension'));
     expect(parser.tokenMap['spacingDefault']?.type, equals('spacing'));
     expect(parser.tokenMap['purple']?.type, equals('color'));
@@ -86,6 +107,19 @@ CompositionToken get testCard => CompositionToken(
     top: BorderSide(color: const Color(0xFF123456), width: 2.0, style: BorderStyle.solid),
     bottom: BorderSide(color: const Color(0xFF123456), width: 2.0, style: BorderStyle.solid),
   ),
+  boxShadow: const [
+  BoxShadow(
+    offset: Offset(0.0, 8.0),
+    blurRadius: 16.0,
+    spreadRadius: 0.0,
+    color: Color(0x8C000000),
+  ),
+],
+  textStyle: const TextStyle(
+  fontFamily: 'Mali',
+  fontSize: 14.0,
+  fontWeight: FontWeight.w700,
+),
 );''';
 
     expect(transformer.lines.first, equals(expected));

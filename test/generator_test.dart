@@ -23,10 +23,10 @@ final output = '''
 import 'package:flutter/material.dart';
 
 class Tokens {
-  static ColorsTokens get colors => ColorsTokens();
+  static ColorTokens get color => ColorTokens();
 }
 
-class ColorsTokens {
+class ColorTokens {
   Color get token => const Color(0xFF111111);
 }
 ''';

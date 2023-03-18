@@ -1,4 +1,5 @@
 import 'package:figma2flutter/extensions/string.dart';
+import 'package:figma2flutter/models/color_value.dart';
 
 /// A [Token] represents a single token in the json file.
 /// It holds the value, the type, the path and the name of the token and it
@@ -33,10 +34,20 @@ class Token {
   final String variableName;
 
   /// The value of the token as a string
-  String? get valueAsString => value as String?;
+  String? get valueAsString {
+    if (value is String) {
+      return value as String;
+    }
+
+    return null;
+  }
 
   /// Check if the token is a reference to another token
-  bool get isReference => value is String && (value as String).isReference;
+  bool get _isReference => value is String && (value as String).isReference;
+
+  /// Check if the token has an inner reference to a color
+  bool get _hasColorReference =>
+      value is String && (value as String).isColorReference;
 
   /// The name of the token that is referenced without the leading '$'
   /// or '{' and '}' characters
@@ -56,6 +67,23 @@ class Token {
       path: path ?? this.path,
       variableName: variableName ?? this.variableName,
     );
+  }
+
+  Token? resolveAllReferences(Map<String, Token> tokenMap) {
+    Token? token = this;
+
+    if (_hasColorReference) {
+      token = token._resolveColorReferences(tokenMap);
+    }
+
+    if (token?._isReference == true) {
+      token = tokenMap[token?.valueByRef]
+          ?.copyWith(variableName: token?.variableName);
+    }
+
+    token = token?._resolveValueReferences(tokenMap);
+
+    return token;
   }
 
   /// Resolves all references in the value of this token.
@@ -79,11 +107,25 @@ class Token {
   ///   }
   /// }
   /// ```
-  Token? resolveValueReferences(Map<String, Token> tokenMap) {
+  Token? _resolveValueReferences(Map<String, Token> tokenMap) {
     // Loop through all values and resolve references recursively
     if (value is Map<String, dynamic>) {
       final resolved = _resolvedValue(value as Map<String, dynamic>, tokenMap);
       return copyWith(value: resolved);
+    }
+
+    // Loop through all values in the list and resolve references recursively if they are a Map
+    if (value is List) {
+      final resolvedList = <dynamic>[];
+      for (final element in (value as List)) {
+        if (element is Map<String, dynamic>) {
+          final resolved = _resolvedValue(element, tokenMap);
+          resolvedList.add(resolved);
+        } else {
+          resolvedList.add(element);
+        }
+      }
+      return copyWith(value: resolvedList);
     }
 
     return this;
@@ -102,10 +144,11 @@ class Token {
 
       if (value is Map<String, dynamic>) {
         resolved[key] = _resolvedValue(value, tokenMap);
+      } else if (value is String && value.isColorReference) {
+        resolved[key] = _resolveColorValue(value, tokenMap);
       } else if (value is String && value.isReference) {
         final refKey = value.valueByRef;
-        resolved[key] =
-            tokenMap[refKey]?.resolveValueReferences(tokenMap)?.value;
+        resolved[key] = tokenMap[refKey]?.resolveAllReferences(tokenMap)?.value;
       } else {
         resolved[key] = value;
       }
@@ -113,6 +156,43 @@ class Token {
 
     return resolved;
   }
+
+  // If the value is a reference and starts with 'rgba', we need to
+  // resolve the reference to the color token and use the value of that
+  // token as the value of this token. See [references_test.dart:145] for
+  // an example. Eg: rgba({brand.500}, 0.5) => rgba(255, 255, 255, 0.5)
+  Token? _resolveColorReferences(Map<String, Token> tokenMap) {
+    String value = _resolveColorValue(valueAsString!, tokenMap);
+    return copyWith(value: value);
+  }
+}
+
+String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
+  var value = initialValue;
+  var match = RegExp(r'{(.*?)}').firstMatch(initialValue);
+  while (match != null) {
+    final reference = tokenMap[match.group(1)];
+    if (reference == null) {
+      throw Exception('Reference not found for `${match.group(1)}`');
+    }
+
+    final color = ColorValue.maybeParse(reference.value);
+    if (color == null) {
+      throw Exception('Could not parse color for `${reference.value}`');
+    }
+
+    final rbg = color.toRgb().join(', ');
+
+    value = value.replaceRange(
+      match.start,
+      match.end,
+      rbg,
+    );
+
+    // Search next match
+    match = RegExp(r'{(.*?)}').firstMatch(value);
+  }
+  return value;
 }
 
 // Path + name with all dots removed and in camelCase

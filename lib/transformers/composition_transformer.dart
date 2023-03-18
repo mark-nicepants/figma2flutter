@@ -1,6 +1,8 @@
 import 'package:figma2flutter/models/border_value.dart';
+import 'package:figma2flutter/models/box_shadow_value.dart';
 import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/models/dimension_value.dart';
+import 'package:figma2flutter/models/text_style_value.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
 
@@ -12,7 +14,7 @@ class CompositionTransformer extends SingleTokenTransformer {
   bool matcher(Token token) => token.type == 'composition';
 
   @override
-  String get name => 'compositions';
+  String get name => 'composition';
 
   @override
   String classDeclaration() {
@@ -33,6 +35,8 @@ class CompositionTransformer extends SingleTokenTransformer {
     final spacing = _getSpacing(values);
     final borderRadius = _getBorderRadius(values);
     final borders = _getBorders(values, borderRadius != null);
+    final shadows = _getShadows(values);
+    final textStyle = _getTextStyle(values);
 
     final params = [
       size,
@@ -41,6 +45,8 @@ class CompositionTransformer extends SingleTokenTransformer {
       spacing,
       borderRadius,
       borders,
+      shadows,
+      textStyle
     ].where((e) => e != null).join(',\n  ');
 
     return '''
@@ -200,6 +206,16 @@ border: const Border(
     ${sides.join(',\n    ')},
   )''';
   }
+
+  String? _getShadows(Map<String, dynamic> values) {
+    final shadows = BoxShadowValueList.maybeParse(values['boxShadow']);
+    return shadows == null ? null : 'boxShadow: $shadows';
+  }
+
+  String? _getTextStyle(Map<String, dynamic> values) {
+    final textStyle = TextStyleValue.maybeParse(values['typography']);
+    return textStyle == null ? null : 'textStyle: $textStyle';
+  }
 }
 
 final _extraClassesDeclaration = '''
@@ -210,6 +226,8 @@ class CompositionToken {
   final double? itemSpacing;
   final BorderRadius? borderRadius;
   final Border? border;
+  final List<BoxShadow>? boxShadow;
+  final TextStyle? textStyle;
 
   const CompositionToken({
     this.padding,
@@ -218,6 +236,8 @@ class CompositionToken {
     this.itemSpacing,
     this.borderRadius,
     this.border,
+    this.boxShadow,
+    this.textStyle,
   });
 }
 
@@ -249,23 +269,33 @@ class Composition extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget child = Flex(
+      direction: axis,
+      mainAxisAlignment: mainAxisAlignment,
+      crossAxisAlignment: crossAxisAlignment,
+      mainAxisSize: mainAxisSize,
+      children:
+          token.itemSpacing != null ? children.separated(spacing) : children,
+    );
+
+    if (token.textStyle != null) {
+      child = DefaultTextStyle(
+        style: token.textStyle!,
+        child: child,
+      );
+    }
+
     return Container(
       decoration: BoxDecoration(
         color: token.fill,
         borderRadius: token.borderRadius,
         border: token.border,
+        boxShadow: token.boxShadow,
       ),
       padding: token.padding,
       width: token.size?.width,
       height: token.size?.height,
-      child: Flex(
-        direction: axis,
-        mainAxisAlignment: mainAxisAlignment,
-        crossAxisAlignment: crossAxisAlignment,
-        mainAxisSize: mainAxisSize,
-        children:
-            token.itemSpacing != null ? children.separated(spacing) : children,
-      ),
+      child: child,
     );
   }
 }

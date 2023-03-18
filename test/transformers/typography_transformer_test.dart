@@ -75,13 +75,24 @@ void main() {
     expect(
       transformer.lines[0],
       equals(
-        "TextStyle get bold => const TextStyle(fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w800, letterSpacing: 4.0);",
+        '''TextStyle get bold => const TextStyle(
+  fontFamily: 'Roboto',
+  fontSize: 12.0,
+  fontWeight: FontWeight.w800,
+  letterSpacing: 4.0,
+);''',
       ),
     );
     expect(
       transformer.lines[1],
       equals(
-        "TextStyle get regular => const TextStyle(fontFamily: 'Roboto', fontSize: 16.0, fontWeight: FontWeight.w400, height: 1.4, letterSpacing: 0.64);",
+        '''TextStyle get regular => const TextStyle(
+  fontFamily: 'Roboto',
+  fontSize: 16.0,
+  fontWeight: FontWeight.w400,
+  height: 1.4,
+  letterSpacing: 0.64,
+);''',
       ),
     );
   });

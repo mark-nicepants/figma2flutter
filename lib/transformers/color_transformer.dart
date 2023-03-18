@@ -17,7 +17,7 @@ import 'package:figma2flutter/transformers/transformer.dart';
 
 class ColorTransformer extends SingleTokenTransformer {
   @override
-  String get name => 'colors';
+  String get name => 'color';
 
   @override
   String get type => 'Color';

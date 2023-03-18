@@ -1,0 +1,55 @@
+import 'package:figma2flutter/models/dimension_value.dart';
+import 'package:figma2flutter/models/font_family_value.dart';
+import 'package:figma2flutter/models/font_weight_value.dart';
+import 'package:figma2flutter/models/letter_spacing_value.dart';
+
+class TextStyleValue {
+  final FontFamilyValue? fontFamily;
+  final FontWeightValue? fontWeight;
+  final DimensionValue? lineHeight;
+  final DimensionValue? fontSize;
+  final LetterSpacingValue? letterSpacing;
+
+  TextStyleValue._({
+    this.fontFamily,
+    this.fontWeight,
+    this.lineHeight,
+    this.fontSize,
+    this.letterSpacing,
+  });
+
+  static TextStyleValue? maybeParse(dynamic value) {
+    if (value == null) return null;
+
+    final fontFamily = FontFamilyValue.maybeParse(value['fontFamily']);
+    final fontWeight = FontWeightValue.maybeParse(value['fontWeight']);
+    final lineHeight = DimensionValue.maybeParse(value['lineHeight']);
+    final fontSize = DimensionValue.maybeParse(value['fontSize']);
+    final letterSpacing = LetterSpacingValue.maybeParse(value['letterSpacing']);
+
+    return TextStyleValue._(
+      fontFamily: fontFamily,
+      fontWeight: fontWeight,
+      lineHeight: lineHeight,
+      fontSize: fontSize,
+      letterSpacing: letterSpacing,
+    );
+  }
+
+  @override
+  String toString() {
+    final parts = <String>[];
+
+    if (fontFamily != null) parts.add("fontFamily: '$fontFamily'");
+    if (fontSize != null) parts.add('fontSize: $fontSize');
+    if (fontWeight != null) parts.add('fontWeight: $fontWeight');
+    if (lineHeight != null) parts.add('height: $lineHeight');
+    if (letterSpacing != null) parts.add('letterSpacing: $letterSpacing');
+
+    if (parts.isEmpty) return 'const TextStyle()';
+
+    return '''const TextStyle(
+  ${parts.join(',\n  ')},
+)''';
+  }
+}

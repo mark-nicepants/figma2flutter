@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
       title: 'Figma2Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Tokens.materialColors.red,
-          backgroundColor: Tokens.colors.white,
-          accentColor: Tokens.colors.purple,
+          primarySwatch: Tokens.materialColor.red,
+          backgroundColor: Tokens.color.white,
+          accentColor: Tokens.color.purple,
         ).copyWith(
-          secondary: Tokens.materialColors.yellow,
+          secondary: Tokens.materialColor.yellow,
         ),
       ),
       home: Scaffold(
@@ -43,14 +43,18 @@ class _Card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Composition(
-      token: Tokens.compositions.testCard,
+      token: Tokens.composition.testCard,
       axis: Axis.vertical,
-      children: [
-        const Text('Hello World', style: TextStyle(fontSize: 20)),
+      children: const [
         Text(
-          'This is a composable widget based of a token',
-          style: Tokens.textStyles.defaultBodyMedium,
+          'Hello World',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.red,
+            fontWeight: FontWeight.w700,
+          ),
         ),
+        Text('This is a composable widget based of a token'),
       ],
     );
   }

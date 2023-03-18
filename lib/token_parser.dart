@@ -97,26 +97,12 @@ class TokenParser {
       .cast<Token>()
       .toList();
 
-  /// Fetch a reference while keeping the original variable name
-  Token? _getReference(Token token) {
-    final reference = tokenMap[token.valueByRef];
-
-    // Keep original variable name when resolving reference
-    return reference?.copyWith(variableName: token.variableName);
-  }
-
   // Fetch a token by key and resolve all references
   @visibleForTesting
   Token? resolve(String key) {
     Token? token = tokenMap[key];
     if (token == null) return null;
 
-    if (token.isReference == true) {
-      token = _getReference(token);
-    }
-
-    token = token?.resolveValueReferences(tokenMap);
-
-    return token;
+    return token.resolveAllReferences(tokenMap);
   }
 }

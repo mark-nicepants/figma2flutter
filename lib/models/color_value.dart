@@ -9,6 +9,14 @@ class ColorValue {
     return '${isConst ? 'const ' : ''}Color($value)';
   }
 
+  List<int> toRgb() {
+    final color = int.parse(value.substring('0xFF'.length), radix: 16);
+    final r = (color >> 16) & 0xFF;
+    final g = (color >> 8) & 0xFF;
+    final b = color & 0xFF;
+    return [r, g, b];
+  }
+
   @override
   String toString() => declaration();
 
@@ -35,8 +43,8 @@ class ColorValue {
   /// Transforms a hex color to a Flutter color
   static String _transformHex(String value) {
     final color = value.substring(1).toUpperCase();
-    final alpha = color.length == 8 ? color.substring(0, 2) : 'FF';
-    final hex = color.length == 8 ? color.substring(2) : color;
+    final alpha = color.length == 8 ? color.substring(6, 8) : 'FF';
+    final hex = color.length == 8 ? color.substring(0, 6) : color;
     return '0x$alpha$hex';
   }
 

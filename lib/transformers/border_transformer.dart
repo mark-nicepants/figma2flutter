@@ -7,7 +7,7 @@ class BorderTransformer extends SingleTokenTransformer {
   bool matcher(Token token) => token.type == 'border';
 
   @override
-  String get name => 'borders';
+  String get name => 'border';
 
   @override
   String transform(value) {

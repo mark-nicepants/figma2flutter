@@ -54,7 +54,11 @@ Default config values are:
   - ✅ 2 values = topLeft + bottomRight | topRight + bottomLeft
   - ✅ 3 values = This will apply topLeft | topRight + bottomLeft | bottomRight
   - ✅ 4 values = This will apply topLeft | topRight | bottomRight | bottomLeft
-- 🚫 [boxShadow](https://docs.tokens.studio/available-tokens/shadow-tokens)
+- ✅  [boxShadow](https://docs.tokens.studio/available-tokens/shadow-tokens)
+  - ✅ dropShadow
+  - 🚫 innerShadow
+  - ✅ single shadow
+  - ✅ list of shadows
 - ✅ [typography](https://docs.tokens.studio/available-tokens/typography-tokens) (output = TextStyle)
   - ✅ fontFamily
   - ✅ fontWeights
@@ -64,7 +68,7 @@ Default config values are:
   - ~~paragraphSpacing~~ (ignored, not a TextStyle property)
   - ~~textCase~~ (ignored, not a TextStyle property)
   - ~~textDecoration~~ (ignored, not a TextStyle property)
-- 🚫 [asset](https://docs.tokens.studio/available-tokens/asset-tokens)
+- ~~[asset](https://docs.tokens.studio/available-tokens/asset-tokens)~~ no support
 - ⏳ [composition](https://docs.tokens.studio/available-tokens/composition-tokens) (see below)
 - ✅ [dimension](https://docs.tokens.studio/available-tokens/dimension-tokens) (output = has no output, but is correctly used in references)
   - ✅ [opacity](https://docs.tokens.studio/available-tokens/opacity-tokens)
@@ -73,7 +77,27 @@ Default config values are:
   - ✅ color
   - ✅ style 
     - ✅ solid
-    - ~~dashed~~ (not natively supported by Flutter)
+    - ~~dashed~~ (not natively supported by Flutter, perhaps we can use a custom painter to draw the dashed line)
+
+### Math support
+
+Tokens Studio supports math operations on tokens. This package supports the following math operations:
+
+  - [math operations](https://docs.tokens.studio/tokens/using-math)
+    - 🚫 add
+    - 🚫 subtract
+    - 🚫 multiply
+    - 🚫 divide
+
+### Modify support
+
+Tokens Studio supports modifying tokens. This package supports the following modify operations:
+
+- [color](https://docs.tokens.studio/tokens/color-modifiers)
+  - 🚫 lighten
+  - 🚫 darken
+  - 🚫 mix
+  - ✅ alpha
 
 ## Composition support
 
@@ -102,7 +126,7 @@ CompositionToken(
   borderRadius: BorderRadius,
   itemSpacing: double,
   opacity: double,
-  boxShadows: List<BoxShadow>,
+  boxShadow: List<BoxShadow>,
   textStyle: TextStyle,
   padding: EdgeInsets,
 )
@@ -139,14 +163,14 @@ Composition support:
   - ✅ borderRadiusTopRight
   - ✅ borderRadiusBottomRight
   - ✅ borderRadiusBottomLeft
-- 🚫 boxShadow
+- ✅ boxShadow
 - 🚫 opacity
-- 🚫 typography
-  - 🚫 fontFamilies
-  - 🚫 fontWeights
-  - 🚫 fontSizes
-  - 🚫 lineHeights
-  - 🚫 letterSpacing
+- ✅ typography
+  - ✅ fontFamilies
+  - ✅ fontWeights
+  - ✅ fontSizes
+  - ✅ lineHeights
+  - ✅ letterSpacing
 
 ## Realised feature ideas
 

@@ -7,6 +7,7 @@ import 'package:figma2flutter/generator.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/token_parser.dart';
 import 'package:figma2flutter/transformers/border_radius_transformer.dart';
+import 'package:figma2flutter/transformers/box_shadow_transformer.dart';
 import 'package:figma2flutter/transformers/color_transformer.dart';
 import 'package:figma2flutter/transformers/composition_transformer.dart';
 import 'package:figma2flutter/transformers/material_color_transformer.dart';
@@ -31,6 +32,7 @@ final singleTokenTransformers = [
   TypographyTransformer(),
   BorderRadiusTransformer(),
   CompositionTransformer(),
+  BoxShadowTransformer(),
 ];
 
 // All transformers that process multiple tokens should be added here

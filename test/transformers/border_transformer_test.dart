@@ -42,7 +42,7 @@ void main() {
     expect(
       transformer.lines[0],
       equals(
-        'Border get borderHeavy => Border.all(color: const Color(0x36363600), width: 3.0, style: BorderStyle.solid);',
+        'Border get borderHeavy => Border.all(color: const Color(0x00363636), width: 3.0, style: BorderStyle.solid);',
       ),
     );
     expect(
