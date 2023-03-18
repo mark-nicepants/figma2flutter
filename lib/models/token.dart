@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:figma2flutter/extensions/string.dart';
 import 'package:figma2flutter/models/color_value.dart';
 
@@ -181,12 +183,20 @@ String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
       throw Exception('Could not parse color for `${reference.value}`');
     }
 
-    final rbg = color.toRgb().join(', ');
+    // Check if is inside a rgba() function
+    final isRgb =
+        value.substring(max(0, match.start - 7), match.start).contains('rgba(');
+    final String replaceWith;
+    if (isRgb) {
+      replaceWith = color.toRgb().join(', ');
+    } else {
+      replaceWith = color.toHex();
+    }
 
     value = value.replaceRange(
       match.start,
       match.end,
-      rbg,
+      replaceWith,
     );
 
     // Search next match

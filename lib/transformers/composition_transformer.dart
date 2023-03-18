@@ -2,6 +2,7 @@ import 'package:figma2flutter/models/border_value.dart';
 import 'package:figma2flutter/models/box_shadow_value.dart';
 import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/models/dimension_value.dart';
+import 'package:figma2flutter/models/linear_gradient_value.dart';
 import 'package:figma2flutter/models/sizing_value.dart';
 import 'package:figma2flutter/models/text_style_value.dart';
 import 'package:figma2flutter/models/token.dart';
@@ -34,6 +35,7 @@ class CompositionTransformer extends SingleTokenTransformer {
 
     final size = _getSize(values);
     final padding = _getPadding(values);
+    final gradient = _getGradient(values);
     final fill = _getFill(values);
     final spacing = _getSpacing(values);
     final borderRadius = _getBorderRadius(values);
@@ -45,7 +47,7 @@ class CompositionTransformer extends SingleTokenTransformer {
     final params = [
       size,
       padding,
-      fill,
+      gradient ?? fill, // Cannot be applied at the same time
       spacing,
       borderRadius,
       borders,
@@ -92,6 +94,15 @@ padding: const EdgeInsets.only(
     bottom: $bottomPadding,
     left: $leftPadding,
   )''';
+  }
+
+  String? _getGradient(Map<String, dynamic> values) {
+    final gradient = LinearGradientValue.maybeParse(values['fill']);
+    if (gradient == null) {
+      return null;
+    }
+
+    return 'gradient: $gradient';
   }
 
   String? _getFill(Map<String, dynamic> values) {
@@ -221,6 +232,7 @@ class CompositionToken {
   final EdgeInsets? padding;
   final Size? size;
   final Color? fill;
+  final LinearGradient? gradient;
   final double? itemSpacing;
   final BorderRadius? borderRadius;
   final Border? border;
@@ -232,6 +244,7 @@ class CompositionToken {
     this.padding,
     this.size,
     this.fill,
+    this.gradient,
     this.itemSpacing,
     this.borderRadius,
     this.border,
@@ -288,6 +301,7 @@ class Composition extends StatelessWidget {
     final container = Container(
       decoration: BoxDecoration(
         color: token.fill,
+        gradient: token.gradient,
         borderRadius: token.borderRadius,
         border: token.border,
         boxShadow: token.boxShadow,

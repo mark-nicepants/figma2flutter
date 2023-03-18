@@ -5,7 +5,7 @@ import 'package:figma2flutter/transformers/size_transformer.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('Test if we can detect material colors and generate them', () {
+  test('Test size transformer tokens', () {
     final raw = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(raw);
 

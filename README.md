@@ -43,12 +43,12 @@ Default config values are:
   - ✅ 1, 2, 3 or 4 values
   - ✅ accept int/double values, px of rem suffix
 - ✅ [color](https://docs.tokens.studio/available-tokens/color-tokens)
-  - ✅ Solid (output = Color)
+  - ✅ [Solid](https://docs.tokens.studio/available-tokens/color-tokens#solid-colors) (output = Color)
     - ✅ hex
     - ✅ rgb 
     - ✅ rgba
     - ✅ hsla
-  - 🚫 Gradients
+  - ✅ [Gradients](https://docs.tokens.studio/available-tokens/color-tokens#gradients)
 - ✅ [borderRadius](https://docs.tokens.studio/available-tokens/border-radius-tokens) (output = BorderRadius)
   - ✅ 1 value all corners
   - ✅ 2 values = topLeft + bottomRight | topRight + bottomLeft
@@ -122,6 +122,7 @@ And a generated composition token will look like this:
 CompositionToken(
   size: Size,
   fill: Color,
+  gradient: LinearGradient,
   border: Border,
   borderRadius: BorderRadius,
   itemSpacing: double,
@@ -144,7 +145,9 @@ Composition support:
   - ✅ paddingRight
   - ✅ paddingBottom
   - ✅ paddingLeft
-- ✅ fill
+- ✅ fill (1 of 2 options must be set, but not both. If both are set, gradient will be used)
+  - ✅ solid
+  - ✅ gradient
 - ✅ itemSpacing
 - ~~backgroundBlur~~ (not supported but PRs's are welcome)
 - ✅ border (All)

@@ -40,7 +40,7 @@ class ColorTokens {
 
 void main() {
   test(
-      'that groups can have a type and that missing token types refer to the group type',
+      'That the parser resolves all references and that the generator generates the correct output',
       () {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser();

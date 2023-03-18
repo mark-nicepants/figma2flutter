@@ -1,3 +1,7 @@
+## 0.0.6-alpha
+
+- Add support for linear gradients.
+
 ## 0.0.5-alpha
 
 - Added support for shadows (separate and within Composition tokens).

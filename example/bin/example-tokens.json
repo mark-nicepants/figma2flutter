@@ -366,13 +366,21 @@
       },
       "type": "border"
     },
+    "gradient": {
+      "value": "linear-gradient(45deg, #ffffff 0%, #000000 100%)",
+      "type": "color"
+    },
+    "rgbaInGradient": {
+      "value": "linear-gradient(45deg, rgba({white}, 0.5) 0%, rgba({purple}, 1) 100%)",
+      "type": "color"
+    },
     "test-card": {
       "value": {
         "width": "300",
         "height": "200",
         "verticalPadding": "{dimensionDefault}",
         "horizontalPadding": "{dimensionDefault}",
-        "fill": "{brand.300}",
+        "fill": "{rgbaInGradient}",
         "itemSpacing": "{spacingDefault}",
         "borderRadius": "{radiusDefault}",
         "border": "{borderDefault}",

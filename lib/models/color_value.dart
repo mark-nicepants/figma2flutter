@@ -17,6 +17,17 @@ class ColorValue {
     return [r, g, b];
   }
 
+  String toHex() {
+    final color = int.parse(value.substring('0x'.length), radix: 16);
+
+    final a = (color >> 24) & 0xFF;
+    final r = (color >> 16) & 0xFF;
+    final g = (color >> 8) & 0xFF;
+    final b = color & 0xFF;
+
+    return '#${_toHex(r)}${_toHex(g)}${_toHex(b)}${_toHex(a)}';
+  }
+
   @override
   String toString() => declaration();
 

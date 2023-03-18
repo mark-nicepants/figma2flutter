@@ -12,6 +12,9 @@ class Tokens {
   static RadiiTokens get radii => RadiiTokens();
   static CompositionTokens get composition => CompositionTokens();
   static ShadowTokens get shadow => ShadowTokens();
+  static BorderTokens get border => BorderTokens();
+  static SizeTokens get size => SizeTokens();
+  static GradientTokens get gradient => GradientTokens();
   static MaterialColorTokens get materialColor => MaterialColorTokens();
 }
 
@@ -203,7 +206,16 @@ class CompositionTokens {
           bottom: 16.0,
           left: 16.0,
         ),
-        fill: const Color(0xFF7DD5FC),
+        gradient: const LinearGradient(
+          colors: [
+            Color(0x80FFFFFF),
+            Color(0xFFFFB000),
+          ],
+          stops: [0.0, 1.0],
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          transform: GradientRotation(0.785),
+        ),
         itemSpacing: 8.0,
         borderRadius: BorderRadius.circular(12.0),
         border: Border.all(color: const Color(0xFF000000), width: 5.0, style: BorderStyle.solid),
@@ -228,6 +240,7 @@ class CompositionToken {
   final EdgeInsets? padding;
   final Size? size;
   final Color? fill;
+  final LinearGradient? gradient;
   final double? itemSpacing;
   final BorderRadius? borderRadius;
   final Border? border;
@@ -239,6 +252,7 @@ class CompositionToken {
     this.padding,
     this.size,
     this.fill,
+    this.gradient,
     this.itemSpacing,
     this.borderRadius,
     this.border,
@@ -294,6 +308,7 @@ class Composition extends StatelessWidget {
     final container = Container(
       decoration: BoxDecoration(
         color: token.fill,
+        gradient: token.gradient,
         borderRadius: token.borderRadius,
         border: token.border,
         boxShadow: token.boxShadow,
@@ -332,6 +347,38 @@ class ShadowTokens {
           color: Color(0xFFBAE8FD),
         ),
       ];
+}
+
+class BorderTokens {
+  Border get borderDefault => Border.all(color: const Color(0xFF000000), width: 5.0, style: BorderStyle.solid);
+  Border get borderSmall => Border.all(color: const Color(0xFF000000), width: 2.0, style: BorderStyle.solid);
+}
+
+class SizeTokens {
+  Size get sizingDefault => Size(16.0, 16.0);
+}
+
+class GradientTokens {
+  LinearGradient get gradient => const LinearGradient(
+        colors: [
+          Color(0xFFFFFFFF),
+          Color(0xFF000000),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
+  LinearGradient get rgbaInGradient => const LinearGradient(
+        colors: [
+          Color(0x80FFFFFF),
+          Color(0xFFFFB000),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
 }
 
 class MaterialColorTokens {
