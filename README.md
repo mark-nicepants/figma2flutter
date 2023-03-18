@@ -83,11 +83,15 @@ Default config values are:
 
 Tokens Studio supports math operations on tokens. This package supports the following math operations:
 
+A math expression can be used to combine multiple tokens. For example: `{primary} + {tokens.secondary}` will result in a color that is the sum of the primary and secondary color. Each math operation needs to have atleast 1 token on the left side. The right side can be a token or a number. Eg `{primary} + 10` or `{primary} + {secondary}`.
+
+To be able to parse properly the math expression, the tokens need to be wrapped in `{}`. And the operation must be properly spaced to the left and to the right (e.g. ` + ` instead of `+ `). 
+
   - [math operations](https://docs.tokens.studio/tokens/using-math)
-    - 🚫 add
-    - 🚫 subtract
-    - 🚫 multiply
-    - 🚫 divide
+    - ✅ add
+    - ✅ subtract
+    - ✅ multiply
+    - ✅ divide
 
 ### Modify support
 

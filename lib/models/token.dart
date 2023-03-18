@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:figma2flutter/extensions/string.dart';
 import 'package:figma2flutter/models/color_value.dart';
+import 'package:figma2flutter/models/dimension_value.dart';
 
 /// A [Token] represents a single token in the json file.
 /// It holds the value, the type, the path and the name of the token and it
@@ -45,11 +46,15 @@ class Token {
   }
 
   /// Check if the token is a reference to another token
-  bool get _isReference => value is String && (value as String).isReference;
+  bool get _isReference =>
+      value is String && (value as String).isTokenReference;
 
   /// Check if the token has an inner reference to a color
   bool get _hasColorReference =>
       value is String && (value as String).isColorReference;
+
+  bool get _hasMathExpression =>
+      value is String && (value as String).isMathExpression;
 
   /// The name of the token that is referenced without the leading '$'
   /// or '{' and '}' characters
@@ -76,6 +81,10 @@ class Token {
 
     if (_hasColorReference) {
       token = token._resolveColorReferences(tokenMap);
+    }
+
+    if (_hasMathExpression) {
+      token = token?._resolveMathExpression(tokenMap);
     }
 
     if (token?._isReference == true) {
@@ -148,7 +157,7 @@ class Token {
         resolved[key] = _resolvedValue(value, tokenMap);
       } else if (value is String && value.isColorReference) {
         resolved[key] = _resolveColorValue(value, tokenMap);
-      } else if (value is String && value.isReference) {
+      } else if (value is String && value.isTokenReference) {
         final refKey = value.valueByRef;
         resolved[key] = tokenMap[refKey]?.resolveAllReferences(tokenMap)?.value;
       } else {
@@ -166,6 +175,53 @@ class Token {
   Token? _resolveColorReferences(Map<String, Token> tokenMap) {
     String value = _resolveColorValue(valueAsString!, tokenMap);
     return copyWith(value: value);
+  }
+
+  Token? _resolveMathExpression(Map<String, Token> tokenMap) {
+    final isMultiply = valueAsString!.contains(' * ');
+    final isDivide = valueAsString!.contains(' / ');
+    final isAdd = valueAsString!.contains(' + ');
+    final isSubtract = valueAsString!.contains(' - ');
+
+    // Split on expression and parse the left and right side
+    // We search for: a space, then a valid operator (*/+-), then a space
+    final splitted = valueAsString!.split(RegExp(r'\s[*/+-]\s'));
+
+    final leftPart = splitted[0].trim();
+    final rightPart = splitted[1].trim();
+
+    final leftValue = leftPart.isTokenReference
+        ? tokenMap[leftPart.valueByRef]?.value
+        : leftPart;
+    final rightValue = rightPart.isTokenReference
+        ? tokenMap[rightPart.valueByRef]?.value
+        : rightPart;
+
+    final left = DimensionValue.maybeParse(leftValue);
+    final right = DimensionValue.maybeParse(rightValue);
+
+    if (left == null || right == null) {
+      throw Exception(
+        'Could not parse math expression for Token $name (path: $path) `$valueAsString`',
+      );
+    }
+
+    final double solved;
+    if (isMultiply) {
+      solved = left.value * right.value;
+    } else if (isDivide) {
+      solved = left.value / right.value;
+    } else if (isAdd) {
+      solved = left.value + right.value;
+    } else if (isSubtract) {
+      solved = left.value - right.value;
+    } else {
+      throw Exception(
+        'Could not parse math expression for Token $name (path: $path) `$valueAsString`',
+      );
+    }
+
+    return copyWith(value: solved);
   }
 }
 

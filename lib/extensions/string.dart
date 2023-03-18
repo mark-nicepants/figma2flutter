@@ -11,17 +11,21 @@ extension StringExtension on String {
     return capitalized[0].toLowerCase() + capitalized.substring(1);
   }
 
-  /// Returns true if the string is a reference to another token path
-  bool get isReference =>
-      startsWith('\$') || RegExp(r'{(.*?)}').firstMatch(this) != null;
+  /// Returns true if the string is a reference to another token path without any extras
+  bool get isTokenReference =>
+      startsWith('\$') || (startsWith('{') && endsWith('}'));
 
   bool get isColorReference {
-    if (!isReference) {
-      return false;
-    }
     return !startsWith('\$') &&
         !startsWith('{') &&
         RegExp(r'{(.*?)}').firstMatch(this) != null;
+  }
+
+  bool get isMathExpression {
+    return contains(' + ') ||
+        contains(' - ') ||
+        contains(' * ') ||
+        contains(' / ');
   }
 
   /// Returns the path of a reference, so we can search for the token
