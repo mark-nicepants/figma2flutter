@@ -30,6 +30,55 @@ final input = '''
   }
 }''';
 
+final colorModifiers = '''
+{
+  "purple": {
+    "value": "#6400FF",
+    "type": "color"
+  },
+  "lighten-test": {
+    "value": "{purple}",
+    "type": "color",
+    "\$extensions": {
+      "studio.tokens": {
+        "modify": {
+          "type": "lighten",
+          "value": "0.5",
+          "space": "lch"
+        }
+      }
+    }
+  },
+  "darken-test": {
+    "value": "{purple}",
+    "type": "color",
+    "\$extensions": {
+      "studio.tokens": {
+        "modify": {
+          "type": "darken",
+          "value": "0.5",
+          "space": "lch"
+        }
+      }
+    }
+  },
+  "mix-test": {
+    "value": "{purple}",
+    "type": "color",
+    "\$extensions": {
+      "studio.tokens": {
+        "modify": {
+          "type": "mix",
+          "value": "0.5",
+          "space": "lch",
+          "color": "#ff00c7"
+        }
+      }
+    }
+  }
+}
+''';
+
 void main() {
   test('Test all color transformer output variants', () {
     final parsed = json.decode(input) as Map<String, dynamic>;
@@ -94,4 +143,24 @@ void main() {
       expect(classes, contains('class CompositionToken'));
     },
   );
+
+  test('Color modifiers lighten/darken/mix', () {
+    final parsed = json.decode(colorModifiers) as Map<String, dynamic>;
+    final parser = TokenParser()..parse(parsed);
+
+    final transformer = ColorTransformer();
+
+    expect(
+      transformer.transform(parser.resolve('lighten-test')!),
+      equals('const Color(0xFFB280FF)'),
+    );
+    expect(
+      transformer.transform(parser.resolve('darken-test')!),
+      equals('const Color(0xFF320080)'),
+    );
+    expect(
+      transformer.transform(parser.resolve('mix-test')!),
+      equals('const Color(0xFFB200E3)'),
+    );
+  });
 }

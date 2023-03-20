@@ -69,6 +69,7 @@ class TokenParser {
         type: input['type'] as String? ?? groupType,
         path: path,
         name: name,
+        extensions: input['\$extensions'] as Map<String, dynamic>?,
       );
 
       return {

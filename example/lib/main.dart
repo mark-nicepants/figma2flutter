@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HSLColor.fromColor(Colors.white).withLightness(0.5);
     return MaterialApp(
       title: 'Figma2Flutter Demo',
       theme: ThemeData(

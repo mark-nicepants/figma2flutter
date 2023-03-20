@@ -1,5 +1,7 @@
+import 'package:tinycolor2/tinycolor2.dart';
+
 class ColorValue {
-  final String value;
+  final String value; // Color value e.g. "0xFF000000"
 
   static ColorValue get black => ColorValue._('0xFF000000');
 
@@ -26,6 +28,25 @@ class ColorValue {
     final b = color & 0xFF;
 
     return '#${_toHex(r)}${_toHex(g)}${_toHex(b)}${_toHex(a)}';
+  }
+
+  ColorValue lighten(int amount) {
+    final color = TinyColor.fromString(toHex());
+    color.lighten(amount);
+    return ColorValue._('0x${color.toHex8().toUpperCase()}');
+  }
+
+  ColorValue darken(int amount) {
+    final color = TinyColor.fromString(toHex());
+    color.darken(amount);
+    return ColorValue._('0x${color.toHex8().toUpperCase()}');
+  }
+
+  ColorValue mix(String value, int amount) {
+    final color = TinyColor.fromString(toHex());
+    final other = TinyColor.fromString(value);
+    color.mix(other.toColor(), amount);
+    return ColorValue._('0x${color.toHex8().toUpperCase()}');
   }
 
   @override

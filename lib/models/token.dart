@@ -17,6 +17,7 @@ class Token {
     required this.type,
     required this.path,
     required this.name,
+    this.extensions,
     String? variableName,
   }) : variableName = variableName ?? _getVariableName(path, name);
 
@@ -35,6 +36,11 @@ class Token {
   /// The name of the variable that will be generated for this token
   /// Based on the path and name of the token
   final String variableName;
+
+  /// The extensions of the token
+  final Map<String, dynamic>? extensions;
+
+  bool get hasExtensions => extensions != null && extensions!.isNotEmpty;
 
   /// The value of the token as a string
   String? get valueAsString {
@@ -62,7 +68,12 @@ class Token {
 
   /// Returns a copy of this token with the given values. If the path is set,
   /// the variable name will be updated as well.
-  Token copyWith({String? path, String? variableName, dynamic value}) {
+  Token copyWith({
+    String? path,
+    String? variableName,
+    dynamic value,
+    Map<String, dynamic>? extensions,
+  }) {
     if (path != null && variableName == null) {
       variableName = _getVariableName(path, name);
     }
@@ -72,6 +83,7 @@ class Token {
       type: type,
       value: value ?? this.value,
       path: path ?? this.path,
+      extensions: extensions ?? this.extensions,
       variableName: variableName ?? this.variableName,
     );
   }
@@ -88,8 +100,10 @@ class Token {
     }
 
     if (token?._isReference == true) {
-      token = tokenMap[token?.valueByRef]
-          ?.copyWith(variableName: token?.variableName);
+      token = tokenMap[token?.valueByRef]?.copyWith(
+        variableName: token?.variableName,
+        extensions: token?.extensions,
+      );
     }
 
     token = token?._resolveValueReferences(tokenMap);
