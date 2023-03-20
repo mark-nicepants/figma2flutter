@@ -1,5 +1,10 @@
 ## 0.0.7-alpha
 
+- Add support for color modifiers. (in srgb space)
+  - lighten
+  - darken
+  - mix
+  - alpha
 - Add support for math operations. This includes:
   - add
   - subtract
