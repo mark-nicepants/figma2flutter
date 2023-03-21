@@ -42,15 +42,20 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.tokenMap.length, equals(4));
-    expect(parser.tokenMap['token uno']?.type, equals('color'));
-    expect(parser.tokenMap['token group.token dos']?.type, equals('dimension'));
+    expect(parser.themes.first.tokens.length, equals(4));
+    expect(parser.themes.first.tokens['token uno']?.type, equals('color'));
     expect(
-      parser.tokenMap['token group.nested token group.token tres']?.type,
+      parser.themes.first.tokens['token group.token dos']?.type,
+      equals('dimension'),
+    );
+    expect(
+      parser.themes.first.tokens['token group.nested token group.token tres']
+          ?.type,
       equals('number'),
     );
     expect(
-      parser.tokenMap['token group.nested token group.Token cuatro']?.type,
+      parser.themes.first.tokens['token group.nested token group.Token cuatro']
+          ?.type,
       equals('fontWeight'),
     );
   });

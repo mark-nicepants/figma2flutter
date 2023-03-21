@@ -296,8 +296,8 @@ void main() {
     final parser = TokenParser(['source', 'semantic']);
     parser.parse(parsed);
 
-    expect(parser.tokenMap['brand.50']?.type, equals('color'));
-    expect(parser.tokenMap['brand.50']?.value, equals('#696969'));
+    expect(parser.themes.first.tokens['brand.50']?.type, equals('color'));
+    expect(parser.themes.first.tokens['brand.50']?.value, equals('#696969'));
   });
 
   test('no overrides when no sets are specified', () {
@@ -305,8 +305,14 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.tokenMap['semantic.brand.50']?.type, equals('color'));
-    expect(parser.tokenMap['source.brand.50']?.value, equals('#f0faff'));
-    expect(parser.tokenMap['brand.50'], isNull);
+    expect(
+      parser.themes.first.tokens['semantic.brand.50']?.type,
+      equals('color'),
+    );
+    expect(
+      parser.themes.first.tokens['source.brand.50']?.value,
+      equals('#f0faff'),
+    );
+    expect(parser.themes.first.tokens['brand.50'], isNull);
   });
 }

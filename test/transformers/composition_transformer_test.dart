@@ -93,14 +93,23 @@ void main() {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(11));
-    expect(parser.tokenMap['dimensionDefault']?.type, equals('dimension'));
-    expect(parser.tokenMap['spacingDefault']?.type, equals('spacing'));
-    expect(parser.tokenMap['purple']?.type, equals('color'));
-    expect(parser.tokenMap['test-card']?.type, equals('composition'));
+    expect(parser.resolvedTokens().length, equals(11));
+    expect(
+      parser.themes.first.tokens['dimensionDefault']?.type,
+      equals('dimension'),
+    );
+    expect(
+      parser.themes.first.tokens['spacingDefault']?.type,
+      equals('spacing'),
+    );
+    expect(parser.themes.first.tokens['purple']?.type, equals('color'));
+    expect(
+      parser.themes.first.tokens['test-card']?.type,
+      equals('composition'),
+    );
 
     final transformer = CompositionTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     final expected = '''
 CompositionToken get testCard => CompositionToken(
@@ -166,10 +175,10 @@ CompositionToken get testCard => CompositionToken(
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(3));
+    expect(parser.resolvedTokens().length, equals(3));
 
     final transformer = CompositionTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     final output = '''
 CompositionToken get testCard => CompositionToken(

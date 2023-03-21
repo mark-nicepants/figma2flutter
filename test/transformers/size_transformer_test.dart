@@ -10,7 +10,7 @@ void main() {
     final parser = TokenParser()..parse(raw);
 
     final transformer = SizeTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.lines.length, equals(3));
     expect(

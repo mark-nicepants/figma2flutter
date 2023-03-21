@@ -252,6 +252,32 @@ class CompositionToken {
     this.textStyle,
     this.opacity,
   });
+
+  CompositionToken copyWith({
+    EdgeInsets? padding,
+    Size? size,
+    Color? fill,
+    LinearGradient? gradient,
+    double? itemSpacing,
+    BorderRadius? borderRadius,
+    Border? border,
+    List<BoxShadow>? boxShadow,
+    TextStyle? textStyle,
+    double? opacity,
+  }) {
+    return CompositionToken(
+      padding: padding ?? this.padding,
+      size: size ?? this.size,
+      fill: fill ?? this.fill,
+      gradient: gradient ?? this.gradient,
+      itemSpacing: itemSpacing ?? this.itemSpacing,
+      borderRadius: borderRadius ?? this.borderRadius,
+      border: border ?? this.border,
+      boxShadow: boxShadow ?? this.boxShadow,
+      textStyle: textStyle ?? this.textStyle,
+      opacity: opacity ?? this.opacity,
+    );
+  }
 }
 
 class Composition extends StatelessWidget {

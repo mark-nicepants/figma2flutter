@@ -66,10 +66,10 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(8));
+    expect(parser.resolvedTokens().length, equals(8));
 
     final transformer = TypographyTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.lines.length, equals(2));
     expect(

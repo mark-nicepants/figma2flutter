@@ -11,6 +11,7 @@ This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) jso
   - [1. Install](#1-install)
   - [2. Export](#2-export)
   - [3. Generate](#3-generate)
+  - [4. Add to your project](#4-add-to-your-project)
 - [Token support](#token-support)
   - [Math expressions](#math-expressions)
   - [Modify support](#modify-support)
@@ -46,6 +47,10 @@ Default config values are:
 --input: ./design/tokens.json
 --output: ./lib/assets/tokens/
 ```
+
+## 4. Add to your project
+
+-- TODO --
 
 # Token support
 

@@ -60,10 +60,10 @@ void main() {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(6));
+    expect(parser.resolvedTokens().length, equals(6));
 
     final transformer = LinearGradientTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.lines.join('\n'), equals(output));
   });

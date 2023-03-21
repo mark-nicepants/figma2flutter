@@ -18,6 +18,7 @@ import 'package:figma2flutter/transformers/size_transformer.dart';
 import 'package:figma2flutter/transformers/spacing_transformer.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
 import 'package:figma2flutter/transformers/typography_transformer.dart';
+import 'package:figma2flutter/utils/sets_and_themes.dart';
 
 /// Code for making terminal output foreground red
 const _red = '\x1b[033;0;31m';
@@ -140,13 +141,12 @@ List<Token> _parseInput(String inputJson) {
     File(inputJson).readAsStringSync(),
   ) as Map<String, dynamic>;
 
-  final setOrder = (input['\$metadata']?['tokenSetOrder'] as List? ?? [])
-      .map((e) => e.toString())
-      .toList();
+  final setOrder = getSetsFromJson(input);
+  final themes = getThemesFromJson(input);
 
-  final parser = TokenParser(setOrder)..parse(input);
+  final parser = TokenParser(setOrder, themes)..parse(input);
 
-  return parser.resolvedTokens;
+  return parser.resolvedTokens();
 }
 
 // ignore: avoid_print

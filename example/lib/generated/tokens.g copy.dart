@@ -1,8 +1,3 @@
-/// GENERATED CODE - DO NOT MODIFY BY HAND
-/// *****************************************************
-/// Figma2Flutter
-/// *****************************************************
-
 import 'package:flutter/material.dart';
 
 class Tokens extends InheritedWidget {
@@ -191,15 +186,15 @@ class RadiiTokens {
 }
 
 class CompositionTokens {
-  CompositionToken get cardComp => CompositionToken(
-        padding: const EdgeInsets.only(
+  CompositionToken get cardComp => const CompositionToken(
+        padding: EdgeInsets.only(
           top: 32.0,
           right: 32.0,
           bottom: 32.0,
           left: 32.0,
         ),
         itemSpacing: 32.0,
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             offset: Offset(0.0, 5.0),
             blurRadius: 5.0,
@@ -208,8 +203,8 @@ class CompositionTokens {
           ),
         ],
       );
-  CompositionToken get buttonComp => CompositionToken(
-        padding: const EdgeInsets.only(
+  CompositionToken get buttonComp => const CompositionToken(
+        padding: EdgeInsets.only(
           top: 8.0,
           right: 16.0,
           bottom: 8.0,

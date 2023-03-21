@@ -38,11 +38,11 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(6));
-    expect(parser.tokenMap['pixelValue']?.type, equals('spacing'));
+    expect(parser.resolvedTokens().length, equals(6));
+    expect(parser.themes.first.tokens['pixelValue']?.type, equals('spacing'));
 
     final transformer = SpacingTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.lines.length, equals(6));
     expect(

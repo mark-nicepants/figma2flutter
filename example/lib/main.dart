@@ -35,7 +35,7 @@ class _Card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Composition(
-      token: Tokens.composition.testCard,
+      token: TokensThemeWhite.composition.cardComp,
       axis: Axis.vertical,
       children: const [
         Text(

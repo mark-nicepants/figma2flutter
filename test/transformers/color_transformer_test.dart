@@ -85,32 +85,32 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(5));
-    expect(parser.tokenMap['hex']?.type, equals('color'));
-    expect(parser.tokenMap['rgb']?.type, equals('color'));
-    expect(parser.tokenMap['rgba']?.type, equals('color'));
-    expect(parser.tokenMap['hsla']?.type, equals('color'));
+    expect(parser.resolvedTokens().length, equals(5));
+    expect(parser.themes.first.tokens['hex']?.type, equals('color'));
+    expect(parser.themes.first.tokens['rgb']?.type, equals('color'));
+    expect(parser.themes.first.tokens['rgba']?.type, equals('color'));
+    expect(parser.themes.first.tokens['hsla']?.type, equals('color'));
 
     final transformer = ColorTransformer();
     expect(
-      transformer.transform(parser.tokenMap['hsla']!),
+      transformer.transform(parser.themes.first.tokens['hsla']!),
       equals('const Color(0x8040BF40)'),
     );
     expect(
-      transformer.transform(parser.tokenMap['hex']!),
+      transformer.transform(parser.themes.first.tokens['hex']!),
       equals('const Color(0xFF111111)'),
     );
     expect(
-      transformer.transform(parser.tokenMap['rgb']!),
+      transformer.transform(parser.themes.first.tokens['rgb']!),
       equals('const Color(0xFF000000)'),
     );
     expect(
-      transformer.transform(parser.tokenMap['rgba']!),
+      transformer.transform(parser.themes.first.tokens['rgba']!),
       equals('const Color(0x80FF0000)'),
     );
 
     expect(
-      transformer.transform(parser.tokenMap['hslaCustom']!),
+      transformer.transform(parser.themes.first.tokens['hslaCustom']!),
       equals('const Color(0x8040BF40)'),
     );
   });

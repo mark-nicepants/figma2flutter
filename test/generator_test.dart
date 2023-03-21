@@ -46,12 +46,12 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.tokenMap.length, equals(1));
-    expect(parser.tokenMap['token']?.type, equals('color'));
-    expect(parser.tokenMap['token']?.value, equals('#111111'));
+    expect(parser.themes.first.tokens.length, equals(1));
+    expect(parser.themes.first.tokens['token']?.type, equals('color'));
+    expect(parser.themes.first.tokens['token']?.value, equals('#111111'));
 
     final transformer = ColorTransformer();
-    transformer.process(parser.tokenMap['token']!);
+    transformer.process(parser.themes.first.tokens['token']!);
 
     expect(transformer.lines.length, equals(1));
     expect(
