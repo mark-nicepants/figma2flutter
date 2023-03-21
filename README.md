@@ -11,8 +11,8 @@ This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) jso
   - [1. Install](#1-install)
   - [2. Export](#2-export)
   - [3. Generate](#3-generate)
-- [Token support (checked = supported)](#token-support-checked--supported)
-  - [Math support](#math-support)
+- [Token support](#token-support)
+  - [Math expressions](#math-expressions)
   - [Modify support](#modify-support)
 - [Themes](#themes)
 - [Composition support](#composition-support)
@@ -47,7 +47,7 @@ Default config values are:
 --output: ./lib/assets/tokens/
 ```
 
-# Token support (checked = supported)
+# Token support
 
 [Overview of all tokens available here](https://docs.tokens.studio/available-tokens/available-tokens)
 
@@ -92,7 +92,7 @@ Default config values are:
     - ✅ solid
     - ~~dashed~~ (not supported but PRs's are welcome)
 
-## Math support
+## Math expressions
 
 Tokens Studio supports math operations on tokens. This package supports the following math operations:
 
@@ -112,7 +112,7 @@ Color modifiers are a way to modify a color token. In Figma you can use the colo
 
 Tokens Studio supports modifying tokens. This package supports the following modify operations:
 
-- [color](https://docs.tokens.studio/tokens/color-modifiers)** (only srgb is supported)
+- [color](https://docs.tokens.studio/tokens/color-modifiers) *(only space=srgb is supported)
   - ✅ lighten
   - ✅ darken
   - ✅ mix
