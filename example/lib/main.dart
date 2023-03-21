@@ -13,15 +13,6 @@ class MyApp extends StatelessWidget {
     HSLColor.fromColor(Colors.white).withLightness(0.5);
     return MaterialApp(
       title: 'Figma2Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Tokens.materialColor.red,
-          backgroundColor: Tokens.color.white,
-          accentColor: Tokens.color.purple,
-        ).copyWith(
-          secondary: Tokens.materialColor.yellow,
-        ),
-      ),
       home: Scaffold(
         appBar: AppBar(title: const Text('Figma2Flutter')),
         body: Center(

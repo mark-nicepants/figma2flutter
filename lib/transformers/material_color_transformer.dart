@@ -85,7 +85,7 @@ MaterialColor get $name => const MaterialColor($primary, {
     final bestEntry =
         colors.firstWhereOrNull((e) => e.digit == 500) ?? colors.first;
 
-    return bestEntry.color.value;
+    return bestEntry.color.toHex8();
   }
 }
 

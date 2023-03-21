@@ -93,6 +93,10 @@ void main() {
 
     final transformer = ColorTransformer();
     expect(
+      transformer.transform(parser.tokenMap['hsla']!),
+      equals('const Color(0x8040BF40)'),
+    );
+    expect(
       transformer.transform(parser.tokenMap['hex']!),
       equals('const Color(0xFF111111)'),
     );
@@ -104,10 +108,7 @@ void main() {
       transformer.transform(parser.tokenMap['rgba']!),
       equals('const Color(0x80FF0000)'),
     );
-    expect(
-      transformer.transform(parser.tokenMap['hsla']!),
-      equals('const Color(0x8040BF40)'),
-    );
+
     expect(
       transformer.transform(parser.tokenMap['hslaCustom']!),
       equals('const Color(0x8040BF40)'),

@@ -165,6 +165,6 @@ void main() {
     final color = parser.resolve('semiTransparent')?.value;
     expect(color, isNotNull);
     expect(color, equals('rgba(18, 52, 86, 0.5)'));
-    expect(ColorValue.maybeParse(color)?.value, equals('0x80123456'));
+    expect(ColorValue.maybeParse(color)?.toHex8(), equals('0x80123456'));
   });
 }

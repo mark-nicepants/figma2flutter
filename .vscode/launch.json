@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Update tokens in Example",
+            "type": "dart",
+            "request": "launch",
+            "program": "./bin/figma2flutter.dart -i ./example/bin/example-themes.json -o ./example/lib/generated/"
+        }
+    ]
+}

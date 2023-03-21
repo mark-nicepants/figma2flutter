@@ -28,3 +28,23 @@ flutter:
         - asset: fonts/Mali-Light.ttf
         - asset: fonts/Mali-ExtraLight.ttf
         - asset: fonts/Mali-Bold.ttf
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Thin.ttf
+        - asset: fonts/Roboto-Black.ttf
+        - asset: fonts/Roboto-Bold.ttf
+        - asset: fonts/Roboto-Italic.ttf
+        - asset: fonts/Roboto-Light.ttf
+        - asset: fonts/Roboto-Medium.ttf
+        - asset: fonts/Roboto-Regular.ttf
+    - family: Inter
+      fonts: 
+        - asset: fonts/Inter-Black.ttf
+        - asset: fonts/Inter-Bold.ttf
+        - asset: fonts/Inter-ExtraBold.ttf
+        - asset: fonts/Inter-ExtraLight.ttf
+        - asset: fonts/Inter-Light.ttf
+        - asset: fonts/Inter-Medium.ttf
+        - asset: fonts/Inter-Regular.ttf
+        - asset: fonts/Inter-SemiBold.ttf
+        - asset: fonts/Inter-Thin.ttf      

@@ -1,3 +1,8 @@
+## 0.0.8-alpha
+
+- Remove dependency on TinyColor2 and Flutter framework.
+- Fix bug in resolving reverences when a reference is a reference to a reference.
+
 ## 0.0.7-alpha
 
 - Add support for color modifiers. (in srgb space)

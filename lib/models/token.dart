@@ -205,10 +205,10 @@ class Token {
     final rightPart = splitted[1].trim();
 
     final leftValue = leftPart.isTokenReference
-        ? tokenMap[leftPart.valueByRef]?.value
+        ? tokenMap[leftPart.valueByRef]?.resolveAllReferences(tokenMap)?.value
         : leftPart;
     final rightValue = rightPart.isTokenReference
-        ? tokenMap[rightPart.valueByRef]?.value
+        ? tokenMap[rightPart.valueByRef]?.resolveAllReferences(tokenMap)?.value
         : rightPart;
 
     final left = DimensionValue.maybeParse(leftValue);
@@ -239,7 +239,7 @@ String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
   var value = initialValue;
   var match = RegExp(r'{(.*?)}').firstMatch(initialValue);
   while (match != null) {
-    final reference = tokenMap[match.group(1)];
+    final reference = tokenMap[match.group(1)]?.resolveAllReferences(tokenMap);
     if (reference == null) {
       throw Exception('Reference not found for `${match.group(1)}`');
     }

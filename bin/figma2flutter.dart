@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:figma2flutter/config/args_parser.dart';
 import 'package:figma2flutter/config/options.dart';
+import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/generator.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/token_parser.dart';
@@ -54,31 +55,41 @@ Future<void> main(List<String> arguments) async {
   final inputJson = options.getOption<String>(kInput).value;
   final outputDir = options.getOption<String>(kOutput).value;
 
+  // To be able to debug the example app, uncomment the following lines and
+  // comment the lines above. Then run main in debug mode.
+  // final inputJson = 'example/bin/example-themes.json';
+  // final outputDir = 'example/lib/generated';
+
   /// Parse the input json file and get all resolved tokens from the parser
-  final resolved = _parseInput(inputJson);
+  try {
+    final resolved = _parseInput(inputJson);
 
-  /// Print the number of tokens found to the terminal output
-  _print('Found ${resolved.length} tokens, generating code', _green);
+    /// Print the number of tokens found to the terminal output
+    _print('Found ${resolved.length} tokens, generating code', _green);
 
-  /// Process the tokens with all transformers
-  final allTransformers = _processTokens(resolved);
+    /// Process the tokens with all transformers
+    final allTransformers = _processTokens(resolved);
 
-  /// Print the number of tokens each transformer processed to the terminal output
-  for (final transformer in allTransformers) {
-    _print(
-      'Found ${transformer.lines.length} ${transformer.name} tokens',
-      _green,
-    );
+    /// Print the number of tokens each transformer processed to the terminal output
+    for (final transformer in allTransformers) {
+      _print(
+        'Found ${transformer.lines.length} ${transformer.name} tokens',
+        _green,
+      );
+    }
+
+    /// Save the output to the specified directory
+    _saveOutput(allTransformers, outputDir);
+
+    /// Let the user know that the output has been saved
+    _print(''); // New line
+    _print('Done, output saved to $outputDir', _green);
+
+    exit(0);
+  } on ResolveTokenException catch (e) {
+    _print(e.toString(), _red);
+    rethrow;
   }
-
-  /// Save the output to the specified directory
-  _saveOutput(allTransformers, outputDir);
-
-  /// Let the user know that the output has been saved
-  _print(''); // New line
-  _print('Done, output saved to $outputDir', _green);
-
-  exit(0);
 }
 
 /// Save the output to the specified directory

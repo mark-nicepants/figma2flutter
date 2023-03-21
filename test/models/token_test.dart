@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/token_parser.dart';
 import 'package:test/test.dart';
 
@@ -19,7 +20,13 @@ void main() {
 
     expect(
       () => parser.resolve('invalidOperator'),
-      throwsA(const TypeMatcher<FormatException>()),
+      throwsA(
+        const TypeMatcher<ResolveTokenException>().having(
+          (e) => e.toString(),
+          'Has reference to correct token key',
+          contains('invalidOperator'),
+        ),
+      ),
     );
   });
 }

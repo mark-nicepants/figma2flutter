@@ -1,3 +1,4 @@
+import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:meta/meta.dart';
 
@@ -104,6 +105,10 @@ class TokenParser {
     Token? token = tokenMap[key];
     if (token == null) return null;
 
-    return token.resolveAllReferences(tokenMap);
+    try {
+      return token.resolveAllReferences(tokenMap);
+    } catch (e) {
+      throw ResolveTokenException(key);
+    }
   }
 }

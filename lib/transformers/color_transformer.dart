@@ -46,13 +46,12 @@ class ColorTransformer extends SingleTokenTransformer {
         final color = modify['color'] as String?;
 
         if (value != null && value != 0) {
-          final amount = (value * 100).floor();
           if (type == 'lighten') {
-            colorValue = colorValue.lighten(amount ~/ 2);
+            colorValue = colorValue.lighten(value / 2);
           } else if (type == 'darken') {
-            colorValue = colorValue.darken(amount ~/ 2);
+            colorValue = colorValue.darken(value / 2);
           } else if (color != null && type == 'mix' && color.startsWith('#')) {
-            colorValue = colorValue.mix(color, amount);
+            colorValue = colorValue.mix(color, value);
           }
         }
       }
