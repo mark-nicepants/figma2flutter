@@ -7,21 +7,34 @@ This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) jso
 
 **[Notice] You may use this package but breaking changes may occur when relying on releases lower than v1.0.0**
 
-## How to use
+- [How to use](#how-to-use)
+  - [1. Install](#1-install)
+  - [2. Export](#2-export)
+  - [3. Generate](#3-generate)
+- [Token support (checked = supported)](#token-support-checked--supported)
+  - [Math support](#math-support)
+  - [Modify support](#modify-support)
+- [Themes](#themes)
+- [Composition support](#composition-support)
+- [Realised feature ideas](#realised-feature-ideas)
+- [Ideas for contributing](#ideas-for-contributing)
 
-### 1. Install
+
+# How to use
+
+## 1. Install
 
 ```bash
 dart pub global activate figma2flutter
 ```
 
-### 2. Export 
+## 2. Export 
 
 Export your tokens from Figma and save the json file in your project folder.
 
 You can do this manually or use the [Tokens Studio for Figma](https://docs.tokens.studio/) plugin to export your tokens directly into your repository.
 
-### 3. Generate
+## 3. Generate
 Run the command in the root of your project
 ```bash
 figma2flutter --input <path_to_json_file> --output <path_to_output_folder>
@@ -34,7 +47,7 @@ Default config values are:
 --output: ./lib/assets/tokens/
 ```
 
-## Token support (checked = supported)
+# Token support (checked = supported)
 
 [Overview of all tokens available here](https://docs.tokens.studio/available-tokens/available-tokens)
 
@@ -79,7 +92,7 @@ Default config values are:
     - ✅ solid
     - ~~dashed~~ (not supported but PRs's are welcome)
 
-### Math support
+## Math support
 
 Tokens Studio supports math operations on tokens. This package supports the following math operations:
 
@@ -93,7 +106,7 @@ To be able to parse properly the math expression, the tokens need to be wrapped 
     - ✅ multiply
     - ✅ divide
 
-### Modify support
+## Modify support
 
 Color modifiers are a way to modify a color token. In Figma you can use the color modifier to lighten or darken a color and select different color spaces to do so. While there is support, results may vary as we are not using the same color space as Figma (Only srgb is supported).
 
@@ -105,7 +118,11 @@ Tokens Studio supports modifying tokens. This package supports the following mod
   - ✅ mix
   - ✅ alpha
 
-## Composition support
+# Themes
+
+-- TODO --
+
+# Composition support
 
 We are currently working on supporting the composition tokens. This will allow you to create custom widgets that can be used in your app. When generating code from tokens, all composition tokens will be exposed as a dart class. Using the Composition widget that will be added to you app you can then use these tokens in your app.
 
@@ -181,12 +198,12 @@ Composition support:
   - ✅ lineHeights
   - ✅ letterSpacing
 
-## Realised feature ideas
+# Realised feature ideas
 
 - ✅ Generate MaterialColors when we have multiple color values and int base keys (100, 200, 300, 400)
 - ✅ Add an example that illustrates how to use the package (see `/example` folder and `/example/bin/update-tokens.sh`)
 
-## Ideas for contributing
+# Ideas for contributing
 
 - Figure out a way to convert tokens to InputDecorations or even an InputDecorationTheme.
 - Generate a Theme.TextTheme with all tokens that match the [material3 spec](https://m3.material.io/styles/typography/type-scale-tokens#d74b73c2-ac5d-43c5-93b3-088a2f67723d). This would allow us to use the tokens as a theme for the whole app.
