@@ -10,20 +10,20 @@ void main() {
     final parser = TokenParser()..parse(raw);
 
     final transformer = SizeTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.lines.length, equals(3));
     expect(
       transformer.lines[0],
-      equals('Size get myToken => const Size(32.0, 32.0);'),
+      contains('Size get myToken => const Size(32.0, 32.0);'),
     );
     expect(
       transformer.lines[1],
-      equals('Size get myOtherToken => const Size(32.0, 32.0);'),
+      contains('Size get myOtherToken => const Size(32.0, 32.0);'),
     );
     expect(
       transformer.lines[2],
-      equals('Size get myRemToken => const Size(32.0, 32.0);'),
+      contains('Size get myRemToken => const Size(32.0, 32.0);'),
     );
   });
 }

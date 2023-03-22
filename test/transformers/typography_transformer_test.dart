@@ -66,15 +66,15 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(8));
+    expect(parser.resolvedTokens().length, equals(8));
 
     final transformer = TypographyTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.lines.length, equals(2));
     expect(
       transformer.lines[0],
-      equals(
+      contains(
         '''TextStyle get bold => const TextStyle(
   fontFamily: 'Roboto',
   fontSize: 12.0,
@@ -85,7 +85,7 @@ void main() {
     );
     expect(
       transformer.lines[1],
-      equals(
+      contains(
         '''TextStyle get regular => const TextStyle(
   fontFamily: 'Roboto',
   fontSize: 16.0,

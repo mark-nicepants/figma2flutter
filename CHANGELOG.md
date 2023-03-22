@@ -1,3 +1,7 @@
+## 0.1.0-alpha
+
+- [BREAKING] Added theme support (see example for details).
+
 ## 0.0.8-alpha
 
 - Remove dependency on TinyColor2 and Flutter framework.

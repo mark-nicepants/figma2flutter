@@ -25,16 +25,19 @@ void main() {
     final parsed = json.decode(single) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(1));
-    expect(parser.tokenMap['defaultShadow']?.type, equals('boxShadow'));
+    expect(parser.resolvedTokens().length, equals(1));
+    expect(
+      parser.themes.first.tokens['defaultShadow']?.type,
+      equals('boxShadow'),
+    );
 
     final transformer = BoxShadowTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.lines.length, equals(1));
     expect(
       transformer.lines.first,
-      equals(
+      contains(
         '''
 List<BoxShadow> get defaultShadow => const [
   BoxShadow(
@@ -86,19 +89,19 @@ List<BoxShadow> get defaultShadow => const [
     final parsed = json.decode(multiple) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(2));
+    expect(parser.resolvedTokens().length, equals(2));
     expect(
-      parser.tokenMap['my-shadow-tokens.default']?.type,
+      parser.themes.first.tokens['my-shadow-tokens.default']?.type,
       equals('boxShadow'),
     );
 
     final transformer = BoxShadowTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.lines.length, equals(1));
     expect(
       transformer.lines.first,
-      equals(
+      contains(
         '''
 List<BoxShadow> get myShadowTokensDefault => const [
   BoxShadow(

@@ -1,6 +1,8 @@
-import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/models/token.dart';
+import 'package:figma2flutter/models/token_theme.dart';
 import 'package:meta/meta.dart';
+
+const kDefaultThemeName = 'default';
 
 /// A parser that will parse a map of Design tokens and can resolve references
 /// to other tokens (e.g. {color.primary})
@@ -10,25 +12,42 @@ class TokenParser {
   // correct order.
   final List<String> sets;
 
-  // The raw map of tokens. The key is the path to the token and the value is the
-  // token itself. Any references to other tokens are not resolved yet. The key
-  // is used to resolve the references. See [TokenParser.resolvedTokens].
-  @visibleForTesting
-  final Map<String, Token> tokenMap = {};
+  // List of themes, each theme contains a list of sets that are enabled.
+  List<TokenTheme> themes;
 
   /// Creates a new [TokenParser] instance.
-  TokenParser([this.sets = const []]);
+  TokenParser([
+    this.sets = const [],
+    this.themes = const [],
+  ]);
 
   /// Parses the given json map recursively and saves the tokens in the [tokenMap].
   void parse(Map<String, dynamic> input) {
-    tokenMap.addAll(findTokens('.', input));
+    if (themes.isEmpty) {
+      themes = [TokenTheme(kDefaultThemeName, sets)];
+    }
 
-    _postProcess();
+    for (final theme in themes) {
+      final Map<String, dynamic> tokensForTheme;
+      if (theme.sets.isEmpty) {
+        tokensForTheme = input;
+      } else {
+        tokensForTheme = {};
+        for (final set in theme.sets) {
+          tokensForTheme[set] = input[set] as Map<String, dynamic>;
+        }
+      }
+
+      final tokens = findTokens('.', tokensForTheme);
+      _postProcess(tokens);
+
+      theme.addTokens(tokens);
+    }
   }
 
   // Loop trough the ordered sets and remove the set name from key an path
   // this will make sure that overrides are properly applied
-  void _postProcess() {
+  void _postProcess(Map<String, Token> tokenMap) {
     for (var element in sets) {
       final set = '$element.';
       final setLength = set.length - 1;
@@ -93,22 +112,12 @@ class TokenParser {
   }
 
   /// Returns a list of all tokens that have been parsed and all references resolved.
-  List<Token> get resolvedTokens => tokenMap.keys
-      .map(resolve)
-      .where((element) => element != null)
-      .cast<Token>()
-      .toList();
+  List<Token> resolvedTokens({String themeName = kDefaultThemeName}) =>
+      themes.firstWhere((element) => element.name == themeName).resolvedTokens;
 
-  // Fetch a token by key and resolve all references
+  // Fetch a token by key and theme name and resolve all references
   @visibleForTesting
-  Token? resolve(String key) {
-    Token? token = tokenMap[key];
-    if (token == null) return null;
-
-    try {
-      return token.resolveAllReferences(tokenMap);
-    } catch (e) {
-      throw ResolveTokenException(key);
-    }
+  Token? resolve(String key, [String theme = kDefaultThemeName]) {
+    return themes.firstWhere((e) => e.name == theme).resolve(key);
   }
 }

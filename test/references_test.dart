@@ -44,9 +44,12 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.tokenMap.length, equals(6));
-    expect(parser.tokenMap['token']?.type, equals('color'));
-    expect(parser.tokenMap['group.token']?.type, equals('dimension'));
+    expect(parser.themes.first.tokens.length, equals(6));
+    expect(parser.themes.first.tokens['token']?.type, equals('color'));
+    expect(
+      parser.themes.first.tokens['group.token']?.type,
+      equals('dimension'),
+    );
 
     expect(parser.resolve('token1')?.type, equals('color'));
     expect(parser.resolve('token2')?.type, equals('color'));
@@ -95,7 +98,7 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.tokenMap.length, equals(5));
+    expect(parser.themes.first.tokens.length, equals(5));
 
     expect(parser.resolve('bold')!.value['fontFamily'], equals('Roboto'));
     expect(parser.resolve('bold')!.value['fontWeight'], equals('100'));

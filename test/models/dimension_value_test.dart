@@ -42,7 +42,8 @@ void main() {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    final parsedValues = parser.resolvedTokens
+    final parsedValues = parser
+        .resolvedTokens()
         .map((e) => DimensionValue.maybeParse(e.value)?.value)
         .toList();
 

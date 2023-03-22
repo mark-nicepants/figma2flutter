@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/extensions/string.dart';
 import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/models/dimension_value.dart';
@@ -88,7 +89,7 @@ class Token {
     );
   }
 
-  Token? resolveAllReferences(Map<String, Token> tokenMap) {
+  Token resolveAllReferences(Map<String, Token> tokenMap) {
     Token? token = this;
 
     if (_hasColorReference) {
@@ -96,19 +97,25 @@ class Token {
     }
 
     if (_hasMathExpression) {
-      token = token?._resolveMathExpression(tokenMap);
+      token = token._resolveMathExpression(tokenMap);
     }
 
-    if (token?._isReference == true) {
-      token = tokenMap[token?.valueByRef]?.copyWith(
-        variableName: token?.variableName,
-        extensions: token?.extensions,
+    if (token._isReference == true) {
+      token = tokenMap[token.valueByRef];
+
+      if (token == null) {
+        throw ResolveTokenException(
+          'Resolving reference failed for token: $name',
+        );
+      }
+
+      token = token.copyWith(
+        variableName: variableName,
+        extensions: extensions,
       );
     }
 
-    token = token?._resolveValueReferences(tokenMap);
-
-    return token;
+    return token._resolveValueReferences(tokenMap);
   }
 
   /// Resolves all references in the value of this token.
@@ -132,7 +139,7 @@ class Token {
   ///   }
   /// }
   /// ```
-  Token? _resolveValueReferences(Map<String, Token> tokenMap) {
+  Token _resolveValueReferences(Map<String, Token> tokenMap) {
     // Loop through all values and resolve references recursively
     if (value is Map<String, dynamic>) {
       final resolved = _resolvedValue(value as Map<String, dynamic>, tokenMap);
@@ -173,7 +180,7 @@ class Token {
         resolved[key] = _resolveColorValue(value, tokenMap);
       } else if (value is String && value.isTokenReference) {
         final refKey = value.valueByRef;
-        resolved[key] = tokenMap[refKey]?.resolveAllReferences(tokenMap)?.value;
+        resolved[key] = tokenMap[refKey]?.resolveAllReferences(tokenMap).value;
       } else {
         resolved[key] = value;
       }
@@ -186,12 +193,12 @@ class Token {
   // resolve the reference to the color token and use the value of that
   // token as the value of this token. See [references_test.dart:145] for
   // an example. Eg: rgba({brand.500}, 0.5) => rgba(255, 255, 255, 0.5)
-  Token? _resolveColorReferences(Map<String, Token> tokenMap) {
+  Token _resolveColorReferences(Map<String, Token> tokenMap) {
     String value = _resolveColorValue(valueAsString!, tokenMap);
     return copyWith(value: value);
   }
 
-  Token? _resolveMathExpression(Map<String, Token> tokenMap) {
+  Token _resolveMathExpression(Map<String, Token> tokenMap) {
     final isMultiply = valueAsString!.contains(' * ');
     final isDivide = valueAsString!.contains(' / ');
     final isAdd = valueAsString!.contains(' + ');
@@ -205,10 +212,10 @@ class Token {
     final rightPart = splitted[1].trim();
 
     final leftValue = leftPart.isTokenReference
-        ? tokenMap[leftPart.valueByRef]?.resolveAllReferences(tokenMap)?.value
+        ? tokenMap[leftPart.valueByRef]?.resolveAllReferences(tokenMap).value
         : leftPart;
     final rightValue = rightPart.isTokenReference
-        ? tokenMap[rightPart.valueByRef]?.resolveAllReferences(tokenMap)?.value
+        ? tokenMap[rightPart.valueByRef]?.resolveAllReferences(tokenMap).value
         : rightPart;
 
     final left = DimensionValue.maybeParse(leftValue);
@@ -241,12 +248,16 @@ String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
   while (match != null) {
     final reference = tokenMap[match.group(1)]?.resolveAllReferences(tokenMap);
     if (reference == null) {
-      throw Exception('Reference not found for `${match.group(1)}`');
+      throw ResolveTokenException(
+        'Reference not found for `${match.group(1)}`',
+      );
     }
 
     final color = ColorValue.maybeParse(reference.value);
     if (color == null) {
-      throw Exception('Could not parse color for `${reference.value}`');
+      throw ResolveTokenException(
+        'Could not parse color for `${reference.value}`',
+      );
     }
 
     // Check if is inside a rgba() function

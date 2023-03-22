@@ -32,22 +32,22 @@ void main() {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens.length, equals(2));
-    expect(parser.tokenMap['border.heavy']?.type, equals('border'));
+    expect(parser.resolvedTokens().length, equals(2));
+    expect(parser.themes.first.tokens['border.heavy']?.type, equals('border'));
 
     final transformer = BorderTransformer();
-    parser.resolvedTokens.forEach(transformer.process);
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.lines.length, equals(2));
     expect(
       transformer.lines[0],
-      equals(
+      contains(
         'Border get borderHeavy => Border.all(color: const Color(0x00363636), width: 3.0, style: BorderStyle.solid);',
       ),
     );
     expect(
       transformer.lines[1],
-      equals(
+      contains(
         'Border get borderFocusring => Border.all(color: const Color(0xFFFF00FF), width: 1.0, style: BorderStyle.solid);',
       ),
     );

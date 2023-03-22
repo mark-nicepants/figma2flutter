@@ -11,6 +11,10 @@ extension StringExtension on String {
     return capitalized[0].toLowerCase() + capitalized.substring(1);
   }
 
+  String get capitalize {
+    return this[0].toUpperCase() + substring(1);
+  }
+
   /// Returns true if the string is a reference to another token path without any extras
   bool get isTokenReference =>
       startsWith('\$') || (startsWith('{') && endsWith('}'));

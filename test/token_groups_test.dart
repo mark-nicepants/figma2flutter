@@ -32,10 +32,10 @@ void main() {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.tokenMap.length, equals(4));
+    expect(parser.themes.first.tokens.length, equals(4));
 
     expect(
-      parser.tokenMap.keys,
+      parser.themes.first.tokens.keys,
       equals([
         'token uno',
         'token group.token dos',

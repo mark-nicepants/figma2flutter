@@ -9,8 +9,8 @@ void main() {
     final raw = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(raw);
 
-    final transformer = MaterialColorTransformer(parser.resolvedTokens);
-    parser.resolvedTokens.forEach(transformer.process);
+    final transformer = MaterialColorTransformer(parser.resolvedTokens());
+    parser.resolvedTokens().forEach(transformer.process);
 
     expect(transformer.colorTokensByName.keys.length, equals(1));
     expect(transformer.colorTokensByName['primary'], isNotNull);
