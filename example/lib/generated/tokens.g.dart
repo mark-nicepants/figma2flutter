@@ -368,44 +368,42 @@ class LightColorTokens extends ColorTokens {
   Color get shadowsDefault => const Color(0xFF1A202C);
 }
 
-
 class LightTextStyleTokens extends TextStyleTokens {
   @override
   TextStyle get typographyH1Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 48.828125,
-  height: 1.1,
-  letterSpacing: -0.8,
-);
+        fontFamily: 'Inter',
+        fontSize: 48.828125,
+        height: 1.1,
+        letterSpacing: -0.8,
+      );
   @override
   TextStyle get typographyH1Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 48.828125,
-  height: 1.1,
-  letterSpacing: -0.8,
-);
+        fontFamily: 'Inter',
+        fontSize: 48.828125,
+        height: 1.1,
+        letterSpacing: -0.8,
+      );
   @override
   TextStyle get typographyH5Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 20.0,
-  height: 1.1,
-  letterSpacing: -0.8,
-);
+        fontFamily: 'Inter',
+        fontSize: 20.0,
+        height: 1.1,
+        letterSpacing: -0.8,
+      );
   @override
   TextStyle get typographyH5Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 20.0,
-  height: 1.1,
-  letterSpacing: -0.8,
-);
+        fontFamily: 'Inter',
+        fontSize: 20.0,
+        height: 1.1,
+        letterSpacing: -0.8,
+      );
   @override
   TextStyle get typographyBody => const TextStyle(
-  fontFamily: 'Roboto',
-  fontSize: 16.0,
-  height: 1.1,
-);
+        fontFamily: 'Roboto',
+        fontSize: 16.0,
+        height: 1.1,
+      );
 }
-
 
 class LightRadiiTokens extends RadiiTokens {
   @override
@@ -422,50 +420,47 @@ class LightRadiiTokens extends RadiiTokens {
   BorderRadius get cardBorderRadius => BorderRadius.circular(8.0);
 }
 
-
 class LightCompositionTokens extends CompositionTokens {
   @override
-  CompositionToken get cardComp => CompositionToken(
-  padding: const EdgeInsets.only(
-    top: 32.0,
-    right: 32.0,
-    bottom: 32.0,
-    left: 32.0,
-  ),
-  itemSpacing: 32.0,
-  boxShadow: const [
-  BoxShadow(
-    offset: Offset(0.0, 5.0),
-    blurRadius: 5.0,
-    spreadRadius: 3.0,
-    color: Color(0x261A202C),
-  ),
-],
-);
+  CompositionToken get cardComp => const CompositionToken(
+        padding: EdgeInsets.only(
+          top: 32.0,
+          right: 32.0,
+          bottom: 32.0,
+          left: 32.0,
+        ),
+        itemSpacing: 32.0,
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0.0, 5.0),
+            blurRadius: 5.0,
+            spreadRadius: 3.0,
+            color: Color(0x261A202C),
+          ),
+        ],
+      );
   @override
-  CompositionToken get buttonComp => CompositionToken(
-  padding: const EdgeInsets.only(
-    top: 8.0,
-    right: 16.0,
-    bottom: 8.0,
-    left: 16.0,
-  ),
-);
+  CompositionToken get buttonComp => const CompositionToken(
+        padding: EdgeInsets.only(
+          top: 8.0,
+          right: 16.0,
+          bottom: 8.0,
+          left: 16.0,
+        ),
+      );
 }
-
 
 class LightShadowTokens extends ShadowTokens {
   @override
   List<BoxShadow> get boxShadowDefault => const [
-  BoxShadow(
-    offset: Offset(0.0, 5.0),
-    blurRadius: 5.0,
-    spreadRadius: 3.0,
-    color: Color(0x261A202C),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 5.0),
+          blurRadius: 5.0,
+          spreadRadius: 3.0,
+          color: Color(0x261A202C),
+        ),
+      ];
 }
-
 
 class DarkTokens extends ITokens {
   @override
@@ -687,44 +682,42 @@ class DarkColorTokens extends ColorTokens {
   Color get shadowsDefault => const Color(0x4D000000);
 }
 
-
 class DarkTextStyleTokens extends TextStyleTokens {
   @override
   TextStyle get typographyH1Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 48.828125,
-  height: 1.1,
-  letterSpacing: -0.8,
-);
+        fontFamily: 'Inter',
+        fontSize: 48.828125,
+        height: 1.1,
+        letterSpacing: -0.8,
+      );
   @override
   TextStyle get typographyH1Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 48.828125,
-  height: 1.1,
-  letterSpacing: -0.8,
-);
+        fontFamily: 'Inter',
+        fontSize: 48.828125,
+        height: 1.1,
+        letterSpacing: -0.8,
+      );
   @override
   TextStyle get typographyH5Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 20.0,
-  height: 1.1,
-  letterSpacing: -0.8,
-);
+        fontFamily: 'Inter',
+        fontSize: 20.0,
+        height: 1.1,
+        letterSpacing: -0.8,
+      );
   @override
   TextStyle get typographyH5Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 20.0,
-  height: 1.1,
-  letterSpacing: -0.8,
-);
+        fontFamily: 'Inter',
+        fontSize: 20.0,
+        height: 1.1,
+        letterSpacing: -0.8,
+      );
   @override
   TextStyle get typographyBody => const TextStyle(
-  fontFamily: 'Roboto',
-  fontSize: 16.0,
-  height: 1.1,
-);
+        fontFamily: 'Roboto',
+        fontSize: 16.0,
+        height: 1.1,
+      );
 }
-
 
 class DarkRadiiTokens extends RadiiTokens {
   @override
@@ -741,46 +734,44 @@ class DarkRadiiTokens extends RadiiTokens {
   BorderRadius get cardBorderRadius => BorderRadius.circular(8.0);
 }
 
-
 class DarkCompositionTokens extends CompositionTokens {
   @override
-  CompositionToken get cardComp => CompositionToken(
-  padding: const EdgeInsets.only(
-    top: 32.0,
-    right: 32.0,
-    bottom: 32.0,
-    left: 32.0,
-  ),
-  itemSpacing: 32.0,
-  boxShadow: const [
-  BoxShadow(
-    offset: Offset(0.0, 5.0),
-    blurRadius: 5.0,
-    spreadRadius: 3.0,
-    color: Color(0x26000000),
-  ),
-],
-);
+  CompositionToken get cardComp => const CompositionToken(
+        padding: EdgeInsets.only(
+          top: 32.0,
+          right: 32.0,
+          bottom: 32.0,
+          left: 32.0,
+        ),
+        itemSpacing: 32.0,
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0.0, 5.0),
+            blurRadius: 5.0,
+            spreadRadius: 3.0,
+            color: Color(0x26000000),
+          ),
+        ],
+      );
   @override
-  CompositionToken get buttonComp => CompositionToken(
-  padding: const EdgeInsets.only(
-    top: 8.0,
-    right: 16.0,
-    bottom: 8.0,
-    left: 16.0,
-  ),
-);
+  CompositionToken get buttonComp => const CompositionToken(
+        padding: EdgeInsets.only(
+          top: 8.0,
+          right: 16.0,
+          bottom: 8.0,
+          left: 16.0,
+        ),
+      );
 }
-
 
 class DarkShadowTokens extends ShadowTokens {
   @override
   List<BoxShadow> get boxShadowDefault => const [
-  BoxShadow(
-    offset: Offset(0.0, 5.0),
-    blurRadius: 5.0,
-    spreadRadius: 3.0,
-    color: Color(0x26000000),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 5.0),
+          blurRadius: 5.0,
+          spreadRadius: 3.0,
+          color: Color(0x26000000),
+        ),
+      ];
 }
