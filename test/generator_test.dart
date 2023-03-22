@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:figma2flutter/generator.dart';
+import 'package:figma2flutter/processor.dart';
 import 'package:figma2flutter/token_parser.dart';
 import 'package:figma2flutter/transformers/color_transformer.dart';
 import 'package:test/test.dart';
@@ -22,29 +23,31 @@ final output = '''
 
 import 'package:flutter/material.dart';
 
-class Tokens {
-  static ColorTokens get color => ColorTokens();
+abstract class ITokens {
+  ColorTokens get color;
 }
 
-class ColorTokens {
+abstract class ColorTokens {
+  Color get token;
+}
+
+class DefaultTokens extends ITokens {
+  @override
+  ColorTokens get color => DefaultColorTokens();
+}
+
+class DefaultColorTokens extends ColorTokens {
+  @override
   Color get token => const Color(0xFF111111);
 }
 ''';
-
-/// https://tr.designtokens.org/format/#type-0
-/// 5.4 Type
-///
-/// The $type property can be set on different levels:
-// at the group level
-// at the token level
 
 void main() {
   test(
       'That the parser resolves all references and that the generator generates the correct output',
       () {
     final parsed = json.decode(input) as Map<String, dynamic>;
-    final parser = TokenParser();
-    parser.parse(parsed);
+    final parser = TokenParser()..parse(parsed);
 
     expect(parser.themes.first.tokens.length, equals(1));
     expect(parser.themes.first.tokens['token']?.type, equals('color'));
@@ -56,10 +59,16 @@ void main() {
     expect(transformer.lines.length, equals(1));
     expect(
       transformer.lines[0],
-      equals('Color get token => const Color(0xFF111111);'),
+      equals('@override\n  Color get token => const Color(0xFF111111);'),
     );
 
-    final generator = Generator([transformer]);
+    final processor = Processor(
+      themes: parser.themes,
+      singleTokenTransformerFactories: [(_) => ColorTransformer()],
+    );
+    processor.process();
+
+    final generator = Generator(processor.themes);
     expect(generator.output, equals(output));
 
     generator.save('test/output');

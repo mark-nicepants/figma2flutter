@@ -19,8 +19,8 @@ class CompositionTransformer extends SingleTokenTransformer {
   String get name => 'composition';
 
   @override
-  String classDeclaration() {
-    return '${super.classDeclaration()}\n\n$_extraClassesDeclaration';
+  String classDeclaration(String theme) {
+    return '${super.classDeclaration(theme)}\n\n$_extraClassesDeclaration';
   }
 
   @override

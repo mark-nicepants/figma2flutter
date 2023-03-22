@@ -1,3 +1,4 @@
+import 'package:figma2flutter/extensions/string.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:meta/meta.dart';
 
@@ -17,20 +18,30 @@ abstract class Transformer {
   @protected
   bool matcher(Token token);
 
+  String interfaceDeclaration() {
+    return '''abstract class $className {
+  ${lines.map(_toInterfaceDeclaration).join('\n  ')}
+}''';
+  }
+
   // Returns the code that will be generated for the property declaration
-  String propertyDeclaration() {
-    return 'static $className get $name => $className();';
+  String propertyDeclaration(String theme) {
+    return '@override\n  $className get $name => ${theme.capitalize}$className();';
   }
 
   void process(Token token);
 
   // Returns the class that is generated for this transformer including all processed tokens
-  String classDeclaration() {
+  String classDeclaration(String theme) {
     return '''
-class $className {
+class ${theme.capitalize}$className extends $className {
   ${lines.join('\n  ')}
 }
 ''';
+  }
+
+  String _toInterfaceDeclaration(String input) {
+    return '${input.substring(0, input.indexOf('=>')).replaceAll('@override\n', '').trim()};';
   }
 }
 
@@ -47,7 +58,7 @@ abstract class SingleTokenTransformer extends Transformer {
   void process(Token token) {
     if (matcher(token)) {
       lines.add(
-        '$type get ${token.variableName} => ${transform(token)};',
+        '@override\n  $type get ${token.variableName} => ${transform(token)};',
       );
     }
   }

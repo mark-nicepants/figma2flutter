@@ -74,7 +74,7 @@ void main() {
     expect(transformer.lines.length, equals(2));
     expect(
       transformer.lines[0],
-      equals(
+      contains(
         '''TextStyle get bold => const TextStyle(
   fontFamily: 'Roboto',
   fontSize: 12.0,
@@ -85,7 +85,7 @@ void main() {
     );
     expect(
       transformer.lines[1],
-      equals(
+      contains(
         '''TextStyle get regular => const TextStyle(
   fontFamily: 'Roboto',
   fontSize: 16.0,

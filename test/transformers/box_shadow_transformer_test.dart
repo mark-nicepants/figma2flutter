@@ -37,7 +37,7 @@ void main() {
     expect(transformer.lines.length, equals(1));
     expect(
       transformer.lines.first,
-      equals(
+      contains(
         '''
 List<BoxShadow> get defaultShadow => const [
   BoxShadow(
@@ -101,7 +101,7 @@ List<BoxShadow> get defaultShadow => const [
     expect(transformer.lines.length, equals(1));
     expect(
       transformer.lines.first,
-      equals(
+      contains(
         '''
 List<BoxShadow> get myShadowTokensDefault => const [
   BoxShadow(

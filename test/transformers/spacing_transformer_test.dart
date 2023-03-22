@@ -47,37 +47,37 @@ void main() {
     expect(transformer.lines.length, equals(6));
     expect(
       transformer.lines[0],
-      equals(
+      contains(
         'EdgeInsets get pixelValue => const EdgeInsets.all(10.0);',
       ),
     );
     expect(
       transformer.lines[1],
-      equals(
+      contains(
         'EdgeInsets get intValue => const EdgeInsets.all(100.0);',
       ),
     );
     expect(
       transformer.lines[2],
-      equals(
+      contains(
         'EdgeInsets get remValue => const EdgeInsets.all(48.0);',
       ),
     );
     expect(
       transformer.lines[3],
-      equals(
+      contains(
         'EdgeInsets get twoValues => const EdgeInsets.symmetric(horizontal: 15.0, vertical: 100.0);',
       ),
     );
     expect(
       transformer.lines[4],
-      equals(
+      contains(
         'EdgeInsets get threeValues => const EdgeInsets.only(top: 16.0, left: 32.0, right: 32.0, bottom: 48.0);',
       ),
     );
     expect(
       transformer.lines[5],
-      equals(
+      contains(
         'EdgeInsets get fourValues => const EdgeInsets.only(top: 16.0, right: 8.0, bottom: 16.0, left: 8.0);',
       ),
     );

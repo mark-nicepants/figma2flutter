@@ -144,7 +144,7 @@ CompositionToken get testCard => CompositionToken(
   opacity: 0.5,
 );''';
 
-    expect(transformer.lines.first, equals(expected));
+    expect(transformer.lines.first, contains(expected));
   });
 
   test('Test composition gradient, border all, radius all', () {
@@ -198,7 +198,7 @@ CompositionToken get testCard => CompositionToken(
   borderRadius: BorderRadius.circular(5.0),
   border: Border.all(color: const Color(0xFFFF0000), width: 2.0, style: BorderStyle.solid),
 );''';
-    expect(transformer.lines.first, equals(output));
+    expect(transformer.lines.first, contains(output));
   });
 
   test('invalid usage of CompositionTransformer', () {

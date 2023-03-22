@@ -1,23 +1,48 @@
 import 'dart:io';
 
-import 'package:figma2flutter/transformers/transformer.dart';
+import 'package:figma2flutter/extensions/string.dart';
+import 'package:figma2flutter/models/token_theme.dart';
 
 /// Generates a Dart file with all the tokens.
 class Generator {
   /// Creates a new [Generator] instance.
-  Generator(this.transformers);
+  Generator(this.themes);
 
   /// The list of transformers to generate code for.
-  final List<Transformer> transformers;
+  final List<TokenTheme> themes;
 
   /// Returns the generated code.
   String get output {
-    final properties = <String>[];
+    final interfaces = <String>[];
     final classes = <String>[];
 
-    for (final transformer in transformers) {
-      properties.add(transformer.propertyDeclaration());
-      classes.add(transformer.classDeclaration());
+    final interFaceNames = <String, String>{};
+    for (final transformer in themes.first.transformers) {
+      interfaces.add(transformer.interfaceDeclaration());
+      interFaceNames[transformer.name] = transformer.className;
+    }
+
+    final iTokenInterface = '''
+abstract class ITokens {
+  ${interFaceNames.entries.map((e) => '${e.value} get ${e.key};').join('\n  ')}
+}''';
+
+    interfaces.insert(0, iTokenInterface);
+
+    for (final theme in themes) {
+      final properties = <String>[];
+      final insertAt = classes.length;
+      for (final transformer in theme.transformers) {
+        properties.add(transformer.propertyDeclaration(theme.name));
+        classes.add(transformer.classDeclaration(theme.name));
+      }
+
+      final tokenClass = '''
+class ${theme.name.capitalize}Tokens extends ITokens {
+  ${properties.join('\n  ')}
+}''';
+
+      classes.insert(insertAt, tokenClass);
     }
 
     return '''
@@ -28,11 +53,9 @@ class Generator {
 
 import 'package:flutter/material.dart';
 
-class Tokens {
-  ${properties.join('\n  ')}
-}
+${interfaces.join('\n\n')}
 
-${classes.join('\n')}''';
+${classes.join('\n\n')}''';
   }
 
   /// Saves the generated code to the given [outputDirectory].

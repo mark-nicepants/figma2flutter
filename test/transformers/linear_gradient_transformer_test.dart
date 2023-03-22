@@ -33,21 +33,24 @@ final input = '''
 }''';
 
 final output = '''
-LinearGradient get gradient => const LinearGradient(
+@override
+  LinearGradient get gradient => const LinearGradient(
   colors: [Color(0xFFFFFFFF), Color(0xFF000000),],
   stops: [0.0, 1.0],
   begin: Alignment.bottomCenter,
   end: Alignment.topCenter,
   transform: GradientRotation(0.785),
 );
-LinearGradient get gradientMoreStops => const LinearGradient(
+@override
+  LinearGradient get gradientMoreStops => const LinearGradient(
   colors: [Color(0xFFFFFFFF), Color(0xFFFFB000), Color(0xFF000000),],
   stops: [0.0, 0.5, 1.0],
   begin: Alignment.bottomCenter,
   end: Alignment.topCenter,
   transform: GradientRotation(3.14),
 );
-LinearGradient get rgbaInGradient => const LinearGradient(
+@override
+  LinearGradient get rgbaInGradient => const LinearGradient(
   colors: [Color(0x80FFFFFF), Color(0xFFFFB000),],
   stops: [0.0, 1.0],
   begin: Alignment.bottomCenter,

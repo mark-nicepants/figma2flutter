@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:figma2flutter/config/args_parser.dart';
-import 'package:figma2flutter/config/options.dart';
 import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/generator.dart';
 import 'package:figma2flutter/models/token.dart';
+import 'package:figma2flutter/models/token_theme.dart';
+import 'package:figma2flutter/processor.dart';
 import 'package:figma2flutter/token_parser.dart';
 import 'package:figma2flutter/transformers/border_radius_transformer.dart';
 import 'package:figma2flutter/transformers/border_transformer.dart';
@@ -31,16 +32,20 @@ const _nc = '\x1b[033;0m';
 
 // All transformers that process single tokens should be added here
 // These transformers will be applied to all tokens in the order they are listed
-final singleTokenTransformers = [
-  ColorTransformer(),
-  SpacingTransformer(),
-  TypographyTransformer(),
-  BorderRadiusTransformer(),
-  CompositionTransformer(),
-  BoxShadowTransformer(),
-  BorderTransformer(),
-  SizeTransformer(),
-  LinearGradientTransformer(),
+final singleTokenFactories = <TransformerFactory>[
+  (_) => ColorTransformer(),
+  (_) => SpacingTransformer(),
+  (_) => TypographyTransformer(),
+  (_) => BorderRadiusTransformer(),
+  (_) => CompositionTransformer(),
+  (_) => BoxShadowTransformer(),
+  (_) => BorderTransformer(),
+  (_) => SizeTransformer(),
+  (_) => LinearGradientTransformer(),
+];
+
+final multiTokenFactories = [
+  MaterialColorTransformer.new,
 ];
 
 // All transformers that process multiple tokens should be added here
@@ -53,26 +58,26 @@ Future<void> main(List<String> arguments) async {
   final options = await ArgumentParser(arguments).parse();
 
   /// Get the input json file and output directory from the parsed arguments
-  final inputJson = options.getOption<String>(kInput).value;
-  final outputDir = options.getOption<String>(kOutput).value;
+  // final inputJson = options.getOption<String>(kInput).value;
+  // final outputDir = options.getOption<String>(kOutput).value;
 
   // To be able to debug the example app, uncomment the following lines and
   // comment the lines above. Then run main in debug mode.
-  // final inputJson = 'example/bin/example-themes.json';
-  // final outputDir = 'example/lib/generated';
+  final inputJson = 'example/bin/example-themes.json';
+  final outputDir = 'example/lib/generated';
 
   /// Parse the input json file and get all resolved tokens from the parser
   try {
-    final resolved = _parseInput(inputJson);
+    final themes = _parseInput(inputJson);
 
     /// Print the number of tokens found to the terminal output
-    _print('Found ${resolved.length} tokens, generating code', _green);
+    _print('Found ${themes.length} themes, generating code', _green);
 
     /// Process the tokens with all transformers
-    final allTransformers = _processTokens(resolved);
+    final result = _processTokens(themes);
 
     /// Print the number of tokens each transformer processed to the terminal output
-    for (final transformer in allTransformers) {
+    for (final transformer in result.first.transformers) {
       _print(
         'Found ${transformer.lines.length} ${transformer.name} tokens',
         _green,
@@ -80,7 +85,7 @@ Future<void> main(List<String> arguments) async {
     }
 
     /// Save the output to the specified directory
-    _saveOutput(allTransformers, outputDir);
+    _saveOutput(result, outputDir);
 
     /// Let the user know that the output has been saved
     _print(''); // New line
@@ -94,49 +99,26 @@ Future<void> main(List<String> arguments) async {
 }
 
 /// Save the output to the specified directory
-void _saveOutput(List<Transformer> allTransformers, String outputDir) {
-  final generator = Generator(allTransformers);
+void _saveOutput(List<TokenTheme> themes, String outputDir) {
+  final generator = Generator(themes);
   generator.save(outputDir);
 }
 
 /// Process the tokens with all transformers
-List<Transformer> _processTokens(List<Token> resolved) {
-  for (final token in resolved) {
-    for (final transformer in singleTokenTransformers) {
-      try {
-        transformer.process(token);
-      } catch (e) {
-        _print('Error while processing ${token.path}.${token.name}', _red);
-        rethrow;
-      }
-    }
-  }
+List<TokenTheme> _processTokens(List<TokenTheme> themes) {
+  final processor = Processor(
+    themes: themes,
+    singleTokenTransformerFactories: singleTokenFactories,
+    multiTokenTransformerFactories: multiTokenFactories,
+  );
 
-  final postProcessTransformers = _getPostProcessTransformers(resolved);
-  for (var transformer in postProcessTransformers) {
-    for (final token in resolved) {
-      try {
-        transformer.process(token);
-      } catch (e) {
-        _print('Error while processing ${token.path}.${token.name}', _red);
-        rethrow;
-      }
-    }
-  }
+  processor.process();
 
-  // Run post process on all transformers that need it
-  for (var transformer in postProcessTransformers) {
-    transformer.postProcess();
-  }
-
-  return [
-    ...singleTokenTransformers,
-    ...postProcessTransformers,
-  ];
+  return processor.themes;
 }
 
 /// Parses the input json file and returns a list of resolved tokens
-List<Token> _parseInput(String inputJson) {
+List<TokenTheme> _parseInput(String inputJson) {
   final input = json.decode(
     File(inputJson).readAsStringSync(),
   ) as Map<String, dynamic>;
@@ -146,7 +128,7 @@ List<Token> _parseInput(String inputJson) {
 
   final parser = TokenParser(setOrder, themes)..parse(input);
 
-  return parser.resolvedTokens();
+  return parser.themes;
 }
 
 // ignore: avoid_print
