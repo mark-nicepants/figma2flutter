@@ -1,3 +1,7 @@
+## 0.1.1-alpha
+
+- Add helpers to convert CompositionToken to InputDecoration.
+
 ## 0.1.0-alpha
 
 - [BREAKING] Added theme support (see example for details).

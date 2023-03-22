@@ -17,6 +17,8 @@ This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) jso
   - [Modify support](#modify-support)
 - [Themes](#themes)
 - [Composition support](#composition-support)
+  - [CompositionToken.toInputDecoration](#compositiontokentoinputdecoration)
+  - [Token support for composition tokens](#token-support-for-composition-tokens)
 - [Realised feature ideas](#realised-feature-ideas)
 - [Ideas for contributing](#ideas-for-contributing)
 
@@ -187,7 +189,11 @@ CompositionToken(
 )
 ```
 
-Composition support: 
+## CompositionToken.toInputDecoration
+
+You can use composition tokens as `InputDecoration` in `TextField` and `TextFormField`. This will allow you to easily create custom input fields. Use the token.toInputDecoration(BorderColors) method to convert a composition token to an `InputDecoration`.
+
+## Token support for composition tokens
 
 - ✅ sizing
   - ✅ width
@@ -233,10 +239,10 @@ Composition support:
 
 - ✅ Generate MaterialColors when we have multiple color values and int base keys (100, 200, 300, 400)
 - ✅ Add an example that illustrates how to use the package (see `/example` folder and `/example/bin/update-tokens.sh`)
+- ✅ Figure out a way to convert tokens to InputDecorations or even an InputDecorationTheme.
 
 # Ideas for contributing
 
-- Figure out a way to convert tokens to InputDecorations or even an InputDecorationTheme.
 - Generate a Theme.TextTheme with all tokens that match the [material3 spec](https://m3.material.io/styles/typography/type-scale-tokens#d74b73c2-ac5d-43c5-93b3-088a2f67723d). This would allow us to use the tokens as a theme for the whole app.
 - Add example json to the repo that makes it easy to start with the package and Figmas Tokens Studio plugin
 - Generate a view similar to the Figma plugin (sort of a tokens Gallery/Storybook)

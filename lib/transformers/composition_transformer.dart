@@ -276,6 +276,47 @@ class CompositionToken {
       opacity: opacity ?? this.opacity,
     );
   }
+
+  InputDecoration asInputDecoration(BorderColors colors) {
+    InputBorder borderForColor(Color color) {
+      return OutlineInputBorder(
+        borderRadius: borderRadius ?? BorderRadius.zero,
+        borderSide: BorderSide(
+          color: color,
+          width: border?.top.width ?? 0,
+        ),
+      );
+    }
+
+    return InputDecoration(
+      contentPadding: padding,
+      fillColor: fill,
+      filled: fill != null,
+      border: borderForColor(colors.normal),
+      enabledBorder: borderForColor(colors.normal),
+      focusedBorder: borderForColor(colors.focussed),
+      disabledBorder: borderForColor(colors.disabled),
+      errorBorder: borderForColor(colors.error),
+      focusedErrorBorder: borderForColor(colors.focussedError),
+      errorStyle: textStyle,
+    );
+  }
+}
+
+class BorderColors {
+  final Color normal;
+  final Color focussed;
+  final Color disabled;
+  final Color error;
+  final Color focussedError;
+
+  const BorderColors({
+    required this.normal,
+    required this.focussed,
+    required this.disabled,
+    required this.error,
+    required this.focussedError,
+  });
 }
 
 class Composition extends StatelessWidget {

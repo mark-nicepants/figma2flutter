@@ -422,15 +422,15 @@ class LightRadiiTokens extends RadiiTokens {
 
 class LightCompositionTokens extends CompositionTokens {
   @override
-  CompositionToken get cardComp => const CompositionToken(
-        padding: EdgeInsets.only(
+  CompositionToken get cardComp => CompositionToken(
+        padding: const EdgeInsets.only(
           top: 32.0,
           right: 32.0,
           bottom: 32.0,
           left: 32.0,
         ),
         itemSpacing: 32.0,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             offset: Offset(0.0, 5.0),
             blurRadius: 5.0,
@@ -440,8 +440,8 @@ class LightCompositionTokens extends CompositionTokens {
         ],
       );
   @override
-  CompositionToken get buttonComp => const CompositionToken(
-        padding: EdgeInsets.only(
+  CompositionToken get buttonComp => CompositionToken(
+        padding: const EdgeInsets.only(
           top: 8.0,
           right: 16.0,
           bottom: 8.0,
@@ -736,15 +736,15 @@ class DarkRadiiTokens extends RadiiTokens {
 
 class DarkCompositionTokens extends CompositionTokens {
   @override
-  CompositionToken get cardComp => const CompositionToken(
-        padding: EdgeInsets.only(
+  CompositionToken get cardComp => CompositionToken(
+        padding: const EdgeInsets.only(
           top: 32.0,
           right: 32.0,
           bottom: 32.0,
           left: 32.0,
         ),
         itemSpacing: 32.0,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             offset: Offset(0.0, 5.0),
             blurRadius: 5.0,
@@ -754,8 +754,8 @@ class DarkCompositionTokens extends CompositionTokens {
         ],
       );
   @override
-  CompositionToken get buttonComp => const CompositionToken(
-        padding: EdgeInsets.only(
+  CompositionToken get buttonComp => CompositionToken(
+        padding: const EdgeInsets.only(
           top: 8.0,
           right: 16.0,
           bottom: 8.0,
