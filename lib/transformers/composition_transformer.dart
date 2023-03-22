@@ -19,11 +19,6 @@ class CompositionTransformer extends SingleTokenTransformer {
   String get name => 'composition';
 
   @override
-  String classDeclaration(String theme) {
-    return '${super.classDeclaration(theme)}\n\n$_extraClassesDeclaration';
-  }
-
-  @override
   String transform(Token token) {
     final value = token.value;
 
@@ -225,6 +220,9 @@ border: const Border(
     final opacity = DimensionValue.maybeParse(values['opacity']);
     return opacity == null ? null : 'opacity: $opacity';
   }
+
+  @override
+  String? extraDeclaration() => _extraClassesDeclaration;
 }
 
 final _extraClassesDeclaration = '''

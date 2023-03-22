@@ -146,21 +146,12 @@ class HSL {
 
   HSL(this.h, this.s, this.l);
 
-  @override
-  String toString() {
-    return 'HSL($h, $s, $l)';
-  }
-
   HSL lighten(double amount) {
     return HSL(h, s, l + amount);
   }
 
   HSL darken(double amount) {
     return HSL(h, s, l - amount);
-  }
-
-  String toHex() {
-    return toRGB().map(_toHex).join(); // RRGGBB (without #)
   }
 
   static HSL fromRGB(double r, double g, double b) {

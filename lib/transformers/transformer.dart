@@ -43,6 +43,8 @@ class ${theme.capitalize}$className extends $className {
   String _toInterfaceDeclaration(String input) {
     return '${input.substring(0, input.indexOf('=>')).replaceAll('@override\n', '').trim()};';
   }
+
+  String? extraDeclaration() => null;
 }
 
 abstract class SingleTokenTransformer extends Transformer {

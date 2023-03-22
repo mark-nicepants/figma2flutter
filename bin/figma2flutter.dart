@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:figma2flutter/config/args_parser.dart';
+import 'package:figma2flutter/config/options.dart';
 import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/generator.dart';
-import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/models/token_theme.dart';
 import 'package:figma2flutter/processor.dart';
 import 'package:figma2flutter/token_parser.dart';
@@ -17,7 +17,6 @@ import 'package:figma2flutter/transformers/linear_gradient_transformer.dart';
 import 'package:figma2flutter/transformers/material_color_transformer.dart';
 import 'package:figma2flutter/transformers/size_transformer.dart';
 import 'package:figma2flutter/transformers/spacing_transformer.dart';
-import 'package:figma2flutter/transformers/transformer.dart';
 import 'package:figma2flutter/transformers/typography_transformer.dart';
 import 'package:figma2flutter/utils/sets_and_themes.dart';
 
@@ -44,27 +43,23 @@ final singleTokenFactories = <TransformerFactory>[
   (_) => LinearGradientTransformer(),
 ];
 
+// All transformers that process multiple tokens should be added here
 final multiTokenFactories = [
   MaterialColorTransformer.new,
 ];
-
-// All transformers that process multiple tokens should be added here
-List<MultiTokenTransformer> _getPostProcessTransformers(List<Token> tokens) => [
-      MaterialColorTransformer(tokens),
-    ];
 
 // Entry point, parses the input arguments and runs the transformers
 Future<void> main(List<String> arguments) async {
   final options = await ArgumentParser(arguments).parse();
 
   /// Get the input json file and output directory from the parsed arguments
-  // final inputJson = options.getOption<String>(kInput).value;
-  // final outputDir = options.getOption<String>(kOutput).value;
+  final inputJson = options.getOption<String>(kInput).value;
+  final outputDir = options.getOption<String>(kOutput).value;
 
   // To be able to debug the example app, uncomment the following lines and
   // comment the lines above. Then run main in debug mode.
-  final inputJson = 'example/bin/example-themes.json';
-  final outputDir = 'example/lib/generated';
+  // final inputJson = 'example/bin/example-themes.json';
+  // final outputDir = 'example/lib/generated';
 
   /// Parse the input json file and get all resolved tokens from the parser
   try {

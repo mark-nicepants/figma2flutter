@@ -21,7 +21,11 @@ final output = '''
 /// Figma2Flutter
 /// *****************************************************
 
+library tokens;
+
 import 'package:flutter/material.dart';
+
+part 'tokens_extra.g.dart';
 
 abstract class ITokens {
   ColorTokens get color;

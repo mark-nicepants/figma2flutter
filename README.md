@@ -50,7 +50,33 @@ Default config values are:
 
 ## 4. Add to your project
 
--- TODO --
+Wrap your app in a Tokens widget and pass in a generated ITokens theme. See example for more details.
+
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return Tokens(
+      tokens: LightTokens(),
+      child: MaterialApp(
+        ...
+```
+
+Now you can use your tokens in your app! 🎉
+
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: context.tokens.sizing.large,
+      height: context.tokens.sizing.large,
+      decoration: BoxDecoration(
+        color: context.tokens.color.primary,
+        borderRadius: context.tokens.borderRadius.medium,
+        boxShadow: context.tokens.boxShadow.medium,
+      ),
+    );
+  }
+```
 
 # Token support
 

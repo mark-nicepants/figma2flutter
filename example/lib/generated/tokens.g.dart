@@ -3,19 +3,18 @@
 /// Figma2Flutter
 /// *****************************************************
 
+library tokens;
+
 import 'package:flutter/material.dart';
+
+part 'tokens_extra.g.dart';
 
 abstract class ITokens {
   ColorTokens get color;
-  SpacingTokens get spacing;
   TextStyleTokens get textStyle;
   RadiiTokens get radii;
   CompositionTokens get composition;
   ShadowTokens get shadow;
-  BorderTokens get border;
-  SizeTokens get size;
-  GradientTokens get gradient;
-  MaterialColorTokens get materialColor;
 }
 
 abstract class ColorTokens {
@@ -123,10 +122,6 @@ abstract class ColorTokens {
   Color get shadowsDefault;
 }
 
-abstract class SpacingTokens {
-  
-}
-
 abstract class TextStyleTokens {
   TextStyle get typographyH1Bold;
   TextStyle get typographyH1Regular;
@@ -153,27 +148,9 @@ abstract class ShadowTokens {
   List<BoxShadow> get boxShadowDefault;
 }
 
-abstract class BorderTokens {
-  
-}
-
-abstract class SizeTokens {
-  
-}
-
-abstract class GradientTokens {
-  
-}
-
-abstract class MaterialColorTokens {
-  
-}
-
 class LightTokens extends ITokens {
   @override
   ColorTokens get color => LightColorTokens();
-  @override
-  SpacingTokens get spacing => LightSpacingTokens();
   @override
   TextStyleTokens get textStyle => LightTextStyleTokens();
   @override
@@ -182,14 +159,6 @@ class LightTokens extends ITokens {
   CompositionTokens get composition => LightCompositionTokens();
   @override
   ShadowTokens get shadow => LightShadowTokens();
-  @override
-  BorderTokens get border => LightBorderTokens();
-  @override
-  SizeTokens get size => LightSizeTokens();
-  @override
-  GradientTokens get gradient => LightGradientTokens();
-  @override
-  MaterialColorTokens get materialColor => LightMaterialColorTokens();
 }
 
 class LightColorTokens extends ColorTokens {
@@ -400,11 +369,6 @@ class LightColorTokens extends ColorTokens {
 }
 
 
-class LightSpacingTokens extends SpacingTokens {
-  
-}
-
-
 class LightTextStyleTokens extends TextStyleTokens {
   @override
   TextStyle get typographyH1Bold => const TextStyle(
@@ -490,138 +454,6 @@ class LightCompositionTokens extends CompositionTokens {
 }
 
 
-class CompositionToken {
-  final EdgeInsets? padding;
-  final Size? size;
-  final Color? fill;
-  final LinearGradient? gradient;
-  final double? itemSpacing;
-  final BorderRadius? borderRadius;
-  final Border? border;
-  final List<BoxShadow>? boxShadow;
-  final TextStyle? textStyle;
-  final double? opacity;
-
-  const CompositionToken({
-    this.padding,
-    this.size,
-    this.fill,
-    this.gradient,
-    this.itemSpacing,
-    this.borderRadius,
-    this.border,
-    this.boxShadow,
-    this.textStyle,
-    this.opacity,
-  });
-
-  CompositionToken copyWith({
-    EdgeInsets? padding,
-    Size? size,
-    Color? fill,
-    LinearGradient? gradient,
-    double? itemSpacing,
-    BorderRadius? borderRadius,
-    Border? border,
-    List<BoxShadow>? boxShadow,
-    TextStyle? textStyle,
-    double? opacity,
-  }) {
-    return CompositionToken(
-      padding: padding ?? this.padding,
-      size: size ?? this.size,
-      fill: fill ?? this.fill,
-      gradient: gradient ?? this.gradient,
-      itemSpacing: itemSpacing ?? this.itemSpacing,
-      borderRadius: borderRadius ?? this.borderRadius,
-      border: border ?? this.border,
-      boxShadow: boxShadow ?? this.boxShadow,
-      textStyle: textStyle ?? this.textStyle,
-      opacity: opacity ?? this.opacity,
-    );
-  }
-}
-
-class Composition extends StatelessWidget {
-  const Composition({
-    required this.token,
-    required this.axis,
-    required this.children,
-    this.mainAxisAlignment = MainAxisAlignment.start,
-    this.crossAxisAlignment = CrossAxisAlignment.center,
-    this.mainAxisSize = MainAxisSize.min,
-    super.key,
-  });
-
-  final CompositionToken token;
-  final Axis axis;
-  final MainAxisAlignment mainAxisAlignment;
-  final CrossAxisAlignment crossAxisAlignment;
-  final MainAxisSize mainAxisSize;
-  final List<Widget> children;
-
-  Widget get spacing {
-    if (axis == Axis.horizontal) {
-      return SizedBox(width: token.itemSpacing);
-    } else {
-      return SizedBox(height: token.itemSpacing);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    Widget child = Flex(
-      direction: axis,
-      mainAxisAlignment: mainAxisAlignment,
-      crossAxisAlignment: crossAxisAlignment,
-      mainAxisSize: mainAxisSize,
-      children:
-          token.itemSpacing != null ? children.separated(spacing) : children,
-    );
-
-    if (token.textStyle != null) {
-      child = DefaultTextStyle(
-        style: token.textStyle!,
-        child: child,
-      );
-    }
-
-    final container = Container(
-      decoration: BoxDecoration(
-        color: token.fill,
-        gradient: token.gradient,
-        borderRadius: token.borderRadius,
-        border: token.border,
-        boxShadow: token.boxShadow,
-      ),
-      padding: token.padding,
-      width: token.size?.width,
-      height: token.size?.height,
-      child: child,
-    );
-
-    if (token.opacity != null) {
-      return Opacity(
-        opacity: token.opacity!,
-        child: container,
-      );
-    }
-
-    return container;
-  }
-}
-
-extension WidgetListEx on List<Widget> {
-  List<Widget> separated(Widget separator) {
-    List<Widget> list = map((element) => <Widget>[element, separator])
-        .expand((e) => e)
-        .toList();
-    if (list.isNotEmpty) list = list..removeLast();
-    return list;
-  }
-}
-
-
 class LightShadowTokens extends ShadowTokens {
   @override
   List<BoxShadow> get boxShadowDefault => const [
@@ -635,31 +467,9 @@ class LightShadowTokens extends ShadowTokens {
 }
 
 
-class LightBorderTokens extends BorderTokens {
-  
-}
-
-
-class LightSizeTokens extends SizeTokens {
-  
-}
-
-
-class LightGradientTokens extends GradientTokens {
-  
-}
-
-
-class LightMaterialColorTokens extends MaterialColorTokens {
-  
-}
-
-
 class DarkTokens extends ITokens {
   @override
   ColorTokens get color => DarkColorTokens();
-  @override
-  SpacingTokens get spacing => DarkSpacingTokens();
   @override
   TextStyleTokens get textStyle => DarkTextStyleTokens();
   @override
@@ -668,14 +478,6 @@ class DarkTokens extends ITokens {
   CompositionTokens get composition => DarkCompositionTokens();
   @override
   ShadowTokens get shadow => DarkShadowTokens();
-  @override
-  BorderTokens get border => DarkBorderTokens();
-  @override
-  SizeTokens get size => DarkSizeTokens();
-  @override
-  GradientTokens get gradient => DarkGradientTokens();
-  @override
-  MaterialColorTokens get materialColor => DarkMaterialColorTokens();
 }
 
 class DarkColorTokens extends ColorTokens {
@@ -886,11 +688,6 @@ class DarkColorTokens extends ColorTokens {
 }
 
 
-class DarkSpacingTokens extends SpacingTokens {
-  
-}
-
-
 class DarkTextStyleTokens extends TextStyleTokens {
   @override
   TextStyle get typographyH1Bold => const TextStyle(
@@ -976,138 +773,6 @@ class DarkCompositionTokens extends CompositionTokens {
 }
 
 
-class CompositionToken {
-  final EdgeInsets? padding;
-  final Size? size;
-  final Color? fill;
-  final LinearGradient? gradient;
-  final double? itemSpacing;
-  final BorderRadius? borderRadius;
-  final Border? border;
-  final List<BoxShadow>? boxShadow;
-  final TextStyle? textStyle;
-  final double? opacity;
-
-  const CompositionToken({
-    this.padding,
-    this.size,
-    this.fill,
-    this.gradient,
-    this.itemSpacing,
-    this.borderRadius,
-    this.border,
-    this.boxShadow,
-    this.textStyle,
-    this.opacity,
-  });
-
-  CompositionToken copyWith({
-    EdgeInsets? padding,
-    Size? size,
-    Color? fill,
-    LinearGradient? gradient,
-    double? itemSpacing,
-    BorderRadius? borderRadius,
-    Border? border,
-    List<BoxShadow>? boxShadow,
-    TextStyle? textStyle,
-    double? opacity,
-  }) {
-    return CompositionToken(
-      padding: padding ?? this.padding,
-      size: size ?? this.size,
-      fill: fill ?? this.fill,
-      gradient: gradient ?? this.gradient,
-      itemSpacing: itemSpacing ?? this.itemSpacing,
-      borderRadius: borderRadius ?? this.borderRadius,
-      border: border ?? this.border,
-      boxShadow: boxShadow ?? this.boxShadow,
-      textStyle: textStyle ?? this.textStyle,
-      opacity: opacity ?? this.opacity,
-    );
-  }
-}
-
-class Composition extends StatelessWidget {
-  const Composition({
-    required this.token,
-    required this.axis,
-    required this.children,
-    this.mainAxisAlignment = MainAxisAlignment.start,
-    this.crossAxisAlignment = CrossAxisAlignment.center,
-    this.mainAxisSize = MainAxisSize.min,
-    super.key,
-  });
-
-  final CompositionToken token;
-  final Axis axis;
-  final MainAxisAlignment mainAxisAlignment;
-  final CrossAxisAlignment crossAxisAlignment;
-  final MainAxisSize mainAxisSize;
-  final List<Widget> children;
-
-  Widget get spacing {
-    if (axis == Axis.horizontal) {
-      return SizedBox(width: token.itemSpacing);
-    } else {
-      return SizedBox(height: token.itemSpacing);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    Widget child = Flex(
-      direction: axis,
-      mainAxisAlignment: mainAxisAlignment,
-      crossAxisAlignment: crossAxisAlignment,
-      mainAxisSize: mainAxisSize,
-      children:
-          token.itemSpacing != null ? children.separated(spacing) : children,
-    );
-
-    if (token.textStyle != null) {
-      child = DefaultTextStyle(
-        style: token.textStyle!,
-        child: child,
-      );
-    }
-
-    final container = Container(
-      decoration: BoxDecoration(
-        color: token.fill,
-        gradient: token.gradient,
-        borderRadius: token.borderRadius,
-        border: token.border,
-        boxShadow: token.boxShadow,
-      ),
-      padding: token.padding,
-      width: token.size?.width,
-      height: token.size?.height,
-      child: child,
-    );
-
-    if (token.opacity != null) {
-      return Opacity(
-        opacity: token.opacity!,
-        child: container,
-      );
-    }
-
-    return container;
-  }
-}
-
-extension WidgetListEx on List<Widget> {
-  List<Widget> separated(Widget separator) {
-    List<Widget> list = map((element) => <Widget>[element, separator])
-        .expand((e) => e)
-        .toList();
-    if (list.isNotEmpty) list = list..removeLast();
-    return list;
-  }
-}
-
-
 class DarkShadowTokens extends ShadowTokens {
   @override
   List<BoxShadow> get boxShadowDefault => const [
@@ -1118,24 +783,4 @@ class DarkShadowTokens extends ShadowTokens {
     color: Color(0x26000000),
   ),
 ];
-}
-
-
-class DarkBorderTokens extends BorderTokens {
-  
-}
-
-
-class DarkSizeTokens extends SizeTokens {
-  
-}
-
-
-class DarkGradientTokens extends GradientTokens {
-  
-}
-
-
-class DarkMaterialColorTokens extends MaterialColorTokens {
-  
 }

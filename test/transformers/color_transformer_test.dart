@@ -138,7 +138,7 @@ void main() {
     'Composition transformer inserts Composition widget and CompositionToken class',
     () {
       final transformer = CompositionTransformer();
-      final classes = transformer.classDeclaration(kDefaultThemeName);
+      final classes = transformer.extraDeclaration();
 
       expect(classes, contains('class Composition extends StatelessWidget'));
       expect(classes, contains('class CompositionToken'));
