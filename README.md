@@ -151,7 +151,7 @@ Tokens Studio supports modifying tokens. This package supports the following mod
 
 # Themes
 
--- TODO --
+This package supports generating multiple themes. By exposing a `ITokens` interface with the Tokens `InheritedWidget` you can easily switch between themes. See example for more details.
 
 # Composition support
 
