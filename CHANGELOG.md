@@ -1,6 +1,7 @@
 ## 0.1.1-alpha
 
 - Add helpers to convert CompositionToken to InputDecoration.
+- Make Composition widget an AnimatedContainer so theme changes are animated. (Can be disabled by passing in a Duration.zero)
 
 ## 0.1.0-alpha
 

@@ -237,9 +237,9 @@ You can use composition tokens as `InputDecoration` in `TextField` and `TextForm
 
 # Realised feature ideas
 
-- ✅ Generate MaterialColors when we have multiple color values and int base keys (100, 200, 300, 400)
-- ✅ Add an example that illustrates how to use the package (see `/example` folder and `/example/bin/update-tokens.sh`)
-- ✅ Figure out a way to convert tokens to InputDecorations or even an InputDecorationTheme.
+- ✅ **Generate MaterialColors** when we have multiple color values and int base keys (100, 200, 300, 400)
+- ✅ **Add an example** that illustrates how to use the package (see `/example` folder and `/example/bin/update-tokens.sh`)
+- ✅ Figure out a way to convert tokens to **InputDecorations** or even an InputDecorationTheme.
 
 # Ideas for contributing
 

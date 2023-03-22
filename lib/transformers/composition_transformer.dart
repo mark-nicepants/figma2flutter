@@ -327,6 +327,7 @@ class Composition extends StatelessWidget {
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.min,
+    this.duration = const Duration(milliseconds: 200),
     super.key,
   });
 
@@ -336,6 +337,7 @@ class Composition extends StatelessWidget {
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisSize mainAxisSize;
   final List<Widget> children;
+  final Duration duration;
 
   Widget get spacing {
     if (axis == Axis.horizontal) {
@@ -363,7 +365,8 @@ class Composition extends StatelessWidget {
       );
     }
 
-    final container = Container(
+    final container = AnimatedContainer(
+      duration: duration,
       decoration: BoxDecoration(
         color: token.fill,
         gradient: token.gradient,
