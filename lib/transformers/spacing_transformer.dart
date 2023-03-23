@@ -20,7 +20,7 @@ class SpacingTransformer extends SingleTokenTransformer {
 
     if (sizes.values.length == 1) {
       if (sizes.values[0].value == 0) {
-        return 'const EdgeInsets.zero';
+        return 'EdgeInsets.zero';
       }
 
       return 'const EdgeInsets.all(${sizes.values[0]})';
@@ -48,6 +48,6 @@ class SpacingTransformer extends SingleTokenTransformer {
           ')';
     }
 
-    return 'const EdgeInsets.none';
+    return 'EdgeInsets.zero';
   }
 }

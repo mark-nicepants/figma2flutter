@@ -27,15 +27,9 @@ void main() {
     }
   },
   "token1": {
-    "value": "\$token"
-  },
-  "token2": {
     "value": "{token}"
   },
-  "token3": {
-    "value": "\$group.token"
-  },
-  "token4": {
+  "token2": {
     "value": "{group.token}"
   }
 }''';
@@ -44,7 +38,7 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.themes.first.tokens.length, equals(6));
+    expect(parser.themes.first.tokens.length, equals(4));
     expect(parser.themes.first.tokens['token']?.type, equals('color'));
     expect(
       parser.themes.first.tokens['group.token']?.type,
@@ -52,9 +46,7 @@ void main() {
     );
 
     expect(parser.resolve('token1')?.type, equals('color'));
-    expect(parser.resolve('token2')?.type, equals('color'));
-    expect(parser.resolve('token3')?.type, equals('dimension'));
-    expect(parser.resolve('token4')?.type, equals('dimension'));
+    expect(parser.resolve('token2')?.type, equals('dimension'));
   });
 
   test('child references are properly resolved', () {

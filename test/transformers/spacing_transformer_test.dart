@@ -27,7 +27,7 @@ final input = '''
 		"type": "spacing"
 	},
 	"fourValues": {
-		"value": "16 8 16 8",
+		"value": "{pixelValue} 8 {pixelValue} 8",
 		"type": "spacing"
 	}
 }''';
@@ -78,7 +78,7 @@ void main() {
     expect(
       transformer.lines[5],
       contains(
-        'EdgeInsets get fourValues => const EdgeInsets.only(top: 16.0, right: 8.0, bottom: 16.0, left: 8.0);',
+        'EdgeInsets get fourValues => const EdgeInsets.only(top: 10.0, right: 8.0, bottom: 10.0, left: 8.0);',
       ),
     );
   });

@@ -9,12 +9,11 @@ void main() {
   });
 
   test('extension isReference', () {
-    expect('\$reference'.isTokenReference, isTrue);
+    expect('\$reference'.isTokenReference, isFalse);
     expect('{reference}'.isTokenReference, isTrue);
     expect('#reference'.isTokenReference, isFalse);
     expect('reference'.isTokenReference, isFalse);
 
-    expect('\$reference'.valueByRef, equals('reference'));
     expect('{reference}'.valueByRef, equals('reference'));
 
     expect(

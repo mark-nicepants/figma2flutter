@@ -30,10 +30,10 @@ class Processor {
   }
 
   List<Transformer> _loopProcess(
-    List<TransformerFactory> facotries,
+    List<TransformerFactory> factories,
     List<Token> tokens,
   ) {
-    final transformers = facotries.map((f) => f(tokens)).toList();
+    final transformers = factories.map((f) => f(tokens)).toList();
     for (final transformer in transformers) {
       for (final token in tokens) {
         _safeProcess(transformer, token);

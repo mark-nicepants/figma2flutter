@@ -59,23 +59,53 @@ class _Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Composition(
-      token: context.tokens.composition.cardComp.copyWith(
-        fill: context.tokens.color.bgDefault,
-        textStyle: context.tokens.textStyle.typographyBody.copyWith(
-          color: context.tokens.color.fgDefault,
-        ),
-      ),
-      axis: Axis.vertical,
-      children: const [
-        Text(
-          'Hello World',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
+    final tokens = context.tokens;
+
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 320),
+      child: Composition(
+        token: tokens.composition.cardComp.copyWith(
+          textStyle: tokens.textStyle.typographyBody.copyWith(
+            color: tokens.color.fgDefault,
           ),
         ),
-        Text('This is a composable widget based of a token'),
+        axis: Axis.vertical,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Enable 2FA',
+            style: tokens.textStyle.typographyH5Bold,
+          ),
+          Text(
+            'Two-factor authentication (2FA) is an identity and access management security method that requires two forms of identification to access resources and data.',
+            style: tokens.textStyle.typographyBody.copyWith(
+              color: tokens.color.fgMuted,
+            ),
+          ),
+          const _Button(label: 'Enable'),
+        ],
+      ),
+    );
+  }
+}
+
+class _Button extends StatelessWidget {
+  const _Button({required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Composition(
+      token: context.tokens.composition.buttonComp,
+      axis: Axis.horizontal,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            color: context.tokens.color.accentOnAccent,
+          ),
+        ),
       ],
     );
   }

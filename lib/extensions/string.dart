@@ -17,12 +17,13 @@ extension StringExtension on String {
 
   /// Returns true if the string is a reference to another token path without any extras
   bool get isTokenReference =>
-      startsWith('\$') || (startsWith('{') && endsWith('}'));
+      (startsWith('{') && endsWith('}')) &&
+      RegExp(r'{(.*?)}').allMatches(this).length == 1;
+
+  bool get hasTokenReferences => RegExp(r'{(.*?)}').allMatches(this).isNotEmpty;
 
   bool get isColorReference {
-    return !startsWith('\$') &&
-        !startsWith('{') &&
-        RegExp(r'{(.*?)}').firstMatch(this) != null;
+    return !startsWith('{') && RegExp(r'{(.*?)}').firstMatch(this) != null;
   }
 
   bool get isMathExpression {
@@ -34,10 +35,6 @@ extension StringExtension on String {
 
   /// Returns the path of a reference, so we can search for the token
   String get valueByRef {
-    if (startsWith('\$') == true) {
-      return substring(1);
-    }
-
     final match = RegExp(r'{(.*?)}').firstMatch(this)?.group(1);
     if (match != null) {
       return match;

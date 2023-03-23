@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:figma2flutter/config/args_parser.dart';
-import 'package:figma2flutter/config/options.dart';
 import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/generator.dart';
 import 'package:figma2flutter/models/token_theme.dart';
@@ -53,13 +52,13 @@ Future<void> main(List<String> arguments) async {
   final options = await ArgumentParser(arguments).parse();
 
   /// Get the input json file and output directory from the parsed arguments
-  final inputJson = options.getOption<String>(kInput).value;
-  final outputDir = options.getOption<String>(kOutput).value;
+  // final inputJson = options.getOption<String>(kInput).value;
+  // final outputDir = options.getOption<String>(kOutput).value;
 
   // To be able to debug the example app, uncomment the following lines and
   // comment the lines above. Then run main in debug mode.
-  // final inputJson = 'example/bin/example-themes.json';
-  // final outputDir = 'example/lib/generated';
+  final inputJson = 'example/bin/example-themes.json';
+  final outputDir = 'example/lib/generated';
 
   /// Parse the input json file and get all resolved tokens from the parser
   try {

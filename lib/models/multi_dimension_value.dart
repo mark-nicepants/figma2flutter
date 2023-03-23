@@ -10,7 +10,19 @@ class MultiDimensionValue {
 
   /// Parses the given [value] to a [MultiDimensionValue].
   factory MultiDimensionValue.parse(dynamic value) {
-    if (value == null || value is! String) {
+    if (value == null) {
+      return MultiDimensionValue._([]);
+    }
+
+    if (value is double) {
+      return MultiDimensionValue._([DimensionValue(value)]);
+    }
+
+    if (value is int) {
+      return MultiDimensionValue._([DimensionValue(value.toDouble())]);
+    }
+
+    if (value is! String) {
       return MultiDimensionValue._([]);
     }
 

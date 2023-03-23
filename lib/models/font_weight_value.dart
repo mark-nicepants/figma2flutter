@@ -35,7 +35,7 @@ class FontWeightValue {
       return FontWeightValue(intValue);
     } else if (value is String) {
       final fontWeight = _fontWeightMap.entries.firstWhereOrNull(
-        (entry) => entry.value.contains(value),
+        (entry) => entry.value.contains(value.toLowerCase()),
       );
       if (fontWeight != null) {
         return FontWeightValue(fontWeight.key);

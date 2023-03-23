@@ -240,10 +240,10 @@ You can use composition tokens as `InputDecoration` in `TextField` and `TextForm
 - ✅ **Generate MaterialColors** when we have multiple color values and int base keys (100, 200, 300, 400)
 - ✅ **Add an example** that illustrates how to use the package (see `/example` folder and `/example/bin/update-tokens.sh`)
 - ✅ Figure out a way to convert tokens to **InputDecorations** or even an InputDecorationTheme.
-
+- ✅ Add example json to the repo that makes it easy to start with the package and Figmas Tokens Studio plugin
+- 
 # Ideas for contributing
 
 - Generate a Theme.TextTheme with all tokens that match the [material3 spec](https://m3.material.io/styles/typography/type-scale-tokens#d74b73c2-ac5d-43c5-93b3-088a2f67723d). This would allow us to use the tokens as a theme for the whole app.
-- Add example json to the repo that makes it easy to start with the package and Figmas Tokens Studio plugin
 - Generate a view similar to the Figma plugin (sort of a tokens Gallery/Storybook)
 - Generate extensions for Gap to easily allow spacing tokens to be used as Gap (Tokens.spacing.small=4 => Gap.small => const Gap(4))

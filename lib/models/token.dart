@@ -53,8 +53,8 @@ class Token {
   }
 
   /// Check if the token is a reference to another token
-  bool get _isReference =>
-      value is String && (value as String).isTokenReference;
+  bool get _hasTokenReferences =>
+      value is String && (value as String).hasTokenReferences;
 
   /// Check if the token has an inner reference to a color
   bool get _hasColorReference =>
@@ -72,6 +72,7 @@ class Token {
   Token copyWith({
     String? path,
     String? variableName,
+    String? type,
     dynamic value,
     Map<String, dynamic>? extensions,
   }) {
@@ -81,7 +82,7 @@ class Token {
 
     return Token(
       name: name,
-      type: type,
+      type: type ?? this.type,
       value: value ?? this.value,
       path: path ?? this.path,
       extensions: extensions ?? this.extensions,
@@ -100,19 +101,50 @@ class Token {
       token = token._resolveMathExpression(tokenMap);
     }
 
-    if (token._isReference == true) {
-      token = tokenMap[token.valueByRef];
+    if (token._hasTokenReferences == true) {
+      if (token.valueAsString?.isTokenReference == true) {
+        final reference =
+            tokenMap[token.valueByRef]?.resolveAllReferences(tokenMap);
+        if (reference == null) {
+          throw ResolveTokenException(
+            'Reference not found for `${token.valueByRef}`',
+          );
+        }
 
-      if (token == null) {
-        throw ResolveTokenException(
-          'Resolving reference failed for token: $name',
+        token = token.copyWith(
+          value: reference.value,
+          type: type ?? reference.type,
+        );
+      } else {
+        var resolved = token.valueAsString!;
+        var match = RegExp(r'{(.*?)}').firstMatch(resolved);
+        String? type = this.type;
+        while (match != null) {
+          final reference =
+              tokenMap[match.group(1)]?.resolveAllReferences(tokenMap);
+          if (reference == null) {
+            throw ResolveTokenException(
+              'Reference not found for `${match.group(1)}`',
+            );
+          }
+
+          // If the type is not set yet, set it to the type of the first reference
+          type = type ?? reference.type;
+
+          resolved = resolved.replaceRange(
+            match.start,
+            match.end,
+            reference.value.toString(),
+          );
+
+          match = RegExp(r'{(.*?)}').firstMatch(resolved);
+        }
+
+        token = token.copyWith(
+          value: resolved,
+          type: type,
         );
       }
-
-      token = token.copyWith(
-        variableName: variableName,
-        extensions: extensions,
-      );
     }
 
     return token._resolveValueReferences(tokenMap);
