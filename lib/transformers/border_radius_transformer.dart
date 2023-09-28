@@ -22,7 +22,7 @@ class BorderRadiusTransformer extends SingleTokenTransformer {
 
     if (dimensions.values.length == 1) {
       if (dimensions.values[0].value == 0) {
-        return 'const BorderRadius.zero';
+        return 'BorderRadius.zero';
       }
 
       return 'BorderRadius.circular(${dimensions.values[0].value})';
