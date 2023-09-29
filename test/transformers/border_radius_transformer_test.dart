@@ -13,7 +13,7 @@ void main() {
     final transformer = BorderRadiusTransformer();
     expect(
       transformer.transform(token1),
-      equals('const BorderRadius.zero'),
+      equals('BorderRadius.zero'),
     );
     expect(
       transformer.transform(token2),
