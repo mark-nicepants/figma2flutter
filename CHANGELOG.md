@@ -1,3 +1,9 @@
+## 0.2.0-alpha
+
+- Upgrade dependencies
+- Fix bug in invalid const constructor usage on BorderRadius.zero
+- Fxied bug with not parsing the input and output arguments
+
 ## 0.1.1-alpha
 
 - Add helpers to convert CompositionToken to InputDecoration.
