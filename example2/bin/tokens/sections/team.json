@@ -1,0 +1,76 @@
+{
+  "section": {
+    "team": {
+      "container-overlay": {
+        "value": "{semantic.color.bg.subtle}",
+        "type": "color",
+        "description": "The section container has a separate background and overlay. You could use the overlay to add a gradient or opacity layer on top of your background color or image fill."
+      },
+      "container-bg-image": {
+        "value": "https://images.unsplash.com/photo-1600489329744-fcd1ea7920e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80",
+        "type": "asset",
+        "description": "Add an image address pointing to a public url"
+      },
+      "padding-x": {
+        "value": "{semantic.space-around.section.lg}",
+        "type": "spacing"
+      },
+      "padding-y": {
+        "value": "{semantic.space-around.section.sm}",
+        "type": "spacing"
+      },
+      "kicker-color": {
+        "value": "{semantic.color.fg.subtle}",
+        "type": "color"
+      },
+      "headline-color": {
+        "value": "{semantic.color.fg.default}",
+        "type": "color"
+      },
+      "body-color": {
+        "value": "{semantic.color.fg.subtle}",
+        "type": "color"
+      },
+      "space-between": {
+        "value": "{semantic.space-between.section.xxl}",
+        "type": "spacing"
+      },
+      "heading-block-space-between": {
+        "value": "{semantic.space-between.section.xxs}",
+        "type": "spacing"
+      },
+      "heading-space-between": {
+        "value": "{semantic.space-between.pattern.sm}",
+        "type": "spacing"
+      },
+      "block-space-between": {
+        "value": "{semantic.space-between.section.lg}",
+        "type": "spacing"
+      },
+      "row-space-between": {
+        "value": "{semantic.space-between.section.sm}",
+        "type": "spacing"
+      },
+      "image-1": {
+        "value": "https://images.unsplash.com/photo-1625603564899-36c11aa97c76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80",
+        "type": "asset",
+        "description": "Add an image address pointing to a public url"
+      },
+      "image-2": {
+        "value": "https://images.unsplash.com/photo-1474557157379-8aa74a6ef541?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2592&q=80",
+        "type": "asset",
+        "description": "Add an image address pointing to a public url"
+      },
+      "image-3": {
+        "value": "https://images.unsplash.com/photo-1434332253042-50df2f9f7b39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+        "type": "asset",
+        "description": "Add an image address pointing to a public url"
+      },
+      "image-4": {
+        "value": "https://images.unsplash.com/photo-1532009877282-3340270e0529?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+        "type": "asset",
+        "description": "Add an image address pointing to a public url"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "list-item": {
+    "text-color": {
+      "value": "{semantic.color.fg.default}",
+      "type": "color"
+    },
+    "default": {
+      "label": {
+        "value": "{semantic.typography.small.regular}",
+        "type": "typography"
+      }
+    },
+    "featured": {
+      "label": {
+        "value": "{semantic.typography.small.bold}",
+        "type": "typography"
+      }
+    },
+    "icon-color": {
+      "value": "{semantic.color.accent.default}",
+      "type": "color"
+    },
+    "space-between": {
+      "value": "{semantic.space-between.comp.sm}",
+      "type": "spacing"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "section": {
+    "nav": {
+      "container-background-color": {
+        "value": "{semantic.color.bg.surface}",
+        "type": "color",
+        "description": "Every section container can have a unique background color or image. On top of the background a gradient or opactive layer can be applied. Use the container-overlay token to achieve this."
+      },
+      "padding-x": {
+        "value": "{semantic.space-around.section.xxs}",
+        "type": "spacing"
+      },
+      "padding-y": {
+        "value": "{semantic.space-around.section.xxs}",
+        "type": "spacing"
+      },
+      "action-space-between": {
+        "value": "{semantic.space-between.section.xxs}",
+        "type": "spacing"
+      },
+      "logo-menu-space-between": {
+        "value": "{semantic.space-between.section.xl}",
+        "type": "spacing"
+      },
+      "logo": {
+        "text-color": {
+          "value": "{semantic.color.fg.default}",
+          "type": "color"
+        },
+        "text-size": {
+          "value": "{semantic.fontSize.base}",
+          "type": "fontSizes"
+        },
+        "icon-color": {
+          "value": "{semantic.color.fg.default}",
+          "type": "color"
+        },
+        "icon-size": {
+          "value": "{semantic.size.section.sm}",
+          "type": "sizing"
+        },
+        "space-between": {
+          "value": "{semantic.space-between.comp.sm}",
+          "type": "spacing"
+        }
+      }
+    }
+  }
+}

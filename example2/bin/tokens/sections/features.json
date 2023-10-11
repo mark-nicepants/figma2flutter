@@ -1,0 +1,84 @@
+{
+  "section": {
+    "features": {
+      "container-overlay": {
+        "value": "{semantic.color.bg.surface}",
+        "type": "color",
+        "description": "The section container has a separate background and overlay. You could use the overlay to add a gradient or opacity layer on top of your background color or image fill."
+      },
+      "container-bg-image": {
+        "value": "https://images.unsplash.com/photo-1600489329744-fcd1ea7920e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80",
+        "type": "asset",
+        "description": "Add an image address pointing to a public url"
+      },
+      "padding-x": {
+        "value": "{semantic.space-around.section.lg}",
+        "type": "spacing"
+      },
+      "padding-y": {
+        "value": "{semantic.space-around.section.md}",
+        "type": "spacing"
+      },
+      "kicker-color": {
+        "value": "{semantic.color.fg.subtle}",
+        "type": "color"
+      },
+      "headline-color": {
+        "value": "{semantic.color.fg.default}",
+        "type": "color"
+      },
+      "body-color": {
+        "value": "{semantic.color.fg.subtle}",
+        "type": "color"
+      },
+      "feature-text-color": {
+        "value": "{semantic.color.fg.muted}",
+        "type": "color"
+      },
+      "feature-heading-color": {
+        "value": "{semantic.color.fg.default}",
+        "type": "color"
+      },
+      "space-between": {
+        "value": "{semantic.space-between.section.xxl}",
+        "type": "spacing"
+      },
+      "heading-block-space-between": {
+        "value": "{semantic.space-between.section.xxs}",
+        "type": "spacing"
+      },
+      "heading-space-between": {
+        "value": "{semantic.space-between.pattern.sm}",
+        "type": "spacing"
+      },
+      "block-space-between": {
+        "value": "{semantic.space-between.section.lg}",
+        "type": "spacing"
+      },
+      "row-space-between": {
+        "value": "{semantic.space-between.section.lg}",
+        "type": "spacing"
+      },
+      "icon-1": {
+        "value": "f6ed",
+        "type": "icon",
+        "description": "hippo"
+      },
+      "icon-2": {
+        "value": "f0e9",
+        "type": "icon",
+        "description": "umbrella"
+      },
+      "icon-3": {
+        "value": "f52d",
+        "type": "icon",
+        "description": "feather"
+      },
+      "icon-4": {
+        "value": "f06d",
+        "type": "icon",
+        "description": "fire"
+      }
+    }
+  }
+}

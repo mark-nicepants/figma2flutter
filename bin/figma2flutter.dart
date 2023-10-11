@@ -19,6 +19,7 @@ import 'package:figma2flutter/transformers/size_transformer.dart';
 import 'package:figma2flutter/transformers/spacing_transformer.dart';
 import 'package:figma2flutter/transformers/typography_transformer.dart';
 import 'package:figma2flutter/utils/sets_and_themes.dart';
+import 'package:path/path.dart';
 
 /// Code for making terminal output foreground red
 const _red = '\x1b[033;0;31m';
@@ -53,8 +54,18 @@ Future<void> main(List<String> arguments) async {
   final options = await ArgumentParser(arguments).parse();
 
   /// Get the input json file and output directory from the parsed arguments
-  final inputJson = options.getOption<String>(kInput).value;
+  final inputFileLocation = options.getOption<String>(kInput).value;
   final outputDir = options.getOption<String>(kOutput).value;
+
+  // Should remove the defaults because you get weird errors for data you didn't know about
+  if (inputFileLocation.isEmpty) {
+    _print('Missing parameter -i input file');
+    exit(-1);
+  }
+  if (outputDir.isEmpty) {
+    _print('Missing parameter -o output directory');
+    exit(-1);
+  }
 
   // To be able to debug the example app, uncomment the following lines and
   // comment the lines above. Then run main in debug mode.
@@ -63,7 +74,12 @@ Future<void> main(List<String> arguments) async {
 
   /// Parse the input json file and get all resolved tokens from the parser
   try {
-    final themes = _parseInput(inputJson);
+    List<TokenTheme> themes;
+    if (FileSystemEntity.isDirectorySync(inputFileLocation)) {
+      themes = _parseFromFileSet(inputFileLocation);
+    } else {
+      themes = _parseInputFromFile(inputFileLocation);
+    }
 
     /// Print the number of tokens found to the terminal output
     _print('Found ${themes.length} themes, generating code', _green);
@@ -112,16 +128,82 @@ List<TokenTheme> _processTokens(List<TokenTheme> themes) {
   return processor.themes;
 }
 
+/// Creates a single JSON strcture from the contents of $metadata.json
+Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
+  // each element of the token set is in this map keyed by the file name ish
+
+  Map<String, dynamic> mergedTokenSet = {};
+
+  final metadataContents = json.decode(
+    File('$inputFileLocation/\$metadata.json').readAsStringSync(),
+  );
+  List<dynamic> metadataTokenSetOrder =
+      metadataContents['tokenSetOrder'] as List<dynamic>;
+  _print('tokenSetOrder is $metadataTokenSetOrder');
+  mergedTokenSet['\$metadata'] = <String, dynamic>{};
+  mergedTokenSet['\$metadata']['tokenSetOrder'] =
+      metadataTokenSetOrder.map((path) => basename(path.toString())).toList();
+
+  _print('mergedTokenSet has entries: ${mergedTokenSet.keys.toList()}');
+  _print(
+      'mergedTokenSet.\$metadata has entries: ${mergedTokenSet["\$metadata"]}');
+  _print(
+      'mergedTokenSet.\$metadata.tokenSetOrder has entries: ${mergedTokenSet["\$metadata"]["tokenSetOrder"]}');
+
+  // This is a list of theme objects.
+  final themesContents = json.decode(
+    File('$inputFileLocation/\$themes.json').readAsStringSync(),
+  );
+  mergedTokenSet['\$themes'] = themesContents;
+  // loop across the themes  we have to remove pathing
+  for (dynamic oneTheme in (mergedTokenSet['\$themes'] as List<dynamic>)) {
+    // create a new map so we don't have concurrent modificatin
+    Map<String, dynamic> massagedSelectedTokenSets = {};
+    for (var oneSet
+        in (oneTheme['selectedTokenSets'] as Map<String, dynamic>).entries) {
+      massagedSelectedTokenSets[basename(oneSet.key)] = oneSet.value;
+    }
+    oneTheme['selectedTokenSets'] = massagedSelectedTokenSets;
+    _print('massaged tokens: $massagedSelectedTokenSets');
+  }
+
+  // Now iterate across the "tokenSetOrder" in the $metadata file
+  for (var onePath in metadataContents['tokenSetOrder'] as List<dynamic>) {
+    var fullPath = '$inputFileLocation/$onePath.json';
+    Map<String, dynamic> contents =
+        jsonDecode(File(fullPath).readAsStringSync()) as Map<String, dynamic>;
+    mergedTokenSet[basename(onePath as String)] = contents;
+    _print('added ${basename(onePath)} sub keys: ${contents.keys}');
+  }
+  return mergedTokenSet;
+}
+
+/// Parses the input from the files in $metadata.json and returns list of resolved tokens
+List<TokenTheme> _parseFromFileSet(String inputFileLocation) {
+  Map<String, dynamic> inputJson =
+      _arrangeJsonFilesBySection(inputFileLocation);
+  final themes = _parseInputJson(inputJson);
+  return themes;
+}
+
 /// Parses the input json file and returns a list of resolved tokens
-List<TokenTheme> _parseInput(String inputJson) {
+List<TokenTheme> _parseInputFromFile(String inputJsonLocation) {
   final input = json.decode(
-    File(inputJson).readAsStringSync(),
+    File(inputJsonLocation).readAsStringSync(),
   ) as Map<String, dynamic>;
+  return _parseInputJson(input);
+}
 
-  final setOrder = getSetsFromJson(input);
-  final themes = getThemesFromJson(input);
+/// Accepts input json loaded from somewhere and returns list of resolved tokens
+List<TokenTheme> _parseInputJson(Map<String, dynamic> inputJson) {
+  final setOrder = getSetsFromJson(inputJson);
+  final themes = getThemesFromJson(inputJson);
 
-  final parser = TokenParser(setOrder, themes)..parse(input);
+  _print('inputJson:  ${inputJson.keys}');
+  _print('setOrder: $setOrder');
+  _print('themes: $themes');
+
+  final parser = TokenParser(setOrder, themes)..parse(inputJson);
 
   return parser.themes;
 }

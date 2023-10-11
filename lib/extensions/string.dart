@@ -23,7 +23,10 @@ extension StringExtension on String {
   bool get hasTokenReferences => RegExp(r'{(.*?)}').allMatches(this).isNotEmpty;
 
   bool get isColorReference {
-    return !startsWith('{') && RegExp(r'{(.*?)}').firstMatch(this) != null;
+    bool isColor =
+        !startsWith('{') && RegExp(r'{(.*?)}').firstMatch(this) != null;
+    print('looking at $this to see if it is a color - $isColor');
+    return isColor;
   }
 
   bool get isMathExpression {

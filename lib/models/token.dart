@@ -272,6 +272,11 @@ class Token {
 
     return copyWith(value: solved);
   }
+
+  @override
+  String toString() {
+    return ('{"value": $value, "type": "$type", "path": "$path", "name": "$name", "variableName": "$variableName" }\n');
+  }
 }
 
 String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
@@ -288,7 +293,7 @@ String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
     final color = ColorValue.maybeParse(reference.value);
     if (color == null) {
       throw ResolveTokenException(
-        'Could not parse color for `${reference.value}`',
+        'Could not parse color for `${reference.value}` originating from `${match.group(1)}`',
       );
     }
 

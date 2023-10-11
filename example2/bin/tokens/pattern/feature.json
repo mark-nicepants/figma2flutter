@@ -1,0 +1,46 @@
+{
+  "pattern": {
+    "feature": {
+      "space-between": {
+        "value": "{semantic.space-between.pattern.lg}",
+        "type": "spacing"
+      },
+      "content-space-between": {
+        "value": "{semantic.space-between.pattern.sm}",
+        "type": "spacing"
+      },
+      "icon": {
+        "border-radius": {
+          "value": "{semantic.comp.border-radius}",
+          "type": "borderRadius"
+        },
+        "background-color": {
+          "value": "{semantic.color.accent.default}",
+          "type": "color"
+        }
+      },
+      "icon-color": {
+        "value": "{semantic.color.fg.on-accent}",
+        "type": "color"
+      },
+      "size": {
+        "icon-background": {
+          "value": "{semantic.size.pattern.md}",
+          "type": "sizing"
+        },
+        "icon": {
+          "value": "{semantic.fontSize.xl}",
+          "type": "fontSizes"
+        }
+      },
+      "heading": {
+        "value": "{semantic.typography.body.semi-bold}",
+        "type": "typography"
+      },
+      "text": {
+        "value": "{semantic.typography.small.regular}",
+        "type": "typography"
+      }
+    }
+  }
+}

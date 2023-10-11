@@ -39,7 +39,9 @@ class TokenTheme {
     try {
       return token.resolveAllReferences(tokens);
     } catch (e) {
-      throw ResolveTokenException(key);
+      // print(
+      //     '"$key" defined as ${tokens[key]} not resolved in token tree $tokens');
+      throw ResolveTokenException('$key - Originating $e');
     }
   }
 
