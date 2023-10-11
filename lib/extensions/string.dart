@@ -23,9 +23,11 @@ extension StringExtension on String {
   bool get hasTokenReferences => RegExp(r'{(.*?)}').allMatches(this).isNotEmpty;
 
   bool get isColorReference {
+    // what is this really used for.  It says #123456 isn't a color
+    // this should probably only be done at the token level
     bool isColor =
         !startsWith('{') && RegExp(r'{(.*?)}').firstMatch(this) != null;
-    print('looking at $this to see if it is a color - $isColor');
+    print('looked at $this to see if it is a color - $isColor');
     return isColor;
   }
 

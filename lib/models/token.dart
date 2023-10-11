@@ -58,7 +58,10 @@ class Token {
 
   /// Check if the token has an inner reference to a color
   bool get _hasColorReference =>
-      value is String && (value as String).isColorReference;
+      type != null &&
+      type?.toLowerCase() == 'color' &&
+      value is String &&
+      (value as String).isColorReference;
 
   bool get _hasMathExpression =>
       value is String && (value as String).isMathExpression;

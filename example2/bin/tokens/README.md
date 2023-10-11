@@ -5,23 +5,23 @@ These files from actually had "special" characters that are scrubbed which break
 
 ```json
       "slate": {
-        "0-deg-": {
+        "0-deg-↑": {
           "value": "linear-gradient(0deg, #475569 0%, #94a3b8 100%)",
           "type": "color"
         },
-        "45-deg-": {
+        "45-deg-↗": {
           "value": "linear-gradient(45deg, #475569 0%, #94a3b8 100%)",
           "type": "color"
         },
-        "90-deg-": {
+        "90-deg-→": {
           "value": "linear-gradient(90deg, #475569 0%, #94a3b8 100%)",
           "type": "color"
         },
-        "180-deg-": {
+        "180-deg-↓": {
           "value": "linear-gradient(180deg, #475569 0%, #94a3b8 100%)",
           "type": "color"
         },
-        "225-deg-": {
+        "225-deg-↙": {
           "value": "linear-gradient(225deg, #475569 0%, #94a3b8 100%)",
           "type": "color"
         },

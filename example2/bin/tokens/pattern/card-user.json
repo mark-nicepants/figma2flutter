@@ -42,7 +42,7 @@
         "type": "spacing"
       },
       "image-overlay": {
-        "value": "{color.gradient.overlay.dark.180-deg-}",
+        "value": "{color.gradient.overlay.dark.180-deg}",
         "type": "color"
       },
       "name-color": {
