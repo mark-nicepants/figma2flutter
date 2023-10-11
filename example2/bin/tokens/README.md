@@ -53,4 +53,14 @@ These files had leading underscores for names.  The program fails to handle thos
         "value": "roundTo({semantic.fontSize._base} * {semantic.fontSize._scale}^3, 0)"
       },
     }
+
+```
+
+Remove spaces from `$themes.json`  `names`.  This is becaue the theme name becomes a class name.  The alternative is to remove spaces and camel case.
+
+```json
+  {
+    "id": "3302a6ab13541c7c09e7a82868ef83ef0e4e27d3",
+    "name": "default - dark",
+  }
 ```
