@@ -144,11 +144,11 @@ Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
   mergedTokenSet['\$metadata']['tokenSetOrder'] =
       metadataTokenSetOrder.map((path) => basename(path.toString())).toList();
 
-  _print('mergedTokenSet has entries: ${mergedTokenSet.keys.toList()}');
-  _print(
-      'mergedTokenSet.\$metadata has entries: ${mergedTokenSet["\$metadata"]}');
-  _print(
-      'mergedTokenSet.\$metadata.tokenSetOrder has entries: ${mergedTokenSet["\$metadata"]["tokenSetOrder"]}');
+  // _print('mergedTokenSet has entries: ${mergedTokenSet.keys.toList()}');
+  // _print(
+  //     'mergedTokenSet.\$metadata has entries: ${mergedTokenSet["\$metadata"]}');
+  // _print(
+  //     'mergedTokenSet.\$metadata.tokenSetOrder has entries: ${mergedTokenSet["\$metadata"]["tokenSetOrder"]}');
 
   // This is a list of theme objects.
   final themesContents = json.decode(

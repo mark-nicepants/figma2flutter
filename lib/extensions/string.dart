@@ -27,7 +27,7 @@ extension StringExtension on String {
     // this should probably only be done at the token level
     bool isColor =
         !startsWith('{') && RegExp(r'{(.*?)}').firstMatch(this) != null;
-    print('looked at $this to see if it is a color - $isColor');
+    // print('looked at $this to see if it is a color - $isColor');
     return isColor;
   }
 
