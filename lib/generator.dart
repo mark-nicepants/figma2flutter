@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:figma2flutter/extensions/string.dart';
 import 'package:figma2flutter/models/token_theme.dart';
+import 'package:recase/recase.dart';
 
 const _genWarning = '''
 /// GENERATED CODE - DO NOT MODIFY BY HAND
@@ -63,7 +63,7 @@ abstract class ITokens {
       }
 
       final tokenClass = '''
-class ${theme.name.capitalize}Tokens extends ITokens {
+class ${theme.name.pascalCase}Tokens extends ITokens {
   ${properties.join('\n  ')}
 }''';
 

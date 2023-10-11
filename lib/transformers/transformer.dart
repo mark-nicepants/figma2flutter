@@ -1,6 +1,6 @@
-import 'package:figma2flutter/extensions/string.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:meta/meta.dart';
+import 'package:recase/recase.dart';
 
 /// A transformer is responsible for transforming a token into code
 /// that can be used in the generated code.
@@ -26,7 +26,7 @@ abstract class Transformer {
 
   // Returns the code that will be generated for the property declaration
   String propertyDeclaration(String theme) {
-    return '@override\n  $className get $name => ${theme.capitalize}$className();';
+    return '@override\n  $className get $name => ${theme.pascalCase}$className();';
   }
 
   void process(Token token);
@@ -34,7 +34,7 @@ abstract class Transformer {
   // Returns the class that is generated for this transformer including all processed tokens
   String classDeclaration(String theme) {
     return '''
-class ${theme.capitalize}$className extends $className {
+class ${theme.pascalCase}$className extends $className {
   ${lines.join('\n  ')}
 }
 ''';

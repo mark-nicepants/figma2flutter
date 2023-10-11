@@ -40,7 +40,7 @@ void main() {
         'token uno',
         'token group.token dos',
         'token group.nested token group.token tres',
-        'token group.nested token group.Token cuatro'
+        'token group.nested token group.Token cuatro',
       ]),
     );
   });

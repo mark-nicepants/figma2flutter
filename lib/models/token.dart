@@ -4,6 +4,7 @@ import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/extensions/string.dart';
 import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/models/dimension_value.dart';
+import 'package:recase/recase.dart';
 
 /// A [Token] represents a single token in the json file.
 /// It holds the value, the type, the path and the name of the token and it
@@ -317,5 +318,5 @@ String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
 // Path + name with all dots removed and in camelCase
 String _getVariableName(String path, String name) {
   final parts = path.split('.').where((e) => e.isNotEmpty).toList()..add(name);
-  return parts.join(' ').camelCased;
+  return parts.join(' ').camelCase;
 }

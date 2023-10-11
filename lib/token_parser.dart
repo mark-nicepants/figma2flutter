@@ -93,7 +93,7 @@ class TokenParser {
       );
 
       return {
-        [path, name].where((e) => e.isNotEmpty).join('.'): token
+        [path, name].where((e) => e.isNotEmpty).join('.'): token,
       };
     }
 
