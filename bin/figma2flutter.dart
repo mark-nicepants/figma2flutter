@@ -128,12 +128,16 @@ List<TokenTheme> _processTokens(List<TokenTheme> themes) {
   return processor.themes;
 }
 
-/// Creates a single JSON strcture from the contents of $metadata.json
+/// Loads all the design token info into a single structure resulting in
+/// something that looks like it would if it was all in one file
+///
+/// Creates a single JSON strcture from the driven by the $metadata.json
+/// Add the $metadata.json and $themes.json
 Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
   // each element of the token set is in this map keyed by the file name ish
-
   Map<String, dynamic> mergedTokenSet = {};
 
+  // load the metadata contents and massage the paths to be map paths
   final metadataContents = json.decode(
     File('$inputFileLocation/\$metadata.json').readAsStringSync(),
   );
@@ -150,7 +154,7 @@ Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
   // _print(
   //     'mergedTokenSet.\$metadata.tokenSetOrder has entries: ${mergedTokenSet["\$metadata"]["tokenSetOrder"]}');
 
-  // This is a list of theme objects.
+  // Load the themes and msassage the paths to the  contents to be map paths
   final themesContents = json.decode(
     File('$inputFileLocation/\$themes.json').readAsStringSync(),
   );
@@ -167,7 +171,8 @@ Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
     _print('massaged tokens: $massagedSelectedTokenSets');
   }
 
-  // Now iterate across the "tokenSetOrder" in the $metadata file
+  // Iterate across the "tokenSetOrder" in the $metadata file and
+  // load the json files into their own sections in the map
   for (var onePath in metadataContents['tokenSetOrder'] as List<dynamic>) {
     var fullPath = '$inputFileLocation/$onePath.json';
     Map<String, dynamic> contents =
