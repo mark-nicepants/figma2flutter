@@ -36,31 +36,8 @@ These files from actually had "special" characters that are scrubbed which break
       },
 ```
 
-## Remove leading underscores in labels.
-These files had leading underscores for names.  The program fails to handle those. Ex: `_base` and `_scale`
-
-```json
-   "fontSize": {
-      "_base": {
-        "type": "fontSizes",
-        "value": "16"
-      },
-      "_scale": {
-        "type": "fontSizes",
-        "value": "1.2"
-      },
-      "10xl": {
-        "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.9xl} * {semantic.fontSize._scale}, 0)"
-      },
-      "2xl": {
-        "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize._base} * {semantic.fontSize._scale}^3, 0)"
-      },
-    }
-
-```
 # Remove all non !/-* math operators
+Remove all function calls inside the values in the json.  Function calls are not supported at this time.
 
 Remove the `roundTo` and `^` operators and the associated parenthesis.
 
@@ -78,7 +55,7 @@ Remove the `roundTo` and `^` operators and the associated parenthesis.
 
 
 ## Remove spaces from theme names.
-Remove spaces from `$themes.json`  `names`.  This is becaue the theme name becomes a class name.  The alternative is to remove spaces and camel case.
+Remove spaces from  `names` fields in `$themes.json` .  This is becaue the theme name becomes a class name.  The alternative is to remove spaces and camel case.
 
 ```json
   {

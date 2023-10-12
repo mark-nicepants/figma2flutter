@@ -470,7 +470,7 @@
         },
         "text-size": {
           "type": "fontSizes",
-          "value": "{semantic.fontSize.base}"
+          "value": "{semantic.fontSize._base}"
         }
       },
       "logo-menu-space-between": {
@@ -830,71 +830,71 @@
     "fontSize": {
       "10xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.9xl} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize.9xl} * {semantic.fontSize._scale}"
       },
       "2xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "3xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "4xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "5xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "6xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "7xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "8xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "9xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
-      "base": {
+      "_base": {
         "type": "fontSizes",
         "value": "16"
       },
-      "scale": {
+      "_scale": {
         "type": "fontSizes",
         "value": "1.2"
       },
       "lg": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "md": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base}*{semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base}*{semantic.fontSize._scale}"
       },
       "sm": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} / {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} / {semantic.fontSize._scale}"
       },
       "xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "xs": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} / {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} / {semantic.fontSize._scale}"
       },
       "xxs": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} / {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} / {semantic.fontSize._scale}"
       }
     },
     "fontWeights": {

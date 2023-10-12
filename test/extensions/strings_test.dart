@@ -1,11 +1,12 @@
+import 'package:recase/recase.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 import 'package:figma2flutter/extensions/string.dart';
 
 void main() {
   test('extension camelCase', () {
-    expect('Hey world'.camelCased, equals('heyWorld'));
-    expect('Hey.world'.camelCased, equals('heyWorld'));
+    expect('Hey world'.camelCase, equals('heyWorld'));
+    expect('Hey.world'.camelCase, equals('heyWorld'));
   });
 
   test('extension isReference', () {

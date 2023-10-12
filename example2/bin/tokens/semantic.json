@@ -245,72 +245,72 @@
       }
     },
     "fontSize": {
-      "base": {
+      "_base": {
         "type": "fontSizes",
         "value": "16"
       },
-      "scale": {
+      "_scale": {
         "type": "fontSizes",
         "value": "1.2"
       },
       "10xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.9xl} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize.9xl} * {semantic.fontSize._scale}"
       },
       "2xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "3xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "4xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "5xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "6xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "7xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "8xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "9xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "lg": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "sm": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} / {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} / {semantic.fontSize._scale}"
       },
       "xl": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
       },
       "xs": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} / {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} / {semantic.fontSize._scale}"
       },
       "xxs": {
         "type": "fontSizes",
-        "value": "{semantic.fontSize.base} / {semantic.fontSize.scale}"
+        "value": "{semantic.fontSize._base} / {semantic.fontSize._scale}"
       },
       "md": {
-        "value": "{semantic.fontSize.base}*{semantic.fontSize.scale}",
+        "value": "{semantic.fontSize._base}*{semantic.fontSize._scale}",
         "type": "fontSizes"
       }
     },
@@ -712,7 +712,7 @@
             "fontFamily": "{semantic.fontFamilies.body}",
             "fontWeight": "{semantic.fontWeights.body.bold}",
             "lineHeight": "{semantic.lineHeights.body.default}",
-            "fontSize": "{semantic.fontSize.base}",
+            "fontSize": "{semantic.fontSize._base}",
             "letterSpacing": "{semantic.letterSpacing.body}",
             "paragraphSpacing": "{semantic.paragraphSpacing.default}",
             "textCase": "{semantic.textCase.none}",
@@ -725,7 +725,7 @@
             "fontFamily": "{semantic.fontFamilies.body}",
             "fontWeight": "{semantic.fontWeights.body.regular}",
             "lineHeight": "{semantic.lineHeights.body.default}",
-            "fontSize": "{semantic.fontSize.base}",
+            "fontSize": "{semantic.fontSize._base}",
             "letterSpacing": "{semantic.letterSpacing.body}",
             "paragraphSpacing": "{semantic.paragraphSpacing.default}",
             "textCase": "{semantic.textCase.none}",
@@ -766,7 +766,7 @@
             "fontFamily": "{semantic.fontFamilies.body}",
             "fontWeight": "{semantic.fontWeights.body.semi-bold}",
             "lineHeight": "{semantic.lineHeights.body.default}",
-            "fontSize": "{semantic.fontSize.base}",
+            "fontSize": "{semantic.fontSize._base}",
             "letterSpacing": "{semantic.letterSpacing.captions}",
             "paragraphSpacing": "{semantic.paragraphSpacing.default}",
             "textDecoration": "{semantic.textDecoration.captions}",
@@ -866,7 +866,7 @@
               "fontFamily": "{semantic.fontFamilies.body}",
               "fontWeight": "{semantic.fontWeights.body.bold}",
               "lineHeight": "{semantic.lineHeights.body.default}",
-              "fontSize": "{semantic.fontSize.base}",
+              "fontSize": "{semantic.fontSize._base}",
               "letterSpacing": "{semantic.letterSpacing.buttons}",
               "paragraphSpacing": "{semantic.paragraphSpacing.default}",
               "textCase": "{semantic.textCase.buttons}",
@@ -879,7 +879,7 @@
               "fontFamily": "{semantic.fontFamilies.body}",
               "fontWeight": "{semantic.fontWeights.body.regular}",
               "lineHeight": "{semantic.lineHeights.body.default}",
-              "fontSize": "{semantic.fontSize.base}",
+              "fontSize": "{semantic.fontSize._base}",
               "letterSpacing": "{semantic.letterSpacing.buttons}",
               "paragraphSpacing": "{semantic.paragraphSpacing.default}",
               "textCase": "{semantic.textCase.buttons}",
@@ -924,7 +924,7 @@
               "fontFamily": "{semantic.fontFamilies.body}",
               "fontWeight": "{semantic.fontWeights.body.bold}",
               "lineHeight": "{semantic.lineHeights.body.default}",
-              "fontSize": "{semantic.fontSize.base}",
+              "fontSize": "{semantic.fontSize._base}",
               "letterSpacing": "{semantic.letterSpacing.body}",
               "paragraphSpacing": "{semantic.paragraphSpacing.default}",
               "textCase": "{semantic.textCase.none}",
@@ -937,7 +937,7 @@
               "fontFamily": "{semantic.fontFamilies.body}",
               "fontWeight": "{semantic.fontWeights.body.regular}",
               "lineHeight": "{semantic.lineHeights.body.default}",
-              "fontSize": "{semantic.fontSize.base}",
+              "fontSize": "{semantic.fontSize._base}",
               "letterSpacing": "{semantic.letterSpacing.body}",
               "paragraphSpacing": "{semantic.paragraphSpacing.default}",
               "textCase": "{semantic.textCase.none}",
