@@ -1,6 +1,10 @@
 These figma files were generated using https://tokenzengarden.design/explore/e70c7218-8978-4254-967f-4e119219ce5c
 
-## Manual changes
+# Manual changes
+
+The following manual changes were applied to the files to make them work with the current parsers.
+
+## Remove special charfacters in labels
 These files from actually had "special" characters that are scrubbed which breaks the variable resolution. I've removed all the special characters.  See "arrow" in the labels in the json sample below
 
 ```json
@@ -32,6 +36,7 @@ These files from actually had "special" characters that are scrubbed which break
       },
 ```
 
+## Remove leading underscores in labels.
 These files had leading underscores for names.  The program fails to handle those. Ex: `_base` and `_scale`
 
 ```json
@@ -55,7 +60,24 @@ These files had leading underscores for names.  The program fails to handle thos
     }
 
 ```
+# Remove all non !/-* math operators
 
+Remove the `roundTo` and `^` operators and the associated parenthesis.
+
+```json
+    "fontSize": {
+      "10xl": {
+        "type": "fontSizes",
+        "value": "roundTo({semantic.fontSize.9xl} * {semantic.fontSize.scale}, 0)"
+      },
+      "2xl": {
+        "type": "fontSizes",
+        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^3, 0)"
+      },
+```
+
+
+## Remove spaces from theme names.
 Remove spaces from `$themes.json`  `names`.  This is becaue the theme name becomes a class name.  The alternative is to remove spaces and camel case.
 
 ```json

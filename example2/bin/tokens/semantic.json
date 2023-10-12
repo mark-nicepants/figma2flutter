@@ -255,62 +255,62 @@
       },
       "10xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.9xl} * {semantic.fontSize.scale}, 0)"
+        "value": "{semantic.fontSize.9xl} * {semantic.fontSize.scale}"
       },
       "2xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^3, 0)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "3xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^4)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "4xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^5, 0)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "5xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^6, 0)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "6xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^7, 0)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "7xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^8, 0)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "8xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^9, 0)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "9xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^10, 0)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "lg": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}, 0)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "sm": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} / {semantic.fontSize.scale}, 0)"
+        "value": "{semantic.fontSize.base} / {semantic.fontSize.scale}"
       },
       "xl": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} * {semantic.fontSize.scale}^2)"
+        "value": "{semantic.fontSize.base} * {semantic.fontSize.scale}"
       },
       "xs": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} / {semantic.fontSize.scale}^2, 0)"
+        "value": "{semantic.fontSize.base} / {semantic.fontSize.scale}"
       },
       "xxs": {
         "type": "fontSizes",
-        "value": "roundTo({semantic.fontSize.base} / {semantic.fontSize.scale}^3, 0)"
+        "value": "{semantic.fontSize.base} / {semantic.fontSize.scale}"
       },
       "md": {
-        "value": "{semantic.fontSize.base}*{semantic.fontSize.scale}^0",
+        "value": "{semantic.fontSize.base}*{semantic.fontSize.scale}",
         "type": "fontSizes"
       }
     },

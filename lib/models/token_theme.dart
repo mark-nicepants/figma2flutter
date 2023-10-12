@@ -41,7 +41,8 @@ class TokenTheme {
     } catch (e, stacktrace) {
       print('Originating exception stacktrace:\n$stacktrace');
       throw ResolveTokenException(
-          '`$key` defined as `${tokens[key]}` - Originating $e');
+        '`$key` defined as `${tokens[key]}` - Originating $e',
+      );
     }
   }
 
