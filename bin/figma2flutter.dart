@@ -76,8 +76,14 @@ Future<void> main(List<String> arguments) async {
   try {
     List<TokenTheme> themes;
     if (FileSystemEntity.isDirectorySync(inputFileLocation)) {
+      _print(
+          'Loading `\$metadata`, `\$themes` and design token files from $inputFileLocation',
+          _green);
+      _print(''); // New line
       themes = _parseFromFileSet(inputFileLocation);
     } else {
+      _print('Loading design tokens from $inputFileLocation', _green);
+      _print(''); // New line
       themes = _parseInputFromFile(inputFileLocation);
     }
 
@@ -143,7 +149,7 @@ Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
   );
   List<dynamic> metadataTokenSetOrder =
       metadataContents['tokenSetOrder'] as List<dynamic>;
-  _print('tokenSetOrder is $metadataTokenSetOrder');
+  //_print('tokenSetOrder is $metadataTokenSetOrder');
   mergedTokenSet['\$metadata'] = <String, dynamic>{};
   mergedTokenSet['\$metadata']['tokenSetOrder'] =
       metadataTokenSetOrder.map((path) => basename(path.toString())).toList();
@@ -168,7 +174,7 @@ Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
       massagedSelectedTokenSets[basename(oneSet.key)] = oneSet.value;
     }
     oneTheme['selectedTokenSets'] = massagedSelectedTokenSets;
-    _print('massaged tokens: $massagedSelectedTokenSets');
+    //_print('massaged tokens in selectedTokenSets: $massagedSelectedTokenSets');
   }
 
   // Iterate across the "tokenSetOrder" in the $metadata file and
@@ -178,7 +184,7 @@ Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
     Map<String, dynamic> contents =
         jsonDecode(File(fullPath).readAsStringSync()) as Map<String, dynamic>;
     mergedTokenSet[basename(onePath as String)] = contents;
-    _print('added ${basename(onePath)} sub keys: ${contents.keys}');
+    //print('added ${basename(onePath)} sub keys: ${contents.keys}');
   }
   return mergedTokenSet;
 }
@@ -204,9 +210,9 @@ List<TokenTheme> _parseInputJson(Map<String, dynamic> inputJson) {
   final setOrder = getSetsFromJson(inputJson);
   final themes = getThemesFromJson(inputJson);
 
-  _print('inputJson:  ${inputJson.keys}');
-  _print('setOrder: $setOrder');
-  _print('themes: $themes');
+  // _print('inputJson:  ${inputJson.keys}');
+  // _print('setOrder: $setOrder');
+  // _print('themes: $themes');
 
   final parser = TokenParser(setOrder, themes)..parse(inputJson);
 

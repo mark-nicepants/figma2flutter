@@ -279,12 +279,12 @@ class Token {
     } else if (isSubtract) {
       solved = left.value - right.value;
     }
-    // This fails if a `roundTo() exists should throw.
-    if (solved.isNaN) {
-      print('solved to `$solved` for $this');
-    } else if (solved == 0.0) {
-      print('solved to `0.0` for $this');
-    }
+    // Fails if function like `roundTo(). Should throw. Note: NaN if division.
+    // if (solved.isNaN) {
+    //   print('solved to `$solved` for $this');
+    // } else if (solved == 0.0) {
+    //   print('solved to `0.0` for $this');
+    // }
 
     return copyWith(value: solved);
   }
