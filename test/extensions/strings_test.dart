@@ -21,4 +21,14 @@ void main() {
     final test = '[DSDocumentation]BodyTitle2';
     expect(test.alphanumeric, 'DSDocumentationBodyTitle2');
   });
+
+  test('extension alphanumeric spaces', () {
+    final test = 'default - dark';
+    expect(test.alphanumeric, 'default - dark');
+  });
+
+  test('extension alphanumeric arrows', () {
+    final test = '180-deg-↓';
+    expect(test.alphanumeric, '180deg');
+  });
 }

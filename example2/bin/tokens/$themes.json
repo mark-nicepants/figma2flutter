@@ -1,7 +1,7 @@
 [
   {
     "id": "7347fd90e502aaece9e7cf40f79f188b93485a2a",
-    "name": "light",
+    "name": "default - light",
     "selectedTokenSets": {
       "global": "enabled",
       "semantic": "enabled",
@@ -26,7 +26,7 @@
   },
   {
     "id": "3302a6ab13541c7c09e7a82868ef83ef0e4e27d3",
-    "name": "dark",
+    "name": "default - dark",
     "selectedTokenSets": {
       "global": "enabled",
       "semantic": "enabled",

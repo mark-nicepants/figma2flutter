@@ -834,24 +834,24 @@ abstract class GradientTokens {
   LinearGradient get patternCardUserImageOverlay;
 }
 
-class LightTokens extends ITokens {
+class DefaultLightTokens extends ITokens {
   @override
-  ColorTokens get color => LightColorTokens();
+  ColorTokens get color => DefaultLightColorTokens();
   @override
-  SpacingTokens get spacing => LightSpacingTokens();
+  SpacingTokens get spacing => DefaultLightSpacingTokens();
   @override
-  TextStyleTokens get textStyle => LightTextStyleTokens();
+  TextStyleTokens get textStyle => DefaultLightTextStyleTokens();
   @override
-  RadiiTokens get radii => LightRadiiTokens();
+  RadiiTokens get radii => DefaultLightRadiiTokens();
   @override
-  ShadowTokens get shadow => LightShadowTokens();
+  ShadowTokens get shadow => DefaultLightShadowTokens();
   @override
-  SizeTokens get size => LightSizeTokens();
+  SizeTokens get size => DefaultLightSizeTokens();
   @override
-  GradientTokens get gradient => LightGradientTokens();
+  GradientTokens get gradient => DefaultLightGradientTokens();
 }
 
-class LightColorTokens extends ColorTokens {
+class DefaultLightColorTokens extends ColorTokens {
   @override
   Color get colorBlack => const Color(0xFF131313);
   @override
@@ -1665,7 +1665,7 @@ class LightColorTokens extends ColorTokens {
 }
 
 
-class LightSpacingTokens extends SpacingTokens {
+class DefaultLightSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get space25 => const EdgeInsets.all(2.0);
   @override
@@ -1867,7 +1867,7 @@ class LightSpacingTokens extends SpacingTokens {
 }
 
 
-class LightTextStyleTokens extends TextStyleTokens {
+class DefaultLightTextStyleTokens extends TextStyleTokens {
   @override
   TextStyle get semanticTypographyColossusBold => const TextStyle(
   fontFamily: 'Inter',
@@ -2332,7 +2332,7 @@ class LightTextStyleTokens extends TextStyleTokens {
 }
 
 
-class LightRadiiTokens extends RadiiTokens {
+class DefaultLightRadiiTokens extends RadiiTokens {
   @override
   BorderRadius get radii50 => BorderRadius.circular(4.0);
   @override
@@ -2384,7 +2384,7 @@ class LightRadiiTokens extends RadiiTokens {
 }
 
 
-class LightShadowTokens extends ShadowTokens {
+class DefaultLightShadowTokens extends ShadowTokens {
   @override
   List<BoxShadow> get shadowPrimary100 => const [
   BoxShadow(
@@ -2604,7 +2604,7 @@ class LightShadowTokens extends ShadowTokens {
 }
 
 
-class LightSizeTokens extends SizeTokens {
+class DefaultLightSizeTokens extends SizeTokens {
   @override
   Size get size0 => const Size(0.0, 0.0);
   @override
@@ -2718,7 +2718,7 @@ class LightSizeTokens extends SizeTokens {
 }
 
 
-class LightGradientTokens extends GradientTokens {
+class DefaultLightGradientTokens extends GradientTokens {
   @override
   LinearGradient get colorGradientSlate0Deg => const LinearGradient(
   colors: [Color(0xFF475569), Color(0xFF94A3B8),],
@@ -3818,24 +3818,24 @@ class LightGradientTokens extends GradientTokens {
 }
 
 
-class DarkTokens extends ITokens {
+class DefaultDarkTokens extends ITokens {
   @override
-  ColorTokens get color => DarkColorTokens();
+  ColorTokens get color => DefaultDarkColorTokens();
   @override
-  SpacingTokens get spacing => DarkSpacingTokens();
+  SpacingTokens get spacing => DefaultDarkSpacingTokens();
   @override
-  TextStyleTokens get textStyle => DarkTextStyleTokens();
+  TextStyleTokens get textStyle => DefaultDarkTextStyleTokens();
   @override
-  RadiiTokens get radii => DarkRadiiTokens();
+  RadiiTokens get radii => DefaultDarkRadiiTokens();
   @override
-  ShadowTokens get shadow => DarkShadowTokens();
+  ShadowTokens get shadow => DefaultDarkShadowTokens();
   @override
-  SizeTokens get size => DarkSizeTokens();
+  SizeTokens get size => DefaultDarkSizeTokens();
   @override
-  GradientTokens get gradient => DarkGradientTokens();
+  GradientTokens get gradient => DefaultDarkGradientTokens();
 }
 
-class DarkColorTokens extends ColorTokens {
+class DefaultDarkColorTokens extends ColorTokens {
   @override
   Color get colorBlack => const Color(0xFF131313);
   @override
@@ -4649,7 +4649,7 @@ class DarkColorTokens extends ColorTokens {
 }
 
 
-class DarkSpacingTokens extends SpacingTokens {
+class DefaultDarkSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get space25 => const EdgeInsets.all(2.0);
   @override
@@ -4851,7 +4851,7 @@ class DarkSpacingTokens extends SpacingTokens {
 }
 
 
-class DarkTextStyleTokens extends TextStyleTokens {
+class DefaultDarkTextStyleTokens extends TextStyleTokens {
   @override
   TextStyle get semanticTypographyColossusBold => const TextStyle(
   fontFamily: 'Inter',
@@ -5316,7 +5316,7 @@ class DarkTextStyleTokens extends TextStyleTokens {
 }
 
 
-class DarkRadiiTokens extends RadiiTokens {
+class DefaultDarkRadiiTokens extends RadiiTokens {
   @override
   BorderRadius get radii50 => BorderRadius.circular(4.0);
   @override
@@ -5368,7 +5368,7 @@ class DarkRadiiTokens extends RadiiTokens {
 }
 
 
-class DarkShadowTokens extends ShadowTokens {
+class DefaultDarkShadowTokens extends ShadowTokens {
   @override
   List<BoxShadow> get shadowPrimary100 => const [
   BoxShadow(
@@ -5588,7 +5588,7 @@ class DarkShadowTokens extends ShadowTokens {
 }
 
 
-class DarkSizeTokens extends SizeTokens {
+class DefaultDarkSizeTokens extends SizeTokens {
   @override
   Size get size0 => const Size(0.0, 0.0);
   @override
@@ -5702,7 +5702,7 @@ class DarkSizeTokens extends SizeTokens {
 }
 
 
-class DarkGradientTokens extends GradientTokens {
+class DefaultDarkGradientTokens extends GradientTokens {
   @override
   LinearGradient get colorGradientSlate0Deg => const LinearGradient(
   colors: [Color(0xFF475569), Color(0xFF94A3B8),],

@@ -5,7 +5,7 @@ These figma files were generated using https://tokenzengarden.design/explore/e70
 The following manual changes were applied to the files to make them work with the current parsers.
 
 ## Remove special charfacters in labels
-These files from actually had "special" characters that are scrubbed which breaks the variable resolution. I've removed all the special characters.  See "arrow" in the labels in the json sample below
+These files from actually had "special" characters that are scrubbed which breaks the variable resolution. I've removed all the special characters.  See _arrows_ in the labels in the json sample below `↑↗→`, etc.
 
 ```json
       "slate": {
@@ -53,13 +53,3 @@ Remove the `roundTo` and `^` operators and the associated parenthesis.
       },
 ```
 
-
-## Remove spaces from theme names.
-Remove spaces from  `names` fields in `$themes.json` .  This is becaue the theme name becomes a class name.  The alternative is to remove spaces and camel case.
-
-```json
-  {
-    "id": "3302a6ab13541c7c09e7a82868ef83ef0e4e27d3",
-    "name": "default - dark",
-  }
-```
