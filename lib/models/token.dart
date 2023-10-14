@@ -213,7 +213,10 @@ class Token {
       if (value is Map<String, dynamic>) {
         resolved[key] = _resolvedValue(value, tokenMap);
       } else if (value is String && value.isColorReference) {
-        resolved[key] = _resolveColorValue(value, tokenMap);
+        final color = _resolveColorValue(value, tokenMap);
+        if (color != null) {
+          resolved[key] = color;
+        }
       } else if (value is String && value.isTokenReference) {
         final refKey = value.valueByRef;
         resolved[key] = tokenMap[refKey]?.resolveAllReferences(tokenMap).value;
@@ -230,8 +233,11 @@ class Token {
   // token as the value of this token. See [references_test.dart:145] for
   // an example. Eg: rgba({brand.500}, 0.5) => rgba(255, 255, 255, 0.5)
   Token _resolveColorReferences(Map<String, Token> tokenMap) {
-    String value = _resolveColorValue(valueAsString!, tokenMap);
-    return copyWith(value: value);
+    final value = _resolveColorValue(valueAsString!, tokenMap);
+    if (value != null) {
+      return copyWith(value: value);
+    }
+    return this;
   }
 
   Token _resolveMathExpression(Map<String, Token> tokenMap) {
@@ -289,7 +295,7 @@ class Token {
   }
 }
 
-String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
+String? _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
   var value = initialValue;
   var match = RegExp(r'{(.*?)}').firstMatch(initialValue);
   while (match != null) {
@@ -302,9 +308,10 @@ String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
 
     final color = ColorValue.maybeParse(reference.value);
     if (color == null) {
-      throw ResolveTokenException(
-        'Could not parse color for `${reference.value}` originating from `${match.group(1)}`',
-      );
+      return null;
+      // throw ResolveTokenException(
+      //   'Could not parse color for `${reference.value}` originating from `${match.group(1)}`',
+      // );
     }
 
     // Check if is inside a rgba() function
