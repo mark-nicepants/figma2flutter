@@ -10,6 +10,7 @@ import 'package:figma2flutter/transformers/transformer.dart';
 // Hex: #ff0000
 // RGB: rgb(255, 0, 0)
 // RGBA: rgba(255, 0, 0, 1)
+// HSL: hsl(120, 50%, 50%)
 // HSLA: hsla(120, 50%, 50%, 1)
 // By default, a token references a Solid Paint (single colors).
 //
@@ -27,7 +28,7 @@ class ColorTransformer extends SingleTokenTransformer {
       token.type == 'color' &&
       (token.valueAsString?.startsWith('#') == true ||
           token.valueAsString?.startsWith('rgb') == true ||
-          token.valueAsString?.startsWith('hsla') == true);
+          token.valueAsString?.startsWith('hsl') == true);
 
   @override
   String transform(Token token) {

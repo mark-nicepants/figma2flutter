@@ -66,8 +66,8 @@ class ColorValue {
       return _transformHex(value);
     } else if (value.startsWith('rgb')) {
       return _transformRgb(value);
-    } else if (value.startsWith('hsla')) {
-      return _transformHsla(value);
+    } else if (value.startsWith('hsl')) {
+      return _transformHsl(value);
     }
     return null;
   }
@@ -105,10 +105,11 @@ class ColorValue {
     return ColorValue._(r, g, b, a);
   }
 
-  /// Transforms a hsla color to a Flutter color
-  static ColorValue _transformHsla(String value) {
+  /// Transforms a hsl color to a Flutter color
+  static ColorValue _transformHsl(String value) {
+    final hasAlpha = value.startsWith('hsla');
     final hsl = value
-        .substring(5, value.length - 1)
+        .substring(hasAlpha ? 5 : 4, value.length - 1)
         .split(',')
         .map((e) => e.trim())
         .toList();
