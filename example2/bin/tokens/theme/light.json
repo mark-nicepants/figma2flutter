@@ -131,7 +131,7 @@
       },
       "image-overlay": {
         "type": "color",
-        "value": "{color.gradient.overlay.dark.180-deg}"
+        "value": "{color.gradient.overlay.dark.180-deg-↓}"
       },
       "name-color": {
         "type": "color",
