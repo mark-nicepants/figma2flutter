@@ -1,4 +1,13 @@
+import 'package:recase/recase.dart';
+
 extension StringExtension on String {
+  String get alphanumeric {
+    // Match all non alphanumeric characters and replace them with a space
+    final pattern = RegExp(r'[^a-zA-Z0-9]');
+    final result = replaceAll(pattern, ' ');
+    return result.pascalCase;
+  }
+
   /// Returns true if the string is a reference to another token path without any extras
   bool get isTokenReference =>
       (startsWith('{') && endsWith('}')) &&

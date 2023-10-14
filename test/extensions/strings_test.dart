@@ -16,4 +16,9 @@ void main() {
       throwsA(const TypeMatcher<Exception>()),
     );
   });
+
+  test('extension alphanumeric', () {
+    final test = '[DSDocumentation]BodyTitle2';
+    expect(test.alphanumeric, 'DSDocumentationBodyTitle2');
+  });
 }

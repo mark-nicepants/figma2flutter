@@ -338,6 +338,11 @@ String? _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
 
 // Path + name with all dots removed and in camelCase
 String _getVariableName(String path, String name) {
-  final parts = path.split('.').where((e) => e.isNotEmpty).toList()..add(name);
+  final parts = path
+      .split('.')
+      .where((e) => e.isNotEmpty)
+      .map((e) => e.alphanumeric)
+      .toList()
+    ..add(name);
   return parts.join(' ').camelCase;
 }
