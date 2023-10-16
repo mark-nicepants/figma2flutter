@@ -1,0 +1,63 @@
+{
+    "$metadata": {
+        "tokenSetOrder": [
+            "global",
+            "light",
+            "dark"
+        ]
+    },
+    "$themes": [
+        {
+            "id": "7347fd90e502aaece9e7cf40f79f188b93485a2a",
+            "name": "light",
+            "selectedTokenSets": {
+                "global": "enabled",
+                "light": "enabled",
+                "dark": "disabled"
+            },
+            "$figmaStyleReferences": {}
+        },
+        {
+            "id": "3302a6ab13541c7c09e7a82868ef83ef0e4e27d3",
+            "name": "dark",
+            "selectedTokenSets": {
+                "global": "enabled",
+                "light": "enabled",
+                "dark": "enabled"
+            },
+            "$figmaStyleReferences": {}
+        }
+    ],
+    "global": {
+        "colors": {
+            "white": {
+                "value": "#FFFFFF",
+                "type": "color"
+            },
+            "black": {
+                "value": "#000000",
+                "type": "color"
+            }
+        }
+    },
+    "light": {
+        "background": {
+            "value": "{colors.white}",
+            "type": "color"
+        },
+        "text": {
+            "value": "{colors.black}",
+            "type": "color"
+        }
+    },
+    "dark": {
+        "background": {
+            "value": "{colors.black}",
+            "type": "color"
+        },
+        "text": {
+            "value": "{colors.white}",
+            "type": "color"
+        }
+    }
+}

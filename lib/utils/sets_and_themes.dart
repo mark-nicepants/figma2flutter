@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:figma2flutter/models/token_theme.dart';
 import 'package:path/path.dart';
 
@@ -59,4 +62,41 @@ Map<String, dynamic> metadataAsSection(Map<String, dynamic> metadataContents) {
   //     'massagedMetadata.\$metadata.tokenSetOrder has entries: ${massagedMetadata["\$metadata"]["tokenSetOrder"]}');
 
   return massagedMetadata;
+}
+
+/// Loads all the design token info into a single structure resulting in
+/// something that looks like it would if it was all in one file
+///
+/// Creates a single JSON strcture from the driven by the $metadata.json
+/// Adds the $metadata.json and $themes.json with pathing adjusted to in-memory
+Map<String, dynamic> arrangeJsonFilesBySection(String tokenFileDirectory) {
+  // each element of the token set is in this map keyed by the file name ish
+  Map<String, dynamic> mergedTokenSet = {};
+
+  // load the metadata contents and massage the paths to be map paths
+  final metadataContents = json.decode(
+    File('$tokenFileDirectory/\$metadata.json').readAsStringSync(),
+  );
+  mergedTokenSet['\$metadata'] =
+      metadataAsSection(metadataContents as Map<String, dynamic>);
+
+  // Load the themes and msassage the paths to the  contents to be map paths
+  final themesContents = json.decode(
+    File('$tokenFileDirectory/\$themes.json').readAsStringSync(),
+  );
+  mergedTokenSet['\$themes'] = themesAsSection(themesContents as List<dynamic>);
+
+  //_print('Merged metadata and themes: $mergedTokenSet');
+
+  // Iterate across the "tokenSetOrder" in the $metadata file and
+  // Has to be the original file locations because they include paths
+  // load the json files into their own sections in the map
+  for (var onePath in metadataContents['tokenSetOrder'] as List<dynamic>) {
+    var fullPath = '$tokenFileDirectory/$onePath.json';
+    Map<String, dynamic> contents =
+        jsonDecode(File(fullPath).readAsStringSync()) as Map<String, dynamic>;
+    mergedTokenSet[basename(onePath as String)] = contents;
+    //_print('added ${basename(onePath)} sub keys: ${contents.keys}');
+  }
+  return mergedTokenSet;
 }

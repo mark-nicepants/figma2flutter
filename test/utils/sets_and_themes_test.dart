@@ -1,9 +1,19 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:figma2flutter/utils/sets_and_themes.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('loadTokenSetFromFiles', () {
+    // CWD is the top of the repo tree
+    var loaded = arrangeJsonFilesBySection('test/token_files/input_1');
+    expect(loaded, isNotEmpty);
+    var expected = json.decode(
+        File('test/token_files/output_1/output.json').readAsStringSync());
+    expect(loaded, equals(expected));
+  });
+
   test('getSetsFromJson', () {
     final parsed = json.decode(singleDocInput) as Map<String, dynamic>;
     final sets = getSetsFromJson(parsed);

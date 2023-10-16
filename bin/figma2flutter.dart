@@ -134,47 +134,10 @@ List<TokenTheme> _processTokens(List<TokenTheme> themes) {
   return processor.themes;
 }
 
-/// Loads all the design token info into a single structure resulting in
-/// something that looks like it would if it was all in one file
-///
-/// Creates a single JSON strcture from the driven by the $metadata.json
-/// Adds the $metadata.json and $themes.json with pathing adjusted to in-memory
-Map<String, dynamic> _arrangeJsonFilesBySection(String tokenFileDirectory) {
-  // each element of the token set is in this map keyed by the file name ish
-  Map<String, dynamic> mergedTokenSet = {};
-
-  // load the metadata contents and massage the paths to be map paths
-  final metadataContents = json.decode(
-    File('$tokenFileDirectory/\$metadata.json').readAsStringSync(),
-  );
-  mergedTokenSet['\$metadata'] =
-      metadataAsSection(metadataContents as Map<String, dynamic>);
-
-  // Load the themes and msassage the paths to the  contents to be map paths
-  final themesContents = json.decode(
-    File('$tokenFileDirectory/\$themes.json').readAsStringSync(),
-  );
-  mergedTokenSet['\$themes'] = themesAsSection(themesContents as List<dynamic>);
-
-  //_print('Merged metadata and themes: $mergedTokenSet');
-
-  // Iterate across the "tokenSetOrder" in the $metadata file and
-  // Has to be the original file locations because they include paths
-  // load the json files into their own sections in the map
-  for (var onePath in metadataContents['tokenSetOrder'] as List<dynamic>) {
-    var fullPath = '$tokenFileDirectory/$onePath.json';
-    Map<String, dynamic> contents =
-        jsonDecode(File(fullPath).readAsStringSync()) as Map<String, dynamic>;
-    mergedTokenSet[basename(onePath as String)] = contents;
-    //_print('added ${basename(onePath)} sub keys: ${contents.keys}');
-  }
-  return mergedTokenSet;
-}
-
 /// Parses the input from the files in tokenFileDirectory and returns list of resolved tokens
 List<TokenTheme> _parseFromFileSet(String tokenFileDirectory) {
   Map<String, dynamic> inputJson =
-      _arrangeJsonFilesBySection(tokenFileDirectory);
+      arrangeJsonFilesBySection(tokenFileDirectory);
   final themes = _parseInputJson(inputJson);
   return themes;
 }
