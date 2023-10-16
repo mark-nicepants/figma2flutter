@@ -24,11 +24,11 @@ void main() {
 
   test('extension alphanumeric spaces', () {
     final test = 'default - dark';
-    expect(test.alphanumeric, 'default - dark');
+    expect(test.alphanumeric, 'DefaultDark');
   });
 
   test('extension alphanumeric arrows', () {
     final test = '180-deg-↓';
-    expect(test.alphanumeric, '180deg');
+    expect(test.alphanumeric, '180Deg');
   });
 }
