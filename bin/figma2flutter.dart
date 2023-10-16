@@ -139,30 +139,30 @@ List<TokenTheme> _processTokens(List<TokenTheme> themes) {
 ///
 /// Creates a single JSON strcture from the driven by the $metadata.json
 /// Adds the $metadata.json and $themes.json with pathing adjusted to in-memory
-Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
+Map<String, dynamic> _arrangeJsonFilesBySection(String tokenFileDirectory) {
   // each element of the token set is in this map keyed by the file name ish
   Map<String, dynamic> mergedTokenSet = {};
 
   // load the metadata contents and massage the paths to be map paths
   final metadataContents = json.decode(
-    File('$inputFileLocation/\$metadata.json').readAsStringSync(),
+    File('$tokenFileDirectory/\$metadata.json').readAsStringSync(),
   );
   mergedTokenSet['\$metadata'] =
       metadataAsSection(metadataContents as Map<String, dynamic>);
 
   // Load the themes and msassage the paths to the  contents to be map paths
   final themesContents = json.decode(
-    File('$inputFileLocation/\$themes.json').readAsStringSync(),
+    File('$tokenFileDirectory/\$themes.json').readAsStringSync(),
   );
   mergedTokenSet['\$themes'] = themesAsSection(themesContents as List<dynamic>);
 
-  print(mergedTokenSet);
+  //_print('Merged metadata and themes: $mergedTokenSet');
 
   // Iterate across the "tokenSetOrder" in the $metadata file and
   // Has to be the original file locations because they include paths
   // load the json files into their own sections in the map
   for (var onePath in metadataContents['tokenSetOrder'] as List<dynamic>) {
-    var fullPath = '$inputFileLocation/$onePath.json';
+    var fullPath = '$tokenFileDirectory/$onePath.json';
     Map<String, dynamic> contents =
         jsonDecode(File(fullPath).readAsStringSync()) as Map<String, dynamic>;
     mergedTokenSet[basename(onePath as String)] = contents;
@@ -171,10 +171,10 @@ Map<String, dynamic> _arrangeJsonFilesBySection(String inputFileLocation) {
   return mergedTokenSet;
 }
 
-/// Parses the input from the files in $metadata.json and returns list of resolved tokens
-List<TokenTheme> _parseFromFileSet(String inputFileLocation) {
+/// Parses the input from the files in tokenFileDirectory and returns list of resolved tokens
+List<TokenTheme> _parseFromFileSet(String tokenFileDirectory) {
   Map<String, dynamic> inputJson =
-      _arrangeJsonFilesBySection(inputFileLocation);
+      _arrangeJsonFilesBySection(tokenFileDirectory);
   final themes = _parseInputJson(inputJson);
   return themes;
 }

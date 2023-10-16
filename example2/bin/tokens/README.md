@@ -2,7 +2,8 @@ These figma files were generated using https://tokenzengarden.design/explore/e70
 
 # Manual changes
 
-The following manual changes were applied to the files to make them work with the current parsers.
+The following manual changes were applied to the files to make them work with the current math operation limitations.
+Math operations are limited to `+-*/` at this time.
 
 # Remove all non !/-* math operators
 Remove all function calls inside the values in the json.  Function calls are not supported at this time.
