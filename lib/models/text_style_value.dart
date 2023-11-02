@@ -23,15 +23,15 @@ class TextStyleValue {
 
     final fontFamily = FontFamilyValue.maybeParse(value['fontFamily']);
     final fontWeight = FontWeightValue.maybeParse(value['fontWeight']);
-    final lineHeight = DimensionValue.maybeParse(value['lineHeight']);
-    final fontSize = DimensionValue.maybeParse(value['fontSize']);
+    final sizeAndHeight = _FontSizeLineHeight(value);
+
     final letterSpacing = LetterSpacingValue.maybeParse(value['letterSpacing']);
 
     return TextStyleValue._(
       fontFamily: fontFamily,
       fontWeight: fontWeight,
-      lineHeight: lineHeight,
-      fontSize: fontSize,
+      lineHeight: sizeAndHeight.lineHeight,
+      fontSize: sizeAndHeight.fontSize,
       letterSpacing: letterSpacing,
     );
   }
@@ -51,5 +51,23 @@ class TextStyleValue {
     return '''const TextStyle(
   ${parts.join(',\n  ')},
 )''';
+  }
+}
+
+class _FontSizeLineHeight {
+  DimensionValue? fontSize;
+  DimensionValue? lineHeight;
+
+  _FontSizeLineHeight(dynamic value) {
+    final fontSize = DimensionValue.maybeParse(value['fontSize']);
+    final lineHeight = DimensionValue.maybeParse(value['lineHeight']);
+
+    this.lineHeight = lineHeight;
+    this.fontSize = fontSize;
+
+    // Used 8px as a reasonable possible pixel line height
+    if (lineHeight != null && lineHeight.value >= 8.0 && fontSize != null) {
+      this.lineHeight = DimensionValue(lineHeight.value / fontSize.value);
+    }
   }
 }
