@@ -4,6 +4,7 @@ import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/extensions/string.dart';
 import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/models/dimension_value.dart';
+import 'package:recase/recase.dart';
 
 /// A [Token] represents a single token in the json file.
 /// It holds the value, the type, the path and the name of the token and it
@@ -58,7 +59,10 @@ class Token {
 
   /// Check if the token has an inner reference to a color
   bool get _hasColorReference =>
-      value is String && (value as String).isColorReference;
+      type != null &&
+      type?.toLowerCase() == 'color' &&
+      value is String &&
+      (value as String).isColorReference;
 
   bool get _hasMathExpression =>
       value is String && (value as String).isMathExpression;
@@ -209,7 +213,10 @@ class Token {
       if (value is Map<String, dynamic>) {
         resolved[key] = _resolvedValue(value, tokenMap);
       } else if (value is String && value.isColorReference) {
-        resolved[key] = _resolveColorValue(value, tokenMap);
+        final color = _resolveColorValue(value, tokenMap);
+        if (color != null) {
+          resolved[key] = color;
+        }
       } else if (value is String && value.isTokenReference) {
         final refKey = value.valueByRef;
         resolved[key] = tokenMap[refKey]?.resolveAllReferences(tokenMap).value;
@@ -226,8 +233,11 @@ class Token {
   // token as the value of this token. See [references_test.dart:145] for
   // an example. Eg: rgba({brand.500}, 0.5) => rgba(255, 255, 255, 0.5)
   Token _resolveColorReferences(Map<String, Token> tokenMap) {
-    String value = _resolveColorValue(valueAsString!, tokenMap);
-    return copyWith(value: value);
+    final value = _resolveColorValue(valueAsString!, tokenMap);
+    if (value != null) {
+      return copyWith(value: value);
+    }
+    return this;
   }
 
   Token _resolveMathExpression(Map<String, Token> tokenMap) {
@@ -269,12 +279,23 @@ class Token {
     } else if (isSubtract) {
       solved = left.value - right.value;
     }
+    // Fails if function like `roundTo(). Should throw. Note: NaN if division.
+    // if (solved.isNaN) {
+    //   print('solved to `$solved` for $this');
+    // } else if (solved == 0.0) {
+    //   print('solved to `0.0` for $this');
+    // }
 
     return copyWith(value: solved);
   }
+
+  @override
+  String toString() {
+    return ('{"value": $value, "type": "$type", "path": "$path", "name": "$name", "variableName": "$variableName" }\n');
+  }
 }
 
-String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
+String? _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
   var value = initialValue;
   var match = RegExp(r'{(.*?)}').firstMatch(initialValue);
   while (match != null) {
@@ -287,9 +308,10 @@ String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
 
     final color = ColorValue.maybeParse(reference.value);
     if (color == null) {
-      throw ResolveTokenException(
-        'Could not parse color for `${reference.value}`',
-      );
+      return null;
+      // throw ResolveTokenException(
+      //   'Could not parse color for `${reference.value}` originating from `${match.group(1)}`',
+      // );
     }
 
     // Check if is inside a rgba() function
@@ -314,8 +336,14 @@ String _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
   return value;
 }
 
-// Path + name with all dots removed and in camelCase
+/// Makes variable name compatible with Dart name requireents
+/// Path + name with all dots, spaces, special chars removed and in camelCase
 String _getVariableName(String path, String name) {
-  final parts = path.split('.').where((e) => e.isNotEmpty).toList()..add(name);
-  return parts.join(' ').camelCased;
+  final parts = path
+      .split('.')
+      .where((e) => e.isNotEmpty)
+      .map((e) => e.alphanumeric)
+      .toList()
+    ..add(name.alphanumeric);
+  return parts.join(' ').camelCase;
 }

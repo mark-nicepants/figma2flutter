@@ -19,6 +19,7 @@ This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) jso
 - [Composition support](#composition-support)
   - [CompositionToken.toInputDecoration](#compositiontokentoinputdecoration)
   - [Token support for composition tokens](#token-support-for-composition-tokens)
+- [Examples](#examples)
 - [Realised feature ideas](#realised-feature-ideas)
 - [Ideas for contributing](#ideas-for-contributing)
 
@@ -31,22 +32,40 @@ This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) jso
 dart pub global activate figma2flutter
 ```
 
-## 2. Export 
+## 2. Export
 
 Export your tokens from Figma and save the json file in your project folder.
 
 You can do this manually or use the [Tokens Studio for Figma](https://docs.tokens.studio/) plugin to export your tokens directly into your repository.
 
 ## 3. Generate
+figma2flutter supports design token definitions made up of a single json file or defined as a folder of JSON files.
+
+### When using a single JSON design token file that contains $metadata, $theme and defintions
 Run the command in the root of your project
 ```bash
 figma2flutter --input <path_to_json_file> --output <path_to_output_folder>
 ```
 
 Default config values are:
-  
+
 ```bash
 --input: ./design/tokens.json
+--output: ./lib/assets/tokens/
+```
+
+### When using a folder of JSON design token files
+Multi-file support assumes that the input folder containing the JSON token files, a `$metadata` file, a `$themes` file.
+
+Run the command in the root of your project
+```bash
+figma2flutter --input <path_to_json_folder> --output <path_to_output_folder>
+```
+
+Default config values are:
+
+```bash
+--input: ./design/tokens
 --output: ./lib/assets/tokens/
 ```
 
@@ -91,7 +110,7 @@ Now you can use your tokens in your app! 🎉
 - ✅ [color](https://docs.tokens.studio/available-tokens/color-tokens)
   - ✅ [Solid](https://docs.tokens.studio/available-tokens/color-tokens#solid-colors) (output = Color)
     - ✅ hex
-    - ✅ rgb 
+    - ✅ rgb
     - ✅ rgba
     - ✅ hsla
   - ✅ [Gradients](https://docs.tokens.studio/available-tokens/color-tokens#gradients)
@@ -121,7 +140,7 @@ Now you can use your tokens in your app! 🎉
 - ✅ [border](https://docs.tokens.studio/available-tokens/border-tokens)
   - ✅ [borderWidth](https://docs.tokens.studio/available-tokens/border-width-tokens)
   - ✅ color
-  - ✅ style 
+  - ✅ style
     - ✅ solid
     - ~~dashed~~ (not supported but PRs's are welcome)
 
@@ -131,7 +150,7 @@ Tokens Studio supports math operations on tokens. This package supports the foll
 
 A math expression can be used to combine multiple tokens. For example: `{primary} + {tokens.secondary}` will result in a color that is the sum of the primary and secondary color. Each math operation needs to have atleast 1 token on the left side. The right side can be a token or a number. Eg `{primary} + 10` or `{primary} + {secondary}`.
 
-To be able to parse properly the math expression, the tokens need to be wrapped in `{}`. And the operation must be properly spaced to the left and to the right (e.g. ` + ` instead of `+ `). 
+To be able to parse properly the math expression, the tokens need to be wrapped in `{}`. And the operation must be properly spaced to the left and to the right (e.g. ` + ` instead of `+ `).
 
   - [math operations](https://docs.tokens.studio/tokens/using-math)
     - ✅ add
@@ -235,13 +254,19 @@ You can use composition tokens as `InputDecoration` in `TextField` and `TextForm
   - ✅ lineHeights
   - ✅ letterSpacing
 
+# Examples
+
+- ✅ **Example 1** A Flutter application whose styles and themes were generated from the design token JSON file in the example bin directory.  It includes the generated dart files.
+- ✅ **Example 2** A design token and generated code example that demonstrates generating themes from a _set_ of design token files including seperate `$metadata` and `$themes` files. No Flutter app is included. It includes the generated dart files.
+
+
 # Realised feature ideas
 
 - ✅ **Generate MaterialColors** when we have multiple color values and int base keys (100, 200, 300, 400)
 - ✅ **Add an example** that illustrates how to use the package (see `/example` folder and `/example/bin/update-tokens.sh`)
 - ✅ Figure out a way to convert tokens to **InputDecorations** or even an InputDecorationTheme.
 - ✅ Add example json to the repo that makes it easy to start with the package and Figmas Tokens Studio plugin
-- 
+-
 # Ideas for contributing
 
 - Generate a Theme.TextTheme with all tokens that match the [material3 spec](https://m3.material.io/styles/typography/type-scale-tokens#d74b73c2-ac5d-43c5-93b3-088a2f67723d). This would allow us to use the tokens as a theme for the whole app.

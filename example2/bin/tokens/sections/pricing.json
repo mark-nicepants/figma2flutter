@@ -1,0 +1,75 @@
+{
+  "section": {
+    "pricing": {
+      "container-overlay": {
+        "value": "{semantic.color.bg.surface}",
+        "type": "color",
+        "description": "The section container has a separate background and overlay. You could use the overlay to add a gradient or opacity layer on top of your background color or image fill."
+      },
+      "container-bg-image": {
+        "value": "https://images.unsplash.com/photo-1600489329744-fcd1ea7920e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80",
+        "type": "asset",
+        "description": "Add an image address pointing to a public url"
+      },
+      "kicker-color": {
+        "value": "{semantic.color.fg.subtle}",
+        "type": "color"
+      },
+      "headline-color": {
+        "value": "{semantic.color.fg.default}",
+        "type": "color"
+      },
+      "body-color": {
+        "value": "{semantic.color.fg.subtle}",
+        "type": "color"
+      },
+      "label-color": {
+        "value": "{semantic.color.fg.default}",
+        "type": "color"
+      },
+      "icon-color": {
+        "value": "{semantic.color.accent.default}",
+        "type": "color"
+      },
+      "padding-x": {
+        "value": "{semantic.space-around.section.lg}",
+        "type": "spacing"
+      },
+      "padding-y": {
+        "value": "{semantic.space-around.section.xxl}",
+        "type": "spacing"
+      },
+      "space-between": {
+        "value": "{semantic.space-between.section.lg}",
+        "type": "spacing"
+      },
+      "heading-block-space-between": {
+        "value": "{semantic.space-between.section.xxs}",
+        "type": "spacing"
+      },
+      "heading-space-between": {
+        "value": "{semantic.space-between.pattern.sm}",
+        "type": "spacing"
+      },
+      "block-space-between": {
+        "value": "{semantic.space-between.section.md}",
+        "type": "spacing"
+      },
+      "icon-1": {
+        "value": "f06b",
+        "type": "icon",
+        "description": "gift"
+      },
+      "icon-2": {
+        "value": "f06b",
+        "type": "icon",
+        "description": "gift"
+      },
+      "bullet": {
+        "value": "f058",
+        "type": "icon",
+        "description": "check-circle"
+      }
+    }
+  }
+}

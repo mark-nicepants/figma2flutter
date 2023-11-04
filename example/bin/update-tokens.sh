@@ -1,14 +1,12 @@
 #!/bin/bash
 
-# Fetch tokens from somewhere via wget of git clone
-# ---
-
 # Install (or update) figma2flutter dart package
-# Disabled, this project already has it locally in ../bin
 # pub global activate figma2flutter
+#
+# No need to install figma2flutter, this example project has it locally in ../bin
 
-# Run `figma2flutter` to generate Flutter content from given tokens
-# figma2flutter -o ./lib/ui/utils
+# Run `figma2flutter` to generate Flutter content from given token json files
+# The script assumes this is being run from the root of the `example`
 
 dart ../bin/figma2flutter.dart -i ./bin/example-themes.json -o ./lib/generated
 

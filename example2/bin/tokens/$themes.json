@@ -1,0 +1,52 @@
+[
+  {
+    "id": "7347fd90e502aaece9e7cf40f79f188b93485a2a",
+    "name": "default - light",
+    "selectedTokenSets": {
+      "global": "enabled",
+      "semantic": "enabled",
+      "comp/button": "enabled",
+      "comp/list-item": "enabled",
+      "comp/menu-item": "enabled",
+      "comp/toggle": "enabled",
+      "pattern/menu-bar": "enabled",
+      "pattern/feature": "enabled",
+      "pattern/card-user": "enabled",
+      "pattern/card-pricing": "enabled",
+      "sections/nav": "enabled",
+      "sections/hero": "enabled",
+      "sections/features": "enabled",
+      "sections/team": "enabled",
+      "sections/pricing": "enabled",
+      "sections/footer": "enabled",
+      "theme/light": "enabled",
+      "theme/dark": "disabled"
+    },
+    "$figmaStyleReferences": {}
+  },
+  {
+    "id": "3302a6ab13541c7c09e7a82868ef83ef0e4e27d3",
+    "name": "default - dark",
+    "selectedTokenSets": {
+      "global": "enabled",
+      "semantic": "enabled",
+      "comp/button": "enabled",
+      "comp/list-item": "enabled",
+      "comp/menu-item": "enabled",
+      "comp/toggle": "enabled",
+      "pattern/menu-bar": "enabled",
+      "pattern/feature": "enabled",
+      "pattern/card-user": "enabled",
+      "pattern/card-pricing": "enabled",
+      "sections/nav": "enabled",
+      "sections/hero": "enabled",
+      "sections/features": "enabled",
+      "sections/team": "enabled",
+      "sections/pricing": "enabled",
+      "sections/footer": "enabled",
+      "theme/light": "enabled",
+      "theme/dark": "enabled"
+    },
+    "$figmaStyleReferences": {}
+  }
+]

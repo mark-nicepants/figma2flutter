@@ -1,0 +1,10 @@
+{
+  "pattern": {
+    "menu-bar": {
+      "space-between": {
+        "value": "{semantic.space-between.pattern.lg}",
+        "type": "spacing"
+      }
+    }
+  }
+}

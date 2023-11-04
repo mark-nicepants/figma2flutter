@@ -19,6 +19,7 @@ import 'package:figma2flutter/transformers/size_transformer.dart';
 import 'package:figma2flutter/transformers/spacing_transformer.dart';
 import 'package:figma2flutter/transformers/typography_transformer.dart';
 import 'package:figma2flutter/utils/sets_and_themes.dart';
+import 'package:path/path.dart';
 
 /// Code for making terminal output foreground red
 const _red = '\x1b[033;0;31m';
@@ -53,8 +54,18 @@ Future<void> main(List<String> arguments) async {
   final options = await ArgumentParser(arguments).parse();
 
   /// Get the input json file and output directory from the parsed arguments
-  final inputJson = options.getOption<String>(kInput).value;
+  final inputFileLocation = options.getOption<String>(kInput).value;
   final outputDir = options.getOption<String>(kOutput).value;
+
+  // Should remove the defaults because you get weird errors for data you didn't know about
+  if (inputFileLocation.isEmpty) {
+    _print('Missing parameter -i input file');
+    exit(-1);
+  }
+  if (outputDir.isEmpty) {
+    _print('Missing parameter -o output directory');
+    exit(-1);
+  }
 
   // To be able to debug the example app, uncomment the following lines and
   // comment the lines above. Then run main in debug mode.
@@ -63,7 +74,18 @@ Future<void> main(List<String> arguments) async {
 
   /// Parse the input json file and get all resolved tokens from the parser
   try {
-    final themes = _parseInput(inputJson);
+    List<TokenTheme> themes;
+    if (FileSystemEntity.isDirectorySync(inputFileLocation)) {
+      _print(
+          'Loading `\$metadata`, `\$themes` and design token files from $inputFileLocation',
+          _green);
+      _print(''); // New line
+      themes = _parseFromFileSet(inputFileLocation);
+    } else {
+      _print('Loading design tokens from $inputFileLocation', _green);
+      _print(''); // New line
+      themes = _parseInputFromFile(inputFileLocation);
+    }
 
     /// Print the number of tokens found to the terminal output
     _print('Found ${themes.length} themes, generating code', _green);
@@ -112,16 +134,32 @@ List<TokenTheme> _processTokens(List<TokenTheme> themes) {
   return processor.themes;
 }
 
+/// Parses the input from the files in tokenFileDirectory and returns list of resolved tokens
+List<TokenTheme> _parseFromFileSet(String tokenFileDirectory) {
+  Map<String, dynamic> inputJson =
+      arrangeJsonFilesBySection(tokenFileDirectory);
+  final themes = _parseInputJson(inputJson);
+  return themes;
+}
+
 /// Parses the input json file and returns a list of resolved tokens
-List<TokenTheme> _parseInput(String inputJson) {
+List<TokenTheme> _parseInputFromFile(String inputJsonLocation) {
   final input = json.decode(
-    File(inputJson).readAsStringSync(),
+    File(inputJsonLocation).readAsStringSync(),
   ) as Map<String, dynamic>;
+  return _parseInputJson(input);
+}
 
-  final setOrder = getSetsFromJson(input);
-  final themes = getThemesFromJson(input);
+/// Accepts input json loaded from somewhere and returns list of resolved tokens
+List<TokenTheme> _parseInputJson(Map<String, dynamic> inputJson) {
+  final setOrder = getSetsFromJson(inputJson);
+  final themes = getThemesFromJson(inputJson);
 
-  final parser = TokenParser(setOrder, themes)..parse(input);
+  // _print('inputJson:  ${inputJson.keys}');
+  // _print('setOrder: $setOrder');
+  // _print('themes: $themes');
+
+  final parser = TokenParser(setOrder, themes)..parse(inputJson);
 
   return parser.themes;
 }

@@ -38,8 +38,11 @@ class TokenTheme {
 
     try {
       return token.resolveAllReferences(tokens);
-    } catch (e) {
-      throw ResolveTokenException(key);
+    } catch (e, stacktrace) {
+      print('Originating exception stacktrace:\n$stacktrace');
+      throw ResolveTokenException(
+        '`$key` defined as `${tokens[key]}` - Originating $e',
+      );
     }
   }
 

@@ -1,0 +1,78 @@
+{
+  "toggle": {
+    "unselected": {
+      "track": {
+        "background-color": {
+          "value": "{semantic.color.accent.disabled}",
+          "type": "color"
+        },
+        "border-color": {
+          "value": "{semantic.color.accent.disabled}",
+          "type": "color"
+        }
+      },
+      "handle": {
+        "background-color": {
+          "value": "{color.white}",
+          "type": "color"
+        },
+        "border-color": {
+          "value": "{color.white}",
+          "type": "color"
+        }
+      }
+    },
+    "selected": {
+      "track": {
+        "background-color": {
+          "value": "{semantic.color.accent.default}",
+          "type": "color"
+        },
+        "border-color": {
+          "value": "{semantic.color.accent.default}",
+          "type": "color"
+        }
+      },
+      "handle": {
+        "background-color": {
+          "value": "{color.white}",
+          "type": "color"
+        },
+        "border-color": {
+          "value": "{color.white}",
+          "type": "color"
+        }
+      }
+    },
+    "height": {
+      "track": {
+        "value": "{semantic.size.comp.md}",
+        "type": "sizing"
+      },
+      "handle": {
+        "value": "{semantic.size.comp.sm}",
+        "type": "sizing"
+      }
+    },
+    "width": {
+      "handle": {
+        "value": "{semantic.size.comp.sm}",
+        "type": "sizing"
+      },
+      "track": {
+        "value": "{semantic.size.comp.lg}",
+        "type": "sizing"
+      }
+    },
+    "border-radius": {
+      "track": {
+        "value": "{radii.400}",
+        "type": "borderRadius"
+      },
+      "handle": {
+        "value": "{radii.round}",
+        "type": "borderRadius"
+      }
+    }
+  }
+}

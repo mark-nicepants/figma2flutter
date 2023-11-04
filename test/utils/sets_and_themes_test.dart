@@ -1,18 +1,28 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:figma2flutter/utils/sets_and_themes.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('loadTokenSetFromFiles', () {
+    // CWD is the top of the repo tree
+    var loaded = arrangeJsonFilesBySection('test/token_files/input_1');
+    expect(loaded, isNotEmpty);
+    var expected = json.decode(
+        File('test/token_files/output_1/output.json').readAsStringSync());
+    expect(loaded, equals(expected));
+  });
+
   test('getSetsFromJson', () {
-    final parsed = json.decode(input) as Map<String, dynamic>;
+    final parsed = json.decode(singleDocInput) as Map<String, dynamic>;
     final sets = getSetsFromJson(parsed);
 
     expect(sets, equals(['core', 'light', 'dark', 'theme']));
   });
 
   test('getThemesFromJson', () {
-    final parsed = json.decode(input) as Map<String, dynamic>;
+    final parsed = json.decode(singleDocInput) as Map<String, dynamic>;
     final themes = getThemesFromJson(parsed);
 
     expect(themes.length, equals(2));
@@ -22,9 +32,25 @@ void main() {
     expect(themes[1].name, equals('dark'));
     expect(themes[1].sets, equals(['core', 'dark', 'theme']));
   });
+
+  test('manipulateMetadataFromFile', () {
+    final parsed = json.decode(standaloneMetadataInput) as Map<String, dynamic>;
+    final massaged = metadataAsSection(parsed);
+    final expectedResult = json.decode(standaloneMetadataOutput);
+
+    expect(massaged, equals(expectedResult));
+  });
+
+  test('manipulateThemesFromFile', () {
+    final parsed = json.decode(standaloneThemeInput) as List<dynamic>;
+    final massaged = themesAsSection(parsed);
+    final expectedResult = json.decode(standaloneThemeOutput);
+
+    expect(massaged, equals(expectedResult));
+  });
 }
 
-final input = '''
+final singleDocInput = '''
 {
  "\$themes": [
       {
@@ -75,4 +101,58 @@ final input = '''
       ]
     }
   }
+''';
+
+/// contents when in a file with pathing - taken from zengarden exmaple
+final standaloneMetadataInput = '''
+{
+  "tokenSetOrder": [
+    "global",
+    "semantic",
+    "comp/button",
+    "theme/light"
+  ]
+}''';
+
+final standaloneMetadataOutput = '''
+{
+  "tokenSetOrder": [
+    "global",
+    "semantic",
+    "button",
+    "light"
+  ]
+}''';
+
+/// contents when in a file with pathing - taken from zengarden example
+final standaloneThemeInput = '''
+[
+  {
+    "id": "7347fd90e502aaece9e7cf40f79f188b93485a2a",
+    "name": "default - light",
+    "selectedTokenSets": {
+      "global": "enabled",
+      "semantic": "enabled",
+      "comp/button": "enabled",
+      "theme/light": "enabled"
+    },
+    "\$figmaStyleReferences": {}
+  }
+]
+''';
+
+final standaloneThemeOutput = '''
+[
+  {
+    "id": "7347fd90e502aaece9e7cf40f79f188b93485a2a",
+    "name": "default - light",
+    "selectedTokenSets": {
+      "global": "enabled",
+      "semantic": "enabled",
+      "button": "enabled",
+      "light": "enabled"
+    },
+    "\$figmaStyleReferences": {}
+  }
+]
 ''';

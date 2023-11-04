@@ -1,16 +1,9 @@
-# example
+# figma2flutter example application.
 
-A new Flutter project.
+Sample flutter app that demonstrates creating theme from design tokens and using that theme in a simple application.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. This application uses the generated themes located in [lib/generated](lib/generated).
+1. The theme was generated using the [script](bin/update-tokens.sh) and [example-themes.json](bin/example-themes.json) definitions in the [bin](bin) directory. Comments in the script describe how to execute it. The script and json files are outside of teh lib directory because the app will only include the generated dart files and not the design token json files.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

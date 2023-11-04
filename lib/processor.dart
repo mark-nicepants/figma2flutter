@@ -18,6 +18,7 @@ class Processor {
 
   void process() {
     for (final theme in themes) {
+      //print('Generating Theme: ${theme.name}');
       final resolved = theme.resolvedTokens;
 
       final single = _loopProcess(singleTokenTransformerFactories, resolved);

@@ -1,0 +1,1187 @@
+{
+  "pattern": {
+    "card-pricing": {
+      "action-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.sm}"
+      },
+      "border-radius": {
+        "description": "Modify the border radius of the pricing card. Use multiple values for individual radii: eg. 0 16 0 16\n",
+        "type": "borderRadius",
+        "value": "{semantic.ui.border-radius} {semantic.ui.border-radius} {semantic.ui.border-radius} {semantic.ui.border-radius}"
+      },
+      "default": {
+        "background-color": {
+          "description": "Change this token to change the background color of the default pricing card.",
+          "type": "color",
+          "value": "{semantic.color.bg.surface}"
+        },
+        "icon-color": {
+          "description": "Change this token to change the icon color in the default pricing card.\n",
+          "type": "color",
+          "value": "{semantic.color.accent.default}"
+        }
+      },
+      "heading-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.sm}"
+      },
+      "icon-size": {
+        "type": "sizing",
+        "value": "{semantic.size.pattern.lg}"
+      },
+      "list-color": {
+        "description": "Change this token to change the font-color of the list in pricing card.",
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      },
+      "list-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.md}"
+      },
+      "muted": {
+        "background-color": {
+          "description": "Change this token to change the background color of the muted pricing card\n",
+          "type": "color",
+          "value": "{semantic.color.bg.subtle}"
+        },
+        "icon-color": {
+          "description": "Change this token to modify the icon color of the muted pricing card.",
+          "type": "color",
+          "value": "{semantic.color.accent.emphasis}"
+        }
+      },
+      "padding-x": {
+        "description": "Modify this token to change the padding-x of the pricing card\n",
+        "type": "spacing",
+        "value": "{semantic.space-around.pattern.md}"
+      },
+      "padding-y": {
+        "description": "Modify this token to change the padding-y of the pricing card",
+        "type": "spacing",
+        "value": "{semantic.space-around.pattern.md}"
+      },
+      "shadow": {
+        "type": "boxShadow",
+        "value": "{semantic.Shadow.none}"
+      },
+      "space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.xl}"
+      },
+      "sub-title-color": {
+        "description": "Change this token to change the font-color of the sub-title of the pricing card",
+        "type": "color",
+        "value": "{semantic.color.fg.subtle}"
+      },
+      "title-color": {
+        "description": "Change this token to change the font-color of the title pricing card.",
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      }
+    },
+    "card-user": {
+      "bio-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.subtle}"
+      },
+      "body-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.lg}"
+      },
+      "border-radius": {
+        "type": "borderRadius",
+        "value": "{semantic.ui.border-radius} {semantic.ui.border-radius} {semantic.ui.border-radius} {semantic.ui.border-radius}"
+      },
+      "content-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.md}"
+      },
+      "headline-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.xs}"
+      },
+      "icon-1": {
+        "description": "twitter",
+        "type": "icon",
+        "value": "f099"
+      },
+      "icon-2": {
+        "description": "github",
+        "type": "icon",
+        "value": "f09b"
+      },
+      "icon-3": {
+        "description": "whatsapp",
+        "type": "icon",
+        "value": "f232"
+      },
+      "icon-4": {
+        "description": "dribbble",
+        "type": "icon",
+        "value": "f17d"
+      },
+      "icon-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      },
+      "icons-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.lg}"
+      },
+      "image-overlay": {
+        "type": "color",
+        "value": "{color.gradient.overlay.dark.180-deg-↓}"
+      },
+      "name-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      },
+      "role-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.muted}"
+      },
+      "shadow": {
+        "type": "boxShadow",
+        "value": "{semantic.Shadow.none}"
+      },
+      "space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.md}"
+      },
+      "typography": {
+        "bio": {
+          "type": "typography",
+          "value": "{semantic.typography.small.regular}"
+        },
+        "icon": {
+          "type": "fontSizes",
+          "value": "{semantic.fontSize.xl}"
+        },
+        "name": {
+          "type": "typography",
+          "value": "{semantic.typography.headline-5.bold}"
+        },
+        "role": {
+          "type": "typography",
+          "value": "{semantic.typography.small.regular}"
+        }
+      }
+    },
+    "feature": {
+      "content-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.sm}"
+      },
+      "heading": {
+        "type": "typography",
+        "value": "{semantic.typography.body.semi-bold}"
+      },
+      "icon": {
+        "background-color": {
+          "type": "color",
+          "value": "{semantic.color.accent.default}"
+        },
+        "border-radius": {
+          "type": "borderRadius",
+          "value": "{semantic.comp.border-radius}"
+        }
+      },
+      "icon-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.on-accent}"
+      },
+      "size": {
+        "icon": {
+          "type": "fontSizes",
+          "value": "{semantic.fontSize.xl}"
+        },
+        "icon-background": {
+          "type": "sizing",
+          "value": "{semantic.size.pattern.md}"
+        }
+      },
+      "space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.lg}"
+      },
+      "text": {
+        "type": "typography",
+        "value": "{semantic.typography.small.regular}"
+      }
+    },
+    "menu-bar": {
+      "space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.lg}"
+      }
+    },
+    "pricing-card": {
+      "typography": {
+        "description": {
+          "type": "typography",
+          "value": "{semantic.typography.body.regular}"
+        },
+        "frequency": {
+          "type": "typography",
+          "value": "{semantic.typography.headline-5.regular}"
+        },
+        "icon-size": {
+          "type": "fontSizes",
+          "value": "{semantic.fontSize.6xl}"
+        },
+        "mention": {
+          "type": "typography",
+          "value": "{semantic.typography.caption.regular}"
+        },
+        "price": {
+          "type": "typography",
+          "value": "{semantic.typography.headline-1.bold}"
+        }
+      }
+    }
+  },
+  "section": {
+    "features": {
+      "block-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.lg}"
+      },
+      "body-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.subtle}"
+      },
+      "container-bg-image": {
+        "description": "Add an image address pointing to a public url",
+        "type": "asset",
+        "value": "https://images.unsplash.com/photo-1600489329744-fcd1ea7920e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80"
+      },
+      "container-overlay": {
+        "description": "The section container has a separate background and overlay. You could use the overlay to add a gradient or opacity layer on top of your background color or image fill.",
+        "type": "color",
+        "value": "{semantic.color.bg.surface}"
+      },
+      "feature-heading-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      },
+      "feature-text-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.muted}"
+      },
+      "heading-block-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xxs}"
+      },
+      "heading-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.sm}"
+      },
+      "headline-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      },
+      "icon-1": {
+        "description": "hippo",
+        "type": "icon",
+        "value": "f6ed"
+      },
+      "icon-2": {
+        "description": "umbrella",
+        "type": "icon",
+        "value": "f0e9"
+      },
+      "icon-3": {
+        "description": "feather",
+        "type": "icon",
+        "value": "f52d"
+      },
+      "icon-4": {
+        "description": "fire",
+        "type": "icon",
+        "value": "f06d"
+      },
+      "kicker-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.subtle}"
+      },
+      "padding-x": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.lg}"
+      },
+      "padding-y": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.md}"
+      },
+      "row-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.lg}"
+      },
+      "space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xxl}"
+      }
+    },
+    "footer": {
+      "body-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.on-accent}"
+      },
+      "container-bg-image": {
+        "description": "Add an image address pointing to a public url",
+        "type": "asset",
+        "value": "https://images.unsplash.com/photo-1600489329744-fcd1ea7920e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80"
+      },
+      "container-overlay": {
+        "description": "The section container has a separate background and overlay. You could use the overlay to add a gradient or opacity layer on top of your background color or image fill.",
+        "type": "color",
+        "value": "{semantic.color.accent.emphasis}"
+      },
+      "divider-color": {
+        "type": "color",
+        "value": "{semantic.color.accent.default}"
+      },
+      "logo": {
+        "icon-color": {
+          "type": "color",
+          "value": "{semantic.color.bg.surface}"
+        },
+        "icon-size": {
+          "type": "sizing",
+          "value": "{semantic.size.section.md}"
+        },
+        "space-between": {
+          "type": "spacing",
+          "value": "{semantic.space-between.comp.sm}"
+        },
+        "text-color": {
+          "type": "color",
+          "value": "{semantic.color.bg.surface}"
+        },
+        "text-size": {
+          "type": "fontSizes",
+          "value": "{semantic.fontSize.xl}"
+        }
+      },
+      "logo-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.on-accent}"
+      },
+      "padding-x": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.lg}"
+      },
+      "padding-y": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.xs}"
+      },
+      "space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xxs}"
+      }
+    },
+    "hero": {
+      "actions-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xxs}"
+      },
+      "body-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.subtle}"
+      },
+      "body-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.md}"
+      },
+      "container-bg-image": {
+        "description": "Add an image address pointing to a public url\n\n",
+        "type": "asset",
+        "value": "https://images.unsplash.com/photo-1615102477795-6b50e6defa53?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+      },
+      "container-overlay": {
+        "description": "The section container has a separate background and overlay. You could use the overlay to add a gradient or opacity layer on top of your background color or image fill.",
+        "type": "color",
+        "value": "{semantic.color.bg.overlay}"
+      },
+      "content-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xs}"
+      },
+      "headline-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      },
+      "image": {
+        "border-radii": {
+          "type": "borderRadius",
+          "value": "{semantic.ui.border-radius} {semantic.ui.border-radius} {semantic.ui.border-radius} {semantic.ui.border-radius}"
+        },
+        "source": {
+          "description": "Add a public url of an image",
+          "type": "asset",
+          "value": "https://images.unsplash.com/photo-1607419459063-9d45c62d6b31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
+        }
+      },
+      "image-size": {
+        "type": "sizing",
+        "value": "{semantic.size.section.lg}"
+      },
+      "opacity": {
+        "image": {
+          "type": "opacity",
+          "value": "{opacity.100}"
+        }
+      },
+      "padding-x": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.lg}"
+      },
+      "padding-y": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.xl}"
+      }
+    },
+    "nav": {
+      "action-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xxs}"
+      },
+      "container-background-color": {
+        "description": "Every section container can have a unique background color or image. On top of the background a gradient or opactive layer can be applied. Use the container-overlay token to achieve this.",
+        "type": "color",
+        "value": "{semantic.color.bg.surface}"
+      },
+      "logo": {
+        "icon-color": {
+          "type": "color",
+          "value": "{semantic.color.fg.default}"
+        },
+        "icon-size": {
+          "type": "sizing",
+          "value": "{semantic.size.section.sm}"
+        },
+        "space-between": {
+          "type": "spacing",
+          "value": "{semantic.space-between.comp.sm}"
+        },
+        "text-color": {
+          "type": "color",
+          "value": "{semantic.color.fg.default}"
+        },
+        "text-size": {
+          "type": "fontSizes",
+          "value": "{semantic.fontSize._base}"
+        }
+      },
+      "logo-menu-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xl}"
+      },
+      "padding-x": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.xxs}"
+      },
+      "padding-y": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.xxs}"
+      }
+    },
+    "pricing": {
+      "block-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.md}"
+      },
+      "body-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.subtle}"
+      },
+      "bullet": {
+        "description": "check-circle",
+        "type": "icon",
+        "value": "f058"
+      },
+      "container-bg-image": {
+        "description": "Add an image address pointing to a public url",
+        "type": "asset",
+        "value": "https://images.unsplash.com/photo-1600489329744-fcd1ea7920e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80"
+      },
+      "container-overlay": {
+        "description": "The section container has a separate background and overlay. You could use the overlay to add a gradient or opacity layer on top of your background color or image fill.",
+        "type": "color",
+        "value": "{semantic.color.bg.surface}"
+      },
+      "heading-block-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xxs}"
+      },
+      "heading-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.sm}"
+      },
+      "headline-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      },
+      "icon-1": {
+        "description": "gift",
+        "type": "icon",
+        "value": "f06b"
+      },
+      "icon-2": {
+        "description": "gift",
+        "type": "icon",
+        "value": "f06b"
+      },
+      "icon-color": {
+        "type": "color",
+        "value": "{semantic.color.accent.default}"
+      },
+      "kicker-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.subtle}"
+      },
+      "label-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      },
+      "padding-x": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.lg}"
+      },
+      "padding-y": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.xxl}"
+      },
+      "space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.lg}"
+      }
+    },
+    "team": {
+      "block-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.lg}"
+      },
+      "body-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.subtle}"
+      },
+      "container-bg-image": {
+        "description": "Add an image address pointing to a public url",
+        "type": "asset",
+        "value": "https://images.unsplash.com/photo-1600489329744-fcd1ea7920e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80"
+      },
+      "container-overlay": {
+        "description": "The section container has a separate background and overlay. You could use the overlay to add a gradient or opacity layer on top of your background color or image fill.",
+        "type": "color",
+        "value": "{semantic.color.bg.subtle}"
+      },
+      "heading-block-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xxs}"
+      },
+      "heading-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.pattern.sm}"
+      },
+      "headline-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.default}"
+      },
+      "image-1": {
+        "description": "Add an image address pointing to a public url",
+        "type": "asset",
+        "value": "https://images.unsplash.com/photo-1625603564899-36c11aa97c76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80"
+      },
+      "image-2": {
+        "description": "Add an image address pointing to a public url",
+        "type": "asset",
+        "value": "https://images.unsplash.com/photo-1474557157379-8aa74a6ef541?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2592&q=80"
+      },
+      "image-3": {
+        "description": "Add an image address pointing to a public url",
+        "type": "asset",
+        "value": "https://images.unsplash.com/photo-1434332253042-50df2f9f7b39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+      },
+      "image-4": {
+        "description": "Add an image address pointing to a public url",
+        "type": "asset",
+        "value": "https://images.unsplash.com/photo-1532009877282-3340270e0529?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+      },
+      "kicker-color": {
+        "type": "color",
+        "value": "{semantic.color.fg.subtle}"
+      },
+      "padding-x": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.lg}"
+      },
+      "padding-y": {
+        "type": "spacing",
+        "value": "{semantic.space-around.section.sm}"
+      },
+      "row-space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.sm}"
+      },
+      "space-between": {
+        "type": "spacing",
+        "value": "{semantic.space-between.section.xxl}"
+      }
+    }
+  },
+  "semantic": {
+    "Shadow": {
+      "none": {
+        "type": "boxShadow",
+        "value": "{shadow.none}"
+      }
+    },
+    "border-width": {
+      "default": {
+        "type": "borderWidth",
+        "value": "{borderWidth.200}"
+      },
+      "none": {
+        "type": "borderWidth",
+        "value": "{borderWidth.none}"
+      }
+    },
+    "color": {
+      "accent": {
+        "default": {
+          "type": "color",
+          "value": "{color.emerald.500}"
+        },
+        "disabled": {
+          "type": "color",
+          "value": "{color.gray.300}"
+        },
+        "emphasis": {
+          "type": "color",
+          "value": "{color.emerald.600}"
+        },
+        "muted": {
+          "type": "color",
+          "value": "{color.emerald.400}"
+        },
+        "subtle": {
+          "type": "color",
+          "value": "{color.emerald.50}"
+        }
+      },
+      "bg": {
+        "canvas": {
+          "type": "color",
+          "value": "{color.gray.50}"
+        },
+        "muted": {
+          "type": "color",
+          "value": "{color.gray.300}"
+        },
+        "overlay": {
+          "type": "color",
+          "value": "{color.white-alpha.400}"
+        },
+        "subtle": {
+          "type": "color",
+          "value": "{color.gray.50}"
+        },
+        "surface": {
+          "type": "color",
+          "value": "{color.white}"
+        }
+      },
+      "error": {
+        "default": {
+          "type": "color",
+          "value": "{color.red.600}"
+        },
+        "emphasis": {
+          "type": "color",
+          "value": "{color.red.500}"
+        },
+        "muted": {
+          "type": "color",
+          "value": "{color.red.400}"
+        },
+        "on-error": {
+          "type": "color",
+          "value": "{color.white}"
+        },
+        "subtle": {
+          "type": "color",
+          "value": "{color.red.100}"
+        }
+      },
+      "fg": {
+        "default": {
+          "type": "color",
+          "value": "{color.black}"
+        },
+        "disabled": {
+          "type": "color",
+          "value": "{color.gray.400}"
+        },
+        "muted": {
+          "type": "color",
+          "value": "{color.gray.700}"
+        },
+        "on-accent": {
+          "type": "color",
+          "value": "{color.white}"
+        },
+        "on-disabled": {
+          "type": "color",
+          "value": "{color.gray.600}"
+        },
+        "subtle": {
+          "type": "color",
+          "value": "{color.gray.500}"
+        }
+      },
+      "info": {
+        "default": {
+          "type": "color",
+          "value": "{color.blue.600}"
+        },
+        "emphasis": {
+          "type": "color",
+          "value": "{color.blue.500}"
+        },
+        "muted": {
+          "type": "color",
+          "value": "{color.blue.300}"
+        },
+        "on-info": {
+          "type": "color",
+          "value": "{color.white}"
+        },
+        "subtle": {
+          "type": "color",
+          "value": "{color.blue.100}"
+        }
+      },
+      "success": {
+        "default": {
+          "type": "color",
+          "value": "{color.green.600}"
+        },
+        "emphasis": {
+          "type": "color",
+          "value": "{color.green.500}"
+        },
+        "muted": {
+          "type": "color",
+          "value": "{color.green.400}"
+        },
+        "on-success": {
+          "type": "color",
+          "value": "{color.white}"
+        },
+        "subtle": {
+          "type": "color",
+          "value": "{color.green.100}"
+        }
+      },
+      "warning": {
+        "default": {
+          "type": "color",
+          "value": "{color.yellow.600}"
+        },
+        "emphasis": {
+          "type": "color",
+          "value": "{color.yellow.500}"
+        },
+        "muted": {
+          "type": "color",
+          "value": "{color.yellow.300}"
+        },
+        "on-warning": {
+          "type": "color",
+          "value": "{color.black}"
+        },
+        "subtle": {
+          "type": "color",
+          "value": "{color.yellow.100}"
+        }
+      }
+    },
+    "comp": {
+      "border-radius": {
+        "type": "borderRadius",
+        "value": "{radii.none}"
+      }
+    },
+    "fontFamilies": {
+      "body": {
+        "type": "fontFamilies",
+        "value": "Inter"
+      },
+      "captions": {
+        "type": "fontFamilies",
+        "value": "Inter"
+      },
+      "headlines": {
+        "type": "fontFamilies",
+        "value": "Inter"
+      }
+    },
+    "fontSize": {
+      "10xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize.9xl} * {semantic.fontSize._scale}"
+      },
+      "2xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "3xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "4xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "5xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "6xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "7xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "8xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "9xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "_base": {
+        "type": "fontSizes",
+        "value": "16"
+      },
+      "_scale": {
+        "type": "fontSizes",
+        "value": "1.2"
+      },
+      "lg": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "md": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base}*{semantic.fontSize._scale}"
+      },
+      "sm": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} / {semantic.fontSize._scale}"
+      },
+      "xl": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} * {semantic.fontSize._scale}"
+      },
+      "xs": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} / {semantic.fontSize._scale}"
+      },
+      "xxs": {
+        "type": "fontSizes",
+        "value": "{semantic.fontSize._base} / {semantic.fontSize._scale}"
+      }
+    },
+    "fontWeights": {
+      "body": {
+        "bold": {
+          "type": "fontWeights",
+          "value": "Bold"
+        },
+        "regular": {
+          "type": "fontWeights",
+          "value": "Regular"
+        },
+        "semi-bold": {
+          "type": "fontWeights",
+          "value": "Semi Bold"
+        }
+      },
+      "headlines": {
+        "bold": {
+          "type": "fontWeights",
+          "value": "Bold"
+        },
+        "medium": {
+          "type": "fontWeights",
+          "value": "Medium"
+        },
+        "regular": {
+          "type": "fontWeights",
+          "value": "Regular"
+        },
+        "semi-bold": {
+          "type": "fontWeights",
+          "value": "Semi Bold"
+        }
+      }
+    },
+    "letterSpacing": {
+      "body": {
+        "type": "letterSpacing",
+        "value": "0%"
+      },
+      "buttons": {
+        "type": "letterSpacing",
+        "value": "3%"
+      },
+      "captions": {
+        "type": "letterSpacing",
+        "value": "0%"
+      },
+      "headlines": {
+        "type": "letterSpacing",
+        "value": "-1%"
+      }
+    },
+    "lineHeights": {
+      "body": {
+        "default": {
+          "type": "lineHeights",
+          "value": "150%"
+        },
+        "relaxed": {
+          "type": "lineHeights",
+          "value": "175%"
+        }
+      },
+      "headlines": {
+        "default": {
+          "type": "lineHeights",
+          "value": "110%"
+        },
+        "lg": {
+          "type": "lineHeights",
+          "value": "110%"
+        },
+        "sm": {
+          "type": "lineHeights",
+          "value": "130%"
+        },
+        "xl": {
+          "type": "lineHeights",
+          "value": "110%"
+        }
+      }
+    },
+    "paragraphSpacing": {
+      "default": {
+        "type": "paragraphSpacing",
+        "value": "0"
+      }
+    },
+    "size": {
+      "comp": {
+        "lg": {
+          "type": "sizing",
+          "value": "{size.450}"
+        },
+        "md": {
+          "type": "sizing",
+          "value": "{size.250}"
+        },
+        "sm": {
+          "type": "sizing",
+          "value": "{size.200}"
+        }
+      },
+      "pattern": {
+        "lg": {
+          "type": "sizing",
+          "value": "{size.700}"
+        },
+        "md": {
+          "type": "sizing",
+          "value": "{size.600}"
+        }
+      },
+      "section": {
+        "lg": {
+          "type": "sizing",
+          "value": "{size.6750}"
+        },
+        "md": {
+          "type": "sizing",
+          "value": "{size.450}"
+        },
+        "sm": {
+          "type": "sizing",
+          "value": "{size.300}"
+        }
+      }
+    },
+    "space-around": {
+      "comp": {
+        "lg": {
+          "type": "spacing",
+          "value": "{space.200}"
+        },
+        "md": {
+          "type": "spacing",
+          "value": "{space.150}"
+        },
+        "sm": {
+          "type": "spacing",
+          "value": "{space.100}"
+        }
+      },
+      "pattern": {
+        "md": {
+          "type": "spacing",
+          "value": "{space.700}"
+        }
+      },
+      "section": {
+        "lg": {
+          "type": "spacing",
+          "value": "{space.2000}"
+        },
+        "md": {
+          "type": "spacing",
+          "value": "{space.1600}"
+        },
+        "sm": {
+          "type": "spacing",
+          "value": "{space.1200}"
+        },
+        "xl": {
+          "type": "spacing",
+          "value": "{space.2200}"
+        },
+        "xs": {
+          "type": "spacing",
+          "value": "{space.800}"
+        },
+        "xxl": {
+          "type": "spacing",
+          "value": "{space.2600}"
+        },
+        "xxs": {
+          "type": "spacing",
+          "value": "{space.500}"
+        }
+      }
+    },
+    "space-between": {
+      "comp": {
+        "md": {
+          "type": "spacing",
+          "value": "{space.150}"
+        },
+        "sm": {
+          "type": "spacing",
+          "value": "{space.100}"
+        },
+        "xs": {
+          "type": "spacing",
+          "value": "{space.25}"
+        }
+      },
+      "pattern": {
+        "lg": {
+          "type": "spacing",
+          "value": "{space.300}"
+        },
+        "md": {
+          "type": "spacing",
+          "value": "{space.200}"
+        },
+        "sm": {
+          "type": "spacing",
+          "value": "{space.100}"
+        },
+        "xl": {
+          "type": "spacing",
+          "value": "{space.400}"
+        },
+        "xs": {
+          "type": "spacing",
+          "value": "{space.25}"
+        }
+      },
+      "section": {
+        "lg": {
+          "type": "spacing",
+          "value": "{space.700}"
+        },
+        "md": {
+          "type": "spacing",
+          "value": "{space.500}"
+        },
+        "sm": {
+          "type": "spacing",
+          "value": "{space.400}"
+        },
+        "xl": {
+          "type": "spacing",
+          "value": "{space.800}"
+        },
+        "xs": {
+          "type": "spacing",
+          "value": "{space.300}"
+        },
+        "xxl": {
+          "type": "spacing",
+          "value": "{space.1200}"
+        },
+        "xxs": {
+          "type": "spacing",
+          "value": "{space.200}"
+        }
+      }
+    },
+    "textCase": {
+      "buttons": {
+        "type": "textCase",
+        "value": "none"
+      },
+      "captions": {
+        "type": "textCase",
+        "value": "none"
+      },
+      "headlines": {
+        "type": "textCase",
+        "value": "none"
+      },
+      "none": {
+        "type": "textCase",
+        "value": "none"
+      }
+    },
+    "textDecoration": {
+      "buttons": {
+        "type": "textDecoration",
+        "value": "none"
+      },
+      "captions": {
+        "type": "textDecoration",
+        "value": "none"
+      },
+      "none": {
+        "type": "textDecoration",
+        "value": "none"
+      }
+    },
+    "ui": {
+      "border-radius": {
+        "type": "borderRadius",
+        "value": "{radii.none}"
+      }
+    }
+  }
+}

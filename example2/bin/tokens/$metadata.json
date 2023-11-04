@@ -1,0 +1,22 @@
+{
+  "tokenSetOrder": [
+    "global",
+    "semantic",
+    "comp/button",
+    "comp/list-item",
+    "comp/menu-item",
+    "comp/toggle",
+    "pattern/menu-bar",
+    "pattern/feature",
+    "pattern/card-user",
+    "pattern/card-pricing",
+    "sections/nav",
+    "sections/hero",
+    "sections/features",
+    "sections/team",
+    "sections/pricing",
+    "sections/footer",
+    "theme/light",
+    "theme/dark"
+  ]
+}

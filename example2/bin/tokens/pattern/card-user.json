@@ -1,0 +1,92 @@
+{
+  "pattern": {
+    "card-user": {
+      "icon-1": {
+        "value": "f099",
+        "type": "icon",
+        "description": "twitter"
+      },
+      "icon-2": {
+        "value": "f09b",
+        "type": "icon",
+        "description": "github"
+      },
+      "icon-3": {
+        "value": "f232",
+        "type": "icon",
+        "description": "whatsapp"
+      },
+      "icon-4": {
+        "value": "f17d",
+        "type": "icon",
+        "description": "dribbble"
+      },
+      "border-radius": {
+        "value": "{semantic.ui.border-radius} {semantic.ui.border-radius} {semantic.ui.border-radius} {semantic.ui.border-radius}",
+        "type": "borderRadius"
+      },
+      "content-space-between": {
+        "value": "{semantic.space-between.pattern.md}",
+        "type": "spacing"
+      },
+      "space-between": {
+        "value": "{semantic.space-between.pattern.md}",
+        "type": "spacing"
+      },
+      "body-space-between": {
+        "value": "{semantic.space-between.pattern.lg}",
+        "type": "spacing"
+      },
+      "icons-space-between": {
+        "value": "{semantic.space-between.pattern.lg}",
+        "type": "spacing"
+      },
+      "image-overlay": {
+        "value": "{color.gradient.overlay.dark.180-deg-↓}",
+        "type": "color"
+      },
+      "name-color": {
+        "value": "{semantic.color.fg.default}",
+        "type": "color"
+      },
+      "bio-color": {
+        "value": "{semantic.color.fg.subtle}",
+        "type": "color"
+      },
+      "role-color": {
+        "value": "{semantic.color.fg.muted}",
+        "type": "color"
+      },
+      "icon-color": {
+        "value": "{semantic.color.fg.default}",
+        "type": "color"
+      },
+      "headline-space-between": {
+        "value": "{semantic.space-between.pattern.xs}",
+        "type": "spacing"
+      },
+      "typography": {
+        "name": {
+          "value": "{semantic.typography.headline-5.bold}",
+          "type": "typography"
+        },
+        "role": {
+          "value": "{semantic.typography.small.regular}",
+          "type": "typography"
+        },
+        "bio": {
+          "value": "{semantic.typography.small.regular}",
+          "type": "typography"
+        },
+        "icon": {
+          "value": "{semantic.fontSize.xl}",
+          "type": "fontSizes"
+        }
+      },
+      "shadow": {
+        "value": "{semantic.Shadow.none}",
+        "type": "boxShadow"
+      }
+    }
+  }
+}

@@ -20,6 +20,10 @@ final input = '''
     "value": "rgba(255, 0, 0, 0.5)",
     "type": "color"
   },
+  "hsl": {
+    "value": "hsl(120, 50%, 50%)",
+    "type": "color"
+  },
   "hsla": {
     "value": "hsla(120, 50%, 50%, 0.5)",
     "type": "color"
@@ -85,13 +89,18 @@ void main() {
     final parser = TokenParser();
     parser.parse(parsed);
 
-    expect(parser.resolvedTokens().length, equals(5));
+    expect(parser.resolvedTokens().length, equals(6));
     expect(parser.themes.first.tokens['hex']?.type, equals('color'));
     expect(parser.themes.first.tokens['rgb']?.type, equals('color'));
     expect(parser.themes.first.tokens['rgba']?.type, equals('color'));
+    expect(parser.themes.first.tokens['hsl']?.type, equals('color'));
     expect(parser.themes.first.tokens['hsla']?.type, equals('color'));
 
     final transformer = ColorTransformer();
+    expect(
+      transformer.transform(parser.themes.first.tokens['hsl']!),
+      equals('const Color(0xFF40BF40)'),
+    );
     expect(
       transformer.transform(parser.themes.first.tokens['hsla']!),
       equals('const Color(0x8040BF40)'),

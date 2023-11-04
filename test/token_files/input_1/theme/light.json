@@ -1,0 +1,10 @@
+{
+  "background": {
+    "value": "{colors.white}",
+    "type": "color"
+  },
+  "text": {
+    "value": "{colors.black}",
+    "type": "color"
+  }
+}
