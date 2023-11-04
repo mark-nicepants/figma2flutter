@@ -22,7 +22,9 @@ class Processor {
       final resolved = theme.resolvedTokens;
 
       final single = _loopProcess(singleTokenTransformerFactories, resolved);
-      final multi = _loopProcess(multiTokenTransformerFactories, resolved);
+      final multi = _loopProcess(multiTokenTransformerFactories, resolved)
+          .cast<MultiTokenTransformer>()
+        ..forEach((element) => element.postProcess());
 
       theme.transformers.addAll(
         [...single, ...multi].where((element) => element.lines.isNotEmpty),
