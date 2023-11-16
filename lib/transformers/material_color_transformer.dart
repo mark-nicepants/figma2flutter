@@ -73,6 +73,7 @@ class MaterialColorTransformer extends MultiTokenTransformer {
       // Add the color to the lines
       lines.add(
         '''
+@override
 MaterialColor get $name => const MaterialColor($primary, {
   ${colors.map((e) => '${e.digit}: ${e.color.declaration(isConst: false)}').join(',\n  ')},
 });
