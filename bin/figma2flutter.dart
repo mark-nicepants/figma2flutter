@@ -19,7 +19,6 @@ import 'package:figma2flutter/transformers/size_transformer.dart';
 import 'package:figma2flutter/transformers/spacing_transformer.dart';
 import 'package:figma2flutter/transformers/typography_transformer.dart';
 import 'package:figma2flutter/utils/sets_and_themes.dart';
-import 'package:path/path.dart';
 
 /// Code for making terminal output foreground red
 const _red = '\x1b[033;0;31m';
@@ -78,7 +77,7 @@ Future<void> main(List<String> arguments) async {
     if (FileSystemEntity.isDirectorySync(inputFileLocation)) {
       _print(
           'Loading `\$metadata`, `\$themes` and design token files from $inputFileLocation',
-          _green);
+          _green,);
       _print(''); // New line
       themes = _parseFromFileSet(inputFileLocation);
     } else {

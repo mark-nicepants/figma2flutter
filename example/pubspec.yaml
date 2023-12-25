@@ -1,10 +1,10 @@
 name: example
 description: A new Flutter project.
-publish_to: 'none' 
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.2 <4.0.0'
+  sdk: ">=2.19.2 <4.0.0"
 
 dependencies:
   flutter:
@@ -14,7 +14,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
@@ -38,7 +38,7 @@ flutter:
         - asset: fonts/Roboto-Medium.ttf
         - asset: fonts/Roboto-Regular.ttf
     - family: Inter
-      fonts: 
+      fonts:
         - asset: fonts/Inter-Black.ttf
         - asset: fonts/Inter-Bold.ttf
         - asset: fonts/Inter-ExtraBold.ttf
@@ -47,4 +47,4 @@ flutter:
         - asset: fonts/Inter-Medium.ttf
         - asset: fonts/Inter-Regular.ttf
         - asset: fonts/Inter-SemiBold.ttf
-        - asset: fonts/Inter-Thin.ttf      
+        - asset: fonts/Inter-Thin.ttf

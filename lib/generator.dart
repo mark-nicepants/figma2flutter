@@ -28,7 +28,7 @@ class Generator {
     return '''
 $_genWarning
 
-part of tokens;
+part of 'tokens.g.dart';
 
 ${extraContent.join('\n\n')}
 

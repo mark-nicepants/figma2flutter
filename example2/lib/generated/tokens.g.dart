@@ -17,6 +17,7 @@ abstract class ITokens {
   ShadowTokens get shadow;
   SizeTokens get size;
   GradientTokens get gradient;
+  MaterialColorTokens get materialColor;
 }
 
 abstract class ColorTokens {
@@ -834,6 +835,33 @@ abstract class GradientTokens {
   LinearGradient get patternCardUserImageOverlay;
 }
 
+abstract class MaterialColorTokens {
+  MaterialColor get colorSlate;
+  MaterialColor get colorGray;
+  MaterialColor get colorZinc;
+  MaterialColor get colorNeutral;
+  MaterialColor get colorStone;
+  MaterialColor get colorRed;
+  MaterialColor get colorOrange;
+  MaterialColor get colorAmber;
+  MaterialColor get colorYellow;
+  MaterialColor get colorLime;
+  MaterialColor get colorGreen;
+  MaterialColor get colorEmerald;
+  MaterialColor get colorTeal;
+  MaterialColor get colorCyan;
+  MaterialColor get colorSky;
+  MaterialColor get colorBlue;
+  MaterialColor get colorIndigo;
+  MaterialColor get colorViolet;
+  MaterialColor get colorPurple;
+  MaterialColor get colorFuchsia;
+  MaterialColor get colorPink;
+  MaterialColor get colorRose;
+  MaterialColor get colorBlackAlpha;
+  MaterialColor get colorWhiteAlpha;
+}
+
 class DefaultLightTokens extends ITokens {
   @override
   ColorTokens get color => DefaultLightColorTokens();
@@ -849,6 +877,8 @@ class DefaultLightTokens extends ITokens {
   SizeTokens get size => DefaultLightSizeTokens();
   @override
   GradientTokens get gradient => DefaultLightGradientTokens();
+  @override
+  MaterialColorTokens get materialColor => DefaultLightMaterialColorTokens();
 }
 
 class DefaultLightColorTokens extends ColorTokens {
@@ -1664,7 +1694,6 @@ class DefaultLightColorTokens extends ColorTokens {
   Color get sectionFooterLogoIconColor => const Color(0xFFFFFFFF);
 }
 
-
 class DefaultLightSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get space25 => const EdgeInsets.all(2.0);
@@ -1775,7 +1804,8 @@ class DefaultLightSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get patternFeatureContentSpaceBetween => const EdgeInsets.all(8.0);
   @override
-  EdgeInsets get patternCardUserContentSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get patternCardUserContentSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
   EdgeInsets get patternCardUserSpaceBetween => const EdgeInsets.all(16.0);
   @override
@@ -1783,7 +1813,8 @@ class DefaultLightSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get patternCardUserIconsSpaceBetween => const EdgeInsets.all(24.0);
   @override
-  EdgeInsets get patternCardUserHeadlineSpaceBetween => const EdgeInsets.all(2.0);
+  EdgeInsets get patternCardUserHeadlineSpaceBetween =>
+      const EdgeInsets.all(2.0);
   @override
   EdgeInsets get patternCardPricingPaddingX => const EdgeInsets.all(56.0);
   @override
@@ -1791,11 +1822,14 @@ class DefaultLightSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get patternCardPricingSpaceBetween => const EdgeInsets.all(32.0);
   @override
-  EdgeInsets get patternCardPricingHeadingSpaceBetween => const EdgeInsets.all(8.0);
+  EdgeInsets get patternCardPricingHeadingSpaceBetween =>
+      const EdgeInsets.all(8.0);
   @override
-  EdgeInsets get patternCardPricingListSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get patternCardPricingListSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
-  EdgeInsets get patternCardPricingActionSpaceBetween => const EdgeInsets.all(8.0);
+  EdgeInsets get patternCardPricingActionSpaceBetween =>
+      const EdgeInsets.all(8.0);
   @override
   EdgeInsets get sectionNavPaddingX => const EdgeInsets.all(40.0);
   @override
@@ -1823,9 +1857,11 @@ class DefaultLightSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get sectionFeaturesSpaceBetween => const EdgeInsets.all(96.0);
   @override
-  EdgeInsets get sectionFeaturesHeadingBlockSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get sectionFeaturesHeadingBlockSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
-  EdgeInsets get sectionFeaturesHeadingSpaceBetween => const EdgeInsets.all(8.0);
+  EdgeInsets get sectionFeaturesHeadingSpaceBetween =>
+      const EdgeInsets.all(8.0);
   @override
   EdgeInsets get sectionFeaturesBlockSpaceBetween => const EdgeInsets.all(56.0);
   @override
@@ -1837,7 +1873,8 @@ class DefaultLightSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get sectionTeamSpaceBetween => const EdgeInsets.all(96.0);
   @override
-  EdgeInsets get sectionTeamHeadingBlockSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get sectionTeamHeadingBlockSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
   EdgeInsets get sectionTeamHeadingSpaceBetween => const EdgeInsets.all(8.0);
   @override
@@ -1851,7 +1888,8 @@ class DefaultLightSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get sectionPricingSpaceBetween => const EdgeInsets.all(56.0);
   @override
-  EdgeInsets get sectionPricingHeadingBlockSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get sectionPricingHeadingBlockSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
   EdgeInsets get sectionPricingHeadingSpaceBetween => const EdgeInsets.all(8.0);
   @override
@@ -1866,471 +1904,469 @@ class DefaultLightSpacingTokens extends SpacingTokens {
   EdgeInsets get sectionFooterLogoSpaceBetween => const EdgeInsets.all(8.0);
 }
 
-
 class DefaultLightTextStyleTokens extends TextStyleTokens {
   @override
   TextStyle get semanticTypographyColossusBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 23.04,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 23.04,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyColossusRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 23.04,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 23.04,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyDisplayBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyDisplayRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeroBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeroRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyUberBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyUberRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline1Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline1Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline2Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline2Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline2Medium => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w500,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w500,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline3Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline3Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline4Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline4Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline5Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline5Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyLeadBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyLeadRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyBodyBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyBodyRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyBodySemiBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographySmallBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographySmallRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyCaptionBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyCaptionRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyCaptionSemiBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyXSmallBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyXSmallRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyTinyBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyTinyRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyButtonNormalBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonNormalRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonLargeBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonLargeRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonXLargeBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonXLargeRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyInputNormalBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyInputNormalRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyInputLargeBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyInputLargeRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get buttonLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get listItemDefaultLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get listItemFeaturedLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get menuItemHoverLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get menuItemDefaultLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get menuItemActiveLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternFeatureHeading => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternFeatureText => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternCardUserTypographyName => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get patternCardUserTypographyRole => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternCardUserTypographyBio => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternPricingCardTypographyPrice => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get patternPricingCardTypographyFrequency => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get patternPricingCardTypographyDescription => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternPricingCardTypographyMention => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
 }
-
 
 class DefaultLightRadiiTokens extends RadiiTokens {
   @override
@@ -2376,233 +2412,243 @@ class DefaultLightRadiiTokens extends RadiiTokens {
   @override
   BorderRadius get patternFeatureIconBorderRadius => BorderRadius.zero;
   @override
-  BorderRadius get patternCardUserBorderRadius => const BorderRadius.only(topLeft: Radius.circular(0.0),topRight: Radius.circular(0.0),bottomRight: Radius.circular(0.0),bottomLeft: Radius.circular(0.0));
+  BorderRadius get patternCardUserBorderRadius => const BorderRadius.only(
+      topLeft: Radius.circular(0.0),
+      topRight: Radius.circular(0.0),
+      bottomRight: Radius.circular(0.0),
+      bottomLeft: Radius.circular(0.0));
   @override
-  BorderRadius get patternCardPricingBorderRadius => const BorderRadius.only(topLeft: Radius.circular(0.0),topRight: Radius.circular(0.0),bottomRight: Radius.circular(0.0),bottomLeft: Radius.circular(0.0));
+  BorderRadius get patternCardPricingBorderRadius => const BorderRadius.only(
+      topLeft: Radius.circular(0.0),
+      topRight: Radius.circular(0.0),
+      bottomRight: Radius.circular(0.0),
+      bottomLeft: Radius.circular(0.0));
   @override
-  BorderRadius get sectionHeroImageBorderRadii => const BorderRadius.only(topLeft: Radius.circular(0.0),topRight: Radius.circular(0.0),bottomRight: Radius.circular(0.0),bottomLeft: Radius.circular(0.0));
+  BorderRadius get sectionHeroImageBorderRadii => const BorderRadius.only(
+      topLeft: Radius.circular(0.0),
+      topRight: Radius.circular(0.0),
+      bottomRight: Radius.circular(0.0),
+      bottomLeft: Radius.circular(0.0));
 }
-
 
 class DefaultLightShadowTokens extends ShadowTokens {
   @override
   List<BoxShadow> get shadowPrimary100 => const [
-  BoxShadow(
-    offset: Offset(0.0, 1.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A3B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 1.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A3B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary200 => const [
-  BoxShadow(
-    offset: Offset(0.0, 2.0),
-    blurRadius: 4.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A3B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 2.0),
+          blurRadius: 4.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A3B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary300 => const [
-  BoxShadow(
-    offset: Offset(0.0, 4.0),
-    blurRadius: 8.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A3B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 4.0),
+          blurRadius: 8.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A3B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary400 => const [
-  BoxShadow(
-    offset: Offset(0.0, 8.0),
-    blurRadius: 16.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A3B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 8.0),
+          blurRadius: 16.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A3B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary500 => const [
-  BoxShadow(
-    offset: Offset(0.0, 16.0),
-    blurRadius: 24.0,
-    spreadRadius: 0.0,
-    color: Color(0x173B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 16.0),
+          blurRadius: 24.0,
+          spreadRadius: 0.0,
+          color: Color(0x173B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary600 => const [
-  BoxShadow(
-    offset: Offset(0.0, 24.0),
-    blurRadius: 40.0,
-    spreadRadius: 0.0,
-    color: Color(0x143B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 24.0),
+          blurRadius: 40.0,
+          spreadRadius: 0.0,
+          color: Color(0x143B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary100 => const [
-  BoxShadow(
-    offset: Offset(0.0, 1.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A2667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 1.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A2667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary200 => const [
-  BoxShadow(
-    offset: Offset(0.0, 2.0),
-    blurRadius: 4.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A2667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 2.0),
+          blurRadius: 4.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A2667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary300 => const [
-  BoxShadow(
-    offset: Offset(0.0, 4.0),
-    blurRadius: 8.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A2667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 4.0),
+          blurRadius: 8.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A2667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary400 => const [
-  BoxShadow(
-    offset: Offset(0.0, 8.0),
-    blurRadius: 16.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A2667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 8.0),
+          blurRadius: 16.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A2667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary500 => const [
-  BoxShadow(
-    offset: Offset(0.0, 16.0),
-    blurRadius: 24.0,
-    spreadRadius: 0.0,
-    color: Color(0x172667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 16.0),
+          blurRadius: 24.0,
+          spreadRadius: 0.0,
+          color: Color(0x172667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary600 => const [
-  BoxShadow(
-    offset: Offset(0.0, 24.0),
-    blurRadius: 40.0,
-    spreadRadius: 0.0,
-    color: Color(0x142667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 24.0),
+          blurRadius: 40.0,
+          spreadRadius: 0.0,
+          color: Color(0x142667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowNone => const [
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 0.0,
-    spreadRadius: 0.0,
-    color: Color(0x00000000),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 0.0,
+          spreadRadius: 0.0,
+          color: Color(0x00000000),
+        ),
+      ];
   @override
   List<BoxShadow> get semanticShadowNone => const [
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 0.0,
-    spreadRadius: 0.0,
-    color: Color(0x00000000),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 0.0,
+          spreadRadius: 0.0,
+          color: Color(0x00000000),
+        ),
+      ];
   @override
   List<BoxShadow> get patternCardUserShadow => const [
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 0.0,
-    spreadRadius: 0.0,
-    color: Color(0x00000000),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 0.0,
+          spreadRadius: 0.0,
+          color: Color(0x00000000),
+        ),
+      ];
   @override
   List<BoxShadow> get patternCardPricingShadow => const [
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 0.0,
-    spreadRadius: 0.0,
-    color: Color(0x00000000),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 0.0,
+          spreadRadius: 0.0,
+          color: Color(0x00000000),
+        ),
+      ];
 }
-
 
 class DefaultLightSizeTokens extends SizeTokens {
   @override
@@ -2717,1106 +2763,1829 @@ class DefaultLightSizeTokens extends SizeTokens {
   Size get sectionFooterLogoIconSize => const Size(36.0, 36.0);
 }
 
-
 class DefaultLightGradientTokens extends GradientTokens {
   @override
   LinearGradient get colorGradientSlate0Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientSlate45Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientSlate90Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientSlate180Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientSlate225Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientSlate270Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientGray0Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientGray45Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientGray90Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientGray180Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientGray225Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientGray270Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientZinc0Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientZinc45Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientZinc90Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientZinc180Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientZinc225Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientZinc270Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientNeutral0Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientNeutral45Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientNeutral90Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientNeutral180Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientNeutral225Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientNeutral270Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientStone0Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientStone45Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientStone90Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientStone180Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientStone225Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientStone270Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientRed0Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientRed45Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientRed90Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientRed180Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientRed225Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientRed270Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientOrange0Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientOrange45Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientOrange90Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientOrange180Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientOrange225Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientOrange270Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientAmber0Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientAmber45Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientAmber90Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientAmber180Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientAmber225Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientAmber270Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientYellow0Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientYellow45Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientYellow90Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientYellow180Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientYellow225Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientYellow270Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientLime0Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientLime45Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientLime90Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientLime180Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientLime225Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientLime270Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientGreen0Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientGreen45Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientGreen90Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientGreen180Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientGreen225Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientGreen270Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientEmerald0Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientEmerald45Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientEmerald90Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientEmerald180Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientEmerald225Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientEmerald270Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientTeal0Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientTeal45Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientTeal90Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientTeal180Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientTeal225Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientTeal270Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientCyan0Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientCyan45Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientCyan90Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientCyan180Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientCyan225Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientCyan270Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientSky0Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientSky45Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientSky90Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientSky180Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientSky225Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientSky270Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientBlue0Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientBlue45Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientBlue90Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientBlue180Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientBlue225Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientBlue270Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientIndigo0Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientIndigo45Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientIndigo90Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientIndigo180Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientIndigo225Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientIndigo270Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientViolet0Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientViolet45Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientViolet90Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientViolet180Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientViolet225Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientViolet270Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientPurple0Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientPurple45Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientPurple90Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientPurple180Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientPurple225Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientPurple270Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientFuchsia0Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientFuchsia45Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientFuchsia90Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientFuchsia180Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientFuchsia225Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientFuchsia270Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientPink0Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientPink45Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientPink90Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientPink180Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientPink225Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientPink270Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientRose0Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientRose45Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientRose90Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientRose180Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientRose225Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientRose270Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientOverlayDark0Deg => const LinearGradient(
-  colors: [Color(0xD9303030), Color(0x00303030),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xD9303030),
+          Color(0x00303030),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientOverlayDark180Deg => const LinearGradient(
-  colors: [Color(0x00303030), Color(0xD9303030),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0x00303030),
+          Color(0xD9303030),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientOverlayLight0Deg => const LinearGradient(
-  colors: [Color(0xD9FFFFFF), Color(0x00FFFFFF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xD9FFFFFF),
+          Color(0x00FFFFFF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientOverlayLight180Deg => const LinearGradient(
-  colors: [Color(0x00FFFFFF), Color(0xD9FFFFFF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0x00FFFFFF),
+          Color(0xD9FFFFFF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get patternCardUserImageOverlay => const LinearGradient(
-  colors: [Color(0x00303030), Color(0xD9303030),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0x00303030),
+          Color(0xD9303030),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
 }
 
+class DefaultLightMaterialColorTokens extends MaterialColorTokens {
+  MaterialColor get colorSlate => const MaterialColor(0xFF64748B, {
+        50: Color(0xFFF8FAFC),
+        100: Color(0xFFF1F5F9),
+        200: Color(0xFFE2E8F0),
+        300: Color(0xFFCBD5E1),
+        400: Color(0xFF94A3B8),
+        500: Color(0xFF64748B),
+        600: Color(0xFF475569),
+        700: Color(0xFF334155),
+        800: Color(0xFF1E293B),
+        900: Color(0xFF0F172A),
+      });
+
+  MaterialColor get colorGray => const MaterialColor(0xFF6B7280, {
+        50: Color(0xFFF9FAFB),
+        100: Color(0xFFF3F4F6),
+        200: Color(0xFFE5E7EB),
+        300: Color(0xFFD1D5DB),
+        400: Color(0xFF9CA3AF),
+        500: Color(0xFF6B7280),
+        600: Color(0xFF4B5563),
+        700: Color(0xFF374151),
+        800: Color(0xFF1F2937),
+        900: Color(0xFF111827),
+      });
+
+  MaterialColor get colorZinc => const MaterialColor(0xFF71717A, {
+        50: Color(0xFFFAFAFA),
+        100: Color(0xFFF4F4F5),
+        200: Color(0xFFE4E4E7),
+        300: Color(0xFFD4D4D8),
+        400: Color(0xFFA1A1AA),
+        500: Color(0xFF71717A),
+        600: Color(0xFF52525B),
+        700: Color(0xFF3F3F46),
+        800: Color(0xFF27272A),
+        900: Color(0xFF18181B),
+      });
+
+  MaterialColor get colorNeutral => const MaterialColor(0xFF737373, {
+        50: Color(0xFFFAFAFA),
+        100: Color(0xFFF5F5F5),
+        200: Color(0xFFE5E5E5),
+        300: Color(0xFFD4D4D4),
+        400: Color(0xFFA3A3A3),
+        500: Color(0xFF737373),
+        600: Color(0xFF525252),
+        700: Color(0xFF404040),
+        800: Color(0xFF262626),
+        900: Color(0xFF171717),
+      });
+
+  MaterialColor get colorStone => const MaterialColor(0xFF78716C, {
+        50: Color(0xFFFAFAF9),
+        100: Color(0xFFF5F5F4),
+        200: Color(0xFFE7E5E4),
+        300: Color(0xFFD6D3D1),
+        400: Color(0xFFA8A29E),
+        500: Color(0xFF78716C),
+        600: Color(0xFF57534E),
+        700: Color(0xFF44403C),
+        800: Color(0xFF292524),
+        900: Color(0xFF1C1917),
+      });
+
+  MaterialColor get colorRed => const MaterialColor(0xFFEF4444, {
+        50: Color(0xFFFEF2F2),
+        100: Color(0xFFFEE2E2),
+        200: Color(0xFFFECACA),
+        300: Color(0xFFFCA5A5),
+        400: Color(0xFFF87171),
+        500: Color(0xFFEF4444),
+        600: Color(0xFFDC2626),
+        700: Color(0xFFB91C1C),
+        800: Color(0xFF991B1B),
+        900: Color(0xFF7F1D1D),
+      });
+
+  MaterialColor get colorOrange => const MaterialColor(0xFFF97316, {
+        50: Color(0xFFFFF7ED),
+        100: Color(0xFFFFEDD5),
+        200: Color(0xFFFED7AA),
+        300: Color(0xFFFDBA74),
+        400: Color(0xFFFB923C),
+        500: Color(0xFFF97316),
+        600: Color(0xFFEA580C),
+        700: Color(0xFFC2410C),
+        800: Color(0xFF9A3412),
+        900: Color(0xFF7C2D12),
+      });
+
+  MaterialColor get colorAmber => const MaterialColor(0xFFF59E0B, {
+        50: Color(0xFFFFFBEB),
+        100: Color(0xFFFEF3C7),
+        200: Color(0xFFFDE68A),
+        300: Color(0xFFFCD34D),
+        400: Color(0xFFFBBF24),
+        500: Color(0xFFF59E0B),
+        600: Color(0xFFD97706),
+        700: Color(0xFFB45309),
+        800: Color(0xFF92400E),
+        900: Color(0xFF78350F),
+      });
+
+  MaterialColor get colorYellow => const MaterialColor(0xFFEAB308, {
+        50: Color(0xFFFEFCE8),
+        100: Color(0xFFFEF9C3),
+        200: Color(0xFFFEF08A),
+        300: Color(0xFFFDE047),
+        400: Color(0xFFFACC15),
+        500: Color(0xFFEAB308),
+        600: Color(0xFFCA8A04),
+        700: Color(0xFFA16207),
+        800: Color(0xFF854D0E),
+        900: Color(0xFF713F12),
+      });
+
+  MaterialColor get colorLime => const MaterialColor(0xFF84CC16, {
+        50: Color(0xFFF7FEE7),
+        100: Color(0xFFECFCCB),
+        200: Color(0xFFD9F99D),
+        300: Color(0xFFBEF264),
+        400: Color(0xFFA3E635),
+        500: Color(0xFF84CC16),
+        600: Color(0xFF65A30D),
+        700: Color(0xFF4D7C0F),
+        800: Color(0xFF3F6212),
+        900: Color(0xFF365314),
+      });
+
+  MaterialColor get colorGreen => const MaterialColor(0xFF22C55E, {
+        50: Color(0xFFF0FDF4),
+        100: Color(0xFFDCFCE7),
+        200: Color(0xFFBBF7D0),
+        300: Color(0xFF86EFAC),
+        400: Color(0xFF4ADE80),
+        500: Color(0xFF22C55E),
+        600: Color(0xFF16A34A),
+        700: Color(0xFF15803D),
+        800: Color(0xFF166534),
+        900: Color(0xFF14532D),
+      });
+
+  MaterialColor get colorEmerald => const MaterialColor(0xFF10B981, {
+        50: Color(0xFFECFDF5),
+        100: Color(0xFFD1FAE5),
+        200: Color(0xFFA7F3D0),
+        300: Color(0xFF6EE7B7),
+        400: Color(0xFF34D399),
+        500: Color(0xFF10B981),
+        600: Color(0xFF059669),
+        700: Color(0xFF047857),
+        800: Color(0xFF065F46),
+        900: Color(0xFF064E3B),
+      });
+
+  MaterialColor get colorTeal => const MaterialColor(0xFF14B8A6, {
+        50: Color(0xFFF0FDFA),
+        100: Color(0xFFCCFBF1),
+        200: Color(0xFF99F6E4),
+        300: Color(0xFF5EEAD4),
+        400: Color(0xFF2DD4BF),
+        500: Color(0xFF14B8A6),
+        600: Color(0xFF0D9488),
+        700: Color(0xFF0F766E),
+        800: Color(0xFF115E59),
+        900: Color(0xFF134E4A),
+      });
+
+  MaterialColor get colorCyan => const MaterialColor(0xFF06B6D4, {
+        50: Color(0xFFECFEFF),
+        100: Color(0xFFCFFAFE),
+        200: Color(0xFFA5F3FC),
+        300: Color(0xFF67E8F9),
+        400: Color(0xFF22D3EE),
+        500: Color(0xFF06B6D4),
+        600: Color(0xFF0891B2),
+        700: Color(0xFF0E7490),
+        800: Color(0xFF155E75),
+        900: Color(0xFF164E63),
+      });
+
+  MaterialColor get colorSky => const MaterialColor(0xFF0EA5E9, {
+        50: Color(0xFFF0F9FF),
+        100: Color(0xFFE0F2FE),
+        200: Color(0xFFBAE6FD),
+        300: Color(0xFF7DD3FC),
+        400: Color(0xFF38BDF8),
+        500: Color(0xFF0EA5E9),
+        600: Color(0xFF0284C7),
+        700: Color(0xFF0369A1),
+        800: Color(0xFF075985),
+        900: Color(0xFF0C4A6E),
+      });
+
+  MaterialColor get colorBlue => const MaterialColor(0xFF3B82F6, {
+        50: Color(0xFFEFF6FF),
+        100: Color(0xFFDBEAFE),
+        200: Color(0xFFBFDBFE),
+        300: Color(0xFF93C5FD),
+        400: Color(0xFF60A5FA),
+        500: Color(0xFF3B82F6),
+        600: Color(0xFF2563EB),
+        700: Color(0xFF1D4ED8),
+        800: Color(0xFF1E40AF),
+        900: Color(0xFF1E3A8A),
+      });
+
+  MaterialColor get colorIndigo => const MaterialColor(0xFF6366F1, {
+        50: Color(0xFFEEF2FF),
+        100: Color(0xFFE0E7FF),
+        200: Color(0xFFC7D2FE),
+        300: Color(0xFFA5B4FC),
+        400: Color(0xFF818CF8),
+        500: Color(0xFF6366F1),
+        600: Color(0xFF4F46E5),
+        700: Color(0xFF4338CA),
+        800: Color(0xFF3730A3),
+        900: Color(0xFF312E81),
+      });
+
+  MaterialColor get colorViolet => const MaterialColor(0xFF8B5CF6, {
+        50: Color(0xFFF5F3FF),
+        100: Color(0xFFEDE9FE),
+        200: Color(0xFFDDD6FE),
+        300: Color(0xFFC4B5FD),
+        400: Color(0xFFA78BFA),
+        500: Color(0xFF8B5CF6),
+        600: Color(0xFF7C3AED),
+        700: Color(0xFF6D28D9),
+        800: Color(0xFF5B21B6),
+        900: Color(0xFF4C1D95),
+      });
+
+  MaterialColor get colorPurple => const MaterialColor(0xFFA855F7, {
+        50: Color(0xFFFAF5FF),
+        100: Color(0xFFF3E8FF),
+        200: Color(0xFFE9D5FF),
+        300: Color(0xFFD8B4FE),
+        400: Color(0xFFC084FC),
+        500: Color(0xFFA855F7),
+        600: Color(0xFF9333EA),
+        700: Color(0xFF7E22CE),
+        800: Color(0xFF6B21A8),
+        900: Color(0xFF581C87),
+      });
+
+  MaterialColor get colorFuchsia => const MaterialColor(0xFFD946EF, {
+        50: Color(0xFFFDF4FF),
+        100: Color(0xFFFAE8FF),
+        200: Color(0xFFF5D0FE),
+        300: Color(0xFFF0ABFC),
+        400: Color(0xFFE879F9),
+        500: Color(0xFFD946EF),
+        600: Color(0xFFC026D3),
+        700: Color(0xFFA21CAF),
+        800: Color(0xFF86198F),
+        900: Color(0xFF701A75),
+      });
+
+  MaterialColor get colorPink => const MaterialColor(0xFFEC4899, {
+        50: Color(0xFFFDF2F8),
+        100: Color(0xFFFCE7F3),
+        200: Color(0xFFFBCFE8),
+        300: Color(0xFFF9A8D4),
+        400: Color(0xFFF472B6),
+        500: Color(0xFFEC4899),
+        600: Color(0xFFDB2777),
+        700: Color(0xFFBE185D),
+        800: Color(0xFF9D174D),
+        900: Color(0xFF831843),
+      });
+
+  MaterialColor get colorRose => const MaterialColor(0xFFF43F5E, {
+        50: Color(0xFFFFF1F2),
+        100: Color(0xFFFFE4E6),
+        200: Color(0xFFFECDD3),
+        300: Color(0xFFFDA4AF),
+        400: Color(0xFFFB7185),
+        500: Color(0xFFF43F5E),
+        600: Color(0xFFE11D48),
+        700: Color(0xFFBE123C),
+        800: Color(0xFF9F1239),
+        900: Color(0xFF881337),
+      });
+
+  MaterialColor get colorBlackAlpha => const MaterialColor(0x80121212, {
+        50: Color(0x0D121212),
+        100: Color(0x1A121212),
+        200: Color(0x33121212),
+        300: Color(0x4D121212),
+        400: Color(0x66121212),
+        500: Color(0x80121212),
+        600: Color(0x99121212),
+        700: Color(0xB3121212),
+        800: Color(0xCC131313),
+        900: Color(0xE6121212),
+      });
+
+  MaterialColor get colorWhiteAlpha => const MaterialColor(0x80FFFFFF, {
+        50: Color(0x0DFFFFFF),
+        100: Color(0x1AFFFFFF),
+        200: Color(0x33FFFFFF),
+        300: Color(0x4DFFFFFF),
+        400: Color(0x66FFFFFF),
+        500: Color(0x80FFFFFF),
+        600: Color(0x99FFFFFF),
+        700: Color(0xB3FFFFFF),
+        800: Color(0xCCFFFFFF),
+        900: Color(0xE6FFFFFF),
+      });
+}
 
 class DefaultDarkTokens extends ITokens {
   @override
@@ -3833,6 +4602,8 @@ class DefaultDarkTokens extends ITokens {
   SizeTokens get size => DefaultDarkSizeTokens();
   @override
   GradientTokens get gradient => DefaultDarkGradientTokens();
+  @override
+  MaterialColorTokens get materialColor => DefaultDarkMaterialColorTokens();
 }
 
 class DefaultDarkColorTokens extends ColorTokens {
@@ -4648,7 +5419,6 @@ class DefaultDarkColorTokens extends ColorTokens {
   Color get sectionFooterLogoIconColor => const Color(0xFF27272A);
 }
 
-
 class DefaultDarkSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get space25 => const EdgeInsets.all(2.0);
@@ -4759,7 +5529,8 @@ class DefaultDarkSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get patternFeatureContentSpaceBetween => const EdgeInsets.all(8.0);
   @override
-  EdgeInsets get patternCardUserContentSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get patternCardUserContentSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
   EdgeInsets get patternCardUserSpaceBetween => const EdgeInsets.all(16.0);
   @override
@@ -4767,7 +5538,8 @@ class DefaultDarkSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get patternCardUserIconsSpaceBetween => const EdgeInsets.all(24.0);
   @override
-  EdgeInsets get patternCardUserHeadlineSpaceBetween => const EdgeInsets.all(2.0);
+  EdgeInsets get patternCardUserHeadlineSpaceBetween =>
+      const EdgeInsets.all(2.0);
   @override
   EdgeInsets get patternCardPricingPaddingX => const EdgeInsets.all(56.0);
   @override
@@ -4775,11 +5547,14 @@ class DefaultDarkSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get patternCardPricingSpaceBetween => const EdgeInsets.all(32.0);
   @override
-  EdgeInsets get patternCardPricingHeadingSpaceBetween => const EdgeInsets.all(8.0);
+  EdgeInsets get patternCardPricingHeadingSpaceBetween =>
+      const EdgeInsets.all(8.0);
   @override
-  EdgeInsets get patternCardPricingListSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get patternCardPricingListSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
-  EdgeInsets get patternCardPricingActionSpaceBetween => const EdgeInsets.all(8.0);
+  EdgeInsets get patternCardPricingActionSpaceBetween =>
+      const EdgeInsets.all(8.0);
   @override
   EdgeInsets get sectionNavPaddingX => const EdgeInsets.all(40.0);
   @override
@@ -4807,9 +5582,11 @@ class DefaultDarkSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get sectionFeaturesSpaceBetween => const EdgeInsets.all(96.0);
   @override
-  EdgeInsets get sectionFeaturesHeadingBlockSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get sectionFeaturesHeadingBlockSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
-  EdgeInsets get sectionFeaturesHeadingSpaceBetween => const EdgeInsets.all(8.0);
+  EdgeInsets get sectionFeaturesHeadingSpaceBetween =>
+      const EdgeInsets.all(8.0);
   @override
   EdgeInsets get sectionFeaturesBlockSpaceBetween => const EdgeInsets.all(56.0);
   @override
@@ -4821,7 +5598,8 @@ class DefaultDarkSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get sectionTeamSpaceBetween => const EdgeInsets.all(96.0);
   @override
-  EdgeInsets get sectionTeamHeadingBlockSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get sectionTeamHeadingBlockSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
   EdgeInsets get sectionTeamHeadingSpaceBetween => const EdgeInsets.all(8.0);
   @override
@@ -4835,7 +5613,8 @@ class DefaultDarkSpacingTokens extends SpacingTokens {
   @override
   EdgeInsets get sectionPricingSpaceBetween => const EdgeInsets.all(56.0);
   @override
-  EdgeInsets get sectionPricingHeadingBlockSpaceBetween => const EdgeInsets.all(16.0);
+  EdgeInsets get sectionPricingHeadingBlockSpaceBetween =>
+      const EdgeInsets.all(16.0);
   @override
   EdgeInsets get sectionPricingHeadingSpaceBetween => const EdgeInsets.all(8.0);
   @override
@@ -4850,471 +5629,469 @@ class DefaultDarkSpacingTokens extends SpacingTokens {
   EdgeInsets get sectionFooterLogoSpaceBetween => const EdgeInsets.all(8.0);
 }
 
-
 class DefaultDarkTextStyleTokens extends TextStyleTokens {
   @override
   TextStyle get semanticTypographyColossusBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 23.04,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 23.04,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyColossusRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 23.04,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 23.04,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyDisplayBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyDisplayRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeroBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeroRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyUberBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyUberRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline1Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline1Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline2Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline2Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline2Medium => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w500,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w500,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline3Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline3Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline4Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline4Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline5Bold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyHeadline5Regular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get semanticTypographyLeadBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyLeadRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyBodyBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyBodyRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyBodySemiBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographySmallBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographySmallRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyCaptionBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyCaptionRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyCaptionSemiBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyXSmallBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyXSmallRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyTinyBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyTinyRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyButtonNormalBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonNormalRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonLargeBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonLargeRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonXLargeBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyButtonXLargeRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get semanticTypographyInputNormalBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyInputNormalRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyInputLargeBold => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get semanticTypographyInputLargeRegular => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get buttonLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.48,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.48,
+      );
   @override
   TextStyle get listItemDefaultLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get listItemFeaturedLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get menuItemHoverLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get menuItemDefaultLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get menuItemActiveLabel => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternFeatureHeading => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternFeatureText => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternCardUserTypographyName => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get patternCardUserTypographyRole => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternCardUserTypographyBio => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 16.0,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternPricingCardTypographyPrice => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w700,
-  height: 1.1,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w700,
+        height: 1.1,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get patternPricingCardTypographyFrequency => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.3,
-  letterSpacing: -0.16,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+        letterSpacing: -0.16,
+      );
   @override
   TextStyle get patternPricingCardTypographyDescription => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 19.2,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 19.2,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
   @override
   TextStyle get patternPricingCardTypographyMention => const TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13.333333333333334,
-  fontWeight: FontWeight.w400,
-  height: 1.5,
-  letterSpacing: 0.0,
-);
+        fontFamily: 'Inter',
+        fontSize: 13.333333333333334,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        letterSpacing: 0.0,
+      );
 }
-
 
 class DefaultDarkRadiiTokens extends RadiiTokens {
   @override
@@ -5360,233 +6137,243 @@ class DefaultDarkRadiiTokens extends RadiiTokens {
   @override
   BorderRadius get patternFeatureIconBorderRadius => BorderRadius.zero;
   @override
-  BorderRadius get patternCardUserBorderRadius => const BorderRadius.only(topLeft: Radius.circular(0.0),topRight: Radius.circular(0.0),bottomRight: Radius.circular(0.0),bottomLeft: Radius.circular(0.0));
+  BorderRadius get patternCardUserBorderRadius => const BorderRadius.only(
+      topLeft: Radius.circular(0.0),
+      topRight: Radius.circular(0.0),
+      bottomRight: Radius.circular(0.0),
+      bottomLeft: Radius.circular(0.0));
   @override
-  BorderRadius get patternCardPricingBorderRadius => const BorderRadius.only(topLeft: Radius.circular(0.0),topRight: Radius.circular(0.0),bottomRight: Radius.circular(0.0),bottomLeft: Radius.circular(0.0));
+  BorderRadius get patternCardPricingBorderRadius => const BorderRadius.only(
+      topLeft: Radius.circular(0.0),
+      topRight: Radius.circular(0.0),
+      bottomRight: Radius.circular(0.0),
+      bottomLeft: Radius.circular(0.0));
   @override
-  BorderRadius get sectionHeroImageBorderRadii => const BorderRadius.only(topLeft: Radius.circular(0.0),topRight: Radius.circular(0.0),bottomRight: Radius.circular(0.0),bottomLeft: Radius.circular(0.0));
+  BorderRadius get sectionHeroImageBorderRadii => const BorderRadius.only(
+      topLeft: Radius.circular(0.0),
+      topRight: Radius.circular(0.0),
+      bottomRight: Radius.circular(0.0),
+      bottomLeft: Radius.circular(0.0));
 }
-
 
 class DefaultDarkShadowTokens extends ShadowTokens {
   @override
   List<BoxShadow> get shadowPrimary100 => const [
-  BoxShadow(
-    offset: Offset(0.0, 1.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A3B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 1.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A3B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary200 => const [
-  BoxShadow(
-    offset: Offset(0.0, 2.0),
-    blurRadius: 4.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A3B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 2.0),
+          blurRadius: 4.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A3B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary300 => const [
-  BoxShadow(
-    offset: Offset(0.0, 4.0),
-    blurRadius: 8.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A3B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 4.0),
+          blurRadius: 8.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A3B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary400 => const [
-  BoxShadow(
-    offset: Offset(0.0, 8.0),
-    blurRadius: 16.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A3B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 8.0),
+          blurRadius: 16.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A3B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary500 => const [
-  BoxShadow(
-    offset: Offset(0.0, 16.0),
-    blurRadius: 24.0,
-    spreadRadius: 0.0,
-    color: Color(0x173B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 16.0),
+          blurRadius: 24.0,
+          spreadRadius: 0.0,
+          color: Color(0x173B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowPrimary600 => const [
-  BoxShadow(
-    offset: Offset(0.0, 24.0),
-    blurRadius: 40.0,
-    spreadRadius: 0.0,
-    color: Color(0x143B28CC),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D3B28CC),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 24.0),
+          blurRadius: 40.0,
+          spreadRadius: 0.0,
+          color: Color(0x143B28CC),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D3B28CC),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary100 => const [
-  BoxShadow(
-    offset: Offset(0.0, 1.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A2667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 1.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A2667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary200 => const [
-  BoxShadow(
-    offset: Offset(0.0, 2.0),
-    blurRadius: 4.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A2667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 2.0),
+          blurRadius: 4.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A2667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary300 => const [
-  BoxShadow(
-    offset: Offset(0.0, 4.0),
-    blurRadius: 8.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A2667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 4.0),
+          blurRadius: 8.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A2667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary400 => const [
-  BoxShadow(
-    offset: Offset(0.0, 8.0),
-    blurRadius: 16.0,
-    spreadRadius: 0.0,
-    color: Color(0x1A2667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 8.0),
+          blurRadius: 16.0,
+          spreadRadius: 0.0,
+          color: Color(0x1A2667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary500 => const [
-  BoxShadow(
-    offset: Offset(0.0, 16.0),
-    blurRadius: 24.0,
-    spreadRadius: 0.0,
-    color: Color(0x172667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 16.0),
+          blurRadius: 24.0,
+          spreadRadius: 0.0,
+          color: Color(0x172667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowSecondary600 => const [
-  BoxShadow(
-    offset: Offset(0.0, 24.0),
-    blurRadius: 40.0,
-    spreadRadius: 0.0,
-    color: Color(0x142667FF),
-  ),
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 1.0,
-    spreadRadius: 0.0,
-    color: Color(0x0D2667FF),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 24.0),
+          blurRadius: 40.0,
+          spreadRadius: 0.0,
+          color: Color(0x142667FF),
+        ),
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 1.0,
+          spreadRadius: 0.0,
+          color: Color(0x0D2667FF),
+        ),
+      ];
   @override
   List<BoxShadow> get shadowNone => const [
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 0.0,
-    spreadRadius: 0.0,
-    color: Color(0x00000000),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 0.0,
+          spreadRadius: 0.0,
+          color: Color(0x00000000),
+        ),
+      ];
   @override
   List<BoxShadow> get semanticShadowNone => const [
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 0.0,
-    spreadRadius: 0.0,
-    color: Color(0x00000000),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 0.0,
+          spreadRadius: 0.0,
+          color: Color(0x00000000),
+        ),
+      ];
   @override
   List<BoxShadow> get patternCardUserShadow => const [
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 0.0,
-    spreadRadius: 0.0,
-    color: Color(0x00000000),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 0.0,
+          spreadRadius: 0.0,
+          color: Color(0x00000000),
+        ),
+      ];
   @override
   List<BoxShadow> get patternCardPricingShadow => const [
-  BoxShadow(
-    offset: Offset(0.0, 0.0),
-    blurRadius: 0.0,
-    spreadRadius: 0.0,
-    color: Color(0x00000000),
-  ),
-];
+        BoxShadow(
+          offset: Offset(0.0, 0.0),
+          blurRadius: 0.0,
+          spreadRadius: 0.0,
+          color: Color(0x00000000),
+        ),
+      ];
 }
-
 
 class DefaultDarkSizeTokens extends SizeTokens {
   @override
@@ -5701,1102 +6488,1826 @@ class DefaultDarkSizeTokens extends SizeTokens {
   Size get sectionFooterLogoIconSize => const Size(36.0, 36.0);
 }
 
-
 class DefaultDarkGradientTokens extends GradientTokens {
   @override
   LinearGradient get colorGradientSlate0Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientSlate45Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientSlate90Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientSlate180Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientSlate225Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientSlate270Deg => const LinearGradient(
-  colors: [Color(0xFF475569), Color(0xFF94A3B8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF475569),
+          Color(0xFF94A3B8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientGray0Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientGray45Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientGray90Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientGray180Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientGray225Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientGray270Deg => const LinearGradient(
-  colors: [Color(0xFF4B5563), Color(0xFF9CA3AF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF4B5563),
+          Color(0xFF9CA3AF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientZinc0Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientZinc45Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientZinc90Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientZinc180Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientZinc225Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientZinc270Deg => const LinearGradient(
-  colors: [Color(0xFF52525B), Color(0xFFA1A1AA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF52525B),
+          Color(0xFFA1A1AA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientNeutral0Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientNeutral45Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientNeutral90Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientNeutral180Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientNeutral225Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientNeutral270Deg => const LinearGradient(
-  colors: [Color(0xFF525252), Color(0xFFA3A3A3),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF525252),
+          Color(0xFFA3A3A3),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientStone0Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientStone45Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientStone90Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientStone180Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientStone225Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientStone270Deg => const LinearGradient(
-  colors: [Color(0xFF57534E), Color(0xFFA8A29E),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF57534E),
+          Color(0xFFA8A29E),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientRed0Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientRed45Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientRed90Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientRed180Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientRed225Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientRed270Deg => const LinearGradient(
-  colors: [Color(0xFFDC2626), Color(0xFFF87171),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFDC2626),
+          Color(0xFFF87171),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientOrange0Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientOrange45Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientOrange90Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientOrange180Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientOrange225Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientOrange270Deg => const LinearGradient(
-  colors: [Color(0xFFEA580C), Color(0xFFFB923C),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFEA580C),
+          Color(0xFFFB923C),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientAmber0Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientAmber45Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientAmber90Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientAmber180Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientAmber225Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientAmber270Deg => const LinearGradient(
-  colors: [Color(0xFFD97706), Color(0xFFFBBF24),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFD97706),
+          Color(0xFFFBBF24),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientYellow0Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientYellow45Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientYellow90Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientYellow180Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientYellow225Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientYellow270Deg => const LinearGradient(
-  colors: [Color(0xFFCA8A04), Color(0xFFFACC15),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFCA8A04),
+          Color(0xFFFACC15),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientLime0Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientLime45Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientLime90Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientLime180Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientLime225Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientLime270Deg => const LinearGradient(
-  colors: [Color(0xFF65A30D), Color(0xFFA3E635),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF65A30D),
+          Color(0xFFA3E635),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientGreen0Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientGreen45Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientGreen90Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientGreen180Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientGreen225Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientGreen270Deg => const LinearGradient(
-  colors: [Color(0xFF16A34A), Color(0xFF4ADE80),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF16A34A),
+          Color(0xFF4ADE80),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientEmerald0Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientEmerald45Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientEmerald90Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientEmerald180Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientEmerald225Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientEmerald270Deg => const LinearGradient(
-  colors: [Color(0xFF059669), Color(0xFF34D399),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF059669),
+          Color(0xFF34D399),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientTeal0Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientTeal45Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientTeal90Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientTeal180Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientTeal225Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientTeal270Deg => const LinearGradient(
-  colors: [Color(0xFF0D9488), Color(0xFF2DD4BF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF0D9488),
+          Color(0xFF2DD4BF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientCyan0Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientCyan45Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientCyan90Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientCyan180Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientCyan225Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientCyan270Deg => const LinearGradient(
-  colors: [Color(0xFF0891B2), Color(0xFF22D3EE),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF0891B2),
+          Color(0xFF22D3EE),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientSky0Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientSky45Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientSky90Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientSky180Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientSky225Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientSky270Deg => const LinearGradient(
-  colors: [Color(0xFF0284C7), Color(0xFF38BDF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF0284C7),
+          Color(0xFF38BDF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientBlue0Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientBlue45Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientBlue90Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientBlue180Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientBlue225Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientBlue270Deg => const LinearGradient(
-  colors: [Color(0xFF2563EB), Color(0xFF60A5FA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF2563EB),
+          Color(0xFF60A5FA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientIndigo0Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientIndigo45Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientIndigo90Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientIndigo180Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientIndigo225Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientIndigo270Deg => const LinearGradient(
-  colors: [Color(0xFF4F46E5), Color(0xFF818CF8),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF4F46E5),
+          Color(0xFF818CF8),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientViolet0Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientViolet45Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientViolet90Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientViolet180Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientViolet225Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientViolet270Deg => const LinearGradient(
-  colors: [Color(0xFF7C3AED), Color(0xFFA78BFA),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF7C3AED),
+          Color(0xFFA78BFA),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientPurple0Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientPurple45Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientPurple90Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientPurple180Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientPurple225Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientPurple270Deg => const LinearGradient(
-  colors: [Color(0xFF9333EA), Color(0xFFC084FC),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFF9333EA),
+          Color(0xFFC084FC),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientFuchsia0Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientFuchsia45Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientFuchsia90Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientFuchsia180Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientFuchsia225Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientFuchsia270Deg => const LinearGradient(
-  colors: [Color(0xFFC026D3), Color(0xFFE879F9),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFC026D3),
+          Color(0xFFE879F9),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientPink0Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientPink45Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientPink90Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientPink180Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientPink225Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientPink270Deg => const LinearGradient(
-  colors: [Color(0xFFDB2777), Color(0xFFF472B6),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFDB2777),
+          Color(0xFFF472B6),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientRose0Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.00),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.00),
+      );
   @override
   LinearGradient get colorGradientRose45Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(0.785),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(0.785),
+      );
   @override
   LinearGradient get colorGradientRose90Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(1.57),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(1.57),
+      );
   @override
   LinearGradient get colorGradientRose180Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientRose225Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.93),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.93),
+      );
   @override
   LinearGradient get colorGradientRose270Deg => const LinearGradient(
-  colors: [Color(0xFFE11D48), Color(0xFFFB7185),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(4.71),
-);
+        colors: [
+          Color(0xFFE11D48),
+          Color(0xFFFB7185),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(4.71),
+      );
   @override
   LinearGradient get colorGradientOverlayDark0Deg => const LinearGradient(
-  colors: [Color(0xD9303030), Color(0x00303030),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xD9303030),
+          Color(0x00303030),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientOverlayDark180Deg => const LinearGradient(
-  colors: [Color(0x00303030), Color(0xD9303030),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0x00303030),
+          Color(0xD9303030),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientOverlayLight0Deg => const LinearGradient(
-  colors: [Color(0xD9FFFFFF), Color(0x00FFFFFF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0xD9FFFFFF),
+          Color(0x00FFFFFF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get colorGradientOverlayLight180Deg => const LinearGradient(
-  colors: [Color(0x00FFFFFF), Color(0xD9FFFFFF),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0x00FFFFFF),
+          Color(0xD9FFFFFF),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
   @override
   LinearGradient get patternCardUserImageOverlay => const LinearGradient(
-  colors: [Color(0x00303030), Color(0xD9303030),],
-  stops: [0.0, 1.0],
-  begin: Alignment.bottomCenter,
-  end: Alignment.topCenter,
-  transform: GradientRotation(3.14),
-);
+        colors: [
+          Color(0x00303030),
+          Color(0xD9303030),
+        ],
+        stops: [0.0, 1.0],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        transform: GradientRotation(3.14),
+      );
+}
+
+class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
+  MaterialColor get colorSlate => const MaterialColor(0xFF64748B, {
+        50: Color(0xFFF8FAFC),
+        100: Color(0xFFF1F5F9),
+        200: Color(0xFFE2E8F0),
+        300: Color(0xFFCBD5E1),
+        400: Color(0xFF94A3B8),
+        500: Color(0xFF64748B),
+        600: Color(0xFF475569),
+        700: Color(0xFF334155),
+        800: Color(0xFF1E293B),
+        900: Color(0xFF0F172A),
+      });
+
+  MaterialColor get colorGray => const MaterialColor(0xFF6B7280, {
+        50: Color(0xFFF9FAFB),
+        100: Color(0xFFF3F4F6),
+        200: Color(0xFFE5E7EB),
+        300: Color(0xFFD1D5DB),
+        400: Color(0xFF9CA3AF),
+        500: Color(0xFF6B7280),
+        600: Color(0xFF4B5563),
+        700: Color(0xFF374151),
+        800: Color(0xFF1F2937),
+        900: Color(0xFF111827),
+      });
+
+  MaterialColor get colorZinc => const MaterialColor(0xFF71717A, {
+        50: Color(0xFFFAFAFA),
+        100: Color(0xFFF4F4F5),
+        200: Color(0xFFE4E4E7),
+        300: Color(0xFFD4D4D8),
+        400: Color(0xFFA1A1AA),
+        500: Color(0xFF71717A),
+        600: Color(0xFF52525B),
+        700: Color(0xFF3F3F46),
+        800: Color(0xFF27272A),
+        900: Color(0xFF18181B),
+      });
+
+  MaterialColor get colorNeutral => const MaterialColor(0xFF737373, {
+        50: Color(0xFFFAFAFA),
+        100: Color(0xFFF5F5F5),
+        200: Color(0xFFE5E5E5),
+        300: Color(0xFFD4D4D4),
+        400: Color(0xFFA3A3A3),
+        500: Color(0xFF737373),
+        600: Color(0xFF525252),
+        700: Color(0xFF404040),
+        800: Color(0xFF262626),
+        900: Color(0xFF171717),
+      });
+
+  MaterialColor get colorStone => const MaterialColor(0xFF78716C, {
+        50: Color(0xFFFAFAF9),
+        100: Color(0xFFF5F5F4),
+        200: Color(0xFFE7E5E4),
+        300: Color(0xFFD6D3D1),
+        400: Color(0xFFA8A29E),
+        500: Color(0xFF78716C),
+        600: Color(0xFF57534E),
+        700: Color(0xFF44403C),
+        800: Color(0xFF292524),
+        900: Color(0xFF1C1917),
+      });
+
+  MaterialColor get colorRed => const MaterialColor(0xFFEF4444, {
+        50: Color(0xFFFEF2F2),
+        100: Color(0xFFFEE2E2),
+        200: Color(0xFFFECACA),
+        300: Color(0xFFFCA5A5),
+        400: Color(0xFFF87171),
+        500: Color(0xFFEF4444),
+        600: Color(0xFFDC2626),
+        700: Color(0xFFB91C1C),
+        800: Color(0xFF991B1B),
+        900: Color(0xFF7F1D1D),
+      });
+
+  MaterialColor get colorOrange => const MaterialColor(0xFFF97316, {
+        50: Color(0xFFFFF7ED),
+        100: Color(0xFFFFEDD5),
+        200: Color(0xFFFED7AA),
+        300: Color(0xFFFDBA74),
+        400: Color(0xFFFB923C),
+        500: Color(0xFFF97316),
+        600: Color(0xFFEA580C),
+        700: Color(0xFFC2410C),
+        800: Color(0xFF9A3412),
+        900: Color(0xFF7C2D12),
+      });
+
+  MaterialColor get colorAmber => const MaterialColor(0xFFF59E0B, {
+        50: Color(0xFFFFFBEB),
+        100: Color(0xFFFEF3C7),
+        200: Color(0xFFFDE68A),
+        300: Color(0xFFFCD34D),
+        400: Color(0xFFFBBF24),
+        500: Color(0xFFF59E0B),
+        600: Color(0xFFD97706),
+        700: Color(0xFFB45309),
+        800: Color(0xFF92400E),
+        900: Color(0xFF78350F),
+      });
+
+  MaterialColor get colorYellow => const MaterialColor(0xFFEAB308, {
+        50: Color(0xFFFEFCE8),
+        100: Color(0xFFFEF9C3),
+        200: Color(0xFFFEF08A),
+        300: Color(0xFFFDE047),
+        400: Color(0xFFFACC15),
+        500: Color(0xFFEAB308),
+        600: Color(0xFFCA8A04),
+        700: Color(0xFFA16207),
+        800: Color(0xFF854D0E),
+        900: Color(0xFF713F12),
+      });
+
+  MaterialColor get colorLime => const MaterialColor(0xFF84CC16, {
+        50: Color(0xFFF7FEE7),
+        100: Color(0xFFECFCCB),
+        200: Color(0xFFD9F99D),
+        300: Color(0xFFBEF264),
+        400: Color(0xFFA3E635),
+        500: Color(0xFF84CC16),
+        600: Color(0xFF65A30D),
+        700: Color(0xFF4D7C0F),
+        800: Color(0xFF3F6212),
+        900: Color(0xFF365314),
+      });
+
+  MaterialColor get colorGreen => const MaterialColor(0xFF22C55E, {
+        50: Color(0xFFF0FDF4),
+        100: Color(0xFFDCFCE7),
+        200: Color(0xFFBBF7D0),
+        300: Color(0xFF86EFAC),
+        400: Color(0xFF4ADE80),
+        500: Color(0xFF22C55E),
+        600: Color(0xFF16A34A),
+        700: Color(0xFF15803D),
+        800: Color(0xFF166534),
+        900: Color(0xFF14532D),
+      });
+
+  MaterialColor get colorEmerald => const MaterialColor(0xFF10B981, {
+        50: Color(0xFFECFDF5),
+        100: Color(0xFFD1FAE5),
+        200: Color(0xFFA7F3D0),
+        300: Color(0xFF6EE7B7),
+        400: Color(0xFF34D399),
+        500: Color(0xFF10B981),
+        600: Color(0xFF059669),
+        700: Color(0xFF047857),
+        800: Color(0xFF065F46),
+        900: Color(0xFF064E3B),
+      });
+
+  MaterialColor get colorTeal => const MaterialColor(0xFF14B8A6, {
+        50: Color(0xFFF0FDFA),
+        100: Color(0xFFCCFBF1),
+        200: Color(0xFF99F6E4),
+        300: Color(0xFF5EEAD4),
+        400: Color(0xFF2DD4BF),
+        500: Color(0xFF14B8A6),
+        600: Color(0xFF0D9488),
+        700: Color(0xFF0F766E),
+        800: Color(0xFF115E59),
+        900: Color(0xFF134E4A),
+      });
+
+  MaterialColor get colorCyan => const MaterialColor(0xFF06B6D4, {
+        50: Color(0xFFECFEFF),
+        100: Color(0xFFCFFAFE),
+        200: Color(0xFFA5F3FC),
+        300: Color(0xFF67E8F9),
+        400: Color(0xFF22D3EE),
+        500: Color(0xFF06B6D4),
+        600: Color(0xFF0891B2),
+        700: Color(0xFF0E7490),
+        800: Color(0xFF155E75),
+        900: Color(0xFF164E63),
+      });
+
+  MaterialColor get colorSky => const MaterialColor(0xFF0EA5E9, {
+        50: Color(0xFFF0F9FF),
+        100: Color(0xFFE0F2FE),
+        200: Color(0xFFBAE6FD),
+        300: Color(0xFF7DD3FC),
+        400: Color(0xFF38BDF8),
+        500: Color(0xFF0EA5E9),
+        600: Color(0xFF0284C7),
+        700: Color(0xFF0369A1),
+        800: Color(0xFF075985),
+        900: Color(0xFF0C4A6E),
+      });
+
+  MaterialColor get colorBlue => const MaterialColor(0xFF3B82F6, {
+        50: Color(0xFFEFF6FF),
+        100: Color(0xFFDBEAFE),
+        200: Color(0xFFBFDBFE),
+        300: Color(0xFF93C5FD),
+        400: Color(0xFF60A5FA),
+        500: Color(0xFF3B82F6),
+        600: Color(0xFF2563EB),
+        700: Color(0xFF1D4ED8),
+        800: Color(0xFF1E40AF),
+        900: Color(0xFF1E3A8A),
+      });
+
+  MaterialColor get colorIndigo => const MaterialColor(0xFF6366F1, {
+        50: Color(0xFFEEF2FF),
+        100: Color(0xFFE0E7FF),
+        200: Color(0xFFC7D2FE),
+        300: Color(0xFFA5B4FC),
+        400: Color(0xFF818CF8),
+        500: Color(0xFF6366F1),
+        600: Color(0xFF4F46E5),
+        700: Color(0xFF4338CA),
+        800: Color(0xFF3730A3),
+        900: Color(0xFF312E81),
+      });
+
+  MaterialColor get colorViolet => const MaterialColor(0xFF8B5CF6, {
+        50: Color(0xFFF5F3FF),
+        100: Color(0xFFEDE9FE),
+        200: Color(0xFFDDD6FE),
+        300: Color(0xFFC4B5FD),
+        400: Color(0xFFA78BFA),
+        500: Color(0xFF8B5CF6),
+        600: Color(0xFF7C3AED),
+        700: Color(0xFF6D28D9),
+        800: Color(0xFF5B21B6),
+        900: Color(0xFF4C1D95),
+      });
+
+  MaterialColor get colorPurple => const MaterialColor(0xFFA855F7, {
+        50: Color(0xFFFAF5FF),
+        100: Color(0xFFF3E8FF),
+        200: Color(0xFFE9D5FF),
+        300: Color(0xFFD8B4FE),
+        400: Color(0xFFC084FC),
+        500: Color(0xFFA855F7),
+        600: Color(0xFF9333EA),
+        700: Color(0xFF7E22CE),
+        800: Color(0xFF6B21A8),
+        900: Color(0xFF581C87),
+      });
+
+  MaterialColor get colorFuchsia => const MaterialColor(0xFFD946EF, {
+        50: Color(0xFFFDF4FF),
+        100: Color(0xFFFAE8FF),
+        200: Color(0xFFF5D0FE),
+        300: Color(0xFFF0ABFC),
+        400: Color(0xFFE879F9),
+        500: Color(0xFFD946EF),
+        600: Color(0xFFC026D3),
+        700: Color(0xFFA21CAF),
+        800: Color(0xFF86198F),
+        900: Color(0xFF701A75),
+      });
+
+  MaterialColor get colorPink => const MaterialColor(0xFFEC4899, {
+        50: Color(0xFFFDF2F8),
+        100: Color(0xFFFCE7F3),
+        200: Color(0xFFFBCFE8),
+        300: Color(0xFFF9A8D4),
+        400: Color(0xFFF472B6),
+        500: Color(0xFFEC4899),
+        600: Color(0xFFDB2777),
+        700: Color(0xFFBE185D),
+        800: Color(0xFF9D174D),
+        900: Color(0xFF831843),
+      });
+
+  MaterialColor get colorRose => const MaterialColor(0xFFF43F5E, {
+        50: Color(0xFFFFF1F2),
+        100: Color(0xFFFFE4E6),
+        200: Color(0xFFFECDD3),
+        300: Color(0xFFFDA4AF),
+        400: Color(0xFFFB7185),
+        500: Color(0xFFF43F5E),
+        600: Color(0xFFE11D48),
+        700: Color(0xFFBE123C),
+        800: Color(0xFF9F1239),
+        900: Color(0xFF881337),
+      });
+
+  MaterialColor get colorBlackAlpha => const MaterialColor(0x80121212, {
+        50: Color(0x0D121212),
+        100: Color(0x1A121212),
+        200: Color(0x33121212),
+        300: Color(0x4D121212),
+        400: Color(0x66121212),
+        500: Color(0x80121212),
+        600: Color(0x99121212),
+        700: Color(0xB3121212),
+        800: Color(0xCC131313),
+        900: Color(0xE6121212),
+      });
+
+  MaterialColor get colorWhiteAlpha => const MaterialColor(0x80FFFFFF, {
+        50: Color(0x0DFFFFFF),
+        100: Color(0x1AFFFFFF),
+        200: Color(0x33FFFFFF),
+        300: Color(0x4DFFFFFF),
+        400: Color(0x66FFFFFF),
+        500: Color(0x80FFFFFF),
+        600: Color(0x99FFFFFF),
+        700: Color(0xB3FFFFFF),
+        800: Color(0xCCFFFFFF),
+        900: Color(0xE6FFFFFF),
+      });
 }
