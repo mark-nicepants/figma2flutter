@@ -1,4 +1,4 @@
-class ResolveTokenException {
+class ResolveTokenException implements Exception {
   final String message;
 
   ResolveTokenException(this.message);

@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:figma2flutter/config/args_parser.dart';
 import 'package:figma2flutter/config/options.dart';
+import 'package:figma2flutter/exceptions/process_token_exception.dart';
 import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/generator.dart';
 import 'package:figma2flutter/models/token_theme.dart';
@@ -19,7 +20,6 @@ import 'package:figma2flutter/transformers/size_transformer.dart';
 import 'package:figma2flutter/transformers/spacing_transformer.dart';
 import 'package:figma2flutter/transformers/typography_transformer.dart';
 import 'package:figma2flutter/utils/sets_and_themes.dart';
-import 'package:path/path.dart';
 
 /// Code for making terminal output foreground red
 const _red = '\x1b[033;0;31m';
@@ -110,6 +110,9 @@ Future<void> main(List<String> arguments) async {
 
     exit(0);
   } on ResolveTokenException catch (e) {
+    _print(e.toString(), _red);
+    rethrow;
+  } on ProcessTokenException catch (e) {
     _print(e.toString(), _red);
     rethrow;
   }
