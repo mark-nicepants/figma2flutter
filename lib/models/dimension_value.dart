@@ -24,6 +24,18 @@ class DimensionValue {
   String toString() => value.toString();
 
   DimensionValue operator /(num divisor) => DimensionValue(value / divisor);
+  DimensionValue operator +(num addend) => DimensionValue(value + addend);
+  DimensionValue operator -(num difference) =>
+      DimensionValue(value - difference);
+  DimensionValue operator *(num multiplicand) =>
+      DimensionValue(value * multiplicand);
+
+  @override
+  bool operator ==(Object other) =>
+      other is DimensionValue && value == other.value;
+
+  @override
+  int get hashCode => value.hashCode;
 }
 
 double _parseNum(String value) {

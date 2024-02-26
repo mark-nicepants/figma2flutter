@@ -53,12 +53,33 @@ void main() {
     );
   });
 
+  test('DimensionValue equals are equal is correct', () {
+    expect(DimensionValue.zero, equals(DimensionValue(0.0)));
+  });
+
+  test('DimensionValue equals are not equal is correct', () {
+    expect(DimensionValue.zero, isNot(equals(10.0)));
+  });
+
   test('DimensionValue zero value is correct', () {
     expect(DimensionValue.zero.value, equals(0.0));
   });
 
-  test('DivisionValue operator / divides value correctly', () {
+  test('DimensionValue operator / divides value correctly', () {
     final value = DimensionValue(12.0) / 2;
     expect(value.value, equals(6.0));
+  });
+
+  test('DimensionValue operator * multiples value correctly', () {
+    final value = DimensionValue(12.0) * 2;
+    expect(value, equals(DimensionValue(24.0)));
+  });
+  test('DimensionValue operator + adds value correctly', () {
+    final value = DimensionValue(12.0) + 2;
+    expect(value, equals(DimensionValue(14.0)));
+  });
+  test('DimensionValue operator - subtracts value correctly', () {
+    final value = DimensionValue(12.0) - 2;
+    expect(value, equals(DimensionValue(10.0)));
   });
 }
