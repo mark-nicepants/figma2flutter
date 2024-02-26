@@ -9,6 +9,7 @@ class BorderValue {
   BorderValue._(this.width, this.style, this.color);
 
   static BorderValue? maybeParse(dynamic value) {
+    if (value == null) return null;
     // value is required and must be a map
     if (value is! Map<String, dynamic>) {
       throw FormatException(
