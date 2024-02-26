@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:figma2flutter/models/border_value.dart';
 import 'package:figma2flutter/token_parser.dart';
