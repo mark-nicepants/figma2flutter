@@ -55,10 +55,12 @@ void main() {
 
   test('DimensionValue equals are equal is correct', () {
     expect(DimensionValue.zero, equals(DimensionValue(0.0)));
+    expect(DimensionValue.zero.hashCode, equals(0.0.hashCode));
   });
 
   test('DimensionValue equals are not equal is correct', () {
     expect(DimensionValue.zero, isNot(equals(10.0)));
+    expect(DimensionValue.zero.hashCode, isNot(equals(10.0.hashCode)));
   });
 
   test('DimensionValue zero value is correct', () {
