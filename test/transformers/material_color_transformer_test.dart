@@ -28,6 +28,7 @@ void main() {
     expect(
       transformer.lines[0],
       equals('''
+@override
 MaterialColor get primary => const MaterialColor(0xFF0EA5E9, {
   50: Color(0xFFF0FAFF),
   100: Color(0xFFE0F5FE),
