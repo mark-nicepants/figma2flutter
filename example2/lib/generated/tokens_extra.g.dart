@@ -3,9 +3,7 @@
 /// Figma2Flutter
 /// *****************************************************
 
-part of tokens;
-
-
+part of 'tokens.g.dart';
 
 class Tokens extends InheritedWidget {
   const Tokens({
@@ -29,4 +27,3 @@ class Tokens extends InheritedWidget {
 extension TokensExtension on BuildContext {
   ITokens get tokens => Tokens.of(this);
 }
-

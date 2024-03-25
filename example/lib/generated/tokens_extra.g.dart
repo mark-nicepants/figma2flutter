@@ -133,8 +133,7 @@ class Composition extends StatelessWidget {
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
       mainAxisSize: mainAxisSize,
-      children:
-          token.itemSpacing != null ? children.separated(spacing) : children,
+      children: token.itemSpacing != null ? children.separated(spacing) : children,
     );
 
     if (token.textStyle != null) {
@@ -172,14 +171,11 @@ class Composition extends StatelessWidget {
 
 extension WidgetListEx on List<Widget> {
   List<Widget> separated(Widget separator) {
-    List<Widget> list = map((element) => <Widget>[element, separator])
-        .expand((e) => e)
-        .toList();
+    List<Widget> list = map((element) => <Widget>[element, separator]).expand((e) => e).toList();
     if (list.isNotEmpty) list = list..removeLast();
     return list;
   }
 }
-
 
 class Tokens extends InheritedWidget {
   const Tokens({
@@ -203,4 +199,3 @@ class Tokens extends InheritedWidget {
 extension TokensExtension on BuildContext {
   ITokens get tokens => Tokens.of(this);
 }
-
