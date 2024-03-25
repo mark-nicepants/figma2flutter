@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:figma2flutter/config/args_parser.dart';
 import 'package:figma2flutter/config/options.dart';
+import 'package:figma2flutter/exceptions/process_token_exception.dart';
 import 'package:figma2flutter/exceptions/resolve_token_exception.dart';
 import 'package:figma2flutter/generator.dart';
 import 'package:figma2flutter/models/token_theme.dart';
@@ -109,6 +110,9 @@ Future<void> main(List<String> arguments) async {
 
     exit(0);
   } on ResolveTokenException catch (e) {
+    _print(e.toString(), _red);
+    rethrow;
+  } on ProcessTokenException catch (e) {
     _print(e.toString(), _red);
     rethrow;
   }
