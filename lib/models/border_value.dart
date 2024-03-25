@@ -9,7 +9,13 @@ class BorderValue {
   BorderValue._(this.width, this.style, this.color);
 
   static BorderValue? maybeParse(dynamic value) {
-    if (value is! Map<String, dynamic>) return null;
+    if (value == null) return null;
+    // value is required and must be a map
+    if (value is! Map<String, dynamic>) {
+      throw FormatException(
+        'BorderValue must be a Map and not "$value" of type ${value.runtimeType}',
+      );
+    }
 
     final width =
         DimensionValue.maybeParse(value['width']) ?? DimensionValue.zero;
