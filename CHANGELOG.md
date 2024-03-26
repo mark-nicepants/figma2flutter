@@ -1,3 +1,12 @@
+## 0.3.0-alpha
+
+- Add override annotation on MaterialColor generation 
+- Apply flutter_lint 3.0.0 
+- Expand on Exception toString()
+- Throw exception instead of null if wrong type in BorderValue
+- Implement equality on DimensionValue
+- Fix pascal case for class name in transformer
+
 ## 0.2.0-alpha
 
 - Upgrade dependencies

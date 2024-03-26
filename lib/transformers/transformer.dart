@@ -12,7 +12,7 @@ abstract class Transformer {
   String get name;
 
   // The name of the class that will be generated
-  String get className => '${name[0].toUpperCase()}${name.substring(1)}Tokens';
+  String get className => '${name.pascalCase}Tokens';
 
   // Returns true if the token should be processed by this transformer
   @protected
