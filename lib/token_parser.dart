@@ -1,3 +1,4 @@
+import 'package:figma2flutter/exceptions/theme_configuration_exception.dart';
 import 'package:figma2flutter/models/token.dart';
 import 'package:figma2flutter/models/token_theme.dart';
 import 'package:meta/meta.dart';
@@ -34,6 +35,11 @@ class TokenParser {
       } else {
         tokensForTheme = {};
         for (final set in theme.sets) {
+          if (input[set] == null) {
+            throw (ThemeConfigurationException(
+              'No metadata entry named "$set" expected by theme "${theme.name}"',
+            ));
+          }
           tokensForTheme[set] = input[set] as Map<String, dynamic>;
         }
       }

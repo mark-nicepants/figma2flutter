@@ -77,8 +77,9 @@ Future<void> main(List<String> arguments) async {
     List<TokenTheme> themes;
     if (FileSystemEntity.isDirectorySync(inputFileLocation)) {
       _print(
-          'Loading `\$metadata`, `\$themes` and design token files from $inputFileLocation',
-          _green,);
+        'Loading `\$metadata`, `\$themes` and design token files from $inputFileLocation',
+        _green,
+      );
       _print(''); // New line
       themes = _parseFromFileSet(inputFileLocation);
     } else {
