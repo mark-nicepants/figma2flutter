@@ -79,6 +79,33 @@ final colorModifiers = '''
         }
       }
     }
+  },
+
+  "srgb-1-0-test": {
+    "value": "{purple}",
+    "type": "color",
+    "\$extensions": {
+      "studio.tokens": {
+        "modify": {
+          "type": "alpha",
+          "value": "1.0",
+          "space": "srgb"
+        }
+      }
+    }
+  },
+  "srgb-0-5-test": {
+    "value": "{purple}",
+    "type": "color",
+    "\$extensions": {
+      "studio.tokens": {
+        "modify": {
+          "type": "alpha",
+          "value": "0.5",
+          "space": "srgb"
+        }
+      }
+    }
   }
 }
 ''';
@@ -171,6 +198,22 @@ void main() {
     expect(
       transformer.transform(parser.resolve('mix-test')!),
       equals('const Color(0xFFB200E3)'),
+    );
+  });
+
+  test('Color modifiers alpha', () {
+    final parsed = json.decode(colorModifiers) as Map<String, dynamic>;
+    final parser = TokenParser()..parse(parsed);
+
+    final transformer = ColorTransformer();
+
+    expect(
+      transformer.transform(parser.resolve('srgb-1-0-test')!),
+      equals('const Color(0xFF6400FF)'),
+    );
+    expect(
+      transformer.transform(parser.resolve('srgb-0-5-test')!),
+      equals('const Color(0x806400FF)'),
     );
   });
 }
