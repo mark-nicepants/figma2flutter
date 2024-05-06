@@ -11,7 +11,8 @@ void main() {
         ResolveTokenException('some wrapped exception'),
       ).toString(),
       equals(
-          'ProcessTokenException{message: hello, wrapped: ResolveTokenException{message: some wrapped exception}}'),
+        'ProcessTokenException{message: hello, wrapped: ResolveTokenException{message: some wrapped exception}}',
+      ),
     );
   });
 }

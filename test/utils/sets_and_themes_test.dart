@@ -10,7 +10,8 @@ void main() {
     var loaded = arrangeJsonFilesBySection('test/token_files/input_1');
     expect(loaded, isNotEmpty);
     var expected = json.decode(
-        File('test/token_files/output_1/output.json').readAsStringSync(),);
+      File('test/token_files/output_1/output.json').readAsStringSync(),
+    );
     expect(loaded, equals(expected));
   });
 
