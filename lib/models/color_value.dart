@@ -36,6 +36,14 @@ class ColorValue {
     return ColorValue._(rgb[0], rgb[1], rgb[2], a);
   }
 
+  /// cascades this amount alpha on the existing alpha
+  /// ignores any space info
+  /// Should throw Exception for any value (1.0 < amount) or (amount < 0.0)
+  ColorValue alphainate(double amount) {
+    final newA = ((a / 255) * (amount * 255)).round();
+    return ColorValue._(r, g, b, newA);
+  }
+
   ColorValue mix(String value, double amount) {
     final other = maybeParse(value)!;
 

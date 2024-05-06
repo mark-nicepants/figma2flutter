@@ -51,6 +51,8 @@ class ColorTransformer extends SingleTokenTransformer {
             colorValue = colorValue.lighten(value / 2);
           } else if (type == 'darken') {
             colorValue = colorValue.darken(value / 2);
+          } else if (type == 'alpha') {
+            colorValue = colorValue.alphainate(value);
           } else if (color != null && type == 'mix' && color.startsWith('#')) {
             colorValue = colorValue.mix(color, value);
           }
