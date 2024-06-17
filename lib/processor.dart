@@ -16,10 +16,13 @@ class Processor {
     this.multiTokenTransformerFactories = const [],
   });
 
-  void process() {
+  void process([bool shouldOmitCore = false]) {
     for (final theme in themes) {
       //print('Generating Theme: ${theme.name}');
       final resolved = theme.resolvedTokens;
+      if (shouldOmitCore) {
+        resolved.removeWhere((element) => element.path.startsWith('.core.'));
+      }
 
       final single = _loopProcess(singleTokenTransformerFactories, resolved);
       final multi = _loopProcess(multiTokenTransformerFactories, resolved)

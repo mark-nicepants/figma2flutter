@@ -4,29 +4,20 @@ const kInputAbbr = 'i';
 const kOutput = 'output';
 const kOutputAbbr = 'o';
 
-/// Options class to store a single option
+// Flags are optional boolean arguments
+const kShouldOmitCore = 'shouldOmitCore';
+const kShouldOmitCoreAbbr = 'c';
+
 class Option<T> {
-  /// The name of the option
   final String name;
-
-  /// The abbreviation of the option
   final String? abbr;
-
-  /// The help text for the option when using the help flag
   final String help;
-
-  /// The default value of the option
   final T defaultValue;
-
-  /// The parsed value of the option
   T? _value;
 
-  /// Returns the value of the option, if not set, the default value is used
   T get value => _value ?? defaultValue;
 
-  /// Sets the value of the option
   set value(T value) {
-    // * All string options are paths at the moment, sanitize the path
     if (value is String && value.contains('/')) {
       _value = _addRoot(_removeEndSlash(value)) as T;
     } else {
@@ -34,15 +25,10 @@ class Option<T> {
     }
   }
 
-  /// Constructor for the option class
   Option(this.name, this.defaultValue, this.help, [this.abbr]);
 
-  /// Copies this option into a new object
   Option<T> copy() => Option<T>(name, defaultValue, help, abbr);
 
-  /// When merging options we can use the + operator to merge the values
-  /// of the options. If there are more than one option the filled in and
-  /// not the same as the default, the second option will be used.
   Option<T> operator +(Option<T> other) {
     if (name != other.name) throw 'Cannot add to options of different type';
     final newOption = copy();
@@ -56,13 +42,12 @@ class Option<T> {
   }
 }
 
-/// Container that holds all available options for this program
 class Options {
   /// The list of all available options
   List<Option<String>> options = [
     Option<String>(
       kInput,
-      './design/tokens.json',
+      './design/tokens',
       'Specify the directory where the design token json lives.',
       kInputAbbr,
     ),
@@ -74,14 +59,21 @@ class Options {
     ),
   ];
 
-  /// Returns the option with the given name
+  // Separate storage for the shouldOmitCore flag
+  bool _shouldOmitCore = false;
+
+  bool get shouldOmitCore => _shouldOmitCore;
+
+  set shouldOmitCoreFlag(bool value) {
+    _shouldOmitCore = value;
+  }
+
   Option<T> getOption<T>(String name) {
     final results = options.where((element) => element.name == name);
     if (results.isEmpty) throw 'Cannot find option with name `$name`';
     return results.first as Option<T>;
   }
 
-  /// Sets the option with the given name to the given value
   void setOption<T>(String name, T? value) {
     if (value != null) {
       getOption<T>(name).value = value;
@@ -92,11 +84,11 @@ class Options {
   String toString() {
     return '''
 Options:
-  $options
+  $options,
+  shouldOmitCore: $_shouldOmitCore
 ''';
   }
 
-  /// When merging options we can use the + operator to merge the values
   Options operator +(Options other) {
     final result = Options();
 
@@ -109,18 +101,17 @@ Options:
 
     options.forEach(mergeOption);
 
+    // Merge shouldOmitCore flag
+    result.shouldOmitCoreFlag = other.shouldOmitCore;
+
     return result;
   }
 }
 
 T _getValue<T>(T first, T second, T defaultValue) {
-  // Same doesnt matter what we return
   if (first == second) return first;
-  // first is default, return second
   if (first == defaultValue) return second;
-  // second is default, return first
   if (second == defaultValue) return first;
-  // second takes precedent when both are not the default value
   return second;
 }
 
