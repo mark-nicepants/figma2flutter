@@ -34,28 +34,11 @@ class ArgumentParser extends Parser {
     }
 
     _result.options.forEach(addOption);
-
-    // Handle the new 'shouldOmitCore' flag
-    _argParser.addFlag(
-      kShouldOmitCore,
-      abbr: kShouldOmitCoreAbbr,
-      defaultsTo: false,
-      help: 'Specify to omit "core" tokens.',
-    );
   }
 
   @override
   Future<Options> parse() async {
-    // Parse the arguments to set the options and flags
-    final parsedArgs = _argParser.parse(_arguments);
-
-    // Set the value of the shouldOmitCore flag in the _result
-    _result.shouldOmitCoreFlag = parsedArgs[kShouldOmitCore] as bool;
-
+    _argParser.parse(_arguments);
     return _result;
   }
-
-  // Retrieve the flag value
-  bool get shouldOmitCore =>
-      _argParser.parse(_arguments)[kShouldOmitCore] as bool;
 }

@@ -56,7 +56,11 @@ Future<void> main(List<String> arguments) async {
   /// Get the input json file and output directory from the parsed arguments
   final inputFileLocation = options.getOption<String>(kInput).value;
   final outputDir = options.getOption<String>(kOutput).value;
-  final shouldOmitCore = options.shouldOmitCore;
+  final filteredTokenTypes =
+      options.getOption<String>(kFilteredTokenTypes).value;
+  final List<String> filteredTypes = filteredTokenTypes.isNotEmpty
+      ? filteredTokenTypes.split(',').toList()
+      : [];
 
   // Should remove the defaults because you get weird errors for data you didn't know about
   if (inputFileLocation.isEmpty) {
@@ -93,7 +97,7 @@ Future<void> main(List<String> arguments) async {
     _print('Found ${themes.length} themes, generating code', _green);
 
     /// Process the tokens with all transformers
-    final result = _processTokens(themes, shouldOmitCore);
+    final result = _processTokens(themes, filteredTypes);
 
     /// Print the number of tokens each transformer processed to the terminal output
     for (final transformer in result.first.transformers) {
@@ -127,14 +131,17 @@ void _saveOutput(List<TokenTheme> themes, String outputDir) {
 }
 
 /// Process the tokens with all transformers
-List<TokenTheme> _processTokens(List<TokenTheme> themes, bool shouldOmitCore) {
+List<TokenTheme> _processTokens(
+  List<TokenTheme> themes,
+  List<String> filteredTypes,
+) {
   final processor = Processor(
     themes: themes,
     singleTokenTransformerFactories: singleTokenFactories,
     multiTokenTransformerFactories: multiTokenFactories,
   );
 
-  processor.process(shouldOmitCore);
+  processor.process(filteredTypes);
 
   return processor.themes;
 }
