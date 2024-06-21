@@ -4,8 +4,8 @@ const kInputAbbr = 'i';
 const kOutput = 'output';
 const kOutputAbbr = 'o';
 
-const kFilteredTokenTypes = 'filtered-token-types';
-const kFilteredTokenTypesAbbr = 'f';
+const kFilteredTokenSets = 'filtered-token-sets';
+const kFilteredTokenSetsAbbr = 'f';
 
 /// Options class to store a single option
 class Option<T> {
@@ -77,10 +77,10 @@ class Options {
     ),
     // Omits tokens by type, I.E. "core, source"
     Option<String>(
-      kFilteredTokenTypes,
+      kFilteredTokenSets,
       '',
       'Specify token types to filter, separated by commas.',
-      kFilteredTokenTypesAbbr,
+      kFilteredTokenSetsAbbr,
     ),
   ];
 
