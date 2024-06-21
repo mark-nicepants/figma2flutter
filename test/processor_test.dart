@@ -79,8 +79,8 @@ void main() {
     final parser = TokenParser(setOrder, themes)..parse(parsed);
 
     final processor = Processor(
-      themes: [...parser.themes],
-      singleTokenTransformerFactories: [...singleTokenFactories],
+      themes: parser.themes,
+      singleTokenTransformerFactories: singleTokenFactories,
     )..process([]);
 
     final transformers = processor.themes.first.transformers;
@@ -111,8 +111,8 @@ void main() {
     final parser = TokenParser(setOrder, themes)..parse(parsed);
 
     final processor = Processor(
-      themes: [...parser.themes],
-      singleTokenTransformerFactories: [...singleTokenFactories],
+      themes: parser.themes,
+      singleTokenTransformerFactories: singleTokenFactories,
     )..process(['core', 'spacing']);
 
     final transformers = processor.themes.first.transformers;
