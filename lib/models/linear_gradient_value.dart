@@ -14,8 +14,11 @@ class LinearGradientValue {
     if (value == null || value is! String) return null;
     if (!value.startsWith('linear-gradient')) return null;
 
-    final stripped =
-        value.substring('linear-gradient('.length, value.length - 1).trim();
+    // Remove an extra character if the string ends with a semicolon
+    final trailingCharacters = 1 + (value.endsWith(';') ? 1 : 0);
+    final stripped = value
+        .substring('linear-gradient('.length, value.length - trailingCharacters)
+        .trim();
 
     // Convert rgba colors to hex so we can better parse the string
     final hexColors = _convertRgbColorsToHex(stripped);

@@ -19,7 +19,7 @@ final input = '''
     "type": "color"
   },
   "gradient": {
-    "value": "linear-gradient(45deg, #ffffff 0%, #000000 100%)",
+    "value": "linear-gradient(45deg, #ffffff 0%, #000000 100%);",
     "type": "color"
   },
   "gradientMoreStops": {
