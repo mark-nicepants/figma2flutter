@@ -50,12 +50,19 @@ class FontWeightValue {
 
 final _fontWeightMap = {
   100: ['thin', 'hairline'],
-  200: ['extra-light', 'ultra-light'],
+  200: ['extra-light', 'ultra-light', 'extralight', 'ultralight'],
   300: ['light'],
   400: ['normal', 'regular', 'book'],
   500: ['medium'],
-  600: ['semi-bold', 'demi-bold'],
+  600: ['semi-bold', 'demi-bold', 'semibold', 'demibold'],
   700: ['bold'],
-  800: ['extra-bold', 'ultra-bold'],
-  900: ['black', 'heavy', 'extra-black', 'ultra-black'],
+  800: ['extra-bold', 'ultra-bold', 'extrabold', 'ultrabold'],
+  900: [
+    'black',
+    'heavy',
+    'extra-black',
+    'ultra-black',
+    'extrablack',
+    'ultrablack'
+  ],
 };
