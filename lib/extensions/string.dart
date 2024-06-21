@@ -1,10 +1,17 @@
 import 'package:recase/recase.dart';
 
+const negativeNumberPreface = 'Negative';
+
 extension StringExtension on String {
   String get alphanumeric {
-    // Match all non alphanumeric characters and replace them with a space
-    final pattern = RegExp(r'[^a-zA-Z0-9]');
-    final result = replaceAll(pattern, ' ');
+    // Match '-' only if it is followed by a digit and replace with negativeNumberPreface
+    final patternNegative = RegExp(r'-(?=\d)');
+    // Match all non alphanumeric characters (excluding negativeNumberPreface replacements) and replace them with a space
+    final patternNonAlphanumeric = RegExp(r'[^a-zA-Z0-9]');
+
+    var result = replaceAll(patternNegative, negativeNumberPreface);
+    result = result.replaceAll(patternNonAlphanumeric, ' ');
+
     return result.pascalCase;
   }
 

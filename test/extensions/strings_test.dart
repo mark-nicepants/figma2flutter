@@ -1,6 +1,6 @@
+import 'package:figma2flutter/extensions/string.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
-import 'package:figma2flutter/extensions/string.dart';
 
 void main() {
   test('extension isReference', () {
@@ -30,5 +30,10 @@ void main() {
   test('extension alphanumeric arrows', () {
     final test = '180-deg-↓';
     expect(test.alphanumeric, '180Deg');
+  });
+
+  test('extension alphanumeric negative numbers', () {
+    final test = '-4';
+    expect(test.alphanumeric, 'Negative4');
   });
 }
