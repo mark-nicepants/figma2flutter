@@ -34,30 +34,10 @@ class ColorTransformer extends SingleTokenTransformer {
   String transform(Token token) {
     final value = token.value;
 
-    ColorValue? colorValue = ColorValue.maybeParse(value);
+    ColorValue? colorValue =
+        ColorValue.maybeParse(value)?.applyStudioExtension(token.extensions);
     if (colorValue == null) {
       throw Exception('Invalid color value: $value');
-    }
-
-    if (token.hasExtensions) {
-      final modify = token.extensions?['studio.tokens']?['modify'];
-      if (modify != null) {
-        final type = modify['type'];
-        final value = double.tryParse(modify['value'] as String? ?? '0');
-        final color = modify['color'] as String?;
-
-        if (value != null && value != 0) {
-          if (type == 'lighten') {
-            colorValue = colorValue.lighten(value / 2);
-          } else if (type == 'darken') {
-            colorValue = colorValue.darken(value / 2);
-          } else if (type == 'alpha') {
-            colorValue = colorValue.alphainate(value);
-          } else if (color != null && type == 'mix' && color.startsWith('#')) {
-            colorValue = colorValue.mix(color, value);
-          }
-        }
-      }
     }
 
     return colorValue.declaration();

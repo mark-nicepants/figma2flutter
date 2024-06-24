@@ -18,8 +18,25 @@ final input = '''
     "value": "#ffffff",
     "type": "color"
   },
+  "transparent": {
+    "value": "#ffffff",
+    "type": "color",
+    "\$extensions": {
+      "studio.tokens": {
+        "modify": {
+          "type": "alpha",
+          "value": ".38",
+          "space": "lch"
+        }
+      }
+    }
+  },
   "gradient": {
     "value": "linear-gradient(45deg, #ffffff 0%, #000000 100%)",
+    "type": "color"
+  },
+  "gradientWithAlphaModifier": {
+    "value": "linear-gradient(45deg, {white} 0%, {transparent} 100%)",
     "type": "color"
   },
   "gradientMoreStops": {
@@ -36,6 +53,14 @@ final output = '''
 @override
   LinearGradient get gradient => const LinearGradient(
   colors: [Color(0xFFFFFFFF), Color(0xFF000000),],
+  stops: [0.0, 1.0],
+  begin: Alignment.bottomCenter,
+  end: Alignment.topCenter,
+  transform: GradientRotation(0.785),
+);
+@override
+  LinearGradient get gradientWithAlphaModifier => const LinearGradient(
+  colors: [Color(0xFFFFFFFF), Color(0x61FFFFFF),],
   stops: [0.0, 1.0],
   begin: Alignment.bottomCenter,
   end: Alignment.topCenter,
@@ -63,7 +88,7 @@ void main() {
     final parsed = json.decode(input) as Map<String, dynamic>;
     final parser = TokenParser()..parse(parsed);
 
-    expect(parser.resolvedTokens().length, equals(6));
+    expect(parser.resolvedTokens().length, equals(8));
 
     final transformer = LinearGradientTransformer();
     parser.resolvedTokens().forEach(transformer.process);
