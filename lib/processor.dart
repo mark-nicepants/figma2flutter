@@ -16,7 +16,7 @@ class Processor {
     this.multiTokenTransformerFactories = const [],
   });
 
-  void process([List<String> filteredSets = const []]) {
+  void process({List<String> filteredSets = const []}) {
     for (final theme in themes) {
       //print('Generating Theme: ${theme.name}');
       final resolved = theme.resolvedTokens;

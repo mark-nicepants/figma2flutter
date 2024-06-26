@@ -117,7 +117,7 @@ List<TokenTheme> _processTokens(
     multiTokenTransformerFactories: multiTokenFactories,
   );
 
-  processor.process(filteredSets);
+  processor.process(filteredSets: filteredSets);
 
   return processor.themes;
 }

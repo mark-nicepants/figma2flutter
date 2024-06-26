@@ -81,7 +81,7 @@ void main() {
     final processor = Processor(
       themes: parser.themes,
       singleTokenTransformerFactories: singleTokenFactories,
-    )..process([]);
+    )..process(filteredSets: []);
 
     final transformers = processor.themes.first.transformers;
 
@@ -104,6 +104,7 @@ void main() {
       }
     }
   });
+
   test('Test processor filters sets when necessary', () {
     final parsed = json.decode(singleDocInput) as Map<String, dynamic>;
     final setOrder = getSetsFromJson(parsed);
@@ -113,7 +114,7 @@ void main() {
     final processor = Processor(
       themes: parser.themes,
       singleTokenTransformerFactories: singleTokenFactories,
-    )..process(['core', 'spacing']);
+    )..process(filteredSets: ['core', 'spacing']);
 
     final transformers = processor.themes.first.transformers;
     for (final transformer in transformers) {

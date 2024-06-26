@@ -79,7 +79,7 @@ class Options {
     Option<String>(
       kFilteredTokenSets,
       '',
-      'Specify token types to filter, separated by commas.',
+      'Specify token sets to filter, separated by commas.',
       kFilteredTokenSetsAbbr,
     ),
   ];
