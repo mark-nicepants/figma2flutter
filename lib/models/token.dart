@@ -305,8 +305,8 @@ String? _resolveColorValue(String initialValue, Map<String, Token> tokenMap) {
         'Reference not found for `${match.group(1)}`',
       );
     }
-
-    final color = ColorValue.maybeParse(reference.value);
+    final color = ColorValue.maybeParse(reference.value)
+        ?.applyStudioExtension(reference.extensions);
     if (color == null) {
       return null;
       // throw ResolveTokenException(

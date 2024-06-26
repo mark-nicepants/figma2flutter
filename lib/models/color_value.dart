@@ -67,6 +67,28 @@ class ColorValue {
     return HSL.fromRGB(r, g, b);
   }
 
+  ColorValue applyStudioExtension(dynamic extension) {
+    final modify = extension?['studio.tokens']?['modify'];
+    if (modify == null) return this;
+    final type = modify['type'];
+    final value = double.tryParse(modify['value'] as String? ?? '0');
+    final color = modify['color'] as String?;
+
+    if (value != null && value != 0) {
+      if (type == 'lighten') {
+        return lighten(value / 2);
+      } else if (type == 'darken') {
+        return darken(value / 2);
+      } else if (type == 'alpha') {
+        return alphainate(value);
+      } else if (color != null && type == 'mix' && color.startsWith('#')) {
+        return mix(color, value);
+      }
+    }
+    // Modified was not found
+    return this;
+  }
+
   static ColorValue? maybeParse(dynamic value) {
     if (value == null || value is! String) return null;
 
