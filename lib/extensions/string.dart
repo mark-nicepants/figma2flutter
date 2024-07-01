@@ -5,7 +5,7 @@ const negativeNumberPreface = 'Negative';
 extension StringExtension on String {
   String get alphanumeric {
     // Match '-' only if it is followed by a digit and replace with negativeNumberPreface
-    final patternNegative = RegExp(r'-(?=\d)');
+    final patternNegative = RegExp(r'^(-)(?=\d)');
     // Match all non alphanumeric characters (excluding negativeNumberPreface replacements) and replace them with a space
     final patternNonAlphanumeric = RegExp(r'[^a-zA-Z0-9]');
 
