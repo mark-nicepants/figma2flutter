@@ -37,6 +37,8 @@ void main() {
     expect(test.alphanumeric, 'Negative4');
     final test2 = '-4-grey';
     expect(test2.alphanumeric, 'Negative4Grey');
+    final test3 = '--4';
+    expect(test3.alphanumeric, '4');
   });
 
   test('extension alphanumeric with minus sign', () {
