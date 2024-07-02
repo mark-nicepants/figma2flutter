@@ -16,16 +16,49 @@ class Processor {
     this.multiTokenTransformerFactories = const [],
   });
 
-  void process() {
+  void process({List<String> filteredSets = const []}) {
     for (final theme in themes) {
       //print('Generating Theme: ${theme.name}');
       final resolved = theme.resolvedTokens;
+      if (filteredSets.isNotEmpty) {
+        resolved.removeWhere((element) {
+          final splitPath = element.path.split('.');
+          // Depending on the input method the path can start with a name or a '.'
+          final setName =
+              splitPath.first.isNotEmpty ? splitPath.first : splitPath[1];
+          for (final type in filteredSets) {
+            if (setName == type) {
+              return true;
+            }
+          }
+          return false;
+        });
+      }
 
       final single = _loopProcess(singleTokenTransformerFactories, resolved);
       final multi = _loopProcess(multiTokenTransformerFactories, resolved)
           .cast<MultiTokenTransformer>()
         ..forEach((element) => element.postProcess());
 
+      // Remove transformers for ignored sets
+      if (filteredSets.isNotEmpty) {
+        single.removeWhere((transformer) {
+          for (final type in filteredSets) {
+            if (transformer.name == type) {
+              return true;
+            }
+          }
+          return false;
+        });
+        multi.removeWhere((transformer) {
+          for (final type in filteredSets) {
+            if (transformer.name == type) {
+              return true;
+            }
+          }
+          return false;
+        });
+      }
       theme.transformers.addAll(
         [...single, ...multi].where((element) => element.lines.isNotEmpty),
       );
