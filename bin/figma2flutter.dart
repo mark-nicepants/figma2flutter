@@ -9,16 +9,8 @@ import 'package:figma2flutter/generator.dart';
 import 'package:figma2flutter/models/token_theme.dart';
 import 'package:figma2flutter/processor.dart';
 import 'package:figma2flutter/token_parser.dart';
-import 'package:figma2flutter/transformers/border_radius_transformer.dart';
-import 'package:figma2flutter/transformers/border_transformer.dart';
-import 'package:figma2flutter/transformers/box_shadow_transformer.dart';
-import 'package:figma2flutter/transformers/color_transformer.dart';
-import 'package:figma2flutter/transformers/composition_transformer.dart';
-import 'package:figma2flutter/transformers/linear_gradient_transformer.dart';
 import 'package:figma2flutter/transformers/material_color_transformer.dart';
-import 'package:figma2flutter/transformers/size_transformer.dart';
-import 'package:figma2flutter/transformers/spacing_transformer.dart';
-import 'package:figma2flutter/transformers/typography_transformer.dart';
+import 'package:figma2flutter/transformers/single_token_factories.dart';
 import 'package:figma2flutter/utils/sets_and_themes.dart';
 
 /// Code for making terminal output foreground red
@@ -29,20 +21,6 @@ const _green = '\x1b[033;0;32m';
 
 //No Color, reset terminal foreground color
 const _nc = '\x1b[033;0m';
-
-// All transformers that process single tokens should be added here
-// These transformers will be applied to all tokens in the order they are listed
-final singleTokenFactories = <TransformerFactory>[
-  (_) => ColorTransformer(),
-  (_) => SpacingTransformer(),
-  (_) => TypographyTransformer(),
-  (_) => BorderRadiusTransformer(),
-  (_) => CompositionTransformer(),
-  (_) => BoxShadowTransformer(),
-  (_) => BorderTransformer(),
-  (_) => SizeTransformer(),
-  (_) => LinearGradientTransformer(),
-];
 
 // All transformers that process multiple tokens should be added here
 final multiTokenFactories = [
@@ -56,6 +34,9 @@ Future<void> main(List<String> arguments) async {
   /// Get the input json file and output directory from the parsed arguments
   final inputFileLocation = options.getOption<String>(kInput).value;
   final outputDir = options.getOption<String>(kOutput).value;
+  final filteredTokenSets = options.getOption<String>(kFilteredTokenSets).value;
+  final List<String> filteredSets =
+      filteredTokenSets.isNotEmpty ? filteredTokenSets.split(',').toList() : [];
 
   // Should remove the defaults because you get weird errors for data you didn't know about
   if (inputFileLocation.isEmpty) {
@@ -92,7 +73,7 @@ Future<void> main(List<String> arguments) async {
     _print('Found ${themes.length} themes, generating code', _green);
 
     /// Process the tokens with all transformers
-    final result = _processTokens(themes);
+    final result = _processTokens(themes, filteredSets);
 
     /// Print the number of tokens each transformer processed to the terminal output
     for (final transformer in result.first.transformers) {
@@ -126,14 +107,17 @@ void _saveOutput(List<TokenTheme> themes, String outputDir) {
 }
 
 /// Process the tokens with all transformers
-List<TokenTheme> _processTokens(List<TokenTheme> themes) {
+List<TokenTheme> _processTokens(
+  List<TokenTheme> themes,
+  List<String> filteredSets,
+) {
   final processor = Processor(
     themes: themes,
     singleTokenTransformerFactories: singleTokenFactories,
     multiTokenTransformerFactories: multiTokenFactories,
   );
 
-  processor.process();
+  processor.process(filteredSets: filteredSets);
 
   return processor.themes;
 }
