@@ -1,3 +1,12 @@
+## 0.3.1-alpha
+
+- [Throw exception if theme refers to token set that is not in metadata](https://github.com/mark-nicepants/figma2flutter/pull/28)
+- [Support alpha modifier on color modifier](https://github.com/mark-nicepants/figma2flutter/pull/29)
+- [Account for pascal and camel case font weights](https://github.com/mark-nicepants/figma2flutter/pull/37)
+- [Add negativeNumberPreface](https://github.com/mark-nicepants/figma2flutter/pull/38)
+- [Fix Color Modifier Handling in Gradients](https://github.com/mark-nicepants/figma2flutter/pull/40)
+- [Restore names when negative sign is in between words](https://github.com/mark-nicepants/figma2flutter/pull/42)
+
 ## 0.3.0-alpha
 
 - Add override annotation on MaterialColor generation 
