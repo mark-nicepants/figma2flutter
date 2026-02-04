@@ -260,8 +260,8 @@ class Token {
         ? tokenMap[rightPart.valueByRef]?.resolveAllReferences(tokenMap).value
         : rightPart;
 
-    final left = DimensionValue.maybeParse(leftValue);
-    final right = DimensionValue.maybeParse(rightValue);
+    final left = DimensionValue.maybeParse(leftValue, false);
+    final right = DimensionValue.maybeParse(rightValue, false);
 
     if (left == null || right == null) {
       throw FormatException(

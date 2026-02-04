@@ -6,6 +6,7 @@ import 'package:figma2flutter/models/linear_gradient_value.dart';
 import 'package:figma2flutter/models/sizing_value.dart';
 import 'package:figma2flutter/models/text_style_value.dart';
 import 'package:figma2flutter/models/token.dart';
+import 'package:figma2flutter/transformers/border_radius_transformer.dart';
 import 'package:figma2flutter/transformers/transformer.dart';
 
 class CompositionTransformer extends SingleTokenTransformer {
@@ -65,20 +66,20 @@ CompositionToken(
   String? _getPadding(Map<String, dynamic> values) {
     final zero = DimensionValue(0);
     final horizontalPadding =
-        DimensionValue.maybeParse(values['horizontalPadding']);
+        DimensionValue.maybeParse(values['horizontalPadding'], false);
     final verticalPadding =
-        DimensionValue.maybeParse(values['verticalPadding']);
+        DimensionValue.maybeParse(values['verticalPadding'], false);
 
-    final topPadding = DimensionValue.maybeParse(values['paddingTop']) ??
+    final topPadding = DimensionValue.maybeParse(values['paddingTop'], false) ??
         verticalPadding ??
         zero;
-    final rightPadding = DimensionValue.maybeParse(values['paddingRight']) ??
+    final rightPadding = DimensionValue.maybeParse(values['paddingRight'], false) ??
         horizontalPadding ??
         zero;
-    final bottomPadding = DimensionValue.maybeParse(values['paddingBottom']) ??
+    final bottomPadding = DimensionValue.maybeParse(values['paddingBottom'], false) ??
         verticalPadding ??
         zero;
-    final leftPadding = DimensionValue.maybeParse(values['paddingLeft']) ??
+    final leftPadding = DimensionValue.maybeParse(values['paddingLeft'], false) ??
         horizontalPadding ??
         zero;
 
@@ -110,7 +111,7 @@ padding: const EdgeInsets.only(
   }
 
   String? _getSpacing(Map<String, dynamic> values) {
-    final spacing = DimensionValue.maybeParse(values['itemSpacing']);
+    final spacing = DimensionValue.maybeParse(values['itemSpacing'], false);
     if (spacing == null) {
       return null;
     }
@@ -119,16 +120,15 @@ padding: const EdgeInsets.only(
   }
 
   String? _getBorderRadius(Map<String, dynamic> values) {
-    final radius = DimensionValue.maybeParse(values['borderRadius']);
+    final radius = DimensionValue.maybeParse(values['borderRadius'], true);
     final borderRadiusTopLeft =
-        DimensionValue.maybeParse(values['borderRadiusTopLeft']);
+        DimensionValue.maybeParse(values['borderRadiusTopLeft'], true);
     final borderRadiusTopRight =
-        DimensionValue.maybeParse(values['borderRadiusTopRight']);
+        DimensionValue.maybeParse(values['borderRadiusTopRight'], true);
     final borderRadiusBottomRight =
-        DimensionValue.maybeParse(values['borderRadiusBottomRight']);
+        DimensionValue.maybeParse(values['borderRadiusBottomRight'], true);
     final borderRadiusBottomLeft =
-        DimensionValue.maybeParse(values['borderRadiusBottomLeft']);
-
+        DimensionValue.maybeParse(values['borderRadiusBottomLeft'], true);
     // If all null return null
     if (radius == null &&
         borderRadiusTopLeft == null &&
@@ -139,15 +139,15 @@ padding: const EdgeInsets.only(
     }
 
     if (radius != null) {
-      return 'borderRadius: BorderRadius.circular($radius)';
+        return 'borderRadius: BorderRadius.circular(${radius.isPercentage ? radius.value * BorderRadiusTransformer.percentageMultiplier : radius.value})';
     }
 
     return '''
   borderRadius: BorderRadius.only(
-    topLeft: Radius.circular($borderRadiusTopLeft),
-    topRight: Radius.circular($borderRadiusTopRight),
-    bottomRight: Radius.circular($borderRadiusBottomRight),
-    bottomLeft: Radius.circular($borderRadiusBottomLeft),
+    topLeft: Radius.circular(${borderRadiusTopLeft!.isPercentage ? borderRadiusTopLeft.value * BorderRadiusTransformer.percentageMultiplier : borderRadiusTopLeft.value}),
+    topRight: Radius.circular(${borderRadiusTopRight!.isPercentage ? borderRadiusTopRight.value * BorderRadiusTransformer.percentageMultiplier : borderRadiusTopRight.value}),
+    bottomRight: Radius.circular(${borderRadiusBottomRight!.isPercentage ? borderRadiusBottomRight.value * BorderRadiusTransformer.percentageMultiplier : borderRadiusBottomRight.value}),
+    bottomLeft: Radius.circular(${borderRadiusBottomLeft!.isPercentage ? borderRadiusBottomLeft.value * BorderRadiusTransformer.percentageMultiplier : borderRadiusBottomLeft.value}),
   )''';
   }
 
@@ -217,8 +217,9 @@ border: const Border(
   }
 
   String? _getOpacity(Map<String, dynamic> values) {
-    final opacity = DimensionValue.maybeParse(values['opacity']);
-    return opacity == null ? null : 'opacity: $opacity';
+    final opacity = DimensionValue.maybeParse(values['opacity'], true);
+    // Only support percentage, value must be between 0 and 1
+    return opacity == null || !opacity.isPercentage ? null : 'opacity: $opacity';
   }
 
   @override

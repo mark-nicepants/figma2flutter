@@ -44,7 +44,7 @@ void main() {
 
     final parsedValues = parser
         .resolvedTokens()
-        .map((e) => DimensionValue.maybeParse(e.value)?.value)
+        .map((e) => DimensionValue.maybeParse(e.value, true)?.value)
         .toList();
 
     expect(
