@@ -13,10 +13,10 @@ class LetterSpacingValue extends DimensionValue {
 
   /// Parses the given [value] to a [LetterSpacingValue].
   static LetterSpacingValue? maybeParse(dynamic value) {
-    final dimensionValue = DimensionValue.maybeParse(value);
+    final dimensionValue = DimensionValue.maybeParse(value, true);
     if (dimensionValue == null) return null;
 
-    if (value is String && value.endsWith('%')) {
+    if (value is String && dimensionValue.isPercentage) {
       return LetterSpacingValue._(dimensionValue.value * kBaseFontSize);
     }
 

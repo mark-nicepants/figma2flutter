@@ -13,9 +13,9 @@ class SizingValue {
     if (value == null) return null;
 
     if (value is Map<String, dynamic>) {
-      final sizing = DimensionValue.maybeParse(value['sizing']);
-      final width = DimensionValue.maybeParse(value['width']);
-      final height = DimensionValue.maybeParse(value['height']);
+      final sizing = DimensionValue.maybeParse(value['sizing'], false);
+      final width = DimensionValue.maybeParse(value['width'], false);
+      final height = DimensionValue.maybeParse(value['height'], false);
 
       if (sizing == null && width == null && height == null) return null;
 
@@ -25,7 +25,7 @@ class SizingValue {
         return SizingValue._(width: width, height: height);
       }
     } else {
-      final sizing = DimensionValue.maybeParse(value);
+      final sizing = DimensionValue.maybeParse(value, false);
       if (sizing != null) {
         return SizingValue._(width: sizing, height: sizing);
       }

@@ -31,11 +31,16 @@ class LinearGradientValue {
     for (var element in stops) {
       final splitted = element.trim().split(' ');
 
-      final color = ColorValue.maybeParse(splitted[0].trim())!;
-      colors.add(color);
+      final color = ColorValue.maybeParse(splitted[0].trim());
+      final stop = DimensionValue.maybeParse(splitted[1].trim(), true);
+      if (color == null || stop == null || !stop.isPercentage) {
+        // Invalid color or stop, skip this entry (stop should be a percentage)
+        continue;
+      }
 
-      final stop = DimensionValue.maybeParse(splitted[1].trim())!;
+      colors.add(color);
       stopsList.add(stop);
+      
     }
 
     return LinearGradientValue._(colors, stopsList, angle ?? 0);

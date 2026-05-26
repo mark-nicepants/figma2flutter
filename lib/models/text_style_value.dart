@@ -59,8 +59,8 @@ class _FontSizeLineHeight {
   DimensionValue? lineHeight;
 
   _FontSizeLineHeight(dynamic value) {
-    final fontSize = DimensionValue.maybeParse(value['fontSize']);
-    final lineHeight = DimensionValue.maybeParse(value['lineHeight']);
+    final fontSize = DimensionValue.maybeParse(value['fontSize'], false);
+    final lineHeight = DimensionValue.maybeParse(value['lineHeight'], true);
 
     this.lineHeight = lineHeight;
     this.fontSize = fontSize;

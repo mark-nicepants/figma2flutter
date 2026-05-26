@@ -9,17 +9,23 @@ class MultiDimensionValue {
   MultiDimensionValue._(this.values);
 
   /// Parses the given [value] to a [MultiDimensionValue].
-  factory MultiDimensionValue.parse(dynamic value) {
+  factory MultiDimensionValue.parse(dynamic value, bool supportPercentage) {
     if (value == null) {
       return MultiDimensionValue._([]);
     }
 
     if (value is double) {
-      return MultiDimensionValue._([DimensionValue(value)]);
+      final parsedValue = DimensionValue.maybeParse(value, supportPercentage);
+      if (parsedValue != null) {
+      return MultiDimensionValue._([parsedValue]);
+      }
     }
 
     if (value is int) {
-      return MultiDimensionValue._([DimensionValue(value.toDouble())]);
+      final parsedValue = DimensionValue.maybeParse(value, supportPercentage);
+      if (parsedValue != null) {
+        return MultiDimensionValue._([parsedValue]);
+      }
     }
 
     if (value is! String) {
@@ -29,7 +35,7 @@ class MultiDimensionValue {
     // Split on spaces and parse each value to a size
     final values = value
         .split(' ')
-        .map(DimensionValue.maybeParse)
+        .map((v) => DimensionValue.maybeParse(v, supportPercentage))
         .where((element) => element != null)
         .cast<DimensionValue>()
         .toList();

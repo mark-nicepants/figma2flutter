@@ -16,7 +16,7 @@ class SpacingTransformer extends SingleTokenTransformer {
   String transform(Token token) {
     final value = token.value;
 
-    final sizes = MultiDimensionValue.parse(value);
+    final sizes = MultiDimensionValue.parse(value, false);
 
     if (sizes.values.length == 1) {
       if (sizes.values[0].value == 0) {

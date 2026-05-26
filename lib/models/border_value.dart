@@ -18,7 +18,7 @@ class BorderValue {
     }
 
     final width =
-        DimensionValue.maybeParse(value['width']) ?? DimensionValue.zero;
+        DimensionValue.maybeParse(value['width'], false) ?? DimensionValue.zero;
     final color = ColorValue.maybeParse(value['color']) ?? ColorValue.black;
     final style = BorderStyle.values.firstWhere(
       (e) => e.name == value['style'],

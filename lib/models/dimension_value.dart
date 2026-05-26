@@ -9,15 +9,22 @@ const kBaseFontSize = 16.0;
 /// And if the value is not a number 0 is returned.
 class DimensionValue {
   final double value;
+  final bool isPercentage;
 
-  DimensionValue(this.value);
+  DimensionValue(this.value, {this.isPercentage = false});
 
   static DimensionValue get zero => DimensionValue(0);
 
-  static DimensionValue? maybeParse(dynamic value) {
+  static DimensionValue? maybeParse(dynamic value, bool supportPercentage) {
     if (value == null) return null;
+    final parsedValue = _parseNum(value.toString());
 
-    return DimensionValue(_parseNum(value.toString()));
+    // If percentage values are not supported, return null for percentage values
+    if (parsedValue == null || (parsedValue.isPercentage && !supportPercentage)) {
+      return null;
+    }
+
+    return parsedValue;
   }
 
   @override
@@ -36,25 +43,32 @@ class DimensionValue {
 
   @override
   int get hashCode => value.hashCode;
-}
 
-double _parseNum(String value) {
-  // 1px = 1.0
-  if (value.endsWith('px')) {
-    return double.tryParse(value.substring(0, value.length - 2)) ?? 0;
+  static DimensionValue? _parseNum(String value) {
+    // 1px = 1.0
+    if (value.endsWith('px')) {
+      final doubleValue = double.tryParse(value.substring(0, value.length - 2));
+      if (doubleValue == null) return null;
+      return DimensionValue(doubleValue);
+    }
+
+    // 1rem = 16px (base font size)
+    if (value.endsWith('rem')) {
+      final doubleValue = double.tryParse(value.substring(0, value.length - 3));
+      if (doubleValue == null) return null;
+      return DimensionValue(doubleValue * kBaseFontSize);
+    }
+
+    // 100% = 1.0
+    // 50% = 0.5
+    if (value.endsWith('%')) {
+      final doubleValue = double.tryParse(value.substring(0, value.length - 1));
+      if (doubleValue == null) return null;
+      return DimensionValue(doubleValue / 100, isPercentage: true);
+    }
+
+    final parsedValue = double.tryParse(value);
+    if (parsedValue == null) return null;
+    return DimensionValue(parsedValue);
   }
-
-  // 1rem = 16px (base font size)
-  if (value.endsWith('rem')) {
-    return (double.tryParse(value.substring(0, value.length - 3)) ?? 0) *
-        kBaseFontSize;
-  }
-
-  // 100% = 1.0
-  // 50% = 0.5
-  if (value.endsWith('%')) {
-    return (double.tryParse(value.substring(0, value.length - 1)) ?? 0) / 100;
-  }
-
-  return double.tryParse(value) ?? 0;
 }

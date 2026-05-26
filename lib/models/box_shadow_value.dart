@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:figma2flutter/models/color_value.dart';
 import 'package:figma2flutter/models/dimension_value.dart';
 
@@ -12,11 +11,11 @@ class BoxShadowValueList {
 
     if (value is List) {
       final list = value.map(BoxShadowValue.maybeParse).toList();
-      final shadows = list.whereNotNull().toList();
+      final shadows = list.nonNulls.toList();
       return BoxShadowValueList(shadows);
     } else {
       return BoxShadowValueList(
-        [BoxShadowValue.maybeParse(value)].whereNotNull().toList(),
+        [BoxShadowValue.maybeParse(value)].nonNulls.toList(),
       );
     }
   }
@@ -47,10 +46,10 @@ class BoxShadowValue {
   );
 
   static BoxShadowValue? maybeParse(dynamic value) {
-    final x = DimensionValue.maybeParse(value['x'] ?? 0)!;
-    final y = DimensionValue.maybeParse(value['y'] ?? 0)!;
-    final blur = DimensionValue.maybeParse(value['blur'] ?? 0)!;
-    final spread = DimensionValue.maybeParse(value['spread'] ?? 0)!;
+    final x = DimensionValue.maybeParse(value['x'] ?? 0, false)!;
+    final y = DimensionValue.maybeParse(value['y'] ?? 0, false)!;
+    final blur = DimensionValue.maybeParse(value['blur'] ?? 0, false)!;
+    final spread = DimensionValue.maybeParse(value['spread'] ?? 0, false)!;
     final color = ColorValue.maybeParse(value['color'] ?? '#000000')!;
 
     // TODO(mark): Add support for inner shadows

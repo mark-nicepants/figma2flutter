@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   test('check invalid value usage', () {
-    final value = MultiDimensionValue.parse(<int>[]);
+    final value = MultiDimensionValue.parse(<int>[], true);
     expect(value.values, isEmpty);
   });
 }
