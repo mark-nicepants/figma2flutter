@@ -2413,22 +2413,25 @@ class DefaultLightRadiiTokens extends RadiiTokens {
   BorderRadius get patternFeatureIconBorderRadius => BorderRadius.zero;
   @override
   BorderRadius get patternCardUserBorderRadius => const BorderRadius.only(
-      topLeft: Radius.circular(0.0),
-      topRight: Radius.circular(0.0),
-      bottomRight: Radius.circular(0.0),
-      bottomLeft: Radius.circular(0.0));
+        topLeft: Radius.circular(0.0),
+        topRight: Radius.circular(0.0),
+        bottomRight: Radius.circular(0.0),
+        bottomLeft: Radius.circular(0.0),
+      );
   @override
   BorderRadius get patternCardPricingBorderRadius => const BorderRadius.only(
-      topLeft: Radius.circular(0.0),
-      topRight: Radius.circular(0.0),
-      bottomRight: Radius.circular(0.0),
-      bottomLeft: Radius.circular(0.0));
+        topLeft: Radius.circular(0.0),
+        topRight: Radius.circular(0.0),
+        bottomRight: Radius.circular(0.0),
+        bottomLeft: Radius.circular(0.0),
+      );
   @override
   BorderRadius get sectionHeroImageBorderRadii => const BorderRadius.only(
-      topLeft: Radius.circular(0.0),
-      topRight: Radius.circular(0.0),
-      bottomRight: Radius.circular(0.0),
-      bottomLeft: Radius.circular(0.0));
+        topLeft: Radius.circular(0.0),
+        topRight: Radius.circular(0.0),
+        bottomRight: Radius.circular(0.0),
+        bottomLeft: Radius.circular(0.0),
+      );
 }
 
 class DefaultLightShadowTokens extends ShadowTokens {
@@ -4274,6 +4277,7 @@ class DefaultLightGradientTokens extends GradientTokens {
 }
 
 class DefaultLightMaterialColorTokens extends MaterialColorTokens {
+  @override
   MaterialColor get colorSlate => const MaterialColor(0xFF64748B, {
         50: Color(0xFFF8FAFC),
         100: Color(0xFFF1F5F9),
@@ -4287,6 +4291,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF0F172A),
       });
 
+  @override
   MaterialColor get colorGray => const MaterialColor(0xFF6B7280, {
         50: Color(0xFFF9FAFB),
         100: Color(0xFFF3F4F6),
@@ -4300,6 +4305,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF111827),
       });
 
+  @override
   MaterialColor get colorZinc => const MaterialColor(0xFF71717A, {
         50: Color(0xFFFAFAFA),
         100: Color(0xFFF4F4F5),
@@ -4313,6 +4319,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF18181B),
       });
 
+  @override
   MaterialColor get colorNeutral => const MaterialColor(0xFF737373, {
         50: Color(0xFFFAFAFA),
         100: Color(0xFFF5F5F5),
@@ -4326,6 +4333,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF171717),
       });
 
+  @override
   MaterialColor get colorStone => const MaterialColor(0xFF78716C, {
         50: Color(0xFFFAFAF9),
         100: Color(0xFFF5F5F4),
@@ -4339,6 +4347,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF1C1917),
       });
 
+  @override
   MaterialColor get colorRed => const MaterialColor(0xFFEF4444, {
         50: Color(0xFFFEF2F2),
         100: Color(0xFFFEE2E2),
@@ -4352,6 +4361,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF7F1D1D),
       });
 
+  @override
   MaterialColor get colorOrange => const MaterialColor(0xFFF97316, {
         50: Color(0xFFFFF7ED),
         100: Color(0xFFFFEDD5),
@@ -4365,6 +4375,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF7C2D12),
       });
 
+  @override
   MaterialColor get colorAmber => const MaterialColor(0xFFF59E0B, {
         50: Color(0xFFFFFBEB),
         100: Color(0xFFFEF3C7),
@@ -4378,6 +4389,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF78350F),
       });
 
+  @override
   MaterialColor get colorYellow => const MaterialColor(0xFFEAB308, {
         50: Color(0xFFFEFCE8),
         100: Color(0xFFFEF9C3),
@@ -4391,6 +4403,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF713F12),
       });
 
+  @override
   MaterialColor get colorLime => const MaterialColor(0xFF84CC16, {
         50: Color(0xFFF7FEE7),
         100: Color(0xFFECFCCB),
@@ -4404,6 +4417,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF365314),
       });
 
+  @override
   MaterialColor get colorGreen => const MaterialColor(0xFF22C55E, {
         50: Color(0xFFF0FDF4),
         100: Color(0xFFDCFCE7),
@@ -4417,6 +4431,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF14532D),
       });
 
+  @override
   MaterialColor get colorEmerald => const MaterialColor(0xFF10B981, {
         50: Color(0xFFECFDF5),
         100: Color(0xFFD1FAE5),
@@ -4430,6 +4445,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF064E3B),
       });
 
+  @override
   MaterialColor get colorTeal => const MaterialColor(0xFF14B8A6, {
         50: Color(0xFFF0FDFA),
         100: Color(0xFFCCFBF1),
@@ -4443,6 +4459,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF134E4A),
       });
 
+  @override
   MaterialColor get colorCyan => const MaterialColor(0xFF06B6D4, {
         50: Color(0xFFECFEFF),
         100: Color(0xFFCFFAFE),
@@ -4456,6 +4473,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF164E63),
       });
 
+  @override
   MaterialColor get colorSky => const MaterialColor(0xFF0EA5E9, {
         50: Color(0xFFF0F9FF),
         100: Color(0xFFE0F2FE),
@@ -4469,6 +4487,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF0C4A6E),
       });
 
+  @override
   MaterialColor get colorBlue => const MaterialColor(0xFF3B82F6, {
         50: Color(0xFFEFF6FF),
         100: Color(0xFFDBEAFE),
@@ -4482,6 +4501,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF1E3A8A),
       });
 
+  @override
   MaterialColor get colorIndigo => const MaterialColor(0xFF6366F1, {
         50: Color(0xFFEEF2FF),
         100: Color(0xFFE0E7FF),
@@ -4495,6 +4515,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF312E81),
       });
 
+  @override
   MaterialColor get colorViolet => const MaterialColor(0xFF8B5CF6, {
         50: Color(0xFFF5F3FF),
         100: Color(0xFFEDE9FE),
@@ -4508,6 +4529,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF4C1D95),
       });
 
+  @override
   MaterialColor get colorPurple => const MaterialColor(0xFFA855F7, {
         50: Color(0xFFFAF5FF),
         100: Color(0xFFF3E8FF),
@@ -4521,6 +4543,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF581C87),
       });
 
+  @override
   MaterialColor get colorFuchsia => const MaterialColor(0xFFD946EF, {
         50: Color(0xFFFDF4FF),
         100: Color(0xFFFAE8FF),
@@ -4534,6 +4557,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF701A75),
       });
 
+  @override
   MaterialColor get colorPink => const MaterialColor(0xFFEC4899, {
         50: Color(0xFFFDF2F8),
         100: Color(0xFFFCE7F3),
@@ -4547,6 +4571,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF831843),
       });
 
+  @override
   MaterialColor get colorRose => const MaterialColor(0xFFF43F5E, {
         50: Color(0xFFFFF1F2),
         100: Color(0xFFFFE4E6),
@@ -4560,6 +4585,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF881337),
       });
 
+  @override
   MaterialColor get colorBlackAlpha => const MaterialColor(0x80121212, {
         50: Color(0x0D121212),
         100: Color(0x1A121212),
@@ -4573,6 +4599,7 @@ class DefaultLightMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xE6121212),
       });
 
+  @override
   MaterialColor get colorWhiteAlpha => const MaterialColor(0x80FFFFFF, {
         50: Color(0x0DFFFFFF),
         100: Color(0x1AFFFFFF),
@@ -6138,22 +6165,25 @@ class DefaultDarkRadiiTokens extends RadiiTokens {
   BorderRadius get patternFeatureIconBorderRadius => BorderRadius.zero;
   @override
   BorderRadius get patternCardUserBorderRadius => const BorderRadius.only(
-      topLeft: Radius.circular(0.0),
-      topRight: Radius.circular(0.0),
-      bottomRight: Radius.circular(0.0),
-      bottomLeft: Radius.circular(0.0));
+        topLeft: Radius.circular(0.0),
+        topRight: Radius.circular(0.0),
+        bottomRight: Radius.circular(0.0),
+        bottomLeft: Radius.circular(0.0),
+      );
   @override
   BorderRadius get patternCardPricingBorderRadius => const BorderRadius.only(
-      topLeft: Radius.circular(0.0),
-      topRight: Radius.circular(0.0),
-      bottomRight: Radius.circular(0.0),
-      bottomLeft: Radius.circular(0.0));
+        topLeft: Radius.circular(0.0),
+        topRight: Radius.circular(0.0),
+        bottomRight: Radius.circular(0.0),
+        bottomLeft: Radius.circular(0.0),
+      );
   @override
   BorderRadius get sectionHeroImageBorderRadii => const BorderRadius.only(
-      topLeft: Radius.circular(0.0),
-      topRight: Radius.circular(0.0),
-      bottomRight: Radius.circular(0.0),
-      bottomLeft: Radius.circular(0.0));
+        topLeft: Radius.circular(0.0),
+        topRight: Radius.circular(0.0),
+        bottomRight: Radius.circular(0.0),
+        bottomLeft: Radius.circular(0.0),
+      );
 }
 
 class DefaultDarkShadowTokens extends ShadowTokens {
@@ -7999,6 +8029,7 @@ class DefaultDarkGradientTokens extends GradientTokens {
 }
 
 class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
+  @override
   MaterialColor get colorSlate => const MaterialColor(0xFF64748B, {
         50: Color(0xFFF8FAFC),
         100: Color(0xFFF1F5F9),
@@ -8012,6 +8043,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF0F172A),
       });
 
+  @override
   MaterialColor get colorGray => const MaterialColor(0xFF6B7280, {
         50: Color(0xFFF9FAFB),
         100: Color(0xFFF3F4F6),
@@ -8025,6 +8057,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF111827),
       });
 
+  @override
   MaterialColor get colorZinc => const MaterialColor(0xFF71717A, {
         50: Color(0xFFFAFAFA),
         100: Color(0xFFF4F4F5),
@@ -8038,6 +8071,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF18181B),
       });
 
+  @override
   MaterialColor get colorNeutral => const MaterialColor(0xFF737373, {
         50: Color(0xFFFAFAFA),
         100: Color(0xFFF5F5F5),
@@ -8051,6 +8085,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF171717),
       });
 
+  @override
   MaterialColor get colorStone => const MaterialColor(0xFF78716C, {
         50: Color(0xFFFAFAF9),
         100: Color(0xFFF5F5F4),
@@ -8064,6 +8099,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF1C1917),
       });
 
+  @override
   MaterialColor get colorRed => const MaterialColor(0xFFEF4444, {
         50: Color(0xFFFEF2F2),
         100: Color(0xFFFEE2E2),
@@ -8077,6 +8113,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF7F1D1D),
       });
 
+  @override
   MaterialColor get colorOrange => const MaterialColor(0xFFF97316, {
         50: Color(0xFFFFF7ED),
         100: Color(0xFFFFEDD5),
@@ -8090,6 +8127,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF7C2D12),
       });
 
+  @override
   MaterialColor get colorAmber => const MaterialColor(0xFFF59E0B, {
         50: Color(0xFFFFFBEB),
         100: Color(0xFFFEF3C7),
@@ -8103,6 +8141,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF78350F),
       });
 
+  @override
   MaterialColor get colorYellow => const MaterialColor(0xFFEAB308, {
         50: Color(0xFFFEFCE8),
         100: Color(0xFFFEF9C3),
@@ -8116,6 +8155,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF713F12),
       });
 
+  @override
   MaterialColor get colorLime => const MaterialColor(0xFF84CC16, {
         50: Color(0xFFF7FEE7),
         100: Color(0xFFECFCCB),
@@ -8129,6 +8169,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF365314),
       });
 
+  @override
   MaterialColor get colorGreen => const MaterialColor(0xFF22C55E, {
         50: Color(0xFFF0FDF4),
         100: Color(0xFFDCFCE7),
@@ -8142,6 +8183,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF14532D),
       });
 
+  @override
   MaterialColor get colorEmerald => const MaterialColor(0xFF10B981, {
         50: Color(0xFFECFDF5),
         100: Color(0xFFD1FAE5),
@@ -8155,6 +8197,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF064E3B),
       });
 
+  @override
   MaterialColor get colorTeal => const MaterialColor(0xFF14B8A6, {
         50: Color(0xFFF0FDFA),
         100: Color(0xFFCCFBF1),
@@ -8168,6 +8211,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF134E4A),
       });
 
+  @override
   MaterialColor get colorCyan => const MaterialColor(0xFF06B6D4, {
         50: Color(0xFFECFEFF),
         100: Color(0xFFCFFAFE),
@@ -8181,6 +8225,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF164E63),
       });
 
+  @override
   MaterialColor get colorSky => const MaterialColor(0xFF0EA5E9, {
         50: Color(0xFFF0F9FF),
         100: Color(0xFFE0F2FE),
@@ -8194,6 +8239,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF0C4A6E),
       });
 
+  @override
   MaterialColor get colorBlue => const MaterialColor(0xFF3B82F6, {
         50: Color(0xFFEFF6FF),
         100: Color(0xFFDBEAFE),
@@ -8207,6 +8253,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF1E3A8A),
       });
 
+  @override
   MaterialColor get colorIndigo => const MaterialColor(0xFF6366F1, {
         50: Color(0xFFEEF2FF),
         100: Color(0xFFE0E7FF),
@@ -8220,6 +8267,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF312E81),
       });
 
+  @override
   MaterialColor get colorViolet => const MaterialColor(0xFF8B5CF6, {
         50: Color(0xFFF5F3FF),
         100: Color(0xFFEDE9FE),
@@ -8233,6 +8281,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF4C1D95),
       });
 
+  @override
   MaterialColor get colorPurple => const MaterialColor(0xFFA855F7, {
         50: Color(0xFFFAF5FF),
         100: Color(0xFFF3E8FF),
@@ -8246,6 +8295,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF581C87),
       });
 
+  @override
   MaterialColor get colorFuchsia => const MaterialColor(0xFFD946EF, {
         50: Color(0xFFFDF4FF),
         100: Color(0xFFFAE8FF),
@@ -8259,6 +8309,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF701A75),
       });
 
+  @override
   MaterialColor get colorPink => const MaterialColor(0xFFEC4899, {
         50: Color(0xFFFDF2F8),
         100: Color(0xFFFCE7F3),
@@ -8272,6 +8323,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF831843),
       });
 
+  @override
   MaterialColor get colorRose => const MaterialColor(0xFFF43F5E, {
         50: Color(0xFFFFF1F2),
         100: Color(0xFFFFE4E6),
@@ -8285,6 +8337,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xFF881337),
       });
 
+  @override
   MaterialColor get colorBlackAlpha => const MaterialColor(0x80121212, {
         50: Color(0x0D121212),
         100: Color(0x1A121212),
@@ -8298,6 +8351,7 @@ class DefaultDarkMaterialColorTokens extends MaterialColorTokens {
         900: Color(0xE6121212),
       });
 
+  @override
   MaterialColor get colorWhiteAlpha => const MaterialColor(0x80FFFFFF, {
         50: Color(0x0DFFFFFF),
         100: Color(0x1AFFFFFF),

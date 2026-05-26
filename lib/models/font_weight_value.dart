@@ -63,6 +63,6 @@ final _fontWeightMap = {
     'extra-black',
     'ultra-black',
     'extrablack',
-    'ultrablack'
+    'ultrablack',
   ],
 };
