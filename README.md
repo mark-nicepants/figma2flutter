@@ -11,6 +11,8 @@ This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) jso
   - [1. Install](#1-install)
   - [2. Export](#2-export)
   - [3. Generate](#3-generate)
+    - [When using a single JSON design token file that contains $metadata, $theme and defintions](#when-using-a-single-json-design-token-file-that-contains-metadata-theme-and-defintions)
+    - [When using a folder of JSON design token files](#when-using-a-folder-of-json-design-token-files)
   - [4. Add to your project](#4-add-to-your-project)
 - [Token support](#token-support)
   - [Math expressions](#math-expressions)
@@ -21,6 +23,7 @@ This package converts [Tokens Studio for Figma](https://docs.tokens.studio/) jso
   - [Token support for composition tokens](#token-support-for-composition-tokens)
 - [Examples](#examples)
 - [Realised feature ideas](#realised-feature-ideas)
+- [Agent Support](#agent-support)
 - [Ideas for contributing](#ideas-for-contributing)
 
 
@@ -266,7 +269,11 @@ You can use composition tokens as `InputDecoration` in `TextField` and `TextForm
 - ✅ **Add an example** that illustrates how to use the package (see `/example` folder and `/example/bin/update-tokens.sh`)
 - ✅ Figure out a way to convert tokens to **InputDecorations** or even an InputDecorationTheme.
 - ✅ Add example json to the repo that makes it easy to start with the package and Figmas Tokens Studio plugin
--
+
+# Agent Support
+
+The dart prefixed LLM Agent skills in [.agents/skills](/.agents/skills/) came from [dart-lang/skills](https://github.com/dart-lang/skills)
+
 # Ideas for contributing
 
 - Generate a Theme.TextTheme with all tokens that match the [material3 spec](https://m3.material.io/styles/typography/type-scale-tokens#d74b73c2-ac5d-43c5-93b3-088a2f67723d). This would allow us to use the tokens as a theme for the whole app.
