@@ -47,6 +47,12 @@ class BoxShadowValue {
   );
 
   static BoxShadowValue? maybeParse(dynamic value) {
+    if (value == null) return null;
+    if (value is! Map) {
+      throw FormatException(
+        'BoxShadowValue must be a Map and not "$value" of type ${value.runtimeType}',
+      );
+    }
     final x = DimensionValue.maybeParse(value['x'] ?? 0)!;
     final y = DimensionValue.maybeParse(value['y'] ?? 0)!;
     final blur = DimensionValue.maybeParse(value['blur'] ?? 0)!;
