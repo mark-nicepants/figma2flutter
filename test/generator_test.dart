@@ -28,19 +28,23 @@ import 'package:flutter/material.dart';
 part 'tokens_extra.g.dart';
 
 abstract class ITokens {
+  const ITokens();
   ColorTokens get color;
 }
 
 abstract class ColorTokens {
+  const ColorTokens();
   Color get token;
 }
 
 class DefaultTokens extends ITokens {
+  const DefaultTokens();
   @override
-  ColorTokens get color => DefaultColorTokens();
+  ColorTokens get color => const DefaultColorTokens();
 }
 
 class DefaultColorTokens extends ColorTokens {
+  const DefaultColorTokens();
   @override
   Color get token => const Color(0xFF111111);
 }
