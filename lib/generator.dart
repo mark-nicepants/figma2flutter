@@ -49,6 +49,7 @@ $_helpers
 
     final iTokenInterface = '''
 abstract class ITokens {
+  const ITokens();
   ${interFaceNames.entries.map((e) => '${e.value} get ${e.key};').join('\n  ')}
 }''';
 
@@ -64,6 +65,7 @@ abstract class ITokens {
 
       final tokenClass = '''
 class ${theme.name.pascalCase}Tokens extends ITokens {
+  const ${theme.name.pascalCase}Tokens();
   ${properties.join('\n  ')}
 }''';
 

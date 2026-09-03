@@ -20,13 +20,14 @@ abstract class Transformer {
 
   String interfaceDeclaration() {
     return '''abstract class $className {
+  const $className();
   ${lines.map(_toInterfaceDeclaration).join('\n  ')}
 }''';
   }
 
   // Returns the code that will be generated for the property declaration
   String propertyDeclaration(String theme) {
-    return '@override\n  $className get $name => ${theme.pascalCase}$className();';
+    return '@override\n  $className get $name => const ${theme.pascalCase}$className();';
   }
 
   void process(Token token);
@@ -35,6 +36,7 @@ abstract class Transformer {
   String classDeclaration(String theme) {
     return '''
 class ${theme.pascalCase}$className extends $className {
+  const ${theme.pascalCase}$className();
   ${lines.join('\n  ')}
 }
 ''';
