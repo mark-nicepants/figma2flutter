@@ -4,6 +4,9 @@ const kInputAbbr = 'i';
 const kOutput = 'output';
 const kOutputAbbr = 'o';
 
+const kFilteredTokenSets = 'filtered-token-sets';
+const kFilteredTokenSetsAbbr = 'f';
+
 /// Options class to store a single option
 class Option<T> {
   /// The name of the option
@@ -71,6 +74,13 @@ class Options {
       './lib/assets/tokens/',
       'Specify generated output directory.',
       kOutputAbbr,
+    ),
+    // Omits tokens by type, I.E. "core, source"
+    Option<String>(
+      kFilteredTokenSets,
+      '',
+      'Specify token sets to filter, separated by commas.',
+      kFilteredTokenSetsAbbr,
     ),
   ];
 
